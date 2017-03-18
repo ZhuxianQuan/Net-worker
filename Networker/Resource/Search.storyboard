@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search Menu View Controller-->
+        <scene sceneID="BM3-qI-1l0">
+            <objects>
+                <viewController storyboardIdentifier="SearchMenuViewController" id="rPT-rK-Ah0" customClass="SearchMenuViewController" customModule="Networker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GRs-Fo-lKf"/>
+                        <viewControllerLayoutGuide type="bottom" id="NZs-li-Jrb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ute-WV-Tgu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="onr-T4-DnF">
+                                <rect key="frame" x="0.0" y="20" width="414" height="67"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ISM-JF-94Q">
+                                        <rect key="frame" x="137" y="12" width="141" height="43"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-networker" translatesAutoresizingMaskIntoConstraints="NO" id="Aef-ZF-YXR">
+                                                <rect key="frame" x="0.0" y="13" width="132" height="18"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="18" id="KEU-cx-SmJ"/>
+                                                    <constraint firstAttribute="width" constant="132" id="giA-h3-GE2"/>
+                                                </constraints>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-tm" translatesAutoresizingMaskIntoConstraints="NO" id="2hP-kw-YI2">
+                                                <rect key="frame" x="132" y="27" width="9" height="4"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="9.3000000000000007" id="Gvp-V2-jhN"/>
+                                                    <constraint firstAttribute="height" constant="4.5" id="OYN-gF-sBK"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="2hP-kw-YI2" firstAttribute="leading" secondItem="Aef-ZF-YXR" secondAttribute="trailing" id="ES8-IR-5ek"/>
+                                            <constraint firstItem="Aef-ZF-YXR" firstAttribute="centerY" secondItem="ISM-JF-94Q" secondAttribute="centerY" id="Ol1-Yk-Bsg"/>
+                                            <constraint firstAttribute="trailing" secondItem="2hP-kw-YI2" secondAttribute="trailing" id="P5T-Kl-LLM"/>
+                                            <constraint firstItem="2hP-kw-YI2" firstAttribute="bottom" secondItem="Aef-ZF-YXR" secondAttribute="bottom" id="gyg-m7-SQa"/>
+                                            <constraint firstItem="Aef-ZF-YXR" firstAttribute="leading" secondItem="ISM-JF-94Q" secondAttribute="leading" id="oW8-Di-5pt"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EHK-BY-4L6">
+                                        <rect key="frame" x="364" y="9" width="40" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="d2P-cm-GF8"/>
+                                            <constraint firstAttribute="width" constant="40" id="peS-h6-opw"/>
+                                        </constraints>
+                                        <state key="normal" image="icon_menu"/>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_bee" translatesAutoresizingMaskIntoConstraints="NO" id="vri-yb-ZXf">
+                                        <rect key="frame" x="101" y="23" width="36" height="22"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="36" id="faA-3S-TFn"/>
+                                            <constraint firstAttribute="height" constant="22" id="ytW-oX-1vl"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DtJ-kS-LYG">
+                                        <rect key="frame" x="5" y="13" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="I4t-uE-f8U"/>
+                                            <constraint firstAttribute="width" constant="40" id="iBQ-fx-mOu"/>
+                                        </constraints>
+                                        <state key="normal" image="icon_back">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="67" id="0P6-wJ-jeY"/>
+                                    <constraint firstItem="vri-yb-ZXf" firstAttribute="centerY" secondItem="onr-T4-DnF" secondAttribute="centerY" id="Bih-rh-lj7"/>
+                                    <constraint firstItem="ISM-JF-94Q" firstAttribute="leading" secondItem="vri-yb-ZXf" secondAttribute="trailing" id="LLI-LL-9e7"/>
+                                    <constraint firstItem="DtJ-kS-LYG" firstAttribute="centerY" secondItem="onr-T4-DnF" secondAttribute="centerY" id="LpV-Ay-RYu"/>
+                                    <constraint firstItem="ISM-JF-94Q" firstAttribute="centerX" secondItem="onr-T4-DnF" secondAttribute="centerX" id="QhE-ln-2xL"/>
+                                    <constraint firstItem="EHK-BY-4L6" firstAttribute="centerY" secondItem="onr-T4-DnF" secondAttribute="centerY" id="WVu-ao-xQI"/>
+                                    <constraint firstAttribute="bottom" secondItem="ISM-JF-94Q" secondAttribute="bottom" constant="12" id="gFQ-Fq-JMs"/>
+                                    <constraint firstAttribute="trailing" secondItem="EHK-BY-4L6" secondAttribute="trailing" constant="10" id="ths-ik-GgC"/>
+                                    <constraint firstItem="ISM-JF-94Q" firstAttribute="top" secondItem="onr-T4-DnF" secondAttribute="top" constant="12" id="xel-QL-tlR"/>
+                                    <constraint firstItem="DtJ-kS-LYG" firstAttribute="leading" secondItem="onr-T4-DnF" secondAttribute="leading" constant="5" id="yj3-zZ-T4k"/>
+                                </constraints>
+                            </view>
+                            <searchBar contentMode="redraw" placeholder="Keyword search" translatesAutoresizingMaskIntoConstraints="NO" id="dBn-CI-Ans">
+                                <rect key="frame" x="0.0" y="87" width="414" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="splash-background" translatesAutoresizingMaskIntoConstraints="NO" id="ObP-mU-9NP">
+                                <rect key="frame" x="0.0" y="131" width="414" height="605"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="106" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dsb-df-5uM">
+                                <rect key="frame" x="0.0" y="131" width="414" height="605"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="106" id="U76-Q2-sj9">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="106"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U76-Q2-sj9" id="3yB-9a-esJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="105"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="dBn-CI-Ans" firstAttribute="leading" secondItem="ute-WV-Tgu" secondAttribute="leading" id="Lp7-t6-uWP"/>
+                            <constraint firstItem="dBn-CI-Ans" firstAttribute="top" secondItem="onr-T4-DnF" secondAttribute="bottom" id="Oe0-Eq-TND"/>
+                            <constraint firstAttribute="trailing" secondItem="dBn-CI-Ans" secondAttribute="trailing" id="aZS-GA-a8D"/>
+                            <constraint firstItem="onr-T4-DnF" firstAttribute="top" secondItem="GRs-Fo-lKf" secondAttribute="bottom" id="b2A-le-ieM"/>
+                            <constraint firstItem="onr-T4-DnF" firstAttribute="leading" secondItem="ute-WV-Tgu" secondAttribute="leading" id="fC2-1x-1q6"/>
+                            <constraint firstItem="dBn-CI-Ans" firstAttribute="top" secondItem="onr-T4-DnF" secondAttribute="bottom" id="kHI-db-94x"/>
+                            <constraint firstAttribute="trailing" secondItem="onr-T4-DnF" secondAttribute="trailing" id="oTz-YG-HUp"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QCy-nj-uHj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="85.507246376811594" y="167.93478260869566"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="icon_back" width="14" height="26"/>
+        <image name="icon_menu" width="128" height="128"/>
+        <image name="login-networker" width="391" height="51"/>
+        <image name="login-tm" width="28" height="13"/>
+        <image name="logo_bee" width="188" height="115"/>
+        <image name="splash-background" width="414" height="736"/>
+    </resources>
+</document>
