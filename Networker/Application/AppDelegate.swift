@@ -17,8 +17,6 @@ import CoreLocation
 import FBSDKCoreKit
 
 
-var currentLatitude = 0.0
-var currentLongitude = 0.0
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate {
@@ -71,6 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         locationManager.requestAlwaysAuthorization()
         locationManager.requestLocation()
         updateTimer()
+        locationManager.requestLocation()
         
         UserDefaults.standard.set(25, forKey: "distance")
         return true
@@ -102,9 +101,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let location = locations.first
-        NSLog("latitude == \(location?.coordinate.latitude) , longitude == \(location?.coordinate.longitude)")
+        
         currentLatitude = (location?.coordinate.latitude)! as Double
         currentLongitude = (location?.coordinate.longitude)! as Double
+        NSLog("latitude == \(currentLatitude) , longitude == \(currentLongitude)")
         if(currentUser.user_id > 0){
             /*CLGeocoder().reverseGeocodeLocation(location!, completionHandler: {
                 placemarks, error in

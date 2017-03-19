@@ -22,6 +22,8 @@ class HomeViewController: BaseViewController {
         mapView.showsUserLocation = true
         
         
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,6 +34,9 @@ class HomeViewController: BaseViewController {
         
     }
     
+    func getHomeData(){
+        
+    }
     
     func setRegionForLocation(
         location:CLLocationCoordinate2D,
@@ -146,9 +151,9 @@ extension HomeViewController: MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         if overlay is MKCircle{
             let circle = MKCircleRenderer(overlay: overlay)
-            circle.strokeColor = UIColor.blue
-            circle.fillColor = UIColor(red: 0, green: 0, blue: 0.4, alpha: 0.1)
-            circle.lineWidth = 1
+            //circle.strokeColor = UIColor.blue
+            circle.fillColor = UIColor(red: 0, green: 0, blue: 0.4, alpha: 0.05)
+            //circle.lineWidth = 1
             return circle
         }
         else {

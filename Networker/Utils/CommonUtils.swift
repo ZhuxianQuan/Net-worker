@@ -108,6 +108,17 @@ class CommonUtils: AnyObject{
         }
     }
     
+    static func getSortedString(_ strings: [String]) -> [String]{
+        let sortedArray = strings.sorted {
+            $0 < $1
+        }
+        return sortedArray
+    }
+    
+    static func getStringForTags(){
+        
+    }
+    
     
 }
 

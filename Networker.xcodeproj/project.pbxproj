@@ -47,6 +47,9 @@
 		0A59DBC21E7CCE6D0077A5F6 /* FMDBManager+GetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A59DBC11E7CCE6D0077A5F6 /* FMDBManager+GetData.swift */; };
 		0A59DBC41E7CD1060077A5F6 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A59DBC31E7CD1060077A5F6 /* DateExtension.swift */; };
 		0A59DBC91E7CE2150077A5F6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A59DBC81E7CE2150077A5F6 /* GoogleService-Info.plist */; };
+		0A6897A71E7DF6A1000226B9 /* AddSkillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6897A61E7DF6A1000226B9 /* AddSkillViewController.swift */; };
+		0A6897A91E7E1CFA000226B9 /* FMDBManager+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6897A81E7E1CFA000226B9 /* FMDBManager+Data.swift */; };
+		0A6897AB1E7E1EFF000226B9 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6897AA1E7E1EFF000226B9 /* Singleton.swift */; };
 		0A8C93E01E7AE49D0031EE0F /* TagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C93DF1E7AE49D0031EE0F /* TagModel.swift */; };
 		0A8C93E21E7AE77A0031EE0F /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C93E11E7AE77A0031EE0F /* ParseHelper.swift */; };
 		0A8C93E41E7AE7B20031EE0F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C93E31E7AE7B20031EE0F /* UserModel.swift */; };
@@ -100,6 +103,9 @@
 		0A59DBC31E7CD1060077A5F6 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		0A59DBC51E7CE18C0077A5F6 /* Networker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Networker.entitlements; sourceTree = "<group>"; };
 		0A59DBC81E7CE2150077A5F6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0A6897A61E7DF6A1000226B9 /* AddSkillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSkillViewController.swift; sourceTree = "<group>"; };
+		0A6897A81E7E1CFA000226B9 /* FMDBManager+Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FMDBManager+Data.swift"; sourceTree = "<group>"; };
+		0A6897AA1E7E1EFF000226B9 /* Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		0A8C93DF1E7AE49D0031EE0F /* TagModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagModel.swift; sourceTree = "<group>"; };
 		0A8C93E11E7AE77A0031EE0F /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
 		0A8C93E31E7AE7B20031EE0F /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -259,6 +265,7 @@
 				0A5304831E7633B500244C3D /* RegisterViewController.swift */,
 				0A405B201E7687F6005C2618 /* SkillsViewController.swift */,
 				0A405B221E76892F005C2618 /* SearchViewController.swift */,
+				0A6897A61E7DF6A1000226B9 /* AddSkillViewController.swift */,
 			);
 			name = "Login & Signup";
 			sourceTree = "<group>";
@@ -327,6 +334,7 @@
 			children = (
 				0A59DBB41E7C98E50077A5F6 /* FMDBManager.swift */,
 				0A59DBC11E7CCE6D0077A5F6 /* FMDBManager+GetData.swift */,
+				0A6897A81E7E1CFA000226B9 /* FMDBManager+Data.swift */,
 			);
 			name = FMDB;
 			sourceTree = "<group>";
@@ -337,6 +345,7 @@
 				0A53047D1E76096600244C3D /* CommonUtils.swift */,
 				0A53047F1E7609A400244C3D /* Constants.swift */,
 				0A59DBC31E7CD1060077A5F6 /* DateExtension.swift */,
+				0A6897AA1E7E1EFF000226B9 /* Singleton.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -511,16 +520,19 @@
 				0A2AA0161E75F6D700B41F23 /* HelveticaNeue.ttf in Sources */,
 				0A405B2C1E768B01005C2618 /* SearchMenuViewController.swift in Sources */,
 				0A59DBC21E7CCE6D0077A5F6 /* FMDBManager+GetData.swift in Sources */,
+				0A6897A91E7E1CFA000226B9 /* FMDBManager+Data.swift in Sources */,
 				0A405B211E7687F6005C2618 /* SkillsViewController.swift in Sources */,
 				0AD219041E7B4427001E7865 /* SkillsTableViewCell.swift in Sources */,
 				0A59DBBE1E7CCE550077A5F6 /* FirebaseRealTimeMessage.swift in Sources */,
 				0A5304821E760D9800244C3D /* ApiFunctions.swift in Sources */,
 				0A2AA0171E75F6D700B41F23 /* neue-helvetica-45-light-58981f95881bb.otf in Sources */,
+				0A6897A71E7DF6A1000226B9 /* AddSkillViewController.swift in Sources */,
 				0A405B2E1E7693E2005C2618 /* SortByViewController.swift in Sources */,
 				0A2AA0181E75F6D700B41F23 /* taile.ttf in Sources */,
 				0A8C93E21E7AE77A0031EE0F /* ParseHelper.swift in Sources */,
 				0A3EEBB21E7A43B70009706B /* ScheduleViewController.swift in Sources */,
 				0A1AA6021E75927C0010F651 /* AppDelegate.swift in Sources */,
+				0A6897AB1E7E1EFF000226B9 /* Singleton.swift in Sources */,
 				0A53047E1E76096600244C3D /* CommonUtils.swift in Sources */,
 				0A8C93E41E7AE7B20031EE0F /* UserModel.swift in Sources */,
 				0A59DBB71E7CCDB00077A5F6 /* AnnotationView.swift in Sources */,

@@ -19,7 +19,14 @@ class SkillModel{
     var skill_price : Double!
     var skill_qualifications = ""
     
-    func getJobObject() -> [String: String] {
+    static let localTableName = "skills"
+    static let localTableString = [
+        Constants.KEY_SKILL_ID : "BIGINT",
+        Constants.KEY_SKILL_TITLE : "TEXT"
+    ]
+    
+    
+    func getSkillObject() -> [String: String] {
         var result : [String: String] = [:]
         result[Constants.KEY_SKILL_ID] = "\(skill_id)"
         result[Constants.KEY_SKILL_TITLE] = skill_title

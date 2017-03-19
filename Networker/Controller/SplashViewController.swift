@@ -8,35 +8,47 @@
 
 import UIKit
 
+
 class SplashViewController: BaseViewController {
 
     @IBOutlet weak var logoImage: UIImageView!
     
     var timer = Timer()
     var angle : CGFloat = 0
+    
+    var maxLoading = 2
+    var loading = 0
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    
         timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(rotateLogoImage), userInfo: nil, repeats: true)
+        updateLocalData()
     }
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func updateLocalData() {
+        showLoadingView()
+        ApiFunctions.getSkillsArray(completion: {
+            message, skills in
+            self.loading += 1
+            if message == Constants.PROCESS_SUCCESS {
+                definedSkills = skills
+            }
+        })
+        ApiFunctions.getTagsArray(completion: {
+            message, tags in
+            if message == Constants.PROCESS_SUCCESS {
+                definedTags = tags
+            }
+            self.loading += 1
+        })
     }
-    */
     
     func rotateLogoImage(){
         
@@ -51,9 +63,16 @@ class SplashViewController: BaseViewController {
     }
     
     func gotoLoginPage(){
+        
         let loginVC = storyboard?.instantiateViewController(withIdentifier: "LoginViewController")
         self.navigationController?.pushViewController(loginVC!, animated: true)
         
+    }
+    
+    func loadingCompleted(){
+        if loading == maxLoading {
+            //gotoLoginPage()
+        }
     }
 
 }

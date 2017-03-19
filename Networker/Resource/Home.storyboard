@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -17,14 +17,14 @@
                         <viewControllerLayoutGuide type="bottom" id="1qu-of-UPN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="BHd-uJ-kHS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="avv-Ui-g0A">
-                                <rect key="frame" x="0.0" y="20" width="320" height="67"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="67"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GLo-Lz-kYS">
-                                        <rect key="frame" x="90" y="12" width="141" height="43"/>
+                                        <rect key="frame" x="137" y="12" width="141" height="43"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-networker" translatesAutoresizingMaskIntoConstraints="NO" id="keb-1X-hkR">
                                                 <rect key="frame" x="0.0" y="13" width="132" height="18"/>
@@ -51,7 +51,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dd6-B8-g2g">
-                                        <rect key="frame" x="270" y="9" width="40" height="50"/>
+                                        <rect key="frame" x="364" y="9" width="40" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="R6D-xm-aEQ"/>
                                             <constraint firstAttribute="width" constant="40" id="y90-TR-SXY"/>
@@ -59,7 +59,7 @@
                                         <state key="normal" image="icon_menu"/>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_bee" translatesAutoresizingMaskIntoConstraints="NO" id="7Wg-eQ-6Um">
-                                        <rect key="frame" x="54" y="23" width="36" height="22"/>
+                                        <rect key="frame" x="101" y="23" width="36" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="Wrh-gK-B67"/>
                                             <constraint firstAttribute="height" constant="22" id="aDc-90-HfD"/>
@@ -91,17 +91,17 @@
                                 </constraints>
                             </view>
                             <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="j4X-oU-ub5">
-                                <rect key="frame" x="0.0" y="87" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="87" width="414" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GjR-Xy-V9h">
-                                <rect key="frame" x="0.0" y="131" width="320" height="437"/>
+                                <rect key="frame" x="0.0" y="131" width="414" height="605"/>
                                 <connections>
                                     <outlet property="delegate" destination="8QD-QH-baV" id="71Z-2T-wa5"/>
                                 </connections>
                             </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aol-7o-Jmj">
-                                <rect key="frame" x="70" y="156" width="180" height="40"/>
+                                <rect key="frame" x="117" y="156" width="180" height="40"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOk-Wb-rul">
                                         <rect key="frame" x="25" y="10" width="68" height="21"/>
@@ -130,7 +130,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_bee" translatesAutoresizingMaskIntoConstraints="NO" id="sQn-vp-Gg5">
-                                <rect key="frame" x="258" y="161" width="46" height="40"/>
+                                <rect key="frame" x="305" y="161" width="46" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="CqI-Zi-gTp"/>
                                     <constraint firstAttribute="width" constant="46" id="zh1-Sd-JUR"/>

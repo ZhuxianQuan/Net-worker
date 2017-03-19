@@ -39,7 +39,8 @@ class Constants {
     static let KEY_SKILL_ID                 = "skill_id"
     static let KEY_SKILL_TITLE              = "skill_title"
     static let KEY_SKILL_TAGS               = "skill_tags"
-    static let KEY_SKILL_QUALIFICATIONS     = "skill_"
+    static let KEY_SKILL_QUALIFICATIONS     = "skill_qualifications"
+    static let KEY_SKILL_PRICE              = "skill_price"
     
     //tag model
     static let KEY_TAG_ID                   = "tag_id"
@@ -56,11 +57,13 @@ class Constants {
     static let KEY_USER_ADDRESS3            = "user_address3"
     static let KEY_USER_POSTCODE            = "user_postcode"
     static let KEY_USER_BIRTHDAY            = "user_birthday"
-    static let KEY_USER_ISCUSTOMER          = "user_iscustomer"
+    //static let KEY_USER_ISCUSTOMER          = "user_iscustomer"
     static let KEY_USER_SKILLS              = "user_skills"
     static let KEY_USER_AVAILABLE           = "user_available"
+    static let KEY_USER_PROFILEIMAGEURL     = "user_profileimageurl"
     static let KEY_USER_LATITUDE            = "user_latitude"
     static let KEY_USER_LONGITUDE           = "user_longitude"
+    static let KEY_USER_RANGEDISTANCE       = "user_rangedistance"
     
     //fmdbmanager
     

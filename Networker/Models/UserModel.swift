@@ -21,7 +21,7 @@ class UserModel {
     var user_address3 = ""
     var user_postcode = ""
     var user_birthday = ""
-    var user_iscustomer = false
+    //var user_iscustomer = false
     var user_skills : [SkillModel] = []
     var user_available = false
     var user_profileimageurl = ""
@@ -41,4 +41,4 @@ class UserModel {
 }
 
 
-var currentUser = UserModel()
+

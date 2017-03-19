@@ -10,7 +10,8 @@ import UIKit
 import M13Checkbox
 class SkillsViewController: BaseViewController {
     
-    @IBOutlet weak var skillsViewTopConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var skillsViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var skillsTableView: UITableView!
 
     @IBOutlet weak var agreementCheck: M13Checkbox!
@@ -22,9 +23,6 @@ class SkillsViewController: BaseViewController {
     @IBOutlet weak var availableSwitch: UISwitch!
     @IBOutlet weak var continueButton: UIButton!
     
-    
-    
-    
     var skillsArray: [SkillModel] = []
     
     override func viewDidLoad() {
@@ -32,6 +30,14 @@ class SkillsViewController: BaseViewController {
 
         // Do any additional setup after loading the view.
         skillsTableView.estimatedRowHeight = 50
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        skillsArray = currentUser.user_skills
+        skillsTableView.reloadData()
+        skillsViewHeightConstraint.constant = skillsTableView.contentSize.height
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -58,6 +64,8 @@ class SkillsViewController: BaseViewController {
 
     @IBAction func addSkill(_ sender: Any) {
         self.view.endEditing(true)
+        let addSkillVC = storyboard?.instantiateViewController(withIdentifier: "AddSkillViewController") as! AddSkillViewController
+        navigationController?.pushViewController(addSkillVC, animated: true)
     }
     
     @IBAction func connectPaypalButtonTapped(_ sender: Any) {
