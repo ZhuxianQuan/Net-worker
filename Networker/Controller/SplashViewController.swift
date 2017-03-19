@@ -33,13 +33,14 @@ class SplashViewController: BaseViewController {
     }
     
     func updateLocalData() {
-        showLoadingView()
+        //showLoadingView()
         ApiFunctions.getSkillsArray(completion: {
             message, skills in
             self.loading += 1
             if message == Constants.PROCESS_SUCCESS {
                 definedSkills = skills
             }
+            self.loadingCompleted()
         })
         ApiFunctions.getTagsArray(completion: {
             message, tags in
@@ -47,7 +48,9 @@ class SplashViewController: BaseViewController {
                 definedTags = tags
             }
             self.loading += 1
+            self.loadingCompleted()
         })
+
     }
     
     func rotateLogoImage(){
@@ -70,6 +73,7 @@ class SplashViewController: BaseViewController {
     }
     
     func loadingCompleted(){
+        //hideLoadingView()
         if loading == maxLoading {
             //gotoLoginPage()
         }

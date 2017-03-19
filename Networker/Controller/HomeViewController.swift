@@ -27,13 +27,21 @@ class HomeViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
+        initMapView()
         setRegionForLocation(location : CLLocationCoordinate2D(latitude: currentLatitude, longitude: currentLongitude), spanRadius : 1609.00 * currentUser.user_rangedistance, animated: true)
-        
         addRadiusCircle()
         
     }
     
+    func initMapView()
+    {
+        mapView.removeAnnotations(mapView.annotations)
+        for overlay in mapView.overlays{
+            mapView.remove(overlay)
+        }
+        
+        //mapView.remove
+    }
     func getHomeData(){
         
     }

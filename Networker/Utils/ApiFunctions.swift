@@ -8,11 +8,12 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 class ApiFunctions{
     
-    static func login(email: String, password: String, completion: @escaping (String) -> ()){
-        currentUser = ParseHelper.parseUser(TestJson.getMe() as [String : AnyObject])
+    static func login(email: String, password: String, completion: @escaping (String) -> () ){
+        currentUser = ParseHelper.parseUser(JSON(TestJson.getMe()))
         completion(Constants.PROCESS_SUCCESS)
     }
     
@@ -41,24 +42,24 @@ class ApiFunctions{
     }
     
     static func getSkillsArray(completion : @escaping (String, [SkillModel]) -> ()){
-        let skillsData = TestJson.getSkillsJson()
+        let skillsData = JSON(TestJson.getSkillsJson()).arrayValue
         var skills : [SkillModel] = []
         for skillData in skillsData{
-            skills.append(ParseHelper.parseSkill(skillData as [String : AnyObject]))
+            skills.append(ParseHelper.parseSkill(skillData))
         }
         completion(Constants.PROCESS_SUCCESS, skills)
     }
     
     static func getTagsArray(completion : @escaping (String, [TagModel]) -> ()){
-        let tagsData = TestJson.getTagsJson()
+        let tagsData = JSON(TestJson.getTagsJson()).arrayValue
         var tags : [TagModel] = []
         for tagData in tagsData{
-            tags.append(ParseHelper.parseTag(tagData as [String : AnyObject]))
+            tags.append(ParseHelper.parseTag(tagData))
         }
         completion(Constants.PROCESS_SUCCESS, tags)
     }
     
-    static func get
+    //static func getHomeData()
     
     
 }
