@@ -64,6 +64,17 @@ class Constants {
     static let KEY_USER_LATITUDE            = "user_latitude"
     static let KEY_USER_LONGITUDE           = "user_longitude"
     static let KEY_USER_RANGEDISTANCE       = "user_rangedistance"
+    static let KEY_USER_RATINGS             = "user_ratings"
+    
+    //rating model
+    
+    static let KEY_RATING_ID                = "rating_id"
+    static let KEY_RATING_SENDER            = "rating_sender"
+    static let KEY_RATING_RECEIVER          = "rating_receiver"
+    static let KEY_RATING_COMMENT           = "rating_comment"
+    static let KEY_RATING_MARKS             = "rating_marks"
+    static let KEY_RATING_TIMESTAMP         = "rating_timestamp"
+    static let KEY_RATING_SENDERNAME        = "rating_sendername"
     
     //fmdbmanager
     

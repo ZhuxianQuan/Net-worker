@@ -134,9 +134,76 @@ class TestJson{
             Constants.KEY_USER_SKILLS : getSkillsJson() as AnyObject,
             Constants.KEY_USER_AVAILABLE : 1 as AnyObject,
             Constants.KEY_USER_PROFILEIMAGEURL : "" as AnyObject,
-            Constants.KEY_USER_RANGEDISTANCE : 5 as AnyObject
+            Constants.KEY_USER_RANGEDISTANCE : 5 as AnyObject,
+            Constants.KEY_USER_LATITUDE : currentLatitude as AnyObject,
+            Constants.KEY_USER_LONGITUDE : currentLongitude as AnyObject,
+            Constants.KEY_USER_RATINGS : getRatings(20) as AnyObject
         ]
+    }
+    
+    static func nearMeUsers() -> [[String: AnyObject]]{
+        var result : [[String : AnyObject]] = []
+        var index: Int64 = 0
+        for imageurl in getImages() {
+            index += 1
+            var userObject = getMe()
+            userObject[Constants.KEY_USER_ID] = index as AnyObject
+            userObject[Constants.KEY_USER_FIRSTNAME] = "First Name \(index)" as AnyObject
+            userObject[Constants.KEY_USER_LASTNAME] = "Last Name \(index)" as AnyObject
+            userObject[Constants.KEY_USER_PROFILEIMAGEURL] = imageurl as AnyObject
+            userObject[Constants.KEY_USER_LATITUDE] = (currentLatitude + 0.05 * (Double(CommonUtils.getRandomNumber(1000))) / 1000.0 * pow( (-1), Double(CommonUtils.getRandomNumber(20)))) as AnyObject
+            userObject[Constants.KEY_USER_LONGITUDE] = (currentLongitude + 0.05 * (Double(CommonUtils.getRandomNumber(1000))) / 1000.0 * pow( (-1), Double(CommonUtils.getRandomNumber(20)))) as AnyObject
+            userObject[Constants.KEY_USER_RATINGS] = getRatings(index) as AnyObject
+            var skillsObject = getSkillsJson()
+            skillsObject.remove(at: Int(index) % skillsObject.count)
+            userObject[Constants.KEY_USER_SKILLS] = skillsObject as AnyObject
+            result.append(userObject)
+        }
+        return result
+    }
+    
+    static func getImages() -> [String] {
+        var result : [String] = []
+        
+        result.append("https://s-media-cache-ak0.pinimg.com/236x/c0/2a/2e/c02a2ed987f8a55a38be617d3d470f4f.jpg")
+        result.append("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0JkZApeSa5KypkES88terHmuvFNY1zD37H7FdnSzcSsrvPZg_")
+        result.append("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT_V_63DRJXal0jdyOTrV0ATEuY0xU4KjHXTZBiabAxsrNnU4D2")
+        result.append("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Ea3_AGfCzoNO-yPjdU44VyXq1DL9LPn6T2iQBmEglKycoWHf")
+        result.append("https://www.drupal.org/files/project-images/SNP_29271A9F131A2BFDF369CD990598E1D76169_3270506_en_v0.png")
+        result.append("https://s-media-cache-ak0.pinimg.com/236x/c0/2a/2e/c02a2ed987f8a55a38be617d3d470f4f.jpg")
+        result.append("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0JkZApeSa5KypkES88terHmuvFNY1zD37H7FdnSzcSsrvPZg_")
+        result.append("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcT_V_63DRJXal0jdyOTrV0ATEuY0xU4KjHXTZBiabAxsrNnU4D2")
+        result.append("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3Ea3_AGfCzoNO-yPjdU44VyXq1DL9LPn6T2iQBmEglKycoWHf")
+        result.append("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3dctEofLbwEOG84dCwc3oydy93S05e3JANGoVJo7YlU6S5kBJ")
+        result.append("https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSJB0PMJwkAc9-Uan0FARGUkx2nKlCYiAtbGoBEpB4vh6-HglBk")
+        result.append("https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRlgqtBWYlEeRGA8H6F4BzZgkPqiDtOaA_npT9L6WiZtApseGwnSA")
+        result.append("https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR1Lf5aTQzCgg5PuI6WnBGv2BsTxqYd5HWhf3px_1pb-5GmmAHG")
+        result.append("https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQ9z6yZfzs3g_1xH63SfVFtMdSgThVaxYIvjTp0QonzGZKvKZCC")
+        result.append("https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSeCUjJGL4JJwZt9eKPj4kMqPHs_RFzuNuYvhstqNQZF1TyfVEX ")
+        
+        return result
+    }
+    
+    static func getRatings(_ id: Int64) -> [[String: AnyObject]] {
+        var result : [[String: AnyObject]] = []
+        for senderId in 1...5{
+            
+            var ratingObject : [String: AnyObject] = [:]
+            ratingObject[Constants.KEY_RATING_ID] = senderId as AnyObject
+            ratingObject[Constants.KEY_RATING_SENDER] = id as AnyObject
+            ratingObject[Constants.KEY_RATING_RECEIVER] = id as AnyObject
+            ratingObject[Constants.KEY_RATING_COMMENT] = "Review model for testing \(senderId) to \(id)" as AnyObject
+            ratingObject[Constants.KEY_RATING_MARKS] = 5 * Float(CommonUtils.getRandomNumber(100)) / 100.0 as AnyObject
+            ratingObject[Constants.KEY_RATING_TIMESTAMP] = getGlobalTime() as AnyObject
+            ratingObject[Constants.KEY_RATING_SENDERNAME] = "test sender name \(senderId)" as AnyObject
+            result.append(ratingObject)
+        }
+        
+        return result
     }
     
     
 }
+/**/
+
+

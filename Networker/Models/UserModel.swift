@@ -28,6 +28,7 @@ class UserModel {
     var user_latitude = 0.0
     var user_longitude = 0.0
     var user_rangedistance = 25.0
+    var user_ratings : [RatingModel] = []
 //    var user_payment
 
     static func getUserObject() -> [String: AnyObject]{

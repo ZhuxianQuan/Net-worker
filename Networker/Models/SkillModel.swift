@@ -16,7 +16,7 @@ class SkillModel{
     //if user wants to add new job not exists in server id has to be -1
     var skill_title = ""
     var skill_tags : [TagModel] = []
-    var skill_price : Double!
+    var skill_price : Double = 0.0
     var skill_qualifications = ""
     
     static let localTableName = "skills"
@@ -38,7 +38,7 @@ class SkillModel{
         
         var result = ""
         for tag in skill_tags{
-            result = result + tag.tag_string + ", "
+            result = result + "#" + tag.tag_string + ", "
         }
         result = result + "__**"
         return result.replacingOccurrences(of: ", __**", with: "")

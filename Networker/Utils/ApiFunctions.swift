@@ -59,7 +59,14 @@ class ApiFunctions{
         completion(Constants.PROCESS_SUCCESS, tags)
     }
     
-    //static func getHomeData()
+    static func getHomeData(completion : @escaping (String, [UserModel]) -> ()){
+        let usersData = JSON(TestJson.nearMeUsers()).arrayValue
+        var users: [UserModel] = []
+        for userData in usersData {
+            users.append(ParseHelper.parseUser(userData))
+        }
+        completion(Constants.PROCESS_SUCCESS, users)
+    }
     
     
 }

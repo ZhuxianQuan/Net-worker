@@ -74,6 +74,9 @@
                                         <state key="normal" image="icon_back">
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
+                                        <connections>
+                                            <action selector="backButtonTapped:" destination="8QD-QH-baV" eventType="touchUpInside" id="bYL-Sa-p1C"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -157,6 +160,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="piS-YK-Qrk"/>
                     <connections>
+                        <outlet property="backButton" destination="WTT-0f-hGZ" id="6cP-7l-whR"/>
                         <outlet property="mapView" destination="GjR-Xy-V9h" id="UNv-91-yfa"/>
                     </connections>
                 </viewController>

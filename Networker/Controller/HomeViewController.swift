@@ -12,8 +12,9 @@ import MapKit
 class HomeViewController: BaseViewController {
 
     @IBOutlet weak var mapView: MKMapView!
-
+    @IBOutlet weak var backButton: UIButton!
     
+    var nearMeWorkers : [UserModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,13 @@ class HomeViewController: BaseViewController {
         initMapView()
         setRegionForLocation(location : CLLocationCoordinate2D(latitude: currentLatitude, longitude: currentLongitude), spanRadius : 1609.00 * currentUser.user_rangedistance, animated: true)
         addRadiusCircle()
+        getHomeData()
+        if navigationController!.viewControllers.count > 1{
+            backButton.isHidden = false
+        }
+        else {
+            backButton.isHidden = true
+        }
         
     }
     
@@ -42,7 +50,33 @@ class HomeViewController: BaseViewController {
         
         //mapView.remove
     }
+    
+    
     func getHomeData(){
+        ApiFunctions.getHomeData(completion: {
+            message, users in
+            if message == Constants.PROCESS_SUCCESS {
+                self.nearMeWorkers = users
+                self.arrangeFriends()
+            }
+        })
+    }
+    
+    
+    func arrangeFriends() {
+        var index = 0
+        
+        
+        for worker in nearMeWorkers{
+            index += 1
+            let info = StarbuckAnnotation(coordinate: CLLocationCoordinate2D(latitude: worker.user_latitude, longitude: worker.user_longitude))
+            info.user = worker
+            
+            NSLog(" user location  == \(worker.user_latitude)), \(worker.user_longitude)")
+            info.title = worker.user_firstname + " " + worker.user_lastname
+            //info.subtitle = friend.friend_user.user_currentLocationName
+            mapView.addAnnotation(info)
+        }
         
     }
     
@@ -79,6 +113,9 @@ class HomeViewController: BaseViewController {
         self.mapView.add(circle)
     }
 
+    @IBAction func backButtonTapped(_ sender: Any) {
+        _ = self.navigationController?.popViewController(animated: true)
+    }
 }
 
 
@@ -100,16 +137,16 @@ extension HomeViewController: MKMapViewDelegate{
             annotationView?.annotation = annotation
         }
         
-        let imageView = UIImageView()
+        //let imageView = UIImageView()
         let customAnnotation = annotation as! StarbuckAnnotation
         
-        imageView.setImageWith(storageRefString: customAnnotation.user.user_profileimageurl, placeholderImage: UIImage(named:"ic_user_placeholder")!)
-        let image = CommonUtils.resizeImage(image: imageView.image!, targetSize: CGSize(width: 30, height: 30))
+        //imageView.setImageWith(storageRefString: customAnnotation.user.user_profileimageurl, placeholderImage: UIImage(named:"icon_profile")!)
+        let image = CommonUtils.resizeImage(image: UIImage(named : "logo_bee")!, targetSize: CGSize(width: 30, height: 30))
         
         annotationView?.layer.cornerRadius = 15
         annotationView?.layer.masksToBounds = true
-        /*annotationView?.layer.borderWidth = 1.5
-         annotationView?.layer.borderColor = UIColor.white.cgColor*/
+        annotationView?.layer.borderWidth = 1.5
+        annotationView?.layer.borderColor = UIColor.white.cgColor
         annotationView?.image = image
         return annotationView
         

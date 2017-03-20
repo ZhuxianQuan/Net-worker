@@ -40,7 +40,7 @@ class SkillsTableViewCell: UITableViewCell {
     func setCellText(_ skill : SkillModel)
     {
         self.skill = skill
-        skillTitleLabel.text = skill.skill_title
+        skillTitleLabel.text = "#" + skill.skill_title
         taggedWordsLabel.text = skill.getTagsString()
         priceLabel.text = "£\(skill.skill_price)"
         qualificationLabel.text = skill.skill_qualifications

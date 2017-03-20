@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 import FirebaseStorage
 import FirebaseStorageUI
+import SDWebImage
 
 class FirebaseStorageUtils
 {
@@ -137,7 +138,7 @@ extension UIImageView{
     {
         if storageRefString.hasPrefix("http")
         {
-            self.sd_setImage(with: URL(string: storageRefString), placeholderImage: placeholderImage)
+            self.sd_setImage(with: URL(string : storageRefString), placeholderImage: placeholderImage)
         }
         else{
             let reference : FIRStorageReference = FIRStorage.storage().reference(forURL: storageRefString)

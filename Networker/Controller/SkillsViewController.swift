@@ -23,6 +23,8 @@ class SkillsViewController: BaseViewController {
     @IBOutlet weak var availableSwitch: UISwitch!
     @IBOutlet weak var continueButton: UIButton!
     
+    
+    
     var skillsArray: [SkillModel] = []
     
     override func viewDidLoad() {
@@ -34,9 +36,8 @@ class SkillsViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        skillsArray = currentUser.user_skills
         skillsTableView.reloadData()
-        skillsViewHeightConstraint.constant = skillsTableView.contentSize.height
+        //skillsViewHeightConstraint.constant = skillsTableView.contentSize.height
         
     }
 
@@ -65,6 +66,8 @@ class SkillsViewController: BaseViewController {
     @IBAction func addSkill(_ sender: Any) {
         self.view.endEditing(true)
         let addSkillVC = storyboard?.instantiateViewController(withIdentifier: "AddSkillViewController") as! AddSkillViewController
+        addSkillVC.fromWhere = addSkillVC.FROM_SKILLSVC
+        addSkillVC.preDefinedSkills = FMDBManagerGetData.removeSkills(existing: skillsArray, defined: definedSkills)
         navigationController?.pushViewController(addSkillVC, animated: true)
     }
     
@@ -96,7 +99,7 @@ extension SkillsViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SkillsTableViewCell") as! SkillsTableViewCell
         if indexPath.section == 0 {
-            cell.backgroundColor = UIColor.black
+            cell.contentView.backgroundColor = UIColor.black
             cell.skillTitleLabel.text = "#skills"
             cell.taggedWordsLabel.text = "Tagged words#"
             cell.priceLabel.text = "Price per Hour"
@@ -105,9 +108,10 @@ extension SkillsViewController : UITableViewDelegate, UITableViewDataSource {
         }
         else{
             let index = indexPath.row
-            cell.backgroundColor = UIColor.lightGray
+            cell.contentView.backgroundColor = UIColor.lightGray
             cell.setCellTextColor(UIColor.darkText)
             cell.setCellText(skillsArray[index])
+            
             
         }
         
@@ -120,8 +124,7 @@ extension SkillsViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-            return UITableViewAutomaticDimension
+        return UITableViewAutomaticDimension
     }
     
     
