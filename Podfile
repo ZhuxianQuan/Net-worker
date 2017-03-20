@@ -19,7 +19,7 @@ pod 'FacebookCore'
 pod 'FacebookLogin'
 pod 'FacebookShare'
 pod 'SideMenu'
-pod ‘Material’
+#pod ‘Material’
 #pod 'MBCircularProgressBar'
 pod 'Alamofire'
 pod ‘SDWebImage’

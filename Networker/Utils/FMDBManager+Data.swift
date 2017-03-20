@@ -18,12 +18,17 @@ class FMDBManagerGetData{
     
     static func getMatchedSkills(keyword: String, skills : [SkillModel]) -> [SkillModel] {
         var result : [SkillModel] = []
-        for skill in skills {
-            if skill.skill_title.lowercased().contains(keyword.lowercased()){
-                result.append(skill)
+        if keyword.characters.count > 0{
+            for skill in skills {
+                if skill.skill_title.lowercased().contains(keyword.lowercased()){
+                    result.append(skill)
+                }
             }
+            return getSortedSkills(skills: result, keyword: keyword)
         }
-        return getSortedSkills(skills: result, keyword: keyword)
+        else{
+            return skills
+        }
     }
     
     static func getMatchedTags(keyword: String, tags : [TagModel]) -> [TagModel] {

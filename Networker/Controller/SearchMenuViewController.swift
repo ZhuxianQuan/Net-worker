@@ -31,13 +31,20 @@ class SearchMenuViewController: BaseViewController {
     
     @IBAction func itemTapped(_ sender: UIButton) {
         let index = (sender.tag - 10) / 10
-        if index == 0 {
+        if index == 0 && searchBar.text?.characters.count == 0{
             let storyboard = getStoryboard(id: Constants.STORYBOARD_HOME)
             let homevc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
             navigationController?.pushViewController(homevc, animated: true)
         }
         else {
-            let skill = skills[index - 1]
+            var skill = SkillModel()
+            if searchBar.text?.characters.count == 0{
+                skill = skills[index - 1]
+            }
+            else {
+                
+                skill = skills[index]
+            }
             let skilledUserVC = storyboard?.instantiateViewController(withIdentifier: "SearchMatchedUsersViewController") as! SearchMatchedUsersViewController
             skilledUserVC.skill = skill
             navigationController?.pushViewController(skilledUserVC, animated: true)
@@ -77,18 +84,29 @@ extension SearchMenuViewController : UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return skills.count + 1
+        if searchBar.text?.characters.count == 0{
+            return skills.count + 1
+        }
+        else{
+            return skills.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchMenuTableViewCell") as! SearchMenuTableViewCell
         
         let index = indexPath.row
-        if index == 0 {
+        if index == 0 && searchBar.text?.characters.count == 0{
             cell.setCell(skill: nil)
         }
         else {
-            cell.setCell(skill: skills[index - 1])
+            if (searchBar.text?.characters.count == 0)
+            {
+                cell.setCell(skill: skills[index - 1])
+            }
+            else{
+                cell.setCell(skill: skills[index])
+            }
             
         }
         
@@ -97,7 +115,7 @@ extension SearchMenuViewController : UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        self.view.endEditing(true)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -106,5 +124,10 @@ extension SearchMenuViewController : UITableViewDelegate, UITableViewDataSource 
 }
 
 extension SearchMenuViewController : UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let keyword = searchText
+        skills = FMDBManagerGetData.getMatchedSkills(keyword: keyword, skills: definedSkills)
+        menuItemTableView.reloadData()
+    }
     
 }

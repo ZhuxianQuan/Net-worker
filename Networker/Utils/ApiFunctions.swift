@@ -68,6 +68,41 @@ class ApiFunctions{
         completion(Constants.PROCESS_SUCCESS, users)
     }
     
+    static func getNameMatchedUsers(keyword: String, from preDefinedUsers: [UserModel], completion : @escaping (String, [UserModel]) -> ()){
+        
+        var users : [UserModel] = []
+        if keyword.characters.count > 0{
+            for user in preDefinedUsers {
+                if(user.user_firstname + " " + user.user_lastname).lowercased().contains(keyword.lowercased()){
+                    users.append(user)
+                }
+            }
+        }
+        else{
+            users = preDefinedUsers
+        }
+        completion(Constants.PROCESS_SUCCESS, users)
+    }
+    
+    static func getSkillMatchedUsers(skillId: Int64, completion: @escaping(String, [UserModel]) -> ()){
+        var result : [UserModel] = []
+        getHomeData(completion : {
+            message, users in
+            if message == Constants.PROCESS_SUCCESS {
+                for user in users {
+                    for skill in user.user_skills{
+                        if skill.skill_id == skillId
+                        {
+                            result.append(user)
+                            break
+                        }
+                    }
+                    completion(Constants.PROCESS_SUCCESS, result)
+                }
+            }
+        })
+    }
+    
     
 }
 

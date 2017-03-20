@@ -14,17 +14,17 @@ class SearchMatchedUsersViewController: BaseViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchFilterLabel: UILabel!
     
+    @IBOutlet weak var matchedUsersTableView: UITableView!
     var skill = SkillModel()
     var matchedUsers : [UserModel] = []
-    
+    var users : [UserModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         searchBar.placeholder = "#" + skill.skill_title
-        
-        
+        getSkillMatchedUsers()
     
     }
 
@@ -47,6 +47,27 @@ class SearchMatchedUsersViewController: BaseViewController {
         _ = self.navigationController?.popViewController(animated: true)
     }
     
+    func getSkillMatchedUsers() {
+        ApiFunctions.getSkillMatchedUsers(skillId : skill.skill_id, completion :{
+            message, users in
+            if message == Constants.PROCESS_SUCCESS {
+                self.users = users
+                self.matchedUsers = users
+                self.matchedUsersTableView.reloadData()
+            }
+        })
+    }
+    
+    func getNameMatchedUsers(_ keyword : String){
+        ApiFunctions.getNameMatchedUsers(keyword: keyword, from: users, completion: {
+            message, users in
+            if message == Constants.PROCESS_SUCCESS {
+                self.matchedUsers = users
+                self.matchedUsersTableView.reloadData()
+            }
+        })
+    }
+    
 }
 
 
@@ -61,10 +82,18 @@ extension SearchMatchedUsersViewController : UITableViewDataSource, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MatchedUserTableViewCell") as! MatchedUserTableViewCell
+        //cell.setCell()
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 105
+    }
+}
+
+extension SearchMatchedUsersViewController : UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let keyword = searchText
+        getNameMatchedUsers(keyword)
     }
 }

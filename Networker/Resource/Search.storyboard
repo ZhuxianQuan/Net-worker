@@ -94,7 +94,10 @@
                             </view>
                             <searchBar contentMode="redraw" placeholder="Keyword search" translatesAutoresizingMaskIntoConstraints="NO" id="dBn-CI-Ans">
                                 <rect key="frame" x="0.0" y="87" width="414" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="rPT-rK-Ah0" id="eFu-QC-hBG"/>
+                                </connections>
                             </searchBar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="splash-background" translatesAutoresizingMaskIntoConstraints="NO" id="ObP-mU-9NP">
                                 <rect key="frame" x="0.0" y="131" width="414" height="605"/>
@@ -278,37 +281,65 @@
                             </view>
                             <searchBar contentMode="redraw" placeholder="#Dogwalking" translatesAutoresizingMaskIntoConstraints="NO" id="81S-47-j6L">
                                 <rect key="frame" x="0.0" y="87" width="414" height="44"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" spellCheckingType="no" returnKeyType="search" enablesReturnKeyAutomatically="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="hYN-js-1ih" id="BX9-c6-e7n"/>
+                                </connections>
                             </searchBar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="splash-background" translatesAutoresizingMaskIntoConstraints="NO" id="uyL-Z7-pq1">
                                 <rect key="frame" x="0.0" y="131" width="414" height="605"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="106" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RGp-M9-WoY">
-                                <rect key="frame" x="40" y="246" width="334" height="490"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="106" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RGp-M9-WoY">
+                                <rect key="frame" x="50" y="246" width="314" height="470"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="MatchedUserTableViewCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="MatchedUserTableViewCell" rowHeight="106" id="Qje-nQ-jxw" customClass="MatchedUserTableViewCell" customModule="Networker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="334" height="106"/>
+                                        <rect key="frame" x="0.0" y="28" width="314" height="106"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Qje-nQ-jxw" id="ngN-Ld-9kd">
-                                            <rect key="frame" x="0.0" y="0.0" width="334" height="106"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="314" height="106"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T9B-UI-wSB">
-                                                    <rect key="frame" x="0.0" y="20" width="334" height="86"/>
+                                                    <rect key="frame" x="0.0" y="20" width="314" height="86"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jenny: 1.2m dist, £12/hr," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNe-2L-Ia2">
-                                                            <rect key="frame" x="69.333333333333343" y="11.333333333333334" width="195.66666666666666" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                            <rect key="frame" x="69.333333333333343" y="12.333333333333336" width="175.66666666666669" height="19.333333333333329"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Jf-Gf-D3n" customClass="FloatRatingView" customModule="Networker" customModuleProvider="target">
+                                                            <rect key="frame" x="57" y="54.666666666666671" width="200" height="20"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="20" id="2j7-4v-7af"/>
+                                                                <constraint firstAttribute="width" constant="200" id="8US-yB-aXa"/>
+                                                            </constraints>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="editable" value="NO"/>
+                                                                <userDefinedRuntimeAttribute type="boolean" keyPath="floatRatings" value="YES"/>
+                                                                <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="icon_rating_fullstar"/>
+                                                                <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="icon_rating_blankstar"/>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                                    <real key="value" value="4"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="minRating">
+                                                                    <integer key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="maxRating">
+                                                                    <integer key="value" value="5"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </view>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="MNe-2L-Ia2" firstAttribute="centerX" secondItem="T9B-UI-wSB" secondAttribute="centerX" id="33f-YD-WWH"/>
                                                         <constraint firstItem="MNe-2L-Ia2" firstAttribute="centerY" secondItem="T9B-UI-wSB" secondAttribute="centerY" multiplier="0.5" id="ASo-lv-JBh"/>
+                                                        <constraint firstItem="5Jf-Gf-D3n" firstAttribute="centerX" secondItem="T9B-UI-wSB" secondAttribute="centerX" id="UZY-uM-W6i"/>
+                                                        <constraint firstItem="5Jf-Gf-D3n" firstAttribute="centerY" secondItem="T9B-UI-wSB" secondAttribute="centerY" multiplier="1.5" id="fD1-YL-aVn"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -322,7 +353,8 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <outlet property="userDataLabel" destination="MNe-2L-Ia2" id="ai2-7F-tZG"/>
+                                            <outlet property="ratingView" destination="5Jf-Gf-D3n" id="ckF-Fw-ZaF"/>
+                                            <outlet property="userDataLabel" destination="MNe-2L-Ia2" id="l9Z-xB-oLT"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -332,11 +364,10 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sort by: Distance Rating Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIk-hU-uGc">
-                                <rect key="frame" x="57" y="181" width="300" height="50"/>
+                                <rect key="frame" x="30" y="181" width="354" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="V9J-W5-dWc"/>
-                                    <constraint firstAttribute="width" constant="300" id="sKL-Jw-rND"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -348,25 +379,35 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jf5-ai-id2">
+                                <rect key="frame" x="50" y="231" width="314" height="15"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="IXJ-is-Vzl" firstAttribute="leading" secondItem="fPE-gZ-6JB" secondAttribute="leading" id="6HD-mf-Ywl"/>
+                            <constraint firstItem="RGp-M9-WoY" firstAttribute="top" secondItem="jf5-ai-id2" secondAttribute="bottom" id="EYH-ZZ-GLn"/>
                             <constraint firstItem="rIk-hU-uGc" firstAttribute="top" secondItem="81S-47-j6L" secondAttribute="bottom" constant="50" id="GiW-ZB-PbP"/>
-                            <constraint firstItem="RGp-M9-WoY" firstAttribute="leading" secondItem="fPE-gZ-6JB" secondAttribute="leading" constant="40" id="Pyz-fB-4z2"/>
+                            <constraint firstItem="jf5-ai-id2" firstAttribute="leading" secondItem="RGp-M9-WoY" secondAttribute="leading" id="N3C-a2-SnS"/>
+                            <constraint firstItem="rIk-hU-uGc" firstAttribute="leading" secondItem="fPE-gZ-6JB" secondAttribute="leadingMargin" constant="10" id="P9x-2A-d24"/>
+                            <constraint firstItem="RGp-M9-WoY" firstAttribute="leading" secondItem="fPE-gZ-6JB" secondAttribute="leading" constant="50" id="Pyz-fB-4z2"/>
                             <constraint firstItem="81S-47-j6L" firstAttribute="top" secondItem="IXJ-is-Vzl" secondAttribute="bottom" id="QM6-7A-8eT"/>
                             <constraint firstAttribute="trailing" secondItem="81S-47-j6L" secondAttribute="trailing" id="QUg-kS-K1W"/>
                             <constraint firstItem="RGp-M9-WoY" firstAttribute="centerX" secondItem="fPE-gZ-6JB" secondAttribute="centerX" id="T79-2E-ob6"/>
                             <constraint firstItem="rIk-hU-uGc" firstAttribute="centerX" secondItem="fPE-gZ-6JB" secondAttribute="centerX" id="VOw-4Z-PeQ"/>
                             <constraint firstItem="81S-47-j6L" firstAttribute="leading" secondItem="fPE-gZ-6JB" secondAttribute="leading" id="aYG-ue-EB1"/>
-                            <constraint firstItem="3sn-Lh-dk5" firstAttribute="top" secondItem="RGp-M9-WoY" secondAttribute="bottom" id="cP6-aT-ele"/>
+                            <constraint firstItem="3sn-Lh-dk5" firstAttribute="top" secondItem="RGp-M9-WoY" secondAttribute="bottom" constant="20" id="cP6-aT-ele"/>
                             <constraint firstItem="IXJ-is-Vzl" firstAttribute="top" secondItem="RGv-gX-1wS" secondAttribute="bottom" id="chh-x3-QWQ"/>
                             <constraint firstItem="RGp-M9-WoY" firstAttribute="top" secondItem="rIk-hU-uGc" secondAttribute="bottom" constant="15" id="cp5-A4-ynw"/>
                             <constraint firstItem="81S-47-j6L" firstAttribute="top" secondItem="IXJ-is-Vzl" secondAttribute="bottom" id="dsu-4O-4Qk"/>
+                            <constraint firstItem="jf5-ai-id2" firstAttribute="top" secondItem="rIk-hU-uGc" secondAttribute="bottom" id="stQ-cX-pX5"/>
                             <constraint firstAttribute="trailing" secondItem="IXJ-is-Vzl" secondAttribute="trailing" id="uPK-ag-Eaa"/>
+                            <constraint firstItem="jf5-ai-id2" firstAttribute="trailing" secondItem="RGp-M9-WoY" secondAttribute="trailing" id="ukh-J3-dpr"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="matchedUsersTableView" destination="RGp-M9-WoY" id="UlJ-ta-lWE"/>
                         <outlet property="searchBar" destination="81S-47-j6L" id="g4X-uJ-9y3"/>
                         <outlet property="searchFilterLabel" destination="rIk-hU-uGc" id="kXD-eO-t2J"/>
                     </connections>
@@ -379,6 +420,8 @@
     <resources>
         <image name="icon_back" width="14" height="26"/>
         <image name="icon_menu" width="128" height="128"/>
+        <image name="icon_rating_blankstar" width="128" height="128"/>
+        <image name="icon_rating_fullstar" width="512" height="512"/>
         <image name="login-networker" width="391" height="51"/>
         <image name="login-tm" width="28" height="13"/>
         <image name="logo_bee" width="188" height="115"/>

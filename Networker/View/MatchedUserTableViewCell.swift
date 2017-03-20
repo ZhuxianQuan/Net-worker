@@ -10,8 +10,8 @@ import UIKit
 
 class MatchedUserTableViewCell: UITableViewCell {
     
-    
     @IBOutlet weak var userDataLabel: UILabel!
+    @IBOutlet weak var ratingView: FloatRatingView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,6 +22,10 @@ class MatchedUserTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setCell(_ user: UserModel) {
+        
     }
 
 }

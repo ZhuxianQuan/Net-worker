@@ -123,6 +123,10 @@ class CommonUtils: AnyObject{
         return Int(arc4random_uniform(UInt32(maxValue)))
     }
     
+    static func getDistance(location1 : (Double, Double) , location2 : (Double, Double)) -> Double{
+        var distance : Double = 0
+        return distance
+    }
     
     
 
