@@ -8,13 +8,21 @@
 
 import UIKit
 import Toast_Swift
+import KYDrawerController
 
 class BaseViewController: UIViewController {
 
+    var drawerController : KYDrawerController?
+    //var drawerOpened : Bool!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.navigationController?.isNavigationBarHidden = true
+        drawerController = self.navigationController?.parent as? KYDrawerController
+        if drawerController != nil {
+            drawerController?.drawerDirection = .right
+            //drawerOpened = false
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -25,15 +33,10 @@ class BaseViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated : Bool) {
+        
     }
-    */
+
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -61,13 +64,8 @@ class BaseViewController: UIViewController {
         let storyboard = getStoryboard(id: Constants.STORYBOARD_MAIN)
 
         let mainTab = storyboard.instantiateViewController(withIdentifier: "MainTab") as! UITabBarController
-        let navigations = mainTab.viewControllers as! [UINavigationController]
-        var index = 2
-        for navigation in navigations{
-            navigation.viewControllers = [getNavRootViewController(index)]
-            index += 1
-
-        }
+        
+        //setNavigationRoots()
         present(mainTab, animated: true, completion: nil)
         
     }
@@ -91,31 +89,4 @@ class BaseViewController: UIViewController {
         }
     }
     
-    func getNavRootViewController(_ id: Int) -> UIViewController{
-        var storyboard : UIStoryboard!
-        switch id {
-        /*case Constants.STORYBOARD_MAIN:
-            storyboard = UIStoryboard(name: "Main", bundle: nil)
-            return storyboard.instantiateViewController(withIdentifier: "HomeViewController")*/
-        case Constants.STORYBOARD_HOME:
-            storyboard = UIStoryboard(name: "Home", bundle: nil)
-            return storyboard.instantiateViewController(withIdentifier: "HomeViewController")
-        case Constants.STORYBOARD_SEARCH:
-            storyboard = UIStoryboard(name: "Search", bundle: nil)
-            return storyboard.instantiateViewController(withIdentifier: "SearchMenuViewController")
-        case Constants.STORYBOARD_SCHEDULE:
-            storyboard = UIStoryboard(name: "Schedule", bundle: nil)
-            return storyboard.instantiateViewController(withIdentifier: "ScheduleViewController")
-        case Constants.STORYBOARD_FAVORITE:
-            storyboard = UIStoryboard(name: "Favorite", bundle: nil)
-            return storyboard.instantiateViewController(withIdentifier: "FavoriteViewController")
-        case Constants.STORYBOARD_CHATTING:
-            storyboard = UIStoryboard(name: "Chatting", bundle: nil)
-            return storyboard.instantiateViewController(withIdentifier: "ChattingViewController")
-        default:
-            storyboard = UIStoryboard(name: "Home", bundle: nil)
-            return storyboard.instantiateViewController(withIdentifier: "HomeViewController")
-        }
-    }
-
 }

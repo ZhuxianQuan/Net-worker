@@ -31,24 +31,12 @@ class SearchMenuViewController: BaseViewController {
     
     @IBAction func itemTapped(_ sender: UIButton) {
         let index = (sender.tag - 10) / 10
-        if index == 0 && searchBar.text?.characters.count == 0{
-            let storyboard = getStoryboard(id: Constants.STORYBOARD_HOME)
-            let homevc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-            navigationController?.pushViewController(homevc, animated: true)
-        }
-        else {
-            var skill = SkillModel()
-            if searchBar.text?.characters.count == 0{
-                skill = skills[index - 1]
-            }
-            else {
-                
-                skill = skills[index]
-            }
-            let skilledUserVC = storyboard?.instantiateViewController(withIdentifier: "SearchMatchedUsersViewController") as! SearchMatchedUsersViewController
-            skilledUserVC.skill = skill
-            navigationController?.pushViewController(skilledUserVC, animated: true)
-        }
+    
+        var skill = SkillModel()
+        skill = skills[index]
+        let skilledUserVC = storyboard?.instantiateViewController(withIdentifier: "SearchMatchedUsersViewController") as! SearchMatchedUsersViewController
+        skilledUserVC.skill = skill
+        navigationController?.pushViewController(skilledUserVC, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,32 +72,15 @@ extension SearchMenuViewController : UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchBar.text?.characters.count == 0{
-            return skills.count + 1
-        }
-        else{
-            return skills.count
-        }
+        return skills.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchMenuTableViewCell") as! SearchMenuTableViewCell
         
         let index = indexPath.row
-        if index == 0 && searchBar.text?.characters.count == 0{
-            cell.setCell(skill: nil)
-        }
-        else {
-            if (searchBar.text?.characters.count == 0)
-            {
-                cell.setCell(skill: skills[index - 1])
-            }
-            else{
-                cell.setCell(skill: skills[index])
-            }
-            
-        }
-        
+        cell.setCell(skill: skills[index])
         cell.button.tag = index * 10 + 10
         return cell
     }

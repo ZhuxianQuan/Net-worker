@@ -14,6 +14,7 @@
 		0A1AA60E1E75DBA50010F651 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1AA60D1E75DBA50010F651 /* BaseViewController.swift */; };
 		0A1AA6111E75DBE00010F651 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1AA6101E75DBE00010F651 /* SplashViewController.swift */; };
 		0A1AA6131E75E3B60010F651 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1AA6121E75E3B60010F651 /* LoginViewController.swift */; };
+		0A298DB11E8990F00006B7BC /* DayScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A298DB01E8990F00006B7BC /* DayScheduleTableViewCell.swift */; };
 		0A2AA0141E75F6D700B41F23 /* fontawesome-webfont.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 0A1AA6081E75D9C10010F651 /* fontawesome-webfont.ttf */; };
 		0A2AA0151E75F6D700B41F23 /* HelveticaNeue-Medium_22622.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 0A1AA6091E75D9C10010F651 /* HelveticaNeue-Medium_22622.ttf */; };
 		0A2AA0161E75F6D700B41F23 /* HelveticaNeue.ttf in Sources */ = {isa = PBXBuildFile; fileRef = 0A1AA60A1E75D9C10010F651 /* HelveticaNeue.ttf */; };
@@ -52,13 +53,24 @@
 		0A59DBC01E7CCE550077A5F6 /* FirebaseUserAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A59DBBD1E7CCE550077A5F6 /* FirebaseUserAuthentication.swift */; };
 		0A59DBC41E7CD1060077A5F6 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A59DBC31E7CD1060077A5F6 /* DateExtension.swift */; };
 		0A59DBC91E7CE2150077A5F6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A59DBC81E7CE2150077A5F6 /* GoogleService-Info.plist */; };
+		0A6841791E88B59400B8926F /* UserAvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6841781E88B59400B8926F /* UserAvailabilityViewController.swift */; };
+		0A68417F1E890D3100B8926F /* DayScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A68417E1E890D3100B8926F /* DayScheduleModel.swift */; };
+		0A6841811E8916C600B8926F /* AddScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6841801E8916C600B8926F /* AddScheduleViewController.swift */; };
 		0A6897A71E7DF6A1000226B9 /* AddSkillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6897A61E7DF6A1000226B9 /* AddSkillViewController.swift */; };
 		0A6897A91E7E1CFA000226B9 /* FMDBManager+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6897A81E7E1CFA000226B9 /* FMDBManager+Data.swift */; };
 		0A6897AB1E7E1EFF000226B9 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6897AA1E7E1EFF000226B9 /* Singleton.swift */; };
 		0A8C93E01E7AE49D0031EE0F /* TagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C93DF1E7AE49D0031EE0F /* TagModel.swift */; };
 		0A8C93E21E7AE77A0031EE0F /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C93E11E7AE77A0031EE0F /* ParseHelper.swift */; };
 		0A8C93E41E7AE7B20031EE0F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C93E31E7AE7B20031EE0F /* UserModel.swift */; };
+		0A8D425E1E8839C100B9B547 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8D425D1E8839C100B9B547 /* MenuViewController.swift */; };
+		0AA79E691E874D0D0020DE8B /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA79E681E874D0D0020DE8B /* UserProfileViewController.swift */; };
+		0AA79E6B1E874D480020DE8B /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA79E6A1E874D480020DE8B /* ReviewsViewController.swift */; };
+		0AA79E6D1E874DB30020DE8B /* UserSkillsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA79E6C1E874DB30020DE8B /* UserSkillsTableViewCell.swift */; };
+		0AA79E6F1E8754E70020DE8B /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA79E6E1E8754E70020DE8B /* ReviewTableViewCell.swift */; };
+		0AA79E711E8764590020DE8B /* Koyomi+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA79E701E8764590020DE8B /* Koyomi+Extension.swift */; };
+		0AB18D881E8860CF00C5B7A4 /* KYDrawerViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB18D871E8860CF00C5B7A4 /* KYDrawerViewController+Extension.swift */; };
 		0AD219041E7B4427001E7865 /* SkillsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD219031E7B4427001E7865 /* SkillsTableViewCell.swift */; };
+		0AED02AB1E87D8A70058D637 /* DailyScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED02AA1E87D8A70058D637 /* DailyScheduleViewController.swift */; };
 		82BFADE43C544A394DCBF956 /* Pods_Networker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0037CB8F35E0C7003867F45F /* Pods_Networker.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +91,7 @@
 		0A1AA60D1E75DBA50010F651 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		0A1AA6101E75DBE00010F651 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		0A1AA6121E75E3B60010F651 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0A298DB01E8990F00006B7BC /* DayScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		0A3B878B1E7F9B8D00140D6C /* SearchMenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMenuTableViewCell.swift; sourceTree = "<group>"; };
 		0A3B878D1E7F9DA400140D6C /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		0A3B878F1E7FA19D00140D6C /* SearchMatchedUsersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMatchedUsersViewController.swift; sourceTree = "<group>"; };
@@ -113,13 +126,24 @@
 		0A59DBC31E7CD1060077A5F6 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		0A59DBC51E7CE18C0077A5F6 /* Networker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Networker.entitlements; sourceTree = "<group>"; };
 		0A59DBC81E7CE2150077A5F6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		0A6841781E88B59400B8926F /* UserAvailabilityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAvailabilityViewController.swift; sourceTree = "<group>"; };
+		0A68417E1E890D3100B8926F /* DayScheduleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayScheduleModel.swift; sourceTree = "<group>"; };
+		0A6841801E8916C600B8926F /* AddScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddScheduleViewController.swift; sourceTree = "<group>"; };
 		0A6897A61E7DF6A1000226B9 /* AddSkillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSkillViewController.swift; sourceTree = "<group>"; };
 		0A6897A81E7E1CFA000226B9 /* FMDBManager+Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FMDBManager+Data.swift"; sourceTree = "<group>"; };
 		0A6897AA1E7E1EFF000226B9 /* Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		0A8C93DF1E7AE49D0031EE0F /* TagModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagModel.swift; sourceTree = "<group>"; };
 		0A8C93E11E7AE77A0031EE0F /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
 		0A8C93E31E7AE7B20031EE0F /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		0A8D425D1E8839C100B9B547 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		0AA79E681E874D0D0020DE8B /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		0AA79E6A1E874D480020DE8B /* ReviewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsViewController.swift; sourceTree = "<group>"; };
+		0AA79E6C1E874DB30020DE8B /* UserSkillsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSkillsTableViewCell.swift; sourceTree = "<group>"; };
+		0AA79E6E1E8754E70020DE8B /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
+		0AA79E701E8764590020DE8B /* Koyomi+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Koyomi+Extension.swift"; sourceTree = "<group>"; };
+		0AB18D871E8860CF00C5B7A4 /* KYDrawerViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KYDrawerViewController+Extension.swift"; sourceTree = "<group>"; };
 		0AD219031E7B4427001E7865 /* SkillsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillsTableViewCell.swift; sourceTree = "<group>"; };
+		0AED02AA1E87D8A70058D637 /* DailyScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyScheduleViewController.swift; sourceTree = "<group>"; };
 		ED2D8F081500C49690489A09 /* Pods-Networker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Networker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Networker/Pods-Networker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -162,8 +186,8 @@
 				0A1AA5F81E75927C0010F651 /* Models */,
 				0A1AA6011E75927C0010F651 /* View */,
 				0A1AA5F71E75927C0010F651 /* Controller */,
-				0A1AA5FF1E75927C0010F651 /* Utils */,
 				0A1AA6001E75927C0010F651 /* Vender */,
+				0A1AA5FF1E75927C0010F651 /* Utils */,
 				0A1AA5EF1E75920A0010F651 /* Info.plist */,
 				0A59DBC81E7CE2150077A5F6 /* GoogleService-Info.plist */,
 			);
@@ -188,6 +212,7 @@
 				0A405B261E768956005C2618 /* Calendar */,
 				0A405B271E768966005C2618 /* Favorite */,
 				0A405B281E76897D005C2618 /* Messaging */,
+				0A8D425C1E88398700B9B547 /* KYDrawer */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -199,6 +224,7 @@
 				0A3EEBB71E7AD3100009706B /* SkillModel.swift */,
 				0A8C93DF1E7AE49D0031EE0F /* TagModel.swift */,
 				0A3B87951E7FCDD400140D6C /* RatingModel.swift */,
+				0A68417E1E890D3100B8926F /* DayScheduleModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -229,6 +255,8 @@
 			isa = PBXGroup;
 			children = (
 				0A3B87931E7FCDB500140D6C /* FloatRatingView.swift */,
+				0AA79E701E8764590020DE8B /* Koyomi+Extension.swift */,
+				0AB18D871E8860CF00C5B7A4 /* KYDrawerViewController+Extension.swift */,
 			);
 			path = Vender;
 			sourceTree = "<group>";
@@ -241,6 +269,9 @@
 				0A59DBB81E7CCDCE0077A5F6 /* StarbuckAnnotation.swift */,
 				0A3B878B1E7F9B8D00140D6C /* SearchMenuTableViewCell.swift */,
 				0A3B87911E7FA8C200140D6C /* MatchedUserTableViewCell.swift */,
+				0AA79E6C1E874DB30020DE8B /* UserSkillsTableViewCell.swift */,
+				0AA79E6E1E8754E70020DE8B /* ReviewTableViewCell.swift */,
+				0A298DB01E8990F00006B7BC /* DayScheduleTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -298,6 +329,9 @@
 				0A405B221E76892F005C2618 /* SearchViewController.swift */,
 				0A405B2D1E7693E2005C2618 /* SortByViewController.swift */,
 				0A3B878F1E7FA19D00140D6C /* SearchMatchedUsersViewController.swift */,
+				0AA79E681E874D0D0020DE8B /* UserProfileViewController.swift */,
+				0AA79E6A1E874D480020DE8B /* ReviewsViewController.swift */,
+				0A6841781E88B59400B8926F /* UserAvailabilityViewController.swift */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -306,6 +340,8 @@
 			isa = PBXGroup;
 			children = (
 				0A3EEBB11E7A43B70009706B /* ScheduleViewController.swift */,
+				0AED02AA1E87D8A70058D637 /* DailyScheduleViewController.swift */,
+				0A6841801E8916C600B8926F /* AddScheduleViewController.swift */,
 			);
 			name = Calendar;
 			sourceTree = "<group>";
@@ -342,6 +378,14 @@
 				0A59DBBD1E7CCE550077A5F6 /* FirebaseUserAuthentication.swift */,
 			);
 			name = FirebaseUtils;
+			sourceTree = "<group>";
+		};
+		0A8D425C1E88398700B9B547 /* KYDrawer */ = {
+			isa = PBXGroup;
+			children = (
+				0A8D425D1E8839C100B9B547 /* MenuViewController.swift */,
+			);
+			name = KYDrawer;
 			sourceTree = "<group>";
 		};
 		0AD219051E7B560A001E7865 /* FMDB */ = {
@@ -527,23 +571,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A405B231E76892F005C2618 /* SearchViewController.swift in Sources */,
+				0AA79E711E8764590020DE8B /* Koyomi+Extension.swift in Sources */,
 				0A59DBC41E7CD1060077A5F6 /* DateExtension.swift in Sources */,
 				0A2AA0141E75F6D700B41F23 /* fontawesome-webfont.ttf in Sources */,
 				0A3B87921E7FA8C200140D6C /* MatchedUserTableViewCell.swift in Sources */,
 				0A5304801E7609A400244C3D /* Constants.swift in Sources */,
+				0AB18D881E8860CF00C5B7A4 /* KYDrawerViewController+Extension.swift in Sources */,
 				0A2AA0151E75F6D700B41F23 /* HelveticaNeue-Medium_22622.ttf in Sources */,
+				0AA79E6D1E874DB30020DE8B /* UserSkillsTableViewCell.swift in Sources */,
+				0AED02AB1E87D8A70058D637 /* DailyScheduleViewController.swift in Sources */,
 				0A59DBB51E7C98E50077A5F6 /* FMDBManager.swift in Sources */,
 				0A2AA0161E75F6D700B41F23 /* HelveticaNeue.ttf in Sources */,
 				0A405B2C1E768B01005C2618 /* SearchMenuViewController.swift in Sources */,
+				0AA79E691E874D0D0020DE8B /* UserProfileViewController.swift in Sources */,
 				0A6897A91E7E1CFA000226B9 /* FMDBManager+Data.swift in Sources */,
 				0A405B211E7687F6005C2618 /* SkillsViewController.swift in Sources */,
 				0A3B878C1E7F9B8D00140D6C /* SearchMenuTableViewCell.swift in Sources */,
 				0AD219041E7B4427001E7865 /* SkillsTableViewCell.swift in Sources */,
 				0A59DBBE1E7CCE550077A5F6 /* FirebaseRealTimeMessage.swift in Sources */,
 				0A5304821E760D9800244C3D /* ApiFunctions.swift in Sources */,
+				0AA79E6F1E8754E70020DE8B /* ReviewTableViewCell.swift in Sources */,
 				0A3B87961E7FCDD400140D6C /* RatingModel.swift in Sources */,
 				0A3B87901E7FA19D00140D6C /* SearchMatchedUsersViewController.swift in Sources */,
 				0A2AA0171E75F6D700B41F23 /* neue-helvetica-45-light-58981f95881bb.otf in Sources */,
+				0A6841791E88B59400B8926F /* UserAvailabilityViewController.swift in Sources */,
 				0A6897A71E7DF6A1000226B9 /* AddSkillViewController.swift in Sources */,
 				0A405B2E1E7693E2005C2618 /* SortByViewController.swift in Sources */,
 				0A2AA0181E75F6D700B41F23 /* taile.ttf in Sources */,
@@ -556,9 +607,13 @@
 				0A59DBB71E7CCDB00077A5F6 /* AnnotationView.swift in Sources */,
 				0A3EEBB41E7A43D30009706B /* FavoriteViewController.swift in Sources */,
 				0A3EEBB61E7A44140009706B /* ChattingViewController.swift in Sources */,
+				0AA79E6B1E874D480020DE8B /* ReviewsViewController.swift in Sources */,
 				0A3B878E1E7F9DA400140D6C /* UIView+Extension.swift in Sources */,
 				0A3B87941E7FCDB500140D6C /* FloatRatingView.swift in Sources */,
 				0A405B2A1E768AB9005C2618 /* HomeViewController.swift in Sources */,
+				0A298DB11E8990F00006B7BC /* DayScheduleTableViewCell.swift in Sources */,
+				0A6841811E8916C600B8926F /* AddScheduleViewController.swift in Sources */,
+				0A8D425E1E8839C100B9B547 /* MenuViewController.swift in Sources */,
 				0A3EEBB81E7AD3100009706B /* SkillModel.swift in Sources */,
 				0A1AA60E1E75DBA50010F651 /* BaseViewController.swift in Sources */,
 				0A5304841E7633B500244C3D /* RegisterViewController.swift in Sources */,
@@ -569,6 +624,7 @@
 				0A59DBC01E7CCE550077A5F6 /* FirebaseUserAuthentication.swift in Sources */,
 				0A1AA6131E75E3B60010F651 /* LoginViewController.swift in Sources */,
 				0A1AA6111E75DBE00010F651 /* SplashViewController.swift in Sources */,
+				0A68417F1E890D3100B8926F /* DayScheduleModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

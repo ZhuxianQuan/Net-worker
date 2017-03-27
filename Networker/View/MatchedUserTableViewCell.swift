@@ -25,7 +25,9 @@ class MatchedUserTableViewCell: UITableViewCell {
     }
     
     func setCell(_ user: UserModel) {
-        
+        //userDataLabel.text = "\(user.user_firstname) : \(getDistance)m"
     }
+    
+    
 
 }

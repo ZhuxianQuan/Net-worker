@@ -25,20 +25,8 @@ class CommonUtils: AnyObject{
  
     
     static func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
-        //let size = image.size
         
-        /*let widthRatio  = targetSize.width  / image.size.width
-        let heightRatio = targetSize.height / image.size.height
         
-        // Figure out what our orientation is, and use that to form the rectangle
-        var newSize: CGSize
-        if(widthRatio > heightRatio) {
-            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
-        } else {
-            newSize = CGSize(width:size.width * widthRatio,  height: size.height * widthRatio)
-        }*/
-        
-        // This is the rect that we've calculated out and this is what is actually used below
         let rect = CGRect(x:0, y: 0, width : targetSize.width, height : targetSize.height)
         
         // Actually do the resizing to the rect using the ImageContext stuff
@@ -126,6 +114,112 @@ class CommonUtils: AnyObject{
     static func getDistance(location1 : (Double, Double) , location2 : (Double, Double)) -> Double{
         var distance : Double = 0
         return distance
+    }
+    
+    static func getMonthName(_ month: Int) -> String {
+        var monthString = ""
+        switch month {
+        case 1:
+            monthString = "January"
+            break
+        case 2:
+            monthString = "February"
+            break
+        case 3:
+            monthString = "March"
+            break
+        case 4:
+            monthString = "April"
+            break
+        case 5:
+            monthString = "May"
+            break
+        case 6:
+            monthString = "June"
+            break
+        case 7:
+            monthString = "July"
+            break
+        case 8:
+            monthString = "August"
+            break
+        case 9:
+            monthString = "September"
+            break
+        case 10:
+            monthString = "October"
+            break
+        case 11:
+            monthString = "November"
+            break
+        default:
+            monthString = "December"
+            break
+        }
+        return monthString
+    }
+    
+    static func getDaysCount(month: Int, year : Int) -> Int {
+        switch month {
+        case 1:
+            return 31
+            
+        case 2:
+            if year % 4 == 0{
+                if year % 400 == 0 {
+                    return 29
+                }
+                else if year % 100 == 0{
+                    return 28
+                }
+                else{
+                    return 29
+                }
+            }
+            else {
+                return 28
+            }
+            
+        case 3:
+            return 31
+            
+        case 4:
+            return 30
+            
+        case 5:
+            return 31
+            
+        case 6:
+            return 30
+            
+        case 7:
+            return 31
+            
+        case 8:
+            return 31
+            
+        case 9:
+            return 30
+            
+        case 10:
+            return 31
+            
+        case 11:
+            return 30
+            
+        default:
+            return 31
+            
+        }
+    }
+    
+    static func getScheduleMonth(_ monthString : String) -> ScheduleMonth{
+        var month = 0
+        var year = 0
+        let monthArray = monthString.components(separatedBy: " ")
+        month = Int(monthArray[0])!
+        year = Int(monthArray[1])!
+        return ScheduleMonth(year: year, month: month)
     }
     
     

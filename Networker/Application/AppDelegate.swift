@@ -17,7 +17,6 @@ import CoreLocation
 import FBSDKCoreKit
 
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate {
     
@@ -29,9 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        //facebook login module
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        
+        //notication module
         if #available(iOS 10.0, *) {
             let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
             UNUserNotificationCenter.current().requestAuthorization(
@@ -61,9 +61,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
                                                name: NSNotification.Name.firInstanceIDTokenRefresh,
                                                object: nil)
         
-        
+        //set base url of firebase
         setBaseUrl()
         
+        
+        //location manager define
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
@@ -71,7 +73,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         updateTimer()
         locationManager.requestLocation()
         
+        
         UserDefaults.standard.set(25, forKey: "distance")
+        
+        
+        //set navigation root view controllers
+        //setNavigationRoots()
         return true
     }
     
@@ -104,7 +111,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         
         currentLatitude = (location?.coordinate.latitude)! as Double
         currentLongitude = (location?.coordinate.longitude)! as Double
-        NSLog("latitude == \(currentLatitude) , longitude == \(currentLongitude)")
         if(currentUser.user_id > 0){
             /*CLGeocoder().reverseGeocodeLocation(location!, completionHandler: {
                 placemarks, error in

@@ -23,7 +23,7 @@ class SplashViewController: BaseViewController {
 
         // Do any additional setup after loading the view.
     
-        timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(rotateLogoImage), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(rotateLogoImage), userInfo: nil, repeats: true)
         updateLocalData()
     }
     
@@ -61,7 +61,7 @@ class SplashViewController: BaseViewController {
             gotoLoginPage()
         }
         else{
-            angle += 0.01
+            angle += 0.1
         }
     }
     

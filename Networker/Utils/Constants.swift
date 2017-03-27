@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Constants {
     
@@ -83,6 +84,13 @@ class Constants {
     //firebase keys
     
     static var FIR_STORAGE_BASE_URL         = ""
+    
+    //user defined colors 
+    
+    static let GREEN_SCHEDULE_COLOR         = UIColor(red: 35.0/255.0, green: 172.0/255.0, blue: 154.0/255.0, alpha: 1)
+    static let BLUE_DAILY_SCHEDULE_COLOR    = UIColor(red: 90.0/255.0, green: 190.0/255.0, blue: 226.0/255.0, alpha: 1)
+    static let Dark_SCHEDULE_COLOR          = UIColor(red: 46.0/255.0, green: 51.0/255.0, blue: 62.0/255.0, alpha: 1)
+
     
     
     

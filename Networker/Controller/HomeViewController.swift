@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import KYDrawerController
 
 class HomeViewController: BaseViewController {
 
@@ -28,7 +29,11 @@ class HomeViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        initMapView()
+        initMapView() //remove all annotations definded in the app
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
         setRegionForLocation(location : CLLocationCoordinate2D(latitude: currentLatitude, longitude: currentLongitude), spanRadius : 1609.00 * currentUser.user_rangedistance, animated: true)
         addRadiusCircle()
         getHomeData()
@@ -38,7 +43,6 @@ class HomeViewController: BaseViewController {
         else {
             backButton.isHidden = true
         }
-        
     }
     
     func initMapView()
@@ -66,13 +70,12 @@ class HomeViewController: BaseViewController {
     func arrangeFriends() {
         var index = 0
         
-        
         for worker in nearMeWorkers{
             index += 1
             let info = StarbuckAnnotation(coordinate: CLLocationCoordinate2D(latitude: worker.user_latitude, longitude: worker.user_longitude))
             info.user = worker
             
-            NSLog(" user location  == \(worker.user_latitude)), \(worker.user_longitude)")
+            //NSLog(" user location  == \(worker.user_latitude)), \(worker.user_longitude)")
             info.title = worker.user_firstname + " " + worker.user_lastname
             //info.subtitle = friend.friend_user.user_currentLocationName
             mapView.addAnnotation(info)
@@ -95,17 +98,6 @@ class HomeViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     //func add radius circle
     
     func addRadiusCircle(){
@@ -116,6 +108,11 @@ class HomeViewController: BaseViewController {
     @IBAction func backButtonTapped(_ sender: Any) {
         _ = self.navigationController?.popViewController(animated: true)
     }
+    
+    @IBAction func menuButtonTapped(_ sender: Any) {
+            drawerController?.setDrawerState(.opened, animated: true)
+    }
+    
 }
 
 
@@ -138,7 +135,7 @@ extension HomeViewController: MKMapViewDelegate{
         }
         
         //let imageView = UIImageView()
-        let customAnnotation = annotation as! StarbuckAnnotation
+        //let customAnnotation = annotation as! StarbuckAnnotation
         
         //imageView.setImageWith(storageRefString: customAnnotation.user.user_profileimageurl, placeholderImage: UIImage(named:"icon_profile")!)
         let image = CommonUtils.resizeImage(image: UIImage(named : "logo_bee")!, targetSize: CGSize(width: 30, height: 30))
@@ -162,7 +159,7 @@ extension HomeViewController: MKMapViewDelegate{
             // Don't proceed with custom callout
             return
         }
-        let starbucksAnnotation = view.annotation as! StarbuckAnnotation
+        //let starbucksAnnotation = view.annotation as! StarbuckAnnotation
         /*currentFriend = starbucksAnnotation.friend.friend_user
         currentRoomid = starbucksAnnotation.friend.friend_roomid
         

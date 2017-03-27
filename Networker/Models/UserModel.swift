@@ -32,8 +32,7 @@ class UserModel {
 //    var user_payment
 
     static func getUserObject() -> [String: AnyObject]{
-        var result : [String: AnyObject] = [:]
-        
+        var result : [String: AnyObject] = [:]        
         
         return result
     }
