@@ -361,6 +361,7 @@
                                         <connections>
                                             <outlet property="ratingView" destination="5Jf-Gf-D3n" id="ckF-Fw-ZaF"/>
                                             <outlet property="userDataLabel" destination="MNe-2L-Ia2" id="l9Z-xB-oLT"/>
+                                            <segue destination="OG3-tS-lqY" kind="show" id="Sm8-fb-zFR"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -639,6 +640,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="39b-rh-Yae" kind="show" id="8j0-9I-3hy"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2rl-P0-9af">
                                 <rect key="frame" x="217" y="594" width="167" height="40"/>
@@ -653,6 +657,9 @@
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="oar-5D-UJK" kind="show" id="rr9-hJ-9Mk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1365,7 +1372,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bch-MY-dul" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1686" y="930"/>
+            <point key="canvasLocation" x="1714" y="1045"/>
         </scene>
     </scenes>
     <resources>

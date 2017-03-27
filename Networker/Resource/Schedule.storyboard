@@ -556,7 +556,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajB-Tr-4mB">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajB-Tr-4mB">
                                 <rect key="frame" x="0.0" y="152" width="320" height="648"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ftU-mL-btm">
@@ -1425,27 +1425,6 @@
                                                     <constraint firstItem="6Mk-af-vGW" firstAttribute="top" secondItem="AEM-jq-CD7" secondAttribute="top" constant="5" id="zKD-Qz-DIW"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jR9-Cg-5AA">
-                                                <rect key="frame" x="32" y="141" width="280" height="216"/>
-                                                <subviews>
-                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qGu-wP-j5i">
-                                                        <rect key="frame" x="65" y="0.0" width="150" height="216"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="150" id="uhF-nD-wlc"/>
-                                                        </constraints>
-                                                        <connections>
-                                                            <outlet property="dataSource" destination="pqc-oZ-uK9" id="Tlx-wN-avf"/>
-                                                            <outlet property="delegate" destination="pqc-oZ-uK9" id="Yn1-7H-Xy0"/>
-                                                        </connections>
-                                                    </pickerView>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstItem="qGu-wP-j5i" firstAttribute="top" secondItem="jR9-Cg-5AA" secondAttribute="top" id="KfE-HY-yr9"/>
-                                                    <constraint firstItem="qGu-wP-j5i" firstAttribute="centerX" secondItem="jR9-Cg-5AA" secondAttribute="centerX" id="M8N-Hs-RQJ"/>
-                                                    <constraint firstAttribute="bottom" secondItem="qGu-wP-j5i" secondAttribute="bottom" id="QkQ-Xn-i8G"/>
-                                                </constraints>
-                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uwu-jh-tcY" userLabel="Start time View">
                                                 <rect key="frame" x="40" y="61" width="240" height="40"/>
                                                 <subviews>
@@ -1469,7 +1448,6 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="dayButtonTapped:" destination="pqc-oZ-uK9" eventType="touchUpInside" id="CJR-g8-Zaz"/>
-                                                            <action selector="startTimeButtonTapped:" destination="pqc-oZ-uK9" eventType="touchUpInside" id="8iN-Hn-zgd"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -1508,8 +1486,30 @@
                                                     <action selector="deleteButtonTapped:" destination="pqc-oZ-uK9" eventType="touchUpInside" id="MYO-J6-A0r"/>
                                                 </connections>
                                             </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jR9-Cg-5AA">
+                                                <rect key="frame" x="32" y="141" width="280" height="216"/>
+                                                <subviews>
+                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qGu-wP-j5i">
+                                                        <rect key="frame" x="65" y="0.0" width="150" height="216"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="150" id="uhF-nD-wlc"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <outlet property="dataSource" destination="pqc-oZ-uK9" id="Tlx-wN-avf"/>
+                                                            <outlet property="delegate" destination="pqc-oZ-uK9" id="Yn1-7H-Xy0"/>
+                                                        </connections>
+                                                    </pickerView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="qGu-wP-j5i" firstAttribute="top" secondItem="jR9-Cg-5AA" secondAttribute="top" id="KfE-HY-yr9"/>
+                                                    <constraint firstItem="qGu-wP-j5i" firstAttribute="centerX" secondItem="jR9-Cg-5AA" secondAttribute="centerX" id="M8N-Hs-RQJ"/>
+                                                    <constraint firstAttribute="bottom" secondItem="qGu-wP-j5i" secondAttribute="bottom" id="QkQ-Xn-i8G"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="Nd4-Qv-Fjf" firstAttribute="leading" secondItem="Y4g-rU-wUg" secondAttribute="leading" id="1Lf-Uj-bH2"/>
                                             <constraint firstItem="Xmx-Dp-Pyx" firstAttribute="width" secondItem="3lH-tt-aFs" secondAttribute="width" id="3WP-iz-ki6"/>
@@ -1541,6 +1541,9 @@
                                             <constraint firstItem="Nd4-Qv-Fjf" firstAttribute="trailing" secondItem="Y4g-rU-wUg" secondAttribute="trailing" id="zMK-Ia-4Q7"/>
                                             <constraint firstItem="JW9-HX-253" firstAttribute="centerX" secondItem="CkO-OM-yVy" secondAttribute="centerX" id="zXB-Ek-IGU"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="lvp-aF-pIn" appends="YES" id="jlV-fh-enB"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -1569,6 +1572,7 @@
                     </view>
                     <connections>
                         <outlet property="blueValue" destination="zo9-k8-bZE" id="wWQ-pS-7mG"/>
+                        <outlet property="dayButton" destination="VMx-BN-Tuf" id="FDi-le-RTe"/>
                         <outlet property="fromButton" destination="d6o-1R-T2l" id="XSN-k3-P8r"/>
                         <outlet property="greenValue" destination="qab-xt-T42" id="O7O-AD-AXa"/>
                         <outlet property="paletteView" destination="X4J-XC-sgf" id="E0y-cE-ZTr"/>
@@ -1581,6 +1585,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Qf-Jq-B6q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="lvp-aF-pIn">
+                    <connections>
+                        <action selector="viewOutSideTapped:" destination="pqc-oZ-uK9" id="wwg-fe-1gU"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1580.625" y="118.30985915492958"/>
         </scene>

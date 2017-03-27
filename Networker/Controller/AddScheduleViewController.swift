@@ -19,6 +19,7 @@ class AddScheduleViewController: BaseViewController {
     @IBOutlet weak var toButton: UIButton!
     @IBOutlet weak var workingTitleTextField: UITextField!
     
+    @IBOutlet weak var dayButton: UIButton!
     @IBOutlet weak var redValue: UITextField!
     @IBOutlet weak var greenValue: UITextField!
     @IBOutlet weak var blueValue: UITextField!
@@ -62,6 +63,7 @@ class AddScheduleViewController: BaseViewController {
         pickerViewTopConstraint.constant = 0
         showsTimePicker = SHOW_TIME_START
         currentPickerStatus = CURRENT_PICKER_TIME
+        pickerView.reloadAllComponents()
     }
     
     @IBAction func endTimeButtonTapped(_ sender: Any) {
@@ -70,10 +72,12 @@ class AddScheduleViewController: BaseViewController {
         pickerViewTopConstraint.constant = 40
         showsTimePicker = SHOW_TIME_END
         currentPickerStatus = CURRENT_PICKER_TIME
+        pickerView.reloadAllComponents()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         timeView.isHidden = true
+        self.view.endEditing(true)
     }
     
     func setStartTime(){
@@ -94,6 +98,9 @@ class AddScheduleViewController: BaseViewController {
     @IBAction func dayButtonTapped(_ sender: Any) {
         
         currentPickerStatus = CURRENT_PICKER_DAY
+        pickerViewTopConstraint.constant = -40
+        timeView.isHidden = false
+        pickerView.reloadAllComponents()
     }
     
     @IBAction func editingChanged(_ sender: UITextField) {
@@ -132,7 +139,10 @@ class AddScheduleViewController: BaseViewController {
     @IBAction func deleteButtonTapped(_ sender: Any) {
         
     }
-    
+    @IBAction func viewOutSideTapped(_ sender: Any) {
+        timeView.isHidden = true
+        self.view.endEditing(true)
+    }
     
 }
 
@@ -207,12 +217,13 @@ extension AddScheduleViewController : UIPickerViewDelegate, UIPickerViewDataSour
                     scheduleData.end_time.minute = row
                 }
                 if checkEndTimeValid(){
-                    setStartTime()
+                    setEndTime()
                 }
             }
         }
         else{
             currentDay = row + 1
+            dayButton.setTitle("\(currentDay)", for: .normal)
         }
         
     }
