@@ -64,27 +64,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>KYDrawerController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Koyomi.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>M13Checkbox.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Material-io.cosmicmind.material.fonts.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Material-io.cosmicmind.material.icons.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Material.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -122,7 +112,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>052B237097C753A23418077A662685FE</key>
+		<key>060917B7668D75556BE5DD593E7EA0DB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0A53C99F51454F9EB662B03E11169FC9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -137,27 +132,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>29E59F60AAE8995D196A38AC5EBC95BC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>332F91393FB1DE033D370B4CEDDD5FCF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4017B0B8815FF792314F1A877AAA2243</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>44CAD6CE523055ED339E87154473A254</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4A2F765C0008E6907A56FA900AB21F77</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -187,22 +167,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>718560313922E5B818766664DFAB4727</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>7335E9C9689F3B8A16F063A884748533</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
+		<key>7AF8670FDECF80EFCAA3D04318C4B4D1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9D8A42C88F4A393F472BC9BB44B5EB3C</key>
+		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -217,12 +192,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C10A3D56D9722EC76584E3911946028F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>C5629ECA89156983A201B8EC0FF0B4ED</key>
+		<key>C14D3745F6A9B36D08C6EB10FE64D884</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -232,7 +202,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F43009A0FEB465AC53D014A8CB87D250</key>
+		<key>E008FC8D57AA48A44B109ACCAE36F4A1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E565997DE47A593E826630894B41BF8D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F79A97407E3BBA1554323B4DAEE9B719</key>
 		<dict>
 			<key>primary</key>
 			<true/>

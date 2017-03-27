@@ -361,7 +361,7 @@
                                         <connections>
                                             <outlet property="ratingView" destination="5Jf-Gf-D3n" id="ckF-Fw-ZaF"/>
                                             <outlet property="userDataLabel" destination="MNe-2L-Ia2" id="l9Z-xB-oLT"/>
-                                            <segue destination="OG3-tS-lqY" kind="show" id="Sm8-fb-zFR"/>
+                                            <segue destination="OG3-tS-lqY" kind="show" id="1fN-dO-g4v"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1297,10 +1297,10 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ztq-u4-du6">
-                                                <rect key="frame" x="0.0" y="0.0" width="47.857142857142854" height="25"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="47.857142857142854" height="25"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </view>
                                             </collectionViewCell>
