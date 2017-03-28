@@ -148,8 +148,8 @@ class TestJson{
             index += 1
             var userObject = getMe()
             userObject[Constants.KEY_USER_ID] = index as AnyObject
-            userObject[Constants.KEY_USER_FIRSTNAME] = "First Name \(index)" as AnyObject
-            userObject[Constants.KEY_USER_LASTNAME] = "Last Name \(index)" as AnyObject
+            userObject[Constants.KEY_USER_FIRSTNAME] = "First\(index)" as AnyObject
+            userObject[Constants.KEY_USER_LASTNAME] = "Last\(index)" as AnyObject
             userObject[Constants.KEY_USER_PROFILEIMAGEURL] = imageurl as AnyObject
             userObject[Constants.KEY_USER_LATITUDE] = (currentLatitude + 0.05 * (Double(CommonUtils.getRandomNumber(1000))) / 1000.0 * pow( (-1), Double(CommonUtils.getRandomNumber(20)))) as AnyObject
             userObject[Constants.KEY_USER_LONGITUDE] = (currentLongitude + 0.05 * (Double(CommonUtils.getRandomNumber(1000))) / 1000.0 * pow( (-1), Double(CommonUtils.getRandomNumber(20)))) as AnyObject

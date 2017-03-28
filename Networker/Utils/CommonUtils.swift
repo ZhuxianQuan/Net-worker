@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 import SwiftyJSON
-
+import CoreLocation
 
 class CommonUtils: AnyObject{
     
@@ -220,6 +220,13 @@ class CommonUtils: AnyObject{
         month = Int(monthArray[0])!
         year = Int(monthArray[1])!
         return ScheduleMonth(year: year, month: month)
+    }
+    
+    
+    static func getDistanceFromMe(_ user: UserModel) -> Double{
+        let mylocation = CLLocation(latitude: currentLatitude, longitude: currentLongitude)
+        let userlocaiton = CLLocation(latitude: user.user_latitude, longitude: user.user_longitude)
+        return mylocation.distance(from: userlocaiton) / 1609.344
     }
     
     

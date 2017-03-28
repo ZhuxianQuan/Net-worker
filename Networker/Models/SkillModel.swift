@@ -40,7 +40,9 @@ class SkillModel{
         for tag in skill_tags{
             result = result + "#" + tag.tag_string + ", "
         }
-        result = result + "__**"
+        if result.characters.count > 0{
+            result = result + "__**"
+        }
         return result.replacingOccurrences(of: ", __**", with: "")
         
     }

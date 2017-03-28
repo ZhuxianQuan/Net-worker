@@ -82,12 +82,27 @@ extension SearchMatchedUsersViewController : UITableViewDataSource, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MatchedUserTableViewCell") as! MatchedUserTableViewCell
-        //cell.setCell()
+        
+        let index = indexPath.row
+        cell.setCell(matchedUsers[index], FMDBManagerGetData.getIndexOfSkill(skill, skills: matchedUsers[index].user_skills))
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 105
+        return 75
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let index = indexPath.row
+        let user = matchedUsers[index]
+        let cell = tableView.cellForRow(at: indexPath) as! MatchedUserTableViewCell
+        let userDetailVC = storyboard?.instantiateViewController(withIdentifier: "UserProfileViewController") as! UserProfileViewController
+        userDetailVC.user = user
+        userDetailVC.userDataString = cell.userDataLabel.text!
+        self.navigationController?.pushViewController(userDetailVC, animated: true)
+        
     }
 }
 

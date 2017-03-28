@@ -34,3 +34,14 @@ extension UILabel {
     }
 }
 
+extension UIImageView{
+    
+    
+    func setImageWith(color: UIColor)
+    {        
+        image = image?.withRenderingMode(.alwaysTemplate)
+        tintColor = color
+    }
+}
+
+

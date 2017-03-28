@@ -36,6 +36,12 @@ class Constants {
     
     //MARK: - keywords
     
+    //skill category 
+    static let KEY_CATEGORYS                = "categorys"
+    static let KEY_CATEGORY_ID              = "category_id"
+    static let KEY_CATEGORY_NAME            = "category_name"
+    static let KEY_CATEGORY_SKILLS          = "skills"
+    
     //skill model
     static let KEY_SKILL_ID                 = "skill_id"
     static let KEY_SKILL_TITLE              = "skill_title"

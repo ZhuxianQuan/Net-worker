@@ -114,25 +114,30 @@ class AddScheduleViewController: BaseViewController {
         self.view.endEditing(true)
     }
     
+    
     @IBAction func addButtonTapped(_ sender: Any) {
-        let vcs = self.navigationController?.viewControllers
-        if (vcs?[(vcs?.count)! - 2].isKind(of: DailyScheduleViewController.self))! {
-            let dailyScheduleVC = vcs?[(vcs?.count)! - 2] as! DailyScheduleViewController
-            var schedules = dailyScheduleVC.monthSchedule
-            let currentDate = ScheduleDate(year: currentMonth.year, month: currentMonth.month, day: currentDay)
-            for schedule in schedules {
-                if schedule.schedule_date == currentDate{
-                    schedule.schedule_dayData.append(scheduleData)
-                    _ = self.navigationController?.popViewController(animated: true)
-                    return
+        if checkEndTimeValid() && workingTitleTextField.text!.characters.count > 0{
+            scheduleData.work_title = workingTitleTextField.text!
+            let vcs = self.navigationController?.viewControllers
+            if (vcs?[(vcs?.count)! - 2].isKind(of: DailyScheduleViewController.self))! {
+                let dailyScheduleVC = vcs?[(vcs?.count)! - 2] as! DailyScheduleViewController
+                let schedules = dailyScheduleVC.monthSchedule
+                let currentDate = ScheduleDate(year: currentMonth.year, month: currentMonth.month, day: currentDay)
+                for schedule in schedules {
+                    if schedule.schedule_date == currentDate{
+                        
+                        schedule.schedule_dayData.append(scheduleData)
+                        _ = self.navigationController?.popViewController(animated: true)
+                        return
+                    }
                 }
+                let dayScheduleModel = DayScheduleModel()
+                dayScheduleModel.schedule_date = currentDate
+                dayScheduleModel.schedule_user_id = currentUser.user_id
+                dayScheduleModel.schedule_dayData = [scheduleData]
+                dailyScheduleVC.monthSchedule.append(dayScheduleModel)
+                _ = self.navigationController?.popViewController(animated: true)
             }
-            let dayScheduleModel = DayScheduleModel()
-            dayScheduleModel.schedule_date = currentDate
-            dayScheduleModel.schedule_user_id = currentUser.user_id
-            dayScheduleModel.schedule_dayData = [scheduleData]
-            schedules.append(dayScheduleModel)
-            
         }
     }
     

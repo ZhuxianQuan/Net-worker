@@ -12,6 +12,14 @@ import SwiftyJSON
 
 class ApiFunctions{
     
+    
+    static let SERVER_BASE_URL          = "http://35.166.129.141"
+    static let SERVER_URL               = SERVER_BASE_URL + "/index.php/Api/"
+    
+    static let REQ_GET_ALLCATEGORY      = SERVER_URL + "getAllCategory"
+    
+    
+    
     static func login(email: String, password: String, completion: @escaping (String) -> () ){
         currentUser = ParseHelper.parseUser(JSON(TestJson.getMe()))
         completion(Constants.PROCESS_SUCCESS)
@@ -42,12 +50,42 @@ class ApiFunctions{
     }
     
     static func getSkillsArray(completion : @escaping (String, [SkillModel]) -> ()){
-        let skillsData = JSON(TestJson.getSkillsJson()).arrayValue
+        /*Alamofire.request(REQ_GET_ALLCATEGORY, method: .post, parameters: nil).responseJSON { response in
+            if response.result.isFailure{
+                completion("Connection failed", [])
+            }
+            else
+            {
+                let json = JSON(response.result.value!)
+                NSLog("\(response.result.value!)")
+                let categories = json[Constants.KEY_CATEGORYS].arrayValue
+                if categories.count > 0 {
+                    
+                    var skills : [SkillModel] = []
+                    for category in categories{
+                    let skillsData = category[Constants.KEY_CATEGORY_SKILLS].arrayValue
+                        for skillData in skillsData{
+                            skills.append(ParseHelper.parseSkill(skillData))
+                        }
+
+                    }
+                    completion(Constants.PROCESS_SUCCESS, skills)
+                }
+                else{
+                    completion("No category", [])
+                }
+            }
+        }*/
         var skills : [SkillModel] = []
-        for skillData in skillsData{
-            skills.append(ParseHelper.parseSkill(skillData))
-        }
+        //for category in categories{
+            let skillsData = JSON(TestJson.getSkillsJson()).arrayValue//category[Constants.KEY_CATEGORY_SKILLS].arrayValue
+            for skillData in skillsData{
+                skills.append(ParseHelper.parseSkill(skillData))
+            }
         completion(Constants.PROCESS_SUCCESS, skills)
+            
+        //}
+        
     }
     
     static func getTagsArray(completion : @escaping (String, [TagModel]) -> ()){

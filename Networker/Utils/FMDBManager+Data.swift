@@ -86,4 +86,28 @@ class FMDBManagerGetData{
         }
         return result
     }
+    
+    
+    static func getIndexOfSkill(_ skill: SkillModel, skills : [SkillModel]) -> Int {
+        var index = 0
+        for subSkill in skills {
+            
+            if skill.skill_id == subSkill.skill_id {
+                return index
+            }
+            index += 1
+        }
+        return -1
+    }
+    
+    static func getSkillsString(skills : [SkillModel]) -> String {
+        var result = ""
+        for skill in skills {
+            result += ":\(skill.skill_id)"
+        }
+        if result.characters.count > 0{
+            result += "---"
+        }
+        return result.replacingOccurrences(of: ":---", with: "")
+    }
 }
