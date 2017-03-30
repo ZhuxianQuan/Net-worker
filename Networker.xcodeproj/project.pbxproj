@@ -61,6 +61,8 @@
 		0A6897AB1E7E1EFF000226B9 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6897AA1E7E1EFF000226B9 /* Singleton.swift */; };
 		0A7B8A731E8A2F8A001A0468 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7B8A721E8A2F8A001A0468 /* CategoryModel.swift */; };
 		0A7B8A751E8A3D8B001A0468 /* FavoriteUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7B8A741E8A3D8B001A0468 /* FavoriteUserTableViewCell.swift */; };
+		0A7B8A771E8A540F001A0468 /* UserScheduleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7B8A761E8A540F001A0468 /* UserScheduleListViewController.swift */; };
+		0A7B8A801E8A5656001A0468 /* ScheduleListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7B8A7F1E8A5656001A0468 /* ScheduleListTableViewCell.swift */; };
 		0A8C93E01E7AE49D0031EE0F /* TagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C93DF1E7AE49D0031EE0F /* TagModel.swift */; };
 		0A8C93E21E7AE77A0031EE0F /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C93E11E7AE77A0031EE0F /* ParseHelper.swift */; };
 		0A8C93E41E7AE7B20031EE0F /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C93E31E7AE7B20031EE0F /* UserModel.swift */; };
@@ -136,6 +138,8 @@
 		0A6897AA1E7E1EFF000226B9 /* Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
 		0A7B8A721E8A2F8A001A0468 /* CategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		0A7B8A741E8A3D8B001A0468 /* FavoriteUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteUserTableViewCell.swift; sourceTree = "<group>"; };
+		0A7B8A761E8A540F001A0468 /* UserScheduleListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserScheduleListViewController.swift; sourceTree = "<group>"; };
+		0A7B8A7F1E8A5656001A0468 /* ScheduleListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleListTableViewCell.swift; sourceTree = "<group>"; };
 		0A8C93DF1E7AE49D0031EE0F /* TagModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagModel.swift; sourceTree = "<group>"; };
 		0A8C93E11E7AE77A0031EE0F /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
 		0A8C93E31E7AE7B20031EE0F /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
@@ -269,15 +273,14 @@
 		0A1AA6011E75927C0010F651 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0AD219031E7B4427001E7865 /* SkillsTableViewCell.swift */,
-				0A59DBB61E7CCDB00077A5F6 /* AnnotationView.swift */,
-				0A59DBB81E7CCDCE0077A5F6 /* StarbuckAnnotation.swift */,
-				0A3B878B1E7F9B8D00140D6C /* SearchMenuTableViewCell.swift */,
-				0A3B87911E7FA8C200140D6C /* MatchedUserTableViewCell.swift */,
-				0AA79E6C1E874DB30020DE8B /* UserSkillsTableViewCell.swift */,
-				0AA79E6E1E8754E70020DE8B /* ReviewTableViewCell.swift */,
-				0A298DB01E8990F00006B7BC /* DayScheduleTableViewCell.swift */,
-				0A7B8A741E8A3D8B001A0468 /* FavoriteUserTableViewCell.swift */,
+				0A7B8A781E8A5549001A0468 /* Login & RegisterSkills */,
+				0A7B8A791E8A5567001A0468 /* MapViewAnnotation */,
+				0A7B8A7A1E8A557D001A0468 /* Search MenuCell */,
+				0A7B8A7B1E8A55A1001A0468 /* MatchedUserCell */,
+				0A7B8A7C1E8A55DF001A0468 /* User Reviews and Skills */,
+				0A7B8A7D1E8A55FF001A0468 /* Daily Schedule */,
+				0A7B8A7E1E8A5617001A0468 /* FavoriteUserTableViewCell */,
+				0A7B8A811E8A565E001A0468 /* ScheduleListTableViewCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 				0A3EEBB11E7A43B70009706B /* ScheduleViewController.swift */,
 				0AED02AA1E87D8A70058D637 /* DailyScheduleViewController.swift */,
 				0A6841801E8916C600B8926F /* AddScheduleViewController.swift */,
+				0A7B8A761E8A540F001A0468 /* UserScheduleListViewController.swift */,
 			);
 			name = Calendar;
 			sourceTree = "<group>";
@@ -384,6 +388,72 @@
 				0A59DBBD1E7CCE550077A5F6 /* FirebaseUserAuthentication.swift */,
 			);
 			name = FirebaseUtils;
+			sourceTree = "<group>";
+		};
+		0A7B8A781E8A5549001A0468 /* Login & RegisterSkills */ = {
+			isa = PBXGroup;
+			children = (
+				0AD219031E7B4427001E7865 /* SkillsTableViewCell.swift */,
+			);
+			name = "Login & RegisterSkills";
+			sourceTree = "<group>";
+		};
+		0A7B8A791E8A5567001A0468 /* MapViewAnnotation */ = {
+			isa = PBXGroup;
+			children = (
+				0A59DBB61E7CCDB00077A5F6 /* AnnotationView.swift */,
+				0A59DBB81E7CCDCE0077A5F6 /* StarbuckAnnotation.swift */,
+			);
+			name = MapViewAnnotation;
+			sourceTree = "<group>";
+		};
+		0A7B8A7A1E8A557D001A0468 /* Search MenuCell */ = {
+			isa = PBXGroup;
+			children = (
+				0A3B878B1E7F9B8D00140D6C /* SearchMenuTableViewCell.swift */,
+			);
+			name = "Search MenuCell";
+			sourceTree = "<group>";
+		};
+		0A7B8A7B1E8A55A1001A0468 /* MatchedUserCell */ = {
+			isa = PBXGroup;
+			children = (
+				0A3B87911E7FA8C200140D6C /* MatchedUserTableViewCell.swift */,
+			);
+			name = MatchedUserCell;
+			sourceTree = "<group>";
+		};
+		0A7B8A7C1E8A55DF001A0468 /* User Reviews and Skills */ = {
+			isa = PBXGroup;
+			children = (
+				0AA79E6C1E874DB30020DE8B /* UserSkillsTableViewCell.swift */,
+				0AA79E6E1E8754E70020DE8B /* ReviewTableViewCell.swift */,
+			);
+			name = "User Reviews and Skills";
+			sourceTree = "<group>";
+		};
+		0A7B8A7D1E8A55FF001A0468 /* Daily Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				0A298DB01E8990F00006B7BC /* DayScheduleTableViewCell.swift */,
+			);
+			name = "Daily Schedule";
+			sourceTree = "<group>";
+		};
+		0A7B8A7E1E8A5617001A0468 /* FavoriteUserTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0A7B8A741E8A3D8B001A0468 /* FavoriteUserTableViewCell.swift */,
+			);
+			name = FavoriteUserTableViewCell;
+			sourceTree = "<group>";
+		};
+		0A7B8A811E8A565E001A0468 /* ScheduleListTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0A7B8A7F1E8A5656001A0468 /* ScheduleListTableViewCell.swift */,
+			);
+			name = ScheduleListTableViewCell;
 			sourceTree = "<group>";
 		};
 		0A8D425C1E88398700B9B547 /* KYDrawer */ = {
@@ -610,6 +680,7 @@
 				0A6897AB1E7E1EFF000226B9 /* Singleton.swift in Sources */,
 				0A53047E1E76096600244C3D /* CommonUtils.swift in Sources */,
 				0A8C93E41E7AE7B20031EE0F /* UserModel.swift in Sources */,
+				0A7B8A771E8A540F001A0468 /* UserScheduleListViewController.swift in Sources */,
 				0A59DBB71E7CCDB00077A5F6 /* AnnotationView.swift in Sources */,
 				0A3EEBB41E7A43D30009706B /* FavoriteViewController.swift in Sources */,
 				0A3EEBB61E7A44140009706B /* ChattingViewController.swift in Sources */,
@@ -624,6 +695,7 @@
 				0A3EEBB81E7AD3100009706B /* SkillModel.swift in Sources */,
 				0A1AA60E1E75DBA50010F651 /* BaseViewController.swift in Sources */,
 				0A5304841E7633B500244C3D /* RegisterViewController.swift in Sources */,
+				0A7B8A801E8A5656001A0468 /* ScheduleListTableViewCell.swift in Sources */,
 				0A59DBB31E7C98170077A5F6 /* TestJson.swift in Sources */,
 				0A8C93E01E7AE49D0031EE0F /* TagModel.swift in Sources */,
 				0A59DBBF1E7CCE550077A5F6 /* FirebaseStorageUtils.swift in Sources */,

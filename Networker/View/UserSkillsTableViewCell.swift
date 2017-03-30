@@ -10,6 +10,10 @@ import UIKit
 
 class UserSkillsTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var skillTitleLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +23,10 @@ class UserSkillsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setCell(_ skill : SkillModel?){
+        
     }
 
 }

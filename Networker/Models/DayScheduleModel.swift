@@ -34,6 +34,7 @@ class ScheduleData {
     var start_time = ScheduleTime(hour: 0 , minute: 0)
     var end_time = ScheduleTime(hour: 0 , minute: 0)
     var work_title = ""
+    var job = SkillModel()
     var tag_color = ScheduleDataTagColor(red: 90.0/255.0, green: 190.0/255.0, blue: 226.0/255.0, alpha: 1)
     
 }

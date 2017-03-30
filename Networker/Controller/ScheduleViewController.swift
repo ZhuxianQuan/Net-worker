@@ -15,7 +15,9 @@ class ScheduleViewController: BaseViewController {
     //variable related with calendar
     //@IBOutlet weak var calendarView: Koyomi!
     @IBOutlet weak var monthLabel: UILabel!
+    @IBOutlet weak var backButton: UIButton!
     
+    var user = UserModel()
     var selectedDate : Date!
     
     
@@ -41,6 +43,12 @@ class ScheduleViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if self.navigationController?.viewControllers.count == 1 {
+            backButton.isHidden = true
+        }
+        else{
+            backButton.isHidden = false
+        }
         calendarView.display(in: .current)
         
     }
@@ -63,6 +71,9 @@ class ScheduleViewController: BaseViewController {
         calendarView.display(in: .next)
     }
 
+    @IBAction func backButtonTapped(_ sender: Any) {
+        _ = self.navigationController.popViewController(animated : true)
+    }
     /*
     // MARK: - Navigation
 

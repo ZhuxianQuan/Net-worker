@@ -311,7 +311,7 @@
                                                     <rect key="frame" x="0.0" y="20" width="220" height="86"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jenny: 1.2m dist, £12/hr," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNe-2L-Ia2">
-                                                            <rect key="frame" x="35" y="13" width="151" height="17.5"/>
+                                                            <rect key="frame" x="33.5" y="13.5" width="154.5" height="16.5"/>
                                                             <fontDescription key="fontDescription" name="NeueHelveticaBQ-Light" family="Neue Helvetica BQ" pointSize="14"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -489,6 +489,7 @@
                                             <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                         </state>
                                         <connections>
+                                            <action selector="backButtonTapped:" destination="OG3-tS-lqY" eventType="touchUpInside" id="XSH-Zm-OFh"/>
                                             <action selector="backButtonTapped:" destination="hYN-js-1ih" eventType="touchUpInside" id="YXd-vl-f8g"/>
                                         </connections>
                                     </button>
@@ -916,8 +917,17 @@
                                                                 <constraint firstItem="Ydl-eQ-gHr" firstAttribute="top" secondItem="5Tz-kV-o6f" secondAttribute="top" id="wZz-74-4Zw"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
+                                                        <connections>
+                                                            <outlet property="priceLabel" destination="gBf-xN-NnA" id="rGF-Ao-GWy"/>
+                                                            <outlet property="ratingLabel" destination="Qbo-ov-nEC" id="G1s-zF-Tke"/>
+                                                            <outlet property="skillTitleLabel" destination="PvR-mu-LHN" id="mOC-3R-ZUu"/>
+                                                        </connections>
                                                     </tableViewCell>
                                                 </prototypes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="oar-5D-UJK" id="C9D-Fr-FIg"/>
+                                                    <outlet property="delegate" destination="oar-5D-UJK" id="auM-m3-EFF"/>
+                                                </connections>
                                             </tableView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    Review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Bl-ZQ-7rJ">
                                                 <rect key="frame" x="0.0" y="295" width="288" height="30"/>
@@ -1049,6 +1059,10 @@
                             <constraint firstItem="T2N-7I-UGT" firstAttribute="top" secondItem="duE-UK-OfP" secondAttribute="bottom" id="w6Q-U9-Q3R"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="reviewsTableView" destination="TsY-K2-uBG" id="htD-mg-Qzc"/>
+                        <outlet property="skillsTableView" destination="VZa-8A-JzE" id="0ke-VI-Saq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-Dc-nqG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1340,10 +1354,10 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ztq-u4-du6">
-                                                <rect key="frame" x="0.0" y="0.0" width="34.428571428571431" height="25"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="34.428571428571431" height="25"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </view>
                                             </collectionViewCell>

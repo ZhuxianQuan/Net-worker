@@ -50,7 +50,7 @@ class ApiFunctions{
     }
     
     static func getSkillsArray(completion : @escaping (String, [SkillModel]) -> ()){
-        /*Alamofire.request(REQ_GET_ALLCATEGORY, method: .post, parameters: nil).responseJSON { response in
+        Alamofire.request(REQ_GET_ALLCATEGORY, method: .post, parameters: nil).responseJSON { response in
             if response.result.isFailure{
                 completion("Connection failed", [])
             }
@@ -75,14 +75,14 @@ class ApiFunctions{
                     completion("No category", [])
                 }
             }
-        }*/
+        }/*
         var skills : [SkillModel] = []
         //for category in categories{
             let skillsData = JSON(TestJson.getSkillsJson()).arrayValue//category[Constants.KEY_CATEGORY_SKILLS].arrayValue
             for skillData in skillsData{
                 skills.append(ParseHelper.parseSkill(skillData))
             }
-        completion(Constants.PROCESS_SUCCESS, skills)
+        completion(Constants.PROCESS_SUCCESS, skills)*/
             
         //}
         

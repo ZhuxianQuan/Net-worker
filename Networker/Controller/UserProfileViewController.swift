@@ -26,8 +26,7 @@ class UserProfileViewController: BaseViewController {
 
         // Do any additional setup after loading the view.
         initView()
-    }
-    
+    }    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -38,9 +37,18 @@ class UserProfileViewController: BaseViewController {
         
         userDataLabel.text = userDataString
         aboutMeTextView.text = user.user_aboutme
+        profileImageView.sd_setImage(with: URL(string: user.user_profileimageurl), placeholderImage: UIImage(named: "icon_profile"))
     }
     
+    @IBAction func backButtonTapped(_ sender: Any) {
+        _ = self.navigationController?.popViewController(animated : true)
+        
+    }
     @IBAction func availabilityButtonTapped(_ sender: Any) {
+        let storyboard = getStoryboard(id : Constants.STORYBOARD_SCHEDULE)
+        let scheduleVC = storyboard.instantiateViewController(withIdentifier: "ScheduleViewController") as! ScheduleViewController
+        scheduleVC.user = user
+        self.navigationController?.pushViewController(scheduleVC, animated: true)
     }
     
     @IBAction func reviewsButtonTapped(_ sender: Any) {
