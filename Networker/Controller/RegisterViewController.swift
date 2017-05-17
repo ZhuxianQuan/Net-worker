@@ -15,7 +15,22 @@ class RegisterViewController: BaseViewController {
     var profileImage : UIImage!
     var picker = UIImagePickerController()
     
+    @IBOutlet weak var firstName: UITextField!
+    @IBOutlet weak var lastName: UITextField!
+    @IBOutlet weak var email: UITextField!
+    @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var address1: UITextField!
+    @IBOutlet weak var address2: UITextField!
+    @IBOutlet weak var address3: UITextField!
+    @IBOutlet weak var postcode: UITextField!
+    @IBOutlet weak var birthday: UITextField!
+    
+    
+    
     @IBOutlet weak var imvProfile: UIImageView!
+    
+    var user = UserModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -57,7 +72,31 @@ class RegisterViewController: BaseViewController {
     @IBAction func profileImageTapped(_ sender: UIButton) {
         selectImageSource()
     }
+    
+    func checkValid() {
+        
+    }
 
+    @IBAction func textFieldEditing(_ sender: UITextField) {
+        
+        let datePickerView:UIDatePicker = UIDatePicker()
+        
+        datePickerView.datePickerMode = UIDatePickerMode.date
+        
+        sender.inputView = datePickerView
+        
+        datePickerView.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
+        
+
+    }
+    
+    func datePickerValueChanged(_ sender: UIDatePicker) {
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        birthday.text = dateFormatter.string(from: sender.date)
+    }
 }
 
 // MARK: - @extension SinglePostVC
@@ -136,6 +175,48 @@ extension RegisterViewController {
                 
                 
         })
+    }
+    
+}
+
+
+extension RegisterViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == firstName{
+            lastName.becomeFirstResponder()
+        }
+        else if textField == lastName {
+            email.becomeFirstResponder()
+        }
+        
+        else if textField == email {
+            password.becomeFirstResponder()
+        }
+        
+        else if textField == password {
+            address1.becomeFirstResponder()
+        }
+        else if textField == address1 {
+            address2.becomeFirstResponder()
+        }
+        else if textField == address2 {
+            address3.becomeFirstResponder()
+        }
+        
+        else if textField == address3 {
+            postcode.becomeFirstResponder()
+        }
+        
+        else if textField == postcode {
+            birthday.becomeFirstResponder()
+        }
+        
+        else {
+            self.view.endEditing(true)
+        }
+        
+        return true
     }
     
 }

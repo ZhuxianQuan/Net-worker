@@ -15,6 +15,7 @@ import FirebaseMessaging
 import FirebaseAuth
 import CoreLocation
 import FBSDKCoreKit
+import LinkedinSwift
 
 
 @UIApplicationMain
@@ -111,7 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         
         currentLatitude = (location?.coordinate.latitude)! as Double
         currentLongitude = (location?.coordinate.longitude)! as Double
-        if(currentUser.user_id > 0){
+        if(currentUser.user_id.characters.count > 0){
             /*CLGeocoder().reverseGeocodeLocation(location!, completionHandler: {
                 placemarks, error in
                 var placeMark: CLPlacemark!
@@ -152,11 +153,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         manager.stopUpdatingLocation()
     }
     
-    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         
     }
     
+        
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -246,7 +247,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.unknown)
         
         
-        if(currentUser.user_id > 0)
+        if(currentUser.user_id.characters.count > 0)
         {
             //firebaseUserAuthInstance.setUserDeviceStatus(userid: currentUser.user_id, token: "\(deviceToken)", status: Constants.USER_DEVICE_ONLINE)
         }

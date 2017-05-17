@@ -13,11 +13,13 @@ import SwiftyJSON
 class ApiFunctions{
     
     
-    static let SERVER_BASE_URL          = "http://35.166.129.141"
+    //static let SERVER_BASE_URL          = "http://35.166.129.141"
+    
+    static let SERVER_BASE_URL          = "http://192.168.1.120:2000/Networker"
     static let SERVER_URL               = SERVER_BASE_URL + "/index.php/Api/"
     
     static let REQ_GET_ALLCATEGORY      = SERVER_URL + "getAllCategory"
-    
+    static let REQ_REGISTER             = SERVER_URL + "register"
     
     
     static func login(email: String, password: String, completion: @escaping (String) -> () ){
@@ -25,7 +27,7 @@ class ApiFunctions{
         completion(Constants.PROCESS_SUCCESS)
     }
     
-    static func register(){
+    static func register(_ user: UserModel, completion: @escaping (String, UserModel) -> ()){
         
     }
     
@@ -75,16 +77,8 @@ class ApiFunctions{
                     completion("No category", [])
                 }
             }
-        }/*
-        var skills : [SkillModel] = []
-        //for category in categories{
-            let skillsData = JSON(TestJson.getSkillsJson()).arrayValue//category[Constants.KEY_CATEGORY_SKILLS].arrayValue
-            for skillData in skillsData{
-                skills.append(ParseHelper.parseSkill(skillData))
-            }
-        completion(Constants.PROCESS_SUCCESS, skills)*/
-            
-        //}
+        }
+        
         
     }
     
@@ -139,6 +133,53 @@ class ApiFunctions{
                 }
             }
         })
+    }
+    
+    static func uploadImage(name: String, file: Data, completion: @escaping (String, String) -> ()) {
+        
+    }
+    
+    static func downloadImage(url: String, completion: @escaping (String, String) -> ()) {
+        
+    }
+    
+    //file download function
+    /*
+     All files has its own name and they will not be same, so all files are saved as a name based files.
+     And database be 
+     */
+    static func downloadFile(urlString: String,completion: @escaping (URL, String) -> ()){
+        
+        let filenames = urlString.components(separatedBy: "/")
+        let filename = filenames[filenames.count - 1]
+        var savedFilePath = "\(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])"  + "/" + filename
+        
+        
+        let fileManager = FileManager.default
+        if fileManager.fileExists(atPath: savedFilePath) {
+            savedFilePath = "file:" + savedFilePath
+            let localURL = URL(string: savedFilePath)!
+            completion(localURL, Constants.PROCESS_SUCCESS)
+            return
+        } else {
+            NSLog("FILE NOT AVAILABLE - downloading \(urlString)")
+        }
+        let destination: DownloadRequest.DownloadFileDestination = { _, _ in
+            var documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            documentsURL.appendPathComponent(filename)
+            return (documentsURL, [.removePreviousFile])
+        }
+        
+        Alamofire.download(urlString, to: destination).responseData { response in
+            if let destinationUrl = response.destinationURL {
+                
+                completion(destinationUrl, Constants.PROCESS_SUCCESS)
+            }
+        }
+    }
+    
+    static func loginWithFacebook(user: UserModel, completion: @escaping (String) -> ()) {
+        
     }
     
     

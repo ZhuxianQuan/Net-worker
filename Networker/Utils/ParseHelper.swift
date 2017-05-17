@@ -15,7 +15,7 @@ class ParseHelper {
     static func parseUser(_ rawData: JSON) -> UserModel {
         NSLog("user data === \(rawData)")
         let user = UserModel()
-        user.user_id = rawData[Constants.KEY_USER_ID].int64Value
+        user.user_id = rawData[Constants.KEY_USER_ID].stringValue
         user.user_firstname = rawData[Constants.KEY_USER_FIRSTNAME].stringValue
         user.user_lastname = rawData[Constants.KEY_USER_LASTNAME].stringValue
         user.user_email = rawData[Constants.KEY_USER_EMAIL].stringValue

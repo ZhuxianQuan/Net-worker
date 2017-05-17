@@ -9,6 +9,10 @@
 import UIKit
 import M13Checkbox
 
+import FacebookCore
+import FacebookLogin
+
+
 class LoginViewController: BaseViewController {
 
     @IBOutlet weak var txtEmail: UITextField!
@@ -52,6 +56,60 @@ class LoginViewController: BaseViewController {
     
     
     @IBAction func facebookLoginButtonTapped(_ sender: Any) {
+        
+        let loginManager = LoginManager()
+        
+        loginManager.logIn([.publicProfile , .email, .userFriends], viewController: self, completion: {
+            loginResult in
+            switch loginResult {
+            case .failed(let error):
+                print(error)
+            case .cancelled:
+                print("User cancelled login.")
+            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+                print("Logged in!")
+                self.getFBUserInfo()
+            }
+        })
+    }
+    
+    
+    func getFBUserInfo() {
+        
+        showLoadingView()
+        let request = GraphRequest(graphPath: "me", parameters: ["fields":"id, name, first_name, last_name, picture.type(large), email"], accessToken: AccessToken.current, httpMethod: .GET, apiVersion: FacebookCore.GraphAPIVersion.defaultVersion)
+        request.start { (response, result) in
+            
+            switch result {
+            case .success(let value):
+                let result = value.dictionaryValue
+                let resultData: [String: AnyObject] = result! as [String: AnyObject]
+                
+                
+                let user = UserModel()
+                user.user_id = "fb" + (resultData["id"] as! String)
+                
+                user.user_firstname = resultData["first_name"] as! String
+                user.user_lastname = resultData["last_name"] as! String
+                user.user_email = resultData["email"] as! String
+                user.user_profileimageurl = (((resultData["picture"] as! [String: AnyObject])["data"] as! [String: AnyObject])["url"] as? String)!
+                currentUser = user
+                ApiFunctions.loginWithFacebook(user: user, completion: {
+                    message in
+                    self.hideLoadingView()
+                    if message == Constants.PROCESS_SUCCESS{
+                        UserDefaults.standard.set(user.user_email, forKey: Constants.KEY_USER_EMAIL)
+                        UserDefaults.standard.set("", forKey: Constants.KEY_USER_PASSWORD)
+                        UserDefaults.standard.set(user.user_id, forKey: Constants.KEY_USER_ID)                        
+                    }
+                    
+                })
+                
+            case .failed(let error):
+                print(error)
+                self.hideLoadingView()
+            }
+        }
     }
     
    

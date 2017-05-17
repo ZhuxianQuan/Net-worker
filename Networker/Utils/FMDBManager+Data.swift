@@ -78,10 +78,7 @@ class FMDBManagerGetData{
             if !isExists {
                 result.append(skill)
             }
-            /*if existingSkills.count == 0{
-                break
-            }*/
-        
+            
             index += 1
         }
         return result

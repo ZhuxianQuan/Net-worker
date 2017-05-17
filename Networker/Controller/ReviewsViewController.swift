@@ -15,6 +15,7 @@ class ReviewsViewController: BaseViewController {
     
     var reviews : [RatingModel] = []
     var skills: [SkillModel] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -61,10 +62,12 @@ extension ReviewsViewController : UITableViewDataSource, UITableViewDelegate {
         var cell = UITableViewCell()
         if tableView == skillsTableView {
             let skillCell = tableView.dequeueReusableCell(withIdentifier: "UserSkillsTableViewCell") as! UserSkillsTableViewCell
-            skillCell.setCell()
+            let skill = skills[indexPath.row - 1]
+            skillCell.setCell(skill)
+            cell = skillCell
         }
         else if tableView == reviewsTableView {
-            return reviews.count
+            //return reviews.count
         }
         
         return cell
@@ -74,7 +77,7 @@ extension ReviewsViewController : UITableViewDataSource, UITableViewDelegate {
         return 75
     }
     
-    
+    /*
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = indexPath.row
@@ -84,6 +87,7 @@ extension ReviewsViewController : UITableViewDataSource, UITableViewDelegate {
         userDetailVC.user = user
         userDetailVC.userDataString = cell.userDataLabel.text!
         self.navigationController?.pushViewController(userDetailVC, animated: true)
+        return UITableViewCell()
         
-    }
+    }*/
 }

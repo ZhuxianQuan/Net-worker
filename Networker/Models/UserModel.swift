@@ -11,7 +11,7 @@ import Foundation
 
 class UserModel {
     
-    var user_id : Int64 = 0
+    var user_id = ""
     var user_firstname = ""
     var user_lastname = ""
     var user_email = ""

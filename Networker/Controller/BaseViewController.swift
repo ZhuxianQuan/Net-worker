@@ -61,14 +61,28 @@ class BaseViewController: UIViewController {
     }
 
     func gotoMainScene(){
+        
+        let window = UIApplication.shared.keyWindow
         let storyboard = getStoryboard(id: Constants.STORYBOARD_MAIN)
 
         let mainTab = storyboard.instantiateViewController(withIdentifier: "MainTab") as! UITabBarController
         
         //setNavigationRoots()
-        present(mainTab, animated: true, completion: nil)
+        window?.rootViewController = mainTab
         
     }
+    
+    func gotoLoginScence() {
+        
+        let storyboard = getStoryboard(id: Constants.STORYBOARD_MAIN)
+        let startNav = storyboard.instantiateViewController(withIdentifier: "StartNav") as! UINavigationController
+        startNav.viewControllers = [storyboard.instantiateViewController(withIdentifier: "LoginViewController")]
+        let window = UIApplication.shared.keyWindow
+        window?.rootViewController = startNav
+        
+
+    }
+    
     
     func getStoryboard(id: Int) -> UIStoryboard{
         switch id {

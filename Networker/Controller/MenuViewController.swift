@@ -15,7 +15,7 @@ class MenuViewController: BaseViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var floatRatingView: FloatRatingView!
     
-    let menuStringArray = ["Personal details", "Skills", "Availability", "Jobs Pending", "Jobs Completed", "About Net-Worker", "Contact Us", "Rate Our App", "Terms & Conditions", "Sign Out"]
+    let menuStringArray = [Constants.SIDE_MENU_PERSONAL_DETAILS, Constants.SIDE_MENU_SKILLS, Constants.SIDE_MENU_AVAILABILITY, Constants.SIDE_MENU_JOBS_PENDING, Constants.SIDE_MENU_JOBS_COMPLETED, Constants.SIDE_MENU_ABOUT_NETWORKER, Constants.SIDE_MENU_CONTACT_US, Constants.SIDE_MENU_RATE_OUR_APP, Constants.SIDE_MENU_TERMSANDCONDITIONS, Constants.SIDE_MENU_SIGN_OUT]
     
     
     override func viewDidLoad() {
@@ -46,6 +46,23 @@ class MenuViewController: BaseViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func showView(_ index: Int) {
+        let title = menuStringArray[index]
+        
+        switch  title {
+        case Constants.SIDE_MENU_SIGN_OUT:
+            CommonUtils.logout()
+            self.gotoLoginScence()
+            break
+        case "Personal details":
+            break
+        case "Availability":
+            break
+        default:
+            break
+        }
+    }
 
 }
 
@@ -74,9 +91,7 @@ extension MenuViewController : UITableViewDelegate, UITableViewDataSource {
     //func didselect
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = indexPath.row
+        showView(index)
         
-        if index == 9 {
-            
-        }
     }
 }

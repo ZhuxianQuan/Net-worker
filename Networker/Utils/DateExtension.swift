@@ -46,7 +46,6 @@ func getGlobalTime() -> Int64
 
 func getTimeStringfromGMTTimeMillis(time: Int64) -> Date
 {
-
     return Date.getCurrentTimeFromGlobalMillis(millis: time)
 }
 

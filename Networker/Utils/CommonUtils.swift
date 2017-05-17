@@ -229,6 +229,10 @@ class CommonUtils: AnyObject{
         return mylocation.distance(from: userlocaiton) / 1609.344
     }
     
+    static func logout() {
+        
+    }
+    
     
 
     

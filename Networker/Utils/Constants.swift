@@ -9,14 +9,16 @@
 import Foundation
 import UIKit
 
-class Constants {
-    
+class Constants {    
     
     //error messages 
     
     static let CHECK_EMAIL_EMPTY            = "Please input your email"
     static let CHECK_PASSWORD_EMPTY         = "Please input your password"
     static let CHECK_EMAIL_INVALID          = "Please input valid email"
+    static let CHECK_FIRSTNAME_EMPTY        = "Please input your firstname"
+    static let CHECK_LASTNAME_EMPTY         = "Please input your lastname"
+    
     
     
     //PROCESS VALUES
@@ -96,6 +98,19 @@ class Constants {
     static let GREEN_SCHEDULE_COLOR         = UIColor(red: 35.0/255.0, green: 172.0/255.0, blue: 154.0/255.0, alpha: 1)
     static let BLUE_DAILY_SCHEDULE_COLOR    = UIColor(red: 90.0/255.0, green: 190.0/255.0, blue: 226.0/255.0, alpha: 1)
     static let Dark_SCHEDULE_COLOR          = UIColor(red: 46.0/255.0, green: 51.0/255.0, blue: 62.0/255.0, alpha: 1)
+    
+    //side menu items
+    
+    static let SIDE_MENU_PERSONAL_DETAILS   = "Personal details"
+    static let SIDE_MENU_SKILLS             = "Skills"
+    static let SIDE_MENU_AVAILABILITY       = "Availability"
+    static let SIDE_MENU_JOBS_PENDING       = "Jobs Pending"
+    static let SIDE_MENU_JOBS_COMPLETED     = "Jobs Completed"
+    static let SIDE_MENU_ABOUT_NETWORKER    = "About Net-Worker"
+    static let SIDE_MENU_CONTACT_US         = "Contact Us"
+    static let SIDE_MENU_RATE_OUR_APP       = "Rate Our App"
+    static let SIDE_MENU_TERMSANDCONDITIONS = "Terms & Conditions"
+    static let SIDE_MENU_SIGN_OUT           = "Sign Out"
 
     
     

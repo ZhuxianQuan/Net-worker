@@ -72,7 +72,7 @@ class ScheduleViewController: BaseViewController {
     }
 
     @IBAction func backButtonTapped(_ sender: Any) {
-        _ = self.navigationController.popViewController(animated : true)
+        _ = self.navigationController?.popViewController(animated : true)
     }
     /*
     // MARK: - Navigation

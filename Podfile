@@ -28,4 +28,5 @@ pod 'Google/SignIn'
 pod 'M13Checkbox'
 pod 'SwiftyJSON'
 pod 'Koyomi'
+pod 'LinkedinSwift'
 end
