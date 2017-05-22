@@ -3,15 +3,131 @@
 <plist version="1.0">
 <dict>
 	<key>SchemeUserState</key>
-	<dict/>
+	<dict>
+		<key>AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Alamofire.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Bolts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FBSDKCoreKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FBSDKLoginKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FBSDKShareKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FMDB.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FacebookCore.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FacebookLogin.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FacebookShare.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GTMOAuth2.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GTMSessionFetcher.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GoogleToolboxForMac.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>IOSLinkedInAPIFix.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>KYDrawerController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Koyomi.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>LinkedinSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>M13Checkbox.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Networker.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Protobuf.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SideMenu.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Toast-Swift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>060917B7668D75556BE5DD593E7EA0DB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>0A53C99F51454F9EB662B03E11169FC9</key>
+		<key>01350C93B8C0F0C42BF94881527A220C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -36,6 +152,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>482175C2CB69939A38370B17BE805323</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>4FC34E9C597E2AACB325462CCF6F042B</key>
 		<dict>
 			<key>primary</key>
@@ -51,7 +172,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>660DB957CB5F3E924E23E6E48A2E8626</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>681BE6E3D02A43F9BA63777AC435C8FD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>699E44307F9FFD6EE8A5097D4F6509AC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -76,6 +207,16 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>89E922FE46D2CEB098FCD85926031322</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8FF5343323A782DFCD9DC2D2111372CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A7FEAA14E89971698ACA148F7F7202F2</key>
 		<dict>
 			<key>primary</key>
@@ -86,27 +227,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C14D3745F6A9B36D08C6EB10FE64D884</key>
+		<key>B4121D3B507ACAC290C37AF691D07F53</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CF671F7E57B92905F1CC91D036D6B4A7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D4600C2B56F138AA49B29955366E6AEF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>DDBCFDE490CDFDABF6F16A26F346932D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E008FC8D57AA48A44B109ACCAE36F4A1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E565997DE47A593E826630894B41BF8D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F79A97407E3BBA1554323B4DAEE9B719</key>
 		<dict>
 			<key>primary</key>
 			<true/>
