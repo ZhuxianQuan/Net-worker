@@ -12,7 +12,7 @@ class RegisterViewController: BaseViewController {
 
     @IBOutlet weak var tblScroll: UITableView!
     @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
-    var profileImage : UIImage!
+    var profileImage : UIImage?
     var picker = UIImagePickerController()
     
     @IBOutlet weak var firstName: UITextField!
@@ -58,23 +58,135 @@ class RegisterViewController: BaseViewController {
     }
 
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
+        
     }
     
     @IBAction func contentViewTapped(_ sender: Any) {
         self.view.endEditing(true)
     }
     @IBAction func registerButtonTapped(_ sender: Any) {
-        let skillVC = storyboard?.instantiateViewController(withIdentifier: "SkillsViewController") as! SkillsViewController
-        navigationController?.pushViewController(skillVC, animated: true)
+        
+        let checkResult = checkValid()
+        if checkResult == Constants.PROCESS_SUCCESS {
+            showLoadingView()
+            ApiFunctions.register(user, completion: {
+                message, user in
+                
+                if message == Constants.PROCESS_SUCCESS {
+                    currentUser = user!
+                    if self.profileImage != nil {
+                        let data = UIImageJPEGRepresentation(self.profileImage!, 0.5)
+                        ApiFunctions.uploadImage(name: "profile_\(user!.user_id)", imageData: data!, completion: {
+                            message, url in
+                            if message == Constants.PROCESS_SUCCESS {
+                                user!.user_profileimageurl = url
+                                ApiFunctions.updateProfile(user!, completion: {
+                                    message in
+                                    self.hideLoadingView()
+                                    if message == Constants.PROCESS_SUCCESS {
+                                        currentUser = user!
+                                        
+                                        let skillVC = self.storyboard?.instantiateViewController(withIdentifier: "SkillsViewController") as! SkillsViewController
+                                        skillVC.user = user!
+                                        self.navigationController?.pushViewController(skillVC, animated: true)
+                                    }
+                                    else {
+                                        self.showToastWithDuration(string: message, duration: 3.0)
+                                    }
+                                })
+                            }
+                            else{
+                                self.hideLoadingView()
+                                self.showToastWithDuration(string: message, duration: 3.0)
+                            }
+                        })
+                    }
+                    else {
+                        self.hideLoadingView()
+                        let skillVC = self.storyboard?.instantiateViewController(withIdentifier: "SkillsViewController") as! SkillsViewController
+                        skillVC.user = user!
+                        self.navigationController?.pushViewController(skillVC, animated: true)
+                    }
+                }
+                else {
+                    self.hideLoadingView()
+                    self.showToastWithDuration(string: message, duration: 3.0)
+                }
+            })
+        }
+        else  {
+            self.showToastWithDuration(string: checkResult, duration: 3.0)
+        }
     }
     
+    @IBAction func uploadImageButtonTapped(_ sender: Any) {
+        if user.user_id.characters.count > 0{
+            if profileImage != nil {
+                let data = UIImageJPEGRepresentation(profileImage!, 0.5)
+                ApiFunctions.uploadImage(name: "profile_\(user.user_id)", imageData: data!, completion: {
+                    message, url in
+                    if message == Constants.PROCESS_SUCCESS {
+                        self.user.user_profileimageurl = url
+                        ApiFunctions.updateProfile(self.user, completion: {
+                            message in
+                            if message == Constants.PROCESS_SUCCESS {
+                                self.showToastWithDuration(string: "Image uploaded successfully", duration: 3.0)
+                            }
+                            else {
+                                self.showToastWithDuration(string: message, duration: 3.0)
+                            }
+                        })
+                    }
+                    else{
+                        self.showToastWithDuration(string: message, duration: 3.0)
+                    }
+                })
+            }
+            else {
+                self.showToastWithDuration(string: "Please select your photo to upload", duration: 3.0)
+            }
+        }
+        else {
+            showToastWithDuration(string: Constants.CHECK_PROFILE_IMAGE_UPLOAD, duration: 3.0)
+        }
+    }
     
     @IBAction func profileImageTapped(_ sender: UIButton) {
         selectImageSource()
+        
+        
     }
     
-    func checkValid() {
+    func checkValid() -> String {
+        user.user_firstname = firstName.text!
+        user.user_lastname = lastName.text!
+        user.user_email = email.text!
+        user.user_password = password.text!
+        user.user_address1 = address1.text!
+        user.user_address2 = address2.text!
+        user.user_address3 = address3.text!
+        user.user_postcode = postcode.text!
+        user.user_birthday = birthday.text!
         
+        if user.user_firstname.characters.count == 0 {
+            return Constants.CHECK_FIRSTNAME_EMPTY
+        }
+        if user.user_lastname.characters.count == 0 {
+            return Constants.CHECK_LASTNAME_EMPTY
+        }
+        if user.user_email.characters.count == 0 {
+            return Constants.CHECK_EMAIL_EMPTY
+        }
+        if !CommonUtils.isValidEmail(user.user_email) {
+            return Constants.CHECK_EMAIL_INVALID
+        }
+        if user.user_birthday.characters.count == 0 {
+            return Constants.CHECK_BIRTHDAY_EMPTY
+        }
+        
+        return Constants.PROCESS_SUCCESS
+        
+    
     }
 
     @IBAction func textFieldEditing(_ sender: UITextField) {
@@ -228,8 +340,7 @@ extension RegisterViewController:  UINavigationControllerDelegate, UIImagePicker
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        profileImage = info[UIImagePickerControllerEditedImage] as! UIImage
-        
+        profileImage = info[UIImagePickerControllerEditedImage] as? UIImage
         imvProfile.image = profileImage
         picker.dismiss(animated: true, completion: nil)
     }

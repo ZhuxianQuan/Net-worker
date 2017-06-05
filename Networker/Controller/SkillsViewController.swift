@@ -24,8 +24,7 @@ class SkillsViewController: BaseViewController {
     @IBOutlet weak var continueButton: UIButton!
     
     
-    
-    var skillsArray: [SkillModel] = []
+    var user = UserModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +66,7 @@ class SkillsViewController: BaseViewController {
         self.view.endEditing(true)
         let addSkillVC = storyboard?.instantiateViewController(withIdentifier: "AddSkillViewController") as! AddSkillViewController
         addSkillVC.fromWhere = addSkillVC.FROM_SKILLSVC
-        addSkillVC.preDefinedSkills = FMDBManagerGetData.removeSkills(existing: skillsArray, defined: definedSkills)
+        addSkillVC.preDefinedSkills = FMDBManagerGetData.removeSkills(existing: user.user_skills, defined: definedSkills)
         navigationController?.pushViewController(addSkillVC, animated: true)
     }
     
@@ -92,7 +91,7 @@ extension SkillsViewController : UITableViewDelegate, UITableViewDataSource {
             return 1
         }
         else{
-            return skillsArray.count
+            return user.user_skills.count
         }
     }
     
@@ -110,9 +109,7 @@ extension SkillsViewController : UITableViewDelegate, UITableViewDataSource {
             let index = indexPath.row
             cell.contentView.backgroundColor = UIColor.lightGray
             cell.setCellTextColor(UIColor.darkText)
-            cell.setCellText(skillsArray[index])
-            
-            
+            cell.setCellText(user.user_skills[index])
         }
         
         return cell

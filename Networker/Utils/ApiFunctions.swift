@@ -19,7 +19,10 @@ class ApiFunctions{
     static let SERVER_URL               = SERVER_BASE_URL + "/index.php/Api/"
     
     static let REQ_GET_ALLCATEGORY      = SERVER_URL + "getAllCategory"
-    static let REQ_REGISTER             = SERVER_URL + "register"
+    static let REQ_REGISTER             = SERVER_URL + "registerUser"
+    static let REQ_UPLOADIMAGE          = SERVER_URL + "uploadImage"
+    static let REQ_UPDATEUSER           = SERVER_URL + "updateUser"
+    static let REQ_ADDUSERSKILL         = SERVER_URL + "addUserSkill"
     
     
     static func login(email: String, password: String, completion: @escaping (String) -> () ){
@@ -27,16 +30,25 @@ class ApiFunctions{
         completion(Constants.PROCESS_SUCCESS)
     }
     
-    static func register(_ user: UserModel, completion: @escaping (String, UserModel) -> ()){
-        
-    }
-    
-    static func loginWithFacebook(){
-        
-    }
-    
-    static func loginWithLinkedIn(){
-        
+    static func register(_ user: UserModel, completion: @escaping (String, UserModel?) -> ()){
+        let userObject = user.getUserObject()
+        Alamofire.request(REQ_REGISTER, method: .post, parameters: userObject).responseJSON { response in
+            if response.result.isFailure{
+                completion(Constants.CHECK_NETWORK_ERROR, nil)
+            }
+            else
+            {
+                let json = JSON(response.result.value!)
+                NSLog("\(response.result.value!)")
+                let message = json[Constants.RES_MESSAGE].stringValue
+                if message == Constants.PROCESS_SUCCESS {
+                    
+                }
+                else {
+                    completion(message, nil)
+                }
+            }
+        }
     }
     
     static func passwordChangeRequest(email: String){
@@ -54,7 +66,7 @@ class ApiFunctions{
     static func getSkillsArray(completion : @escaping (String, [SkillModel]) -> ()){
         Alamofire.request(REQ_GET_ALLCATEGORY, method: .post, parameters: nil).responseJSON { response in
             if response.result.isFailure{
-                completion("Connection failed", [])
+                completion(Constants.CHECK_NETWORK_ERROR, [])
             }
             else
             {
@@ -135,35 +147,51 @@ class ApiFunctions{
         })
     }
     
-    static func uploadImage(name: String, file: Data, completion: @escaping (String, String) -> ()) {
-        
+    static func uploadImage(name: String, imageData: Data, completion: @escaping (String, String) -> ()) {
+        Alamofire.upload(
+            multipartFormData: { multipartFormData in
+                multipartFormData.append(imageData, withName: "file", fileName: "test.jpg", mimeType: "image/jpg")                //multipartFormData.boundary
+                multipartFormData.append(name.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "image_name")
+        },
+            to: REQ_UPLOADIMAGE,
+            encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    upload.responseJSON { response in
+                        NSLog("\(String(describing: response.result.value))")
+                        switch response.result {
+                            
+                        case .success(let result):
+                            let json = JSON(response.result.value!)
+                            NSLog("\(result)")
+                            let message = json[Constants.RES_MESSAGE].stringValue
+                            if message == Constants.PROCESS_SUCCESS {
+                                let imageurl = json[Constants.KEY_IMAGEURL].stringValue
+                                completion(message, imageurl)
+                            }
+                            else {
+                                completion(message, "")
+                            }
+                            
+                        case .failure(_):
+                            
+                            completion(Constants.CHECK_NETWORK_ERROR, "")
+                            
+                        }
+                    }
+                    
+                case .failure(let encodingError):
+                    NSLog("\(encodingError)")
+                    completion(Constants.CHECK_ENCODING_ERROR, "")
+                }
+        })
     }
     
-    static func downloadImage(url: String, completion: @escaping (String, String) -> ()) {
-        
-    }
-    
-    //file download function
-    /*
-     All files has its own name and they will not be same, so all files are saved as a name based files.
-     And database be 
-     */
-    static func downloadFile(urlString: String,completion: @escaping (URL, String) -> ()){
+    //MARK -- File Download function
+    static func downloadFile(urlString: String,completion: @escaping (String, URL?) -> ()){
         
         let filenames = urlString.components(separatedBy: "/")
         let filename = filenames[filenames.count - 1]
-        var savedFilePath = "\(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])"  + "/" + filename
-        
-        
-        let fileManager = FileManager.default
-        if fileManager.fileExists(atPath: savedFilePath) {
-            savedFilePath = "file:" + savedFilePath
-            let localURL = URL(string: savedFilePath)!
-            completion(localURL, Constants.PROCESS_SUCCESS)
-            return
-        } else {
-            NSLog("FILE NOT AVAILABLE - downloading \(urlString)")
-        }
         let destination: DownloadRequest.DownloadFileDestination = { _, _ in
             var documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
             documentsURL.appendPathComponent(filename)
@@ -173,12 +201,19 @@ class ApiFunctions{
         Alamofire.download(urlString, to: destination).responseData { response in
             if let destinationUrl = response.destinationURL {
                 
-                completion(destinationUrl, Constants.PROCESS_SUCCESS)
+                completion(Constants.PROCESS_SUCCESS, destinationUrl)
+            }
+            else {
+                completion(Constants.PROCESS_FAIL, nil)
             }
         }
     }
     
     static func loginWithFacebook(user: UserModel, completion: @escaping (String) -> ()) {
+        
+    }
+    
+    static func updateProfile(_ user: UserModel, completion: @escaping (String) -> ()) {
         
     }
     

@@ -234,6 +234,23 @@ class CommonUtils: AnyObject{
     }
     
     
+    static func getSavedFileUrl(_ urlString: String) -> URL?{
+        
+        let filenames = urlString.components(separatedBy: "/")
+        let filename = filenames[filenames.count - 1]
+        var savedFilePath = "\(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])"  + "/" + filename
+        let fileManager = FileManager.default
+        if fileManager.fileExists(atPath: savedFilePath) {
+            savedFilePath = "file:" + savedFilePath
+            let localURL = URL(string: savedFilePath)!
+            return localURL
+        }
+        else {
+            return nil
+        }
+    }
+    
+    
 
     
     

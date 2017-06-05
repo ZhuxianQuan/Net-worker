@@ -66,8 +66,6 @@ class BaseViewController: UIViewController {
         let storyboard = getStoryboard(id: Constants.STORYBOARD_MAIN)
 
         let mainTab = storyboard.instantiateViewController(withIdentifier: "MainTab") as! UITabBarController
-        
-        //setNavigationRoots()
         window?.rootViewController = mainTab
         
     }

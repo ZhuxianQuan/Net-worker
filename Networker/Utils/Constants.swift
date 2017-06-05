@@ -18,7 +18,10 @@ class Constants {
     static let CHECK_EMAIL_INVALID          = "Please input valid email"
     static let CHECK_FIRSTNAME_EMPTY        = "Please input your firstname"
     static let CHECK_LASTNAME_EMPTY         = "Please input your lastname"
-    
+    static let CHECK_NETWORK_ERROR          = "Network Error! Please check your network connection"
+    static let CHECK_ENCODING_ERROR         = "Encoding Error occurred!"
+    static let CHECK_PROFILE_IMAGE_UPLOAD   = "You can upload image after you finish registeration"
+    static let CHECK_BIRTHDAY_EMPTY         = "Please input your birthday"
     
     
     //PROCESS VALUES
@@ -111,10 +114,12 @@ class Constants {
     static let SIDE_MENU_RATE_OUR_APP       = "Rate Our App"
     static let SIDE_MENU_TERMSANDCONDITIONS = "Terms & Conditions"
     static let SIDE_MENU_SIGN_OUT           = "Sign Out"
-
+    
+    //keys for backend parse
+    
+    static let RES_MESSAGE                  = "message"
     
     
-    
-    
-    
+    //keys for image
+    static let KEY_IMAGEURL                 = "image_url"
 }

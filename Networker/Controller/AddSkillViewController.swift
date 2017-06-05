@@ -95,7 +95,7 @@ class AddSkillViewController : BaseViewController {
             let vcs = navigationController?.viewControllers
             let skillVC = vcs?[(vcs?.count)! - 2]
             if skillVC != nil{
-                (skillVC as! SkillsViewController).skillsArray.append(selectedSkill)
+                (skillVC as! SkillsViewController).user.user_skills.append(selectedSkill)
             }
         }
         _ = self.navigationController?.popViewController(animated: true)
