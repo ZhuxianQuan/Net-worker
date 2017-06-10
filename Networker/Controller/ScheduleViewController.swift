@@ -37,6 +37,8 @@ class ScheduleViewController: BaseViewController {
             let screenSize = UIScreen.main.bounds.size
             calendarView.frame.size = CGSize(width: screenSize.width - 76, height: screenSize.width - 64)
             calendarView.currentDateFormat = "MMMM yyyy"
+            calendarView.isHiddenOtherMonth = true
+            //calendarView.is
         
         }
     }
@@ -74,15 +76,8 @@ class ScheduleViewController: BaseViewController {
     @IBAction func backButtonTapped(_ sender: Any) {
         _ = self.navigationController?.popViewController(animated : true)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+    
     @IBAction func scheduleDayButtonTapped(_ sender: UIView) {
         if selectedDate != nil {
             let dailyScheduleVC = self.storyboard?.instantiateViewController(withIdentifier: "DailyScheduleViewController") as! DailyScheduleViewController
@@ -99,7 +94,11 @@ class ScheduleViewController: BaseViewController {
 extension ScheduleViewController : KoyomiDelegate {
     
     func koyomi(_ koyomi: Koyomi, didSelect date: Date?, forItemAt indexPath: IndexPath) {
-        selectedDate = date
+        
+        let currentDate = Date()
+        if Int64((date?.timeIntervalSinceNow)!) >= -86400 {
+            selectedDate = date
+        }
     }
     
     func koyomi(_ koyomi: Koyomi, currentDateString dateString: String) {

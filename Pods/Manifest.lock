@@ -79,16 +79,6 @@ PODS:
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
-  - Google/Core (3.0.3):
-    - FirebaseAnalytics (~> 3.2)
-  - Google/SignIn (3.0.3):
-    - Google/Core
-    - GoogleSignIn (~> 4.0)
-  - GoogleSignIn (4.0.2):
-    - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
-    - GoogleToolboxForMac/NSString+URLArguments (~> 2.1)
-    - GTMOAuth2 (~> 1.0)
-    - GTMSessionFetcher/Core (~> 1.1)
   - GoogleToolboxForMac/DebugUtils (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - GoogleToolboxForMac/Defines (2.1.1)
@@ -101,13 +91,7 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.1)
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
-  - GTMOAuth2 (1.1.4):
-    - GTMSessionFetcher (~> 1.1)
-  - GTMSessionFetcher (1.1.8):
-    - GTMSessionFetcher/Full (= 1.1.8)
   - GTMSessionFetcher/Core (1.1.8)
-  - GTMSessionFetcher/Full (1.1.8):
-    - GTMSessionFetcher/Core (= 1.1.8)
   - IOSLinkedInAPIFix (2.0.4):
     - AFNetworking (>= 2.0.0)
   - Koyomi (1.2.4)
@@ -120,7 +104,6 @@ PODS:
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
-  - SideMenu (2.2.0)
   - SwiftyJSON (3.1.4)
   - Toast-Swift (2.0.0)
 
@@ -136,13 +119,11 @@ DEPENDENCIES:
   - FirebaseMessaging
   - FirebaseUI/Storage (~> 0.6)
   - FMDB
-  - Google/SignIn
   - Koyomi
   - KYDrawerController
   - LinkedinSwift
   - M13Checkbox
   - SDWebImage
-  - SideMenu
   - SwiftyJSON
   - Toast-Swift (~> 2.0.0)
 
@@ -166,10 +147,7 @@ SPEC CHECKSUMS:
   FirebaseStorage: a5c55b23741a49a72af8f30f95b3bb5ddbeda12d
   FirebaseUI: 6b22f02b8992fd921116b59e8dcda688c4072517
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
-  Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
-  GoogleSignIn: d7ad83f13480e1f30453471d00d19b5293ac46af
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
-  GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: 6f8d8b28b7e345549ac471071608170b31cb4977
   IOSLinkedInAPIFix: a520fd805a03dade35f42904c7d89ded2a84c752
   Koyomi: e028b378584ec90e257681bd255a3041ca109cc6
@@ -178,10 +156,9 @@ SPEC CHECKSUMS:
   M13Checkbox: c132a7e0eb964731855eff67b883a0b21b7c0977
   Protobuf: 745f59e122e5de98d4d7ef291e264a0eef80f58e
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
-  SideMenu: eeff6b85456c5c6e14165655691d2033f6b24969
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
 
-PODFILE CHECKSUM: e01c275200b45b7b3875761641490f5c604a73d4
+PODFILE CHECKSUM: 8550383869ae3b2bf431cfcd5a4661de15edf7af
 
 COCOAPODS: 1.2.1

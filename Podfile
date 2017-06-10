@@ -18,13 +18,9 @@ pod 'FMDB'
 pod 'FacebookCore'
 pod 'FacebookLogin'
 pod 'FacebookShare'
-pod 'SideMenu'
-#pod ‘Material’
-#pod 'MBCircularProgressBar'
 pod 'KYDrawerController'
 pod 'Alamofire'
 pod ‘SDWebImage’
-pod 'Google/SignIn'
 pod 'M13Checkbox'
 pod 'SwiftyJSON'
 pod 'Koyomi'
