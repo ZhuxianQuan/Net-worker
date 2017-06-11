@@ -22,7 +22,9 @@ class SearchMenuViewController: BaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        btnback = backButton
         loadMenu()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,6 +55,9 @@ class SearchMenuViewController: BaseViewController {
         
     }
     
+    @IBAction func backButtonTapped(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 extension SearchMenuViewController : UITableViewDelegate, UITableViewDataSource {

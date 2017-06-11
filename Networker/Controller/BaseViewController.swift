@@ -10,10 +10,12 @@ import UIKit
 import Toast_Swift
 import KYDrawerController
 
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController{
 
     var drawerController : KYDrawerController?
     //var drawerOpened : Bool!
+    
+    var btnback = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +25,6 @@ class BaseViewController: UIViewController {
             drawerController?.drawerDirection = .right
             //drawerOpened = false
         }
-
         // Do any additional setup after loading the view.
     }
 
@@ -34,7 +35,12 @@ class BaseViewController: UIViewController {
     
 
     override func viewWillAppear(_ animated : Bool) {
-        
+        if (self.navigationController?.viewControllers.count)! > 1 {
+            btnback.isHidden = false
+        }
+        else {
+             btnback.isHidden = true
+        }
     }
 
     

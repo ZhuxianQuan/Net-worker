@@ -12,7 +12,6 @@ import FirebaseAuth
 import FirebaseDatabase
 
 /*
-
 class FirebaseUserAuthentication{
 
     var friendRef : FIRDatabaseReference!

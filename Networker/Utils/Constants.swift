@@ -42,7 +42,7 @@ class Constants {
     //MARK: - keywords
     
     //skill category 
-    static let KEY_CATEGORYS                = "categorys"
+    static let KEY_CATEGORYS                = "categories"
     static let KEY_CATEGORY_ID              = "category_id"
     static let KEY_CATEGORY_NAME            = "category_name"
     static let KEY_CATEGORY_SKILLS          = "skills"
@@ -122,4 +122,15 @@ class Constants {
     
     //keys for image
     static let KEY_IMAGEURL                 = "image_url"
+    
+    static let RES_USER_INFO                = "user_info"
+    
+    //values
+    
+    static let VALUE_USER_AVAILABLE         = 1
+    static let VALUE_USER_BUSY              = 2
+    
+    static let VALUE_PASSWORD_FB            = "FBPASSWORD_NETWORKER"
+    static let VALUE_PASSWORD_LI            = "LIPASSWORD_NETWORKER"
+    
 }

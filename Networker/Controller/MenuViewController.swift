@@ -32,7 +32,7 @@ class MenuViewController: BaseViewController {
     
     func setUserInfo() {
         nameLabel.text = currentUser.user_firstname
-        
+        profileImageView.setImageWith(currentUser.user_profileimageurl, placeholderImage: UIImage(named: "icon_profile")!)
         
     }
     

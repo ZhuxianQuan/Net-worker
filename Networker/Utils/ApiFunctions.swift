@@ -13,9 +13,9 @@ import SwiftyJSON
 class ApiFunctions{
     
     
-    //static let SERVER_BASE_URL          = "http://35.166.129.141"
+    static let SERVER_BASE_URL          = "http://35.166.129.141"
     
-    static let SERVER_BASE_URL          = "http://192.168.1.120:2000/Networker"
+    //static let SERVER_BASE_URL          = "http://192.168.1.120:2000/Networker"
     static let SERVER_URL               = SERVER_BASE_URL + "/index.php/Api/"
     
     static let REQ_GET_ALLCATEGORY      = SERVER_URL + "getAllCategory"
@@ -23,11 +23,31 @@ class ApiFunctions{
     static let REQ_UPLOADIMAGE          = SERVER_URL + "uploadImage"
     static let REQ_UPDATEUSER           = SERVER_URL + "updateUser"
     static let REQ_ADDUSERSKILL         = SERVER_URL + "addUserSkill"
+    static let REQ_LOGIN                = SERVER_URL + "login"
     
     
     static func login(email: String, password: String, completion: @escaping (String) -> () ){
-        currentUser = ParseHelper.parseUser(JSON(TestJson.getMe()))
-        completion(Constants.PROCESS_SUCCESS)
+        //currentUser = ParseHelper.parseUser(JSON(TestJson.getMe()))
+        let params = [Constants.KEY_USER_EMAIL: email,
+                      Constants.KEY_USER_PASSWORD: password]
+        Alamofire.request(REQ_LOGIN, method: .post, parameters: params).responseJSON { response in
+            if response.result.isFailure{
+                completion(Constants.CHECK_NETWORK_ERROR)
+            }
+            else
+            {
+                let json = JSON(response.result.value!)
+                NSLog("\(response.result.value!)")
+                let message = json[Constants.RES_MESSAGE].stringValue
+                if message == Constants.PROCESS_SUCCESS {
+                    currentUser = ParseHelper.parseUser(json[Constants.RES_USER_INFO])
+                    completion(Constants.PROCESS_SUCCESS)
+                }
+                else {
+                    completion(message)
+                }
+            }
+        }
     }
     
     static func register(_ user: UserModel, completion: @escaping (String, UserModel?) -> ()){
@@ -42,7 +62,9 @@ class ApiFunctions{
                 NSLog("\(response.result.value!)")
                 let message = json[Constants.RES_MESSAGE].stringValue
                 if message == Constants.PROCESS_SUCCESS {
-                    
+                    user.user_id = json[Constants.KEY_USER_ID].nonNullInt64Value
+                    currentUser = user
+                    completion(Constants.PROCESS_SUCCESS, user)
                 }
                 else {
                     completion(message, nil)
@@ -150,7 +172,7 @@ class ApiFunctions{
     static func uploadImage(name: String, imageData: Data, completion: @escaping (String, String) -> ()) {
         Alamofire.upload(
             multipartFormData: { multipartFormData in
-                multipartFormData.append(imageData, withName: "file", fileName: "test.jpg", mimeType: "image/jpg")                //multipartFormData.boundary
+                multipartFormData.append(imageData, withName: "image", fileName: "test.jpg", mimeType: "image/jpg")                //multipartFormData.boundary
                 multipartFormData.append(name.data(using: String.Encoding.utf8, allowLossyConversion: false)!, withName: "image_name")
         },
             to: REQ_UPLOADIMAGE,
@@ -214,7 +236,24 @@ class ApiFunctions{
     }
     
     static func updateProfile(_ user: UserModel, completion: @escaping (String) -> ()) {
-        
+        let userObject = user.getUserObject()
+        Alamofire.request(REQ_REGISTER, method: .post, parameters: userObject).responseJSON { response in
+            if response.result.isFailure{
+                completion(Constants.CHECK_NETWORK_ERROR)
+            }
+            else
+            {
+                let json = JSON(response.result.value!)
+                NSLog("\(response.result.value!)")
+                let message = json[Constants.RES_MESSAGE].stringValue
+                if message == Constants.PROCESS_SUCCESS {
+                    completion(Constants.PROCESS_SUCCESS)
+                }
+                else {
+                    completion(message)
+                }
+            }
+        }
     }
     
     

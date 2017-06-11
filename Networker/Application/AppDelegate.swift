@@ -115,43 +115,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         
         currentLatitude = (location?.coordinate.latitude)! as Double
         currentLongitude = (location?.coordinate.longitude)! as Double
-        if(currentUser.user_id.characters.count > 0){
-            /*CLGeocoder().reverseGeocodeLocation(location!, completionHandler: {
-                placemarks, error in
-                var placeMark: CLPlacemark!
-                placeMark = placemarks?.last
-                
-                
-                var addressString = ""
-                
-                if(placeMark != nil){
-                    // Location name
-                    if let locationName = placeMark.addressDictionary!["Name"] as? NSString {
-                        addressString = locationName as String
-                    }
-                    
-                }
-                
-            })*/
+        if(currentUser.user_id > 0){
             currentUser.user_latitude = currentLatitude
             currentUser.user_longitude = currentLongitude
-            
-            /*
-            FirebaseUserAuthentication.getAllUsers(completion: {
-                users in
-                globalUsersArray = users
-                var friendsArray : [FriendModel] = []
-                for friend in myFriends{
-                    let user = FirebaseUserAuthentication.getUserFromUserid(friend.friend_user.user_id)
-                    if user != nil{
-                        friend.friend_user = user!
-                        friendsArray.append(friend)
-                    }
-                }
-                myFriends = friendsArray
-            })*/
-            
-            
         }
         manager.stopUpdatingLocation()
     }
@@ -162,13 +128,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
     
         
     func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         FIRMessaging.messaging().disconnect()
         print("Disconnected from FCM.")
     }
@@ -250,7 +213,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.unknown)
         
         
-        if(currentUser.user_id.characters.count > 0)
+        if(currentUser.user_id > 0)
         {
             //firebaseUserAuthInstance.setUserDeviceStatus(userid: currentUser.user_id, token: "\(deviceToken)", status: Constants.USER_DEVICE_ONLINE)
         }

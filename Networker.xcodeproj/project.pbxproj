@@ -76,6 +76,7 @@
 		0AD219041E7B4427001E7865 /* SkillsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD219031E7B4427001E7865 /* SkillsTableViewCell.swift */; };
 		0AED02AB1E87D8A70058D637 /* DailyScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED02AA1E87D8A70058D637 /* DailyScheduleViewController.swift */; };
 		82BFADE43C544A394DCBF956 /* Pods_Networker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0037CB8F35E0C7003867F45F /* Pods_Networker.framework */; };
+		E181A2A11EED137700148484 /* SwiftyJSON+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181A2A01EED137700148484 /* SwiftyJSON+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -152,6 +153,7 @@
 		0AB18D871E8860CF00C5B7A4 /* KYDrawerViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KYDrawerViewController+Extension.swift"; sourceTree = "<group>"; };
 		0AD219031E7B4427001E7865 /* SkillsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillsTableViewCell.swift; sourceTree = "<group>"; };
 		0AED02AA1E87D8A70058D637 /* DailyScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyScheduleViewController.swift; sourceTree = "<group>"; };
+		E181A2A01EED137700148484 /* SwiftyJSON+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftyJSON+Extension.swift"; sourceTree = "<group>"; };
 		ED2D8F081500C49690489A09 /* Pods-Networker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Networker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Networker/Pods-Networker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -481,6 +483,7 @@
 				0A59DBC31E7CD1060077A5F6 /* DateExtension.swift */,
 				0A6897AA1E7E1EFF000226B9 /* Singleton.swift */,
 				0A3B878D1E7F9DA400140D6C /* UIView+Extension.swift */,
+				E181A2A01EED137700148484 /* SwiftyJSON+Extension.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -663,6 +666,7 @@
 				0A6897A91E7E1CFA000226B9 /* FMDBManager+Data.swift in Sources */,
 				0A405B211E7687F6005C2618 /* SkillsViewController.swift in Sources */,
 				0A3B878C1E7F9B8D00140D6C /* SearchMenuTableViewCell.swift in Sources */,
+				E181A2A11EED137700148484 /* SwiftyJSON+Extension.swift in Sources */,
 				0AD219041E7B4427001E7865 /* SkillsTableViewCell.swift in Sources */,
 				0A59DBBE1E7CCE550077A5F6 /* FirebaseRealTimeMessage.swift in Sources */,
 				0A5304821E760D9800244C3D /* ApiFunctions.swift in Sources */,

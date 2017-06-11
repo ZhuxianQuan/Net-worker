@@ -85,7 +85,6 @@ class RegisterViewController: BaseViewController {
                                     self.hideLoadingView()
                                     if message == Constants.PROCESS_SUCCESS {
                                         currentUser = user!
-                                        
                                         let skillVC = self.storyboard?.instantiateViewController(withIdentifier: "SkillsViewController") as! SkillsViewController
                                         skillVC.user = user!
                                         self.navigationController?.pushViewController(skillVC, animated: true)
@@ -120,7 +119,7 @@ class RegisterViewController: BaseViewController {
     }
     
     @IBAction func uploadImageButtonTapped(_ sender: Any) {
-        if user.user_id.characters.count > 0{
+        if user.user_id > 0{
             if profileImage != nil {
                 let data = UIImageJPEGRepresentation(profileImage!, 0.5)
                 ApiFunctions.uploadImage(name: "profile_\(user.user_id)", imageData: data!, completion: {

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -142,6 +142,12 @@
                                     <constraint firstAttribute="width" constant="46" id="zh1-Sd-JUR"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6rJ-Iq-WNW">
+                                <rect key="frame" x="0.0" y="87" width="414" height="44"/>
+                                <connections>
+                                    <action selector="searchStarted:" destination="8QD-QH-baV" eventType="touchUpInside" id="y8e-u9-aTV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -152,13 +158,17 @@
                             <constraint firstItem="1qu-of-UPN" firstAttribute="top" secondItem="GjR-Xy-V9h" secondAttribute="bottom" id="L4O-ok-eAg"/>
                             <constraint firstItem="aol-7o-Jmj" firstAttribute="centerX" secondItem="BHd-uJ-kHS" secondAttribute="centerX" id="Qtt-cI-vcX"/>
                             <constraint firstItem="sQn-vp-Gg5" firstAttribute="leading" secondItem="aol-7o-Jmj" secondAttribute="trailing" constant="8" id="Vd6-bg-ieA"/>
+                            <constraint firstItem="6rJ-Iq-WNW" firstAttribute="bottom" secondItem="j4X-oU-ub5" secondAttribute="bottom" id="g5B-Di-Ugd"/>
                             <constraint firstAttribute="trailing" secondItem="j4X-oU-ub5" secondAttribute="trailing" id="hnj-0x-hjZ"/>
                             <constraint firstItem="avv-Ui-g0A" firstAttribute="leading" secondItem="BHd-uJ-kHS" secondAttribute="leading" id="iWe-LR-7B8"/>
                             <constraint firstItem="aol-7o-Jmj" firstAttribute="top" secondItem="j4X-oU-ub5" secondAttribute="bottom" constant="25" id="lo9-rt-jMc"/>
+                            <constraint firstItem="6rJ-Iq-WNW" firstAttribute="trailing" secondItem="j4X-oU-ub5" secondAttribute="trailing" id="mq4-MZ-hZu"/>
                             <constraint firstItem="GjR-Xy-V9h" firstAttribute="leading" secondItem="BHd-uJ-kHS" secondAttribute="leading" id="oAC-Ia-bvx"/>
+                            <constraint firstItem="6rJ-Iq-WNW" firstAttribute="top" secondItem="j4X-oU-ub5" secondAttribute="top" id="uq7-SZ-K2Q"/>
                             <constraint firstItem="GjR-Xy-V9h" firstAttribute="top" secondItem="j4X-oU-ub5" secondAttribute="bottom" id="vKp-1S-gqJ"/>
                             <constraint firstAttribute="trailing" secondItem="GjR-Xy-V9h" secondAttribute="trailing" id="x1I-yf-tKw"/>
                             <constraint firstAttribute="trailing" secondItem="avv-Ui-g0A" secondAttribute="trailing" id="yLO-6v-aog"/>
+                            <constraint firstItem="6rJ-Iq-WNW" firstAttribute="leading" secondItem="j4X-oU-ub5" secondAttribute="leading" id="yWO-Um-oYb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="piS-YK-Qrk"/>
@@ -169,7 +179,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WHp-xd-aTd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="30" y="84.507042253521121"/>
+            <point key="canvasLocation" x="28.985507246376812" y="83.967391304347828"/>
         </scene>
     </scenes>
     <resources>
@@ -177,6 +187,6 @@
         <image name="icon_menu" width="128" height="128"/>
         <image name="login-networker" width="391" height="51"/>
         <image name="login-tm" width="28" height="13"/>
-        <image name="logo_bee" width="188" height="115"/>
+        <image name="logo_bee" width="565" height="347"/>
     </resources>
 </document>

@@ -230,7 +230,9 @@ class CommonUtils: AnyObject{
     }
     
     static func logout() {
-        
+        currentUser = UserModel()
+        UserDefaults.standard.removeObject(forKey: Constants.KEY_USER_PASSWORD)
+        UserDefaults.standard.removeObject(forKey: Constants.KEY_USER_EMAIL)
     }
     
     

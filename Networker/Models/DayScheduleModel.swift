@@ -16,7 +16,7 @@ typealias ScheduleDate = (year: Int, month: Int, day: Int)
 typealias ScheduleMonth = (year: Int, month: Int)
 
 class DayScheduleModel {
-    var schedule_user_id = ""
+    var schedule_user_id: Int64 = 0
     var schedule_date = ScheduleDate(year: 0, month: 0, day: 0)
     var schedule_dayData : [ScheduleData] = []
     

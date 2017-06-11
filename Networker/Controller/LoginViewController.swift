@@ -87,24 +87,20 @@ class LoginViewController: BaseViewController {
                 
                 
                 let user = UserModel()
-                user.user_id = "fb" + (resultData["id"] as! String)
-                
                 user.user_firstname = resultData["first_name"] as! String
                 user.user_lastname = resultData["last_name"] as! String
                 user.user_email = resultData["email"] as! String
+                user.user_email = Constants.VALUE_PASSWORD_FB
                 user.user_profileimageurl = (((resultData["picture"] as! [String: AnyObject])["data"] as! [String: AnyObject])["url"] as? String)!
-                currentUser = user
-                ApiFunctions.loginWithFacebook(user: user, completion: {
-                    message in
-                    self.hideLoadingView()
-                    if message == Constants.PROCESS_SUCCESS{
-                        UserDefaults.standard.set(user.user_email, forKey: Constants.KEY_USER_EMAIL)
-                        UserDefaults.standard.set("", forKey: Constants.KEY_USER_PASSWORD)
-                        UserDefaults.standard.set(user.user_id, forKey: Constants.KEY_USER_ID)                        
+                ApiFunctions.register(user, completion: {
+                    message, loggedUser in
+                    if message == Constants.PROCESS_SUCCESS {
+                        self.gotoMainScene()
                     }
-                    
+                    else {
+                        self.showToastWithDuration(string: message, duration: 3.0)
+                    }
                 })
-                
             case .failed(let error):
                 print(error)
                 self.hideLoadingView()
@@ -148,11 +144,17 @@ class LoginViewController: BaseViewController {
             showToastWithDuration(string: message , duration: 3.0)
         }
         else{
+            showLoadingView()
             ApiFunctions.login(email: email, password: password, completion: {
                 success in
+                self.hideLoadingView()
                 if success == Constants.PROCESS_SUCCESS
                 {
                     self.gotoMainScene()
+                }
+                else
+                {
+                    self.showToastWithDuration(string: success, duration: 3.0)
                 }
             })
         }

@@ -29,20 +29,19 @@ class HomeViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        initMapView() //remove all annotations definded in the app
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        setRegionForLocation(location : CLLocationCoordinate2D(latitude: currentLatitude, longitude: currentLongitude), spanRadius : 1609.00 * currentUser.user_rangedistance, animated: true)
-        addRadiusCircle()
-        getHomeData()
+        initMapView()
         if navigationController!.viewControllers.count > 1{
             backButton.isHidden = false
         }
         else {
             backButton.isHidden = true
         }
+        if !(mapView.userLocation.coordinate.longitude == 0 && mapView.userLocation.coordinate.latitude == 0) {
+            currentLongitude = mapView.userLocation.coordinate.longitude
+            currentLatitude = mapView.userLocation.coordinate.latitude
+            getHomeData()
+        }
+
     }
     
     func initMapView()
@@ -60,6 +59,9 @@ class HomeViewController: BaseViewController {
         ApiFunctions.getHomeData(completion: {
             message, users in
             if message == Constants.PROCESS_SUCCESS {
+                
+                self.setRegionForLocation(location : CLLocationCoordinate2D(latitude: currentLatitude, longitude: currentLongitude), spanRadius : 1609.00 * currentUser.user_rangedistance, animated: true)
+                self.addRadiusCircle()
                 self.nearMeWorkers = users
                 self.arrangeFriends()
             }
@@ -113,10 +115,14 @@ class HomeViewController: BaseViewController {
             drawerController?.setDrawerState(.opened, animated: true)
     }
     
+    @IBAction func searchStarted(_ sender: Any) {
+        let storyboard = getStoryboard(id: Constants.STORYBOARD_SEARCH)
+        let searchvc = storyboard.instantiateViewController(withIdentifier: "SearchMenuViewController")
+        self.navigationController?.pushViewController(searchvc, animated: true)
+    }
+    
+    
 }
-
-
-
 
 extension HomeViewController: MKMapViewDelegate{
     
@@ -202,6 +208,15 @@ extension HomeViewController: MKMapViewDelegate{
             return overlay as! MKOverlayRenderer
         }
         
+    }
+    
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        
+        currentLatitude = userLocation.coordinate.latitude
+        currentLongitude = userLocation.coordinate.longitude
+        if self.nearMeWorkers.count == 0{
+            self.getHomeData()
+        }
     }
     
 }

@@ -16,7 +16,7 @@ class SplashViewController: BaseViewController {
     var timer = Timer()
     var angle : CGFloat = 0
     
-    var maxLoading = 2
+    var maxLoading = 3
     var loading = 0
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +50,16 @@ class SplashViewController: BaseViewController {
             self.loading += 1
             self.loadingCompleted()
         })
+        
+        if UserDefaults.standard.value(forKey: Constants.KEY_USER_EMAIL) != nil {
+            ApiFunctions.login(email: UserDefaults.standard.value(forKey: Constants.KEY_USER_EMAIL) as! String, password: UserDefaults.standard.value(forKey: Constants.KEY_USER_PASSWORD) as! String, completion: {
+                message in
+                self.gotoMainScene()
+            })
+        }
+        else {
+            self.loading += 1
+        }
 
     }
     

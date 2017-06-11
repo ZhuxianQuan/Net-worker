@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fGc-an-dy3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fGc-an-dy3">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -20,7 +20,7 @@
         <scene sceneID="7n3-Vz-bto">
             <objects>
                 <navigationController storyboardIdentifier="StartNav" id="fGc-an-dy3" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="V77-TD-ggq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="V77-TD-ggq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -250,7 +250,7 @@
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MHb-Ij-dgS">
-                                        <rect key="frame" x="33" y="7.6666666666666572" width="301" height="20"/>
+                                        <rect key="frame" x="33" y="8.3333333333333428" width="301" height="20"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="NeueHelveticaBQ-Light" family="Neue Helvetica BQ" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES"/>
@@ -290,7 +290,7 @@
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QV5-Yp-VY9">
-                                        <rect key="frame" x="33" y="7.6666666666666572" width="301" height="20.000000000000028"/>
+                                        <rect key="frame" x="33" y="8.3333333333333428" width="301" height="19.999999999999972"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="NeueHelveticaBQ-Light" family="Neue Helvetica BQ" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -663,11 +663,11 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MSt-bg-J78">
                                             <rect key="frame" x="140" y="0.0" width="274" height="526"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nqk-qO-Ty7">
-                                                    <rect key="frame" x="10" y="20" width="234" height="40"/>
+                                                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nqk-qO-Ty7">
+                                                    <rect key="frame" x="10" y="10" width="234" height="0.0"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="grx-Ai-3ma">
-                                                            <rect key="frame" x="50.333333333333343" y="9" width="133.33333333333334" height="22"/>
+                                                            <rect key="frame" x="50.333333333333343" y="-11" width="133.33333333333334" height="22"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload Image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6WL-fd-Nci">
                                                                     <rect key="frame" x="0.0" y="0.0" width="104.33333333333334" height="22"/>
@@ -692,7 +692,7 @@
                                                             </constraints>
                                                         </view>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yX9-vS-seK">
-                                                            <rect key="frame" x="0.0" y="0.0" width="234" height="40"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="234" height="0.0"/>
                                                             <connections>
                                                                 <action selector="uploadImageButtonTapped:" destination="7li-ax-P8N" eventType="touchUpInside" id="JBf-8E-pGz"/>
                                                             </connections>
@@ -703,7 +703,7 @@
                                                         <constraint firstItem="grx-Ai-3ma" firstAttribute="centerY" secondItem="nqk-qO-Ty7" secondAttribute="centerY" id="2Zu-4Q-Jme"/>
                                                         <constraint firstItem="grx-Ai-3ma" firstAttribute="centerX" secondItem="nqk-qO-Ty7" secondAttribute="centerX" id="6sB-ez-ulV"/>
                                                         <constraint firstItem="yX9-vS-seK" firstAttribute="leading" secondItem="nqk-qO-Ty7" secondAttribute="leading" id="Nv7-tq-yF2"/>
-                                                        <constraint firstAttribute="height" constant="40" id="QIT-Hh-eUy"/>
+                                                        <constraint firstAttribute="height" id="QIT-Hh-eUy"/>
                                                         <constraint firstAttribute="bottom" secondItem="yX9-vS-seK" secondAttribute="bottom" id="VJw-x7-rU0"/>
                                                         <constraint firstItem="yX9-vS-seK" firstAttribute="top" secondItem="nqk-qO-Ty7" secondAttribute="top" id="jsg-yc-osg"/>
                                                         <constraint firstAttribute="trailing" secondItem="yX9-vS-seK" secondAttribute="trailing" id="u5G-xs-b4O"/>
@@ -716,7 +716,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rV6-XX-ztp">
-                                                    <rect key="frame" x="10" y="70" width="234" height="40"/>
+                                                    <rect key="frame" x="10" y="20" width="234" height="40"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UAW-fv-JMW">
                                                             <rect key="frame" x="15" y="5" width="204" height="30"/>
@@ -744,7 +744,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AcV-iT-tX4">
-                                                    <rect key="frame" x="10" y="120" width="234" height="40"/>
+                                                    <rect key="frame" x="10" y="70" width="234" height="40"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sTZ-s1-mjp">
                                                             <rect key="frame" x="15" y="5" width="204" height="30"/>
@@ -772,7 +772,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uJ7-PO-zBM">
-                                                    <rect key="frame" x="10" y="170" width="234" height="40"/>
+                                                    <rect key="frame" x="10" y="120" width="234" height="40"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RY7-Tr-E0P">
                                                             <rect key="frame" x="15" y="5" width="204" height="30"/>
@@ -800,7 +800,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zO7-4q-VFZ">
-                                                    <rect key="frame" x="10" y="270" width="234" height="40"/>
+                                                    <rect key="frame" x="10" y="220" width="234" height="40"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address Line 1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uet-Zi-8Ug">
                                                             <rect key="frame" x="15" y="5" width="204" height="30"/>
@@ -828,7 +828,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7b8-yA-lBx">
-                                                    <rect key="frame" x="10" y="320" width="234" height="40"/>
+                                                    <rect key="frame" x="10" y="270" width="234" height="40"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address Line 2" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HXw-dk-d0w">
                                                             <rect key="frame" x="15" y="5" width="204" height="30"/>
@@ -856,7 +856,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wp1-TM-tyD">
-                                                    <rect key="frame" x="10" y="370" width="234" height="40"/>
+                                                    <rect key="frame" x="10" y="320" width="234" height="40"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Address Line 3" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AZi-Gf-Ueh">
                                                             <rect key="frame" x="15" y="5" width="204" height="30"/>
@@ -884,7 +884,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vic-UV-VrE">
-                                                    <rect key="frame" x="10" y="420" width="234" height="40"/>
+                                                    <rect key="frame" x="10" y="370" width="234" height="40"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Post Code" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3XM-eZ-Qpn">
                                                             <rect key="frame" x="15" y="5" width="204" height="30"/>
@@ -912,7 +912,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S2A-c6-vmQ">
-                                                    <rect key="frame" x="10" y="470" width="234" height="40"/>
+                                                    <rect key="frame" x="10" y="420" width="234" height="40"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="DOB: dd/mm/yy*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sh6-Kp-Nk1">
                                                             <rect key="frame" x="15" y="5" width="204" height="30"/>
@@ -941,7 +941,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vdE-vv-j9g">
-                                                    <rect key="frame" x="10" y="220" width="234" height="40"/>
+                                                    <rect key="frame" x="10" y="170" width="234" height="40"/>
                                                     <subviews>
                                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l94-Wo-PZp">
                                                             <rect key="frame" x="15" y="5" width="204" height="30"/>
@@ -1000,7 +1000,7 @@
                                                 <constraint firstItem="zO7-4q-VFZ" firstAttribute="leading" secondItem="AcV-iT-tX4" secondAttribute="leading" id="n4r-w2-AZz"/>
                                                 <constraint firstItem="7b8-yA-lBx" firstAttribute="top" secondItem="zO7-4q-VFZ" secondAttribute="bottom" constant="10" id="qFr-1d-B6c"/>
                                                 <constraint firstItem="wp1-TM-tyD" firstAttribute="top" secondItem="7b8-yA-lBx" secondAttribute="bottom" constant="10" id="v1Z-A8-ZLw"/>
-                                                <constraint firstItem="nqk-qO-Ty7" firstAttribute="top" secondItem="MSt-bg-J78" secondAttribute="top" constant="20" id="zTe-qS-Bqn"/>
+                                                <constraint firstItem="nqk-qO-Ty7" firstAttribute="top" secondItem="MSt-bg-J78" secondAttribute="top" constant="10" id="zTe-qS-Bqn"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -1996,7 +1996,7 @@
                     <tabBarItem key="tabBarItem" title="" image="icon_home" id="1Nd-YC-pqc">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="R6Y-zS-HJV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="R6Y-zS-HJV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2159,7 +2159,7 @@
                     <tabBarItem key="tabBarItem" title="" image="icon_home" id="5gi-Dd-sAn">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MBE-5i-Bv8">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="MBE-5i-Bv8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2210,7 +2210,7 @@
                     <tabBarItem key="tabBarItem" title="" image="icon_home" id="enu-L3-e82">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KMQ-vn-yYC">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="KMQ-vn-yYC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2261,7 +2261,7 @@
                     <tabBarItem key="tabBarItem" title="" image="icon_home" id="6Pf-xf-eLd">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QJ0-uI-bAy">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="QJ0-uI-bAy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2312,7 +2312,7 @@
                     <tabBarItem key="tabBarItem" title="" image="icon_home" id="4ag-ih-06x">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="i6J-wc-Ckk">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="i6J-wc-Ckk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2363,7 +2363,7 @@
                     <tabBarItem key="tabBarItem" title="" image="icon_home" id="x3v-AE-RdT">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KD6-GF-wKb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="KD6-GF-wKb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2379,7 +2379,7 @@
                     <tabBarItem key="tabBarItem" title="" image="icon_home" id="Ql1-XZ-ruQ">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tf0-1d-lqd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="tf0-1d-lqd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2395,7 +2395,7 @@
                     <tabBarItem key="tabBarItem" title="" image="icon_home" id="Qhb-fM-aq4">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jQM-9k-xWF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jQM-9k-xWF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2411,7 +2411,7 @@
                     <tabBarItem key="tabBarItem" title="" image="icon_home" id="yml-G7-3ie">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="O1a-ph-oaU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="O1a-ph-oaU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2427,7 +2427,7 @@
                     <tabBarItem key="tabBarItem" title="" image="icon_home" id="O5G-X5-WmP">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bc5-Ud-5Cr">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="bc5-Ud-5Cr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
