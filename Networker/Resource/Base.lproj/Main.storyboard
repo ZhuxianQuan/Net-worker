@@ -250,7 +250,7 @@
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MHb-Ij-dgS">
-                                        <rect key="frame" x="33" y="8.3333333333333428" width="301" height="20"/>
+                                        <rect key="frame" x="33" y="8" width="301" height="20"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="NeueHelveticaBQ-Light" family="Neue Helvetica BQ" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES"/>
@@ -290,7 +290,7 @@
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QV5-Yp-VY9">
-                                        <rect key="frame" x="33" y="8.3333333333333428" width="301" height="19.999999999999972"/>
+                                        <rect key="frame" x="33" y="8" width="301" height="20"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="NeueHelveticaBQ-Light" family="Neue Helvetica BQ" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -2220,7 +2220,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dkg-23-Fwv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6230" y="7"/>
+            <point key="canvasLocation" x="6132" y="202"/>
         </scene>
         <!--Drawer Controller-->
         <scene sceneID="JCb-p5-XaH">
@@ -2465,6 +2465,6 @@
         <image name="splash-background" width="414" height="736"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sgF-ho-Uhe"/>
+        <segue reference="jHW-ra-BYb"/>
     </inferredMetricsTieBreakers>
 </document>
