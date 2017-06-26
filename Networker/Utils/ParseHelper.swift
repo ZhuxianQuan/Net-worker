@@ -13,12 +13,12 @@ import SwiftyJSON
 class ParseHelper {
     
     static func parseUser(_ rawData: JSON) -> UserModel {
-        NSLog("user data === \(rawData)")
         let user = UserModel()
         user.user_id = rawData[Constants.KEY_USER_ID].nonNullInt64Value
         user.user_firstname = rawData[Constants.KEY_USER_FIRSTNAME].nonNullStringValue
         user.user_lastname = rawData[Constants.KEY_USER_LASTNAME].nonNullStringValue
         user.user_email = rawData[Constants.KEY_USER_EMAIL].nonNullStringValue
+        user.user_password = rawData[Constants.KEY_USER_PASSWORD].nonNullStringValue
         user.user_address1 = rawData[Constants.KEY_USER_ADDRESS1].nonNullStringValue
         user.user_postcode = rawData[Constants.KEY_USER_POSTCODE].nonNullStringValue
         user.user_birthday = rawData[Constants.KEY_USER_BIRTHDAY].nonNullStringValue

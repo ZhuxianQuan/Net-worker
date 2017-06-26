@@ -42,19 +42,28 @@ class SplashViewController: BaseViewController {
             }
             self.loadingCompleted()
         })
+        
         ApiFunctions.getTagsArray(completion: {
             message, tags in
+            
+            self.loading += 1
             if message == Constants.PROCESS_SUCCESS {
                 definedTags = tags
             }
-            self.loading += 1
             self.loadingCompleted()
         })
         
         if UserDefaults.standard.value(forKey: Constants.KEY_USER_EMAIL) != nil {
             ApiFunctions.login(email: UserDefaults.standard.value(forKey: Constants.KEY_USER_EMAIL) as! String, password: UserDefaults.standard.value(forKey: Constants.KEY_USER_PASSWORD) as! String, completion: {
                 message in
-                self.gotoMainScene()
+                self.loading += 1
+                if message == Constants.PROCESS_SUCCESS{
+                    self.loadingCompleted()
+                }
+                else {
+                    self.hideLoadingView()
+                    self.showToastWithDuration(string: message, duration: 3.0)
+                }
             })
         }
         else {
@@ -66,13 +75,7 @@ class SplashViewController: BaseViewController {
     func rotateLogoImage(){
         
         logoImage.transform = CGAffineTransform(rotationAngle: angle)
-        if angle >= 31.4159265359 {
-            timer.invalidate()
-            gotoLoginPage()
-        }
-        else{
-            angle += 0.1
-        }
+        angle += 0.1
     }
     
     func gotoLoginPage(){
@@ -83,9 +86,17 @@ class SplashViewController: BaseViewController {
     }
     
     func loadingCompleted(){
-        //hideLoadingView()
-        if loading == maxLoading {
-            //gotoLoginPage()
+        if loading == maxLoading{
+            timer.invalidate()
+            self.hideLoadingView()
+            if loading == maxLoading{
+                if currentUser.user_id > 0{
+                    self.gotoMainScene()
+                }
+                else {
+                    self.gotoLoginPage()
+                }
+            }
         }
     }
 

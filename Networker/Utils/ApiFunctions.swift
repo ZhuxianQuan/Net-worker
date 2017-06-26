@@ -13,9 +13,9 @@ import SwiftyJSON
 class ApiFunctions{
     
     
-    //static let SERVER_BASE_URL          = "http://35.166.129.141"
+    static let SERVER_BASE_URL          = "http://35.166.129.141"
     
-    static let SERVER_BASE_URL          = "http://192.168.1.120:2000/Networker"
+    //static let SERVER_BASE_URL          = "http://192.168.1.89/Backend/Networker"
     static let SERVER_URL               = SERVER_BASE_URL + "/index.php/Api/"
     
     static let REQ_GET_ALLCATEGORY      = SERVER_URL + "getAllCategory"
@@ -24,6 +24,7 @@ class ApiFunctions{
     static let REQ_UPDATEUSER           = SERVER_URL + "updateUser"
     static let REQ_ADDUSERSKILL         = SERVER_URL + "addUserSkill"
     static let REQ_LOGIN                = SERVER_URL + "login"
+    static let REQ_UPDATEPROFILEIMAGE   = SERVER_URL + "updateProfileImage"
     
     
     static func login(email: String, password: String, completion: @escaping (String) -> () ){
@@ -37,7 +38,6 @@ class ApiFunctions{
             else
             {
                 let json = JSON(response.result.value!)
-                NSLog("\(response.result.value!)")
                 let message = json[Constants.RES_MESSAGE].stringValue
                 if message == Constants.PROCESS_SUCCESS {
                     currentUser = ParseHelper.parseUser(json[Constants.RES_USER_INFO])
@@ -50,24 +50,23 @@ class ApiFunctions{
         }
     }
     
-    static func register(_ user: UserModel, completion: @escaping (String, UserModel?) -> ()){
+    static func register(_ user: UserModel, completion: @escaping (String) -> ()){
         let userObject = user.getUserObject()
         Alamofire.request(REQ_REGISTER, method: .post, parameters: userObject).responseJSON { response in
             if response.result.isFailure{
-                completion(Constants.CHECK_NETWORK_ERROR, nil)
+                completion(Constants.CHECK_NETWORK_ERROR)
             }
             else
             {
                 let json = JSON(response.result.value!)
-                NSLog("\(response.result.value!)")
                 let message = json[Constants.RES_MESSAGE].stringValue
                 if message == Constants.PROCESS_SUCCESS {
                     user.user_id = json[Constants.KEY_USER_ID].nonNullInt64Value
                     currentUser = user
-                    completion(Constants.PROCESS_SUCCESS, user)
+                    completion(Constants.PROCESS_SUCCESS)
                 }
                 else {
-                    completion(message, nil)
+                    completion(message)
                 }
             }
         }
@@ -93,7 +92,6 @@ class ApiFunctions{
             else
             {
                 let json = JSON(response.result.value!)
-                NSLog("\(response.result.value!)")
                 let categories = json[Constants.KEY_CATEGORYS].arrayValue
                 if categories.count > 0 {
                     
@@ -180,12 +178,11 @@ class ApiFunctions{
                 switch encodingResult {
                 case .success(let upload, _, _):
                     upload.responseJSON { response in
-                        NSLog("\(String(describing: response.result.value))")
+                        
                         switch response.result {
                             
                         case .success(let result):
                             let json = JSON(response.result.value!)
-                            NSLog("\(result)")
                             let message = json[Constants.RES_MESSAGE].stringValue
                             if message == Constants.PROCESS_SUCCESS {
                                 let imageurl = json[Constants.KEY_IMAGEURL].stringValue
@@ -203,7 +200,6 @@ class ApiFunctions{
                     }
                     
                 case .failure(let encodingError):
-                    NSLog("\(encodingError)")
                     completion(Constants.CHECK_ENCODING_ERROR, "")
                 }
         })
@@ -244,7 +240,6 @@ class ApiFunctions{
             else
             {
                 let json = JSON(response.result.value!)
-                NSLog("\(response.result.value!)")
                 let message = json[Constants.RES_MESSAGE].stringValue
                 if message == Constants.PROCESS_SUCCESS {
                     completion(Constants.PROCESS_SUCCESS)
@@ -254,6 +249,28 @@ class ApiFunctions{
                 }
             }
         }
+    }
+    
+    static func updateProfileImage(userid: String, imageurl: String, completion: @escaping(String) -> ()) {
+        let params = [Constants.KEY_USER_ID: userid,
+                      Constants.KEY_USER_PROFILEIMAGEURL: imageurl]
+        Alamofire.request(REQ_UPDATEPROFILEIMAGE, method: .post, parameters: params).responseJSON { response in
+            if response.result.isFailure{
+                completion(Constants.CHECK_NETWORK_ERROR)
+            }
+            else
+            {
+                let json = JSON(response.result.value!)
+                let message = json[Constants.RES_MESSAGE].stringValue
+                if message == Constants.PROCESS_SUCCESS {
+                    completion(Constants.PROCESS_SUCCESS)
+                }
+                else {
+                    completion(message)
+                }
+            }
+        }
+        
     }
     
     

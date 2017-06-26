@@ -70,24 +70,22 @@ class RegisterViewController: BaseViewController {
         if checkResult == Constants.PROCESS_SUCCESS {
             showLoadingView()
             ApiFunctions.register(user, completion: {
-                message, user in
+                message in
                 
                 if message == Constants.PROCESS_SUCCESS {
-                    currentUser = user!
+                    self.user = currentUser
                     if self.profileImage != nil {
                         let data = UIImageJPEGRepresentation(self.profileImage!, 0.5)
-                        ApiFunctions.uploadImage(name: "profile_\(user!.user_id)", imageData: data!, completion: {
+                        ApiFunctions.uploadImage(name: "profile_\(currentUser.user_id)", imageData: data!, completion: {
                             message, url in
                             if message == Constants.PROCESS_SUCCESS {
-                                user!.user_profileimageurl = url
-                                ApiFunctions.updateProfile(user!, completion: {
+                                self.user.user_profileimageurl = url
+                                ApiFunctions.updateProfileImage(userid: "\(self.user.user_id)", imageurl: url, completion: {
                                     message in
                                     self.hideLoadingView()
                                     if message == Constants.PROCESS_SUCCESS {
-                                        currentUser = user!
-                                        let skillVC = self.storyboard?.instantiateViewController(withIdentifier: "SkillsViewController") as! SkillsViewController
-                                        skillVC.user = user!
-                                        self.navigationController?.pushViewController(skillVC, animated: true)
+                                        currentUser.user_profileimageurl = url
+                                        self.gotoSkillVC()
                                     }
                                     else {
                                         self.showToastWithDuration(string: message, duration: 3.0)
@@ -102,9 +100,7 @@ class RegisterViewController: BaseViewController {
                     }
                     else {
                         self.hideLoadingView()
-                        let skillVC = self.storyboard?.instantiateViewController(withIdentifier: "SkillsViewController") as! SkillsViewController
-                        skillVC.user = user!
-                        self.navigationController?.pushViewController(skillVC, animated: true)
+                        self.gotoSkillVC()
                     }
                 }
                 else {
@@ -116,6 +112,13 @@ class RegisterViewController: BaseViewController {
         else  {
             self.showToastWithDuration(string: checkResult, duration: 3.0)
         }
+    }
+    
+    func gotoSkillVC() {
+        
+        let skillVC = self.storyboard?.instantiateViewController(withIdentifier: "SkillsViewController") as! SkillsViewController
+        skillVC.user = user
+        self.navigationController?.pushViewController(skillVC, animated: true)
     }
     
     @IBAction func uploadImageButtonTapped(_ sender: Any) {

@@ -65,8 +65,8 @@ class BaseViewController: UIViewController{
         self.view.hideToastActivity()
         self.view.isUserInteractionEnabled = true
     }
-
-    func gotoMainScene(){
+    
+    func gotoMainScene() {
         
         let window = UIApplication.shared.keyWindow
         let storyboard = getStoryboard(id: Constants.STORYBOARD_MAIN)

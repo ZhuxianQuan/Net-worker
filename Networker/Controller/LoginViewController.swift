@@ -93,7 +93,7 @@ class LoginViewController: BaseViewController {
                 user.user_email = Constants.VALUE_PASSWORD_FB
                 user.user_profileimageurl = (((resultData["picture"] as! [String: AnyObject])["data"] as! [String: AnyObject])["url"] as? String)!
                 ApiFunctions.register(user, completion: {
-                    message, loggedUser in
+                    message in
                     if message == Constants.PROCESS_SUCCESS {
                         self.gotoMainScene()
                     }
