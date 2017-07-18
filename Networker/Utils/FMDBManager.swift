@@ -155,11 +155,11 @@ class FMDBManager{
         }
         else if(type.hasPrefix("INT"))
         {
-            return Int(value.string(forColumn: key)) as AnyObject
+            return Int(value.string(forColumn: key)!) as AnyObject
         }
         else if(type.hasPrefix("DOUBLE"))
         {
-            return Double(value.string(forColumn: key)) as AnyObject
+            return Double(value.string(forColumn: key)!) as AnyObject
         }
         return "" as AnyObject
     }

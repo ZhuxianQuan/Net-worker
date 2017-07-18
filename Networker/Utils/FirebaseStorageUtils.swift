@@ -14,30 +14,8 @@ import SDWebImage
 
 class FirebaseStorageUtils
 {
-    static let storage = FIRStorage.storage()
+    static let storage = Storage.storage()
 
-    static func uploadImage(toURL: String,userid: String, image: UIImage, completion: @escaping (String, Bool) -> ())
-    {
-        // Get a reference to the storage service, using the default Firebase App
-
-        // Create a storage reference from our storage service
-
-        let fileURL = toURL + "/" + userid  + "\(getGlobalTime())" + ".jpg"
-        let storageRef = storage.reference(forURL: fileURL)
-        let data = UIImageJPEGRepresentation(image, 0.5)
-        _ = storageRef.put(data!, metadata: nil){
-            metadata, error in
-            if(error != nil)
-            {
-                completion("fail" , false)
-            }
-            else{
-                //let downloadURL = metadata?.downloadURL()?.absoluteString
-                completion(fileURL, true)
-                
-            }
-        }
-    }
 
     static func uploadVideo(toURL: String,userid: String, url: URL, completion: @escaping (String, Bool) -> ())
     {
@@ -52,7 +30,7 @@ class FirebaseStorageUtils
         
         // Create a reference to the file you want to upload
         // Upload the file to the path "images/rivers.jpg"
-        _ = storageRef.putFile(localFile, metadata: nil) { metadata, error in
+        _ = storageRef.putFile(from: localFile, metadata: nil) { metadata, error in
             if error != nil {
                 // Uh-oh, an error occurred!
                 completion("", false)
@@ -141,7 +119,7 @@ extension UIImageView{
             self.sd_setImage(with: URL(string : storageRefString), placeholderImage: placeholderImage)
         }
         else{
-            let reference : FIRStorageReference = FIRStorage.storage().reference(forURL: storageRefString)
+            let reference : StorageReference = Storage.storage().reference(forURL: storageRefString)
             self.sd_setImage(with: reference, placeholderImage: placeholderImage)
         }
         

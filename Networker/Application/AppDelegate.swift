@@ -35,18 +35,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         
         
         
-        //notication module
+        
+        //set firebase messaging
+        FirebaseApp.configure()
+        
+        // [START set_messaging_delegate]
+        Messaging.messaging().delegate = self
+        // [END set_messaging_delegate]
+        // Register for remote notifications. This shows a permission dialog on first run, to
+        // show the dialog at a more appropriate time move this registration accordingly.
+        // [START register_for_notifications]
         if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+            
             let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
             UNUserNotificationCenter.current().requestAuthorization(
                 options: authOptions,
                 completionHandler: {_, _ in })
-            
-            // For iOS 10 display notification (sent via APNS)
-            UNUserNotificationCenter.current().delegate = self
-            // For iOS 10 data message (sent via FCM)
-            FIRMessaging.messaging().remoteMessageDelegate = self
-            
         } else {
             let settings: UIUserNotificationSettings =
                 UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
@@ -54,16 +60,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         }
         
         application.registerForRemoteNotifications()
-        
-        
-        
-        FIRApp.configure()
-        
-        // Add observer for InstanceID token refresh callback.
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.tokenRefreshNotification),
-                                               name: NSNotification.Name.firInstanceIDTokenRefresh,
-                                               object: nil)
         
         //set base url of firebase
         setBaseUrl()
@@ -131,11 +127,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         
     }
     
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        FIRMessaging.messaging().disconnect()
-        print("Disconnected from FCM.")
-    }
-    
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         
@@ -144,7 +135,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
-        connectToFcm()
         FBSDKAppEvents.activateApp()
     }
     
@@ -156,37 +146,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         
     }
     
+    
     //when token refreshed, user register it.
     func tokenRefreshNotification(_ notification: Notification) {
-        if let refreshedToken = FIRInstanceID.instanceID().token() {
+        if let refreshedToken = InstanceID.instanceID().token() {
             print("InstanceID token: \(refreshedToken)")
-            /*UserDefaults.standard.setValue("\(refreshedToken)", forKey: Constants.DEVICE_TOKEN)
             
-            if currentUser.user_id.characters.count > 0{
-                
-                firebaseUserAuthInstance.createUserReference(userid: currentUser.user_id)
-                firebaseUserAuthInstance.setUserDeviceStatus(userid: currentUser.user_id, token: "\(refreshedToken)", status: Constants.USER_DEVICE_ONLINE)
-            }*/
-            
+            //UserDefault.setString(value: refreshedToken, key: "token")
         }
         
         // Connect to FCM since connection may have failed when attempted before having a token.
-        connectToFcm()
+        //connectToFcm()
     }
     
     
-    
-    func connectToFcm() {
-        
-        FIRMessaging.messaging().connect { (error) in
-            if (error != nil) {
-                print("Unable to connect with FCM. \(error)")
-            } else {
-                print("Connected to FCM.")
-                
-            }
-        }
-    }
     
     // [START receive_message]
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
@@ -199,26 +172,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         //if (application.app)
         print("Message ID: \(userInfo["gcm.message_id"]!)")
         // Print full message.{
-        
-        print("%@", userInfo)
+        NSLog("\(userInfo)")
+        guard let rvc = self.window?.rootViewController else{
+            return
+        }
+        let alertObject = userInfo["aps"] as! [String: AnyObject]
+        let alertString = alertObject["alert"] as! String
+        /*
+         if let vc = getCurrentViewController(vc: rvc) {
+         let alertView = AlertView()
+         alertView.message = alertString
+         alertView.showAlertView()
+         vc.view.addSubview(alertView)
+         
+         }*/
     }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
+        // If you are receiving a notification message while your app is in the background,
+        // this callback will not be fired till the user taps on the notification launching the application.
+        // TODO: Handle data of notification
+        // With swizzling disabled you must let Messaging know about the message, for Analytics
+        // Messaging.messaging().appDidReceiveMessage(userInfo)
+        // Print message ID.
+        print("Message ID: \(userInfo["gcm.message_id"]!)")
+        // Print full message.{
+        NSLog("\(userInfo)")
+        guard let rvc = self.window?.rootViewController else{
+            return
+        }
+        let alertObject = userInfo["aps"] as! [String: AnyObject]
+        let alertString = alertObject["alert"] as! String
+        
+        // Print full message.
+    }
+    
     // [END receive_message]
     
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Unable to register for remote notifications: \(error.localizedDescription)")
+    }
     
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
-        
         print("APNs token retrieved: \(deviceToken)")
-        FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.unknown)
-        
-        
-        if(currentUser.user_id > 0)
-        {
-            //firebaseUserAuthInstance.setUserDeviceStatus(userid: currentUser.user_id, token: "\(deviceToken)", status: Constants.USER_DEVICE_ONLINE)
-        }
-        
+        Messaging.messaging().apnsToken = deviceToken
     }
+    
     
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -230,22 +232,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         
         return true
     }
-    /*
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-                
-        /*if LISDKCallbackHandler.shouldHandle(url) {
-            return LISDKCallbackHandler.application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
-        }*/
-        return true
-    }*/
     
     
 }
 
 
+
 /// [START ios_10_message_handling]
 @available(iOS 10, *)
-
 extension AppDelegate : UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
@@ -254,19 +248,45 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         print("Message ID: \(userInfo["gcm.message_id"]!)")
         // Print full message.
         print("%@", userInfo)
-    }
-    
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        //NSLog("==============Succeeded=================")
-    }
-}
-extension AppDelegate : FIRMessagingDelegate {
-    // Receive data message on iOS 10 devices.
-    func applicationReceivedRemoteMessage(_ remoteMessage: FIRMessagingRemoteMessage) {
-        //print("%@", remoteMessage.appData)
+        guard let rvc = self.window?.rootViewController else{
+            return
+        }
+        let alertObject = userInfo["aps"] as! [String: AnyObject]
+        let alertString = alertObject["alert"] as! String
+        /*
+         if let vc = getCurrentViewController(vc: rvc) {
+         let alertView = AlertView()
+         alertView.message = alertString
+         alertView.showAlertView()
+         vc.view.addSubview(alertView)
+         
+         }*/
         
     }
     
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        NSLog("==============Succeeded=================")
+    }
+}
+
+
+extension AppDelegate : MessagingDelegate {
+    
+    func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
+        print("Firebase registration token: \(fcmToken)")
+    }
+    
+    // [START refresh_token]
+    
+    
+    // [END refresh_token]
+    // [START ios_10_data_message]
+    // Receive data messages on iOS 10+ directly from FCM (bypassing APNs) when the app is in the foreground.
+    // To enable direct data messages, you can set Messaging.messaging().shouldEstablishDirectChannel to true.
+    func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
+        print("Received data message: \(remoteMessage.appData)")
+    }
+    // [END ios_10_data_message]
     
 }
 // [END ios_10_message_handling]
