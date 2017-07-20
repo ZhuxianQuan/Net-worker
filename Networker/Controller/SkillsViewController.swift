@@ -8,6 +8,9 @@
 
 import UIKit
 import M13Checkbox
+import Stripe
+
+
 class SkillsViewController: BaseViewController {
     
     
@@ -15,6 +18,7 @@ class SkillsViewController: BaseViewController {
 
     @IBOutlet weak var agreementCheck: M13Checkbox!
     
+    @IBOutlet weak var cardView: STPPaymentCardTextField!
     
     @IBOutlet weak var availableSwitch: UISwitch!
     @IBOutlet weak var continueButton: UIButton!
@@ -55,9 +59,6 @@ class SkillsViewController: BaseViewController {
         navigationController?.pushViewController(addSkillVC, animated: true)
     }
     
-    @IBAction func connectPaypalButtonTapped(_ sender: Any) {
-        self.view.endEditing(true)
-    }
     
     @IBAction func skillsTableViewTapped(_ sender: Any) {
         self.view.endEditing(true)
@@ -111,12 +112,13 @@ extension SkillsViewController : UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
-        if editingStyle == .delete {
-            
+        if indexPath.section == 1 {
+            if editingStyle == .delete {
+                let selectedSkill = user.user_skill_array[indexPath.row]
+                user.user_skills = user.user_skills.replacingOccurrences(of: selectedSkill.skill_full_string, with: "")
+                tableView.reloadData()
+            }
         }
-    }
-
-    
+    }    
     
 }

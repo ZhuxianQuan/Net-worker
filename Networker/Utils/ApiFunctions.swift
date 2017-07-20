@@ -12,9 +12,9 @@ import SwiftyJSON
 
 class ApiFunctions{    
     
-    //static let SERVER_BASE_URL          = "http://35.166.129.141"
+    static let SERVER_BASE_URL          = "http://35.166.129.141"
     
-    static let SERVER_BASE_URL          = "http://192.168.1.82:2000/Networker"
+    //static let SERVER_BASE_URL          = "http://192.168.1.82:2000/Networker"
     static let SERVER_URL               = SERVER_BASE_URL + "/index.php/Api/"
     
     static let REQ_GET_ALLSKILLS        = SERVER_URL + "getSkills"
