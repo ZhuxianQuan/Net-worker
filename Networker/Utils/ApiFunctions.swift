@@ -10,21 +10,21 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
-class ApiFunctions{
+class ApiFunctions{    
     
+    //static let SERVER_BASE_URL          = "http://35.166.129.141"
     
-    static let SERVER_BASE_URL          = "http://35.166.129.141"
-    
-    //static let SERVER_BASE_URL          = "http://192.168.1.89/Backend/Networker"
+    static let SERVER_BASE_URL          = "http://192.168.1.82:2000/Networker"
     static let SERVER_URL               = SERVER_BASE_URL + "/index.php/Api/"
     
-    static let REQ_GET_ALLCATEGORY      = SERVER_URL + "getAllCategory"
+    static let REQ_GET_ALLSKILLS        = SERVER_URL + "getSkills"
     static let REQ_REGISTER             = SERVER_URL + "registerUser"
     static let REQ_UPLOADIMAGE          = SERVER_URL + "uploadImage"
     static let REQ_UPDATEUSER           = SERVER_URL + "updateUser"
     static let REQ_ADDUSERSKILL         = SERVER_URL + "addUserSkill"
     static let REQ_LOGIN                = SERVER_URL + "login"
     static let REQ_UPDATEPROFILEIMAGE   = SERVER_URL + "updateProfileImage"
+    static let REQ_GETSKILLVERSION      = SERVER_URL + "getSkillVersion"
     
     
     static func login(email: String, password: String, completion: @escaping (String) -> () ){
@@ -84,52 +84,97 @@ class ApiFunctions{
         
     }
     
-    static func getSkillsArray(completion : @escaping (String, [SkillModel]) -> ()){
-        Alamofire.request(REQ_GET_ALLCATEGORY, method: .post, parameters: nil).responseJSON { response in
+    static func getSkillsArray(completion : @escaping (String) -> ()){
+        
+        getSkillVersion(completion: {
+            message, version in
+            if message == Constants.PROCESS_SUCCESS {
+                if let skill_version = UserDefaults.standard.value(forKey: "skill_version"){
+                    if (skill_version as! Int) < version {
+                        
+                        getSkills(version, completion: {
+                            message in
+                            completion(message)
+                        })
+                    }
+                    else {
+                        completion(Constants.PROCESS_SUCCESS)
+                    }
+                    
+                }
+                else {
+                    getSkills(version, completion: {
+                        message in
+                        completion(message)
+                    })
+                }
+                
+                
+                
+            }
+            else {
+                completion(message)
+            }
+        })
+        
+        
+        
+    }
+    
+    static func getSkills(_ version: Int, completion: @escaping (String) -> ()) {
+        
+        Alamofire.request(REQ_GET_ALLSKILLS, method: .post, parameters: nil).responseJSON { response in
             if response.result.isFailure{
-                completion(Constants.CHECK_NETWORK_ERROR, [])
+                completion(Constants.CHECK_NETWORK_ERROR)
             }
             else
             {
-                let json = JSON(response.result.value!)
-                let categories = json[Constants.KEY_CATEGORYS].arrayValue
-                if categories.count > 0 {
+                var json = JSON(response.result.value!)
+                let message = json["message"].nonNullStringValue
+                if message == Constants.PROCESS_SUCCESS {
+                    json = json["result"]
+                    fmdbManager.emptyTables()
+                    fmdbManager.createTables()
+                    let localDataSet = FMDBManagerSetData()
+                    let categoryObject = json["category"].arrayValue
+                    localDataSet.saveCategories(categoryObject)
+                    let skillObject = json["skill"].arrayValue
+                    localDataSet.saveSkills(skillObject)
+                    let skillTagObject = json["skill_tag"].arrayValue
+                    localDataSet.saveSkill_Tags(skillTagObject)
+                    let tagObject = json["tag"].arrayValue
+                    localDataSet.saveTags(tagObject)
                     
-                    var skills : [SkillModel] = []
-                    for category in categories{
-                    let skillsData = category[Constants.KEY_CATEGORY_SKILLS].arrayValue
-                        for skillData in skillsData{
-                            skills.append(ParseHelper.parseSkill(skillData))
-                        }
-
-                    }
-                    completion(Constants.PROCESS_SUCCESS, skills)
+                    UserDefaults.standard.set(version, forKey: "skill_version")
+                    completion(Constants.PROCESS_SUCCESS)
                 }
-                else{
-                    completion("No category", [])
+                else {
+                    completion(message)
                 }
+                
             }
         }
-        
-        
     }
     
-    static func getTagsArray(completion : @escaping (String, [TagModel]) -> ()){
-        let tagsData = JSON(TestJson.getTagsJson()).arrayValue
-        var tags : [TagModel] = []
-        for tagData in tagsData{
-            tags.append(ParseHelper.parseTag(tagData))
+    static func getSkillVersion(completion: @escaping (String, Int) -> ()){
+        Alamofire.request(REQ_GETSKILLVERSION).responseJSON { response in
+            if response.result.isFailure{
+                completion(Constants.CHECK_NETWORK_ERROR, 0)
+            }
+            else
+            {
+                var json = JSON(response.result.value!)
+                let message = json["message"].nonNullStringValue
+                if message == Constants.PROCESS_SUCCESS {
+                    let skill_version = json["result"].nonNullIntValue
+                    completion(Constants.PROCESS_SUCCESS, skill_version)
+                }
+                else {
+                    completion(message, 0)
+                }
+                
+            }
         }
-        completion(Constants.PROCESS_SUCCESS, tags)
-    }
-    
-    static func getHomeData(completion : @escaping (String, [UserModel]) -> ()){
-        let usersData = JSON(TestJson.nearMeUsers()).arrayValue
-        var users: [UserModel] = []
-        for userData in usersData {
-            users.append(ParseHelper.parseUser(userData))
-        }
-        completion(Constants.PROCESS_SUCCESS, users)
     }
     
     static func getNameMatchedUsers(keyword: String, from preDefinedUsers: [UserModel], completion : @escaping (String, [UserModel]) -> ()){
@@ -148,23 +193,9 @@ class ApiFunctions{
         completion(Constants.PROCESS_SUCCESS, users)
     }
     
-    static func getSkillMatchedUsers(skillId: Int64, completion: @escaping(String, [UserModel]) -> ()){
+    static func getSkillMatchedUsers(skillId: Int, completion: @escaping(String, [UserModel]) -> ()){
         var result : [UserModel] = []
-        getHomeData(completion : {
-            message, users in
-            if message == Constants.PROCESS_SUCCESS {
-                for user in users {
-                    for skill in user.user_skills{
-                        if skill.skill_id == skillId
-                        {
-                            result.append(user)
-                            break
-                        }
-                    }
-                    completion(Constants.PROCESS_SUCCESS, result)
-                }
-            }
-        })
+        
     }
     
     static func uploadImage(name: String, imageData: Data, completion: @escaping (String, String) -> ()) {

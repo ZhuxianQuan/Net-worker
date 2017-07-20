@@ -26,7 +26,7 @@ class MatchedUserTableViewCell: UITableViewCell {
     
     func setCell(_ user: UserModel, _ skillIndex: Int) {
         //userDataLabel.text = "\(user.user_firstname) : \(getDistance)m"
-        userDataLabel.text = String(format: "%@ : %.2lfm dist, £%.1lf/hr", user.user_firstname, CommonUtils.getDistanceFromMe(user), user.user_skills[skillIndex].skill_price)//"\(user.user_firstname) : %"
+        userDataLabel.text = String(format: "%@ : %.2lfm dist, £%.1lf/hr", user.user_firstname, CommonUtils.getDistanceFromMe(user), "$30")//"\(user.user_firstname) : %"
     }
     
 

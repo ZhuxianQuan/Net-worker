@@ -11,14 +11,10 @@ import M13Checkbox
 class SkillsViewController: BaseViewController {
     
     
-    @IBOutlet weak var skillsViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var skillsTableView: UITableView!
 
     @IBOutlet weak var agreementCheck: M13Checkbox!
     
-    @IBOutlet weak var paymentName: UITextField!
-    @IBOutlet weak var paymentAccountNo: UITextField!
-    @IBOutlet weak var paymentSortCode: UITextField!
     
     @IBOutlet weak var availableSwitch: UISwitch!
     @IBOutlet weak var continueButton: UIButton!
@@ -45,17 +41,6 @@ class SkillsViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     
     @IBAction func backButtonTapped(_ sender: Any) {
         _ = self.navigationController?.popViewController(animated: true)
@@ -66,7 +51,7 @@ class SkillsViewController: BaseViewController {
         self.view.endEditing(true)
         let addSkillVC = storyboard?.instantiateViewController(withIdentifier: "AddSkillViewController") as! AddSkillViewController
         addSkillVC.fromWhere = addSkillVC.FROM_SKILLSVC
-        addSkillVC.preDefinedSkills = FMDBManagerGetData.removeSkills(existing: user.user_skills, defined: definedSkills)
+        addSkillVC.preDefinedSkills = user.user_skill_array
         navigationController?.pushViewController(addSkillVC, animated: true)
     }
     
@@ -91,7 +76,7 @@ extension SkillsViewController : UITableViewDelegate, UITableViewDataSource {
             return 1
         }
         else{
-            return user.user_skills.count
+            return user.user_skill_array.count
         }
     }
     
@@ -109,7 +94,7 @@ extension SkillsViewController : UITableViewDelegate, UITableViewDataSource {
             let index = indexPath.row
             cell.contentView.backgroundColor = UIColor.lightGray
             cell.setCellTextColor(UIColor.darkText)
-            cell.setCellText(user.user_skills[index])
+            cell.setCellText(user.user_skill_array[index])
         }
         
         return cell
@@ -123,6 +108,15 @@ extension SkillsViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
+    
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            
+        }
+    }
+
     
     
 }

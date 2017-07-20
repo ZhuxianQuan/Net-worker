@@ -63,15 +63,14 @@ extension UserProfileViewController : UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return user.user_skills.count
+        return user.user_skill_array.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SkillsTableViewCell")
         let index = indexPath.row
-        cell?.textLabel?.text = "#" + user.user_skills[index].skill_title
-        cell?.textLabel?.font = UIFont.systemFont(ofSize: 11)
-        
+        cell?.textLabel?.text = "#" + user.user_skill_array[index].skill_title
+        cell?.textLabel?.font = UIFont.systemFont(ofSize: 11)        
         return cell!
     }
     

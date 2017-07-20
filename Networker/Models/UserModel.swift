@@ -21,19 +21,40 @@ class UserModel {
     var user_address3 = ""
     var user_postcode = ""
     var user_birthday = ""
-    var user_skills : [SkillModel] = []
+    var user_skills = ""
+    var user_skill_array : [SkillModel] {
+        get {
+            var skills = [SkillModel]()
+            if user_skills.characters.count == 0 {
+                return []
+            }
+            else {
+                let skillStrings = user_skills.components(separatedBy: ",")
+                for skillString in skillStrings {
+                    if skillString.characters.count > 0 {
+                        let skill = getSkillFrom(skillString)
+                        if skill != nil {
+                            skills.append(skill!)
+                        }
+                    }
+                }
+            }
+            return skills
+        }
+        
+    }
     var user_available = Constants.VALUE_USER_AVAILABLE
     var user_profileimageurl = ""
     var user_latitude = 0.0
     var user_longitude = 0.0
     var user_rangedistance = 5.0
     var user_ratings : [RatingModel] = []
-    var user_aboutme = "I am a tester"
+    var user_aboutme = ""
 //    var user_payment
 
     
     func getUserObject() -> [String: AnyObject]{
-        var result : [String: AnyObject] = [:]
+        var result : [String : AnyObject] = [:]
         result[Constants.KEY_USER_ID] = user_id as AnyObject
         result[Constants.KEY_USER_FIRSTNAME] = user_firstname as AnyObject
         result[Constants.KEY_USER_LASTNAME] = user_lastname as AnyObject
@@ -43,16 +64,31 @@ class UserModel {
         result[Constants.KEY_USER_ADDRESS1] = user_address1 as AnyObject
         result[Constants.KEY_USER_ADDRESS2] = user_address2 as AnyObject
         result[Constants.KEY_USER_ADDRESS3] = user_address3 as AnyObject
-        result[Constants.KEY_USER_SKILLS] = FMDBManagerGetData.getSkillsString(skills: user_skills) as AnyObject
-        //result[Constants.KEY_USER_AVAILABLE] = user_available as AnyObject
+        result[Constants.KEY_USER_SKILLS] = user_skills as AnyObject
+        result[Constants.KEY_USER_AVAILABLE] = user_available as AnyObject
         result[Constants.KEY_USER_PROFILEIMAGEURL] = user_profileimageurl as AnyObject
         result[Constants.KEY_USER_LATITUDE] = user_latitude as AnyObject
         result[Constants.KEY_USER_LONGITUDE] = user_longitude as AnyObject
         result[Constants.KEY_USER_RANGEDISTANCE] = user_rangedistance as AnyObject
         result[Constants.KEY_USER_POSTCODE] = user_postcode as AnyObject
         
+        result[Constants.KEY_USER_AVAILABLE] = user_available as AnyObject
+        
         //result[Constants.KEY_USER_RATINGS]
         return result
+    }
+    
+    internal func getSkillFrom(_ skillString: String) -> SkillModel?{
+        let skillObjects = skillString.components(separatedBy: ":")
+        let skill = FMDBManagerGetData().getSkill(skillObjects[1])
+        if skill != nil {
+            skill?.skill_price = Double(skillObjects[3])!
+            skill?.skill_qualifications = skillObjects[5]
+            return skill
+        }
+        else {
+            return nil
+        }
     }
     
     

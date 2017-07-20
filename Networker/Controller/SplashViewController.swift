@@ -18,6 +18,9 @@ class SplashViewController: BaseViewController {
     
     var maxLoading = 3
     var loading = 0
+    var locationChecked = false
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,24 +37,6 @@ class SplashViewController: BaseViewController {
     
     func updateLocalData() {
         //showLoadingView()
-        ApiFunctions.getSkillsArray(completion: {
-            message, skills in
-            self.loading += 1
-            if message == Constants.PROCESS_SUCCESS {
-                definedSkills = skills
-            }
-            self.loadingCompleted()
-        })
-        
-        ApiFunctions.getTagsArray(completion: {
-            message, tags in
-            
-            self.loading += 1
-            if message == Constants.PROCESS_SUCCESS {
-                definedTags = tags
-            }
-            self.loadingCompleted()
-        })
         
         if UserDefaults.standard.value(forKey: Constants.KEY_USER_EMAIL) != nil {
             ApiFunctions.login(email: UserDefaults.standard.value(forKey: Constants.KEY_USER_EMAIL) as! String, password: UserDefaults.standard.value(forKey: Constants.KEY_USER_PASSWORD) as! String, completion: {
@@ -69,6 +54,14 @@ class SplashViewController: BaseViewController {
         else {
             self.loading += 1
         }
+        
+        ApiFunctions.getSkillsArray(completion: {
+            message in
+            self.loading += 1
+            
+            self.loadingCompleted()
+        })
+        
 
     }
     
@@ -76,6 +69,11 @@ class SplashViewController: BaseViewController {
         
         logoImage.transform = CGAffineTransform(rotationAngle: angle)
         angle += 0.1
+        if !(currentLatitude == 0.0 && currentLongitude == 0.0) && !locationChecked {
+            self.loading += 1
+            locationChecked = true
+            loadingCompleted()
+        }
     }
     
     func gotoLoginPage(){

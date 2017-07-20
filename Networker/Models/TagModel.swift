@@ -17,14 +17,7 @@ class TagModel: UIView {
         // Drawing code
     }
     */
-    var tag_id : Int64 = 0
+    var tag_id : Int = 0
     var tag_string = ""
     
-    static let localTableName = ""
-    static let localTableString = [
-        Constants.KEY_TAG_ID : "TEXT",
-        Constants.KEY_TAG_STRING : "TEXT"
-    ]
-    
-
 }

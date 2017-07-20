@@ -25,6 +25,7 @@ class RegisterViewController: BaseViewController {
     @IBOutlet weak var postcode: UITextField!
     @IBOutlet weak var birthday: UITextField!
     
+    @IBOutlet weak var aboutMe: UITextView!
     
     
     @IBOutlet weak var imvProfile: UIImageView!
@@ -118,7 +119,7 @@ class RegisterViewController: BaseViewController {
         
         let skillVC = self.storyboard?.instantiateViewController(withIdentifier: "SkillsViewController") as! SkillsViewController
         skillVC.user = user
-        self.navigationController?.pushViewController(skillVC, animated: true)
+        self.navigationController?.viewControllers = [skillVC]
     }
     
     @IBAction func uploadImageButtonTapped(_ sender: Any) {
@@ -169,7 +170,7 @@ class RegisterViewController: BaseViewController {
         user.user_address3 = address3.text!
         user.user_postcode = postcode.text!
         user.user_birthday = birthday.text!
-        
+        user.user_aboutme = aboutMe.text!
         if user.user_firstname.characters.count == 0 {
             return Constants.CHECK_FIRSTNAME_EMPTY
         }
@@ -194,10 +195,10 @@ class RegisterViewController: BaseViewController {
     @IBAction func textFieldEditing(_ sender: UITextField) {
         
         let datePickerView:UIDatePicker = UIDatePicker()
-        
         datePickerView.datePickerMode = UIDatePickerMode.date
         
         sender.inputView = datePickerView
+        
         
         datePickerView.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
         
@@ -207,7 +208,7 @@ class RegisterViewController: BaseViewController {
     func datePickerValueChanged(_ sender: UIDatePicker) {
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
+        dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .none
         birthday.text = dateFormatter.string(from: sender.date)
     }

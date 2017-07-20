@@ -24,17 +24,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
     var window: UIWindow?
     
     let locationManager = CLLocationManager()
-    
+    var locationTimer: Timer!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         //facebook login module
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-        
-        
-        
-        
         
         //set firebase messaging
         FirebaseApp.configure()
@@ -69,10 +65,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
-        locationManager.requestLocation()
         updateTimer()
-        locationManager.requestLocation()
-        
+        locationManager.startUpdatingLocation()
         
         UserDefaults.standard.set(25, forKey: "distance")
         
@@ -97,12 +91,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
     
     func updateTimer(){
         
-        Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(updateLocation), userInfo: nil, repeats: true)
+        locationTimer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(updateLocation), userInfo: nil, repeats: true)
     }
     
     func updateLocation()
     {
-        locationManager.requestLocation()
+        if currentUser.user_available == Constants.VALUE_USER_AVAILABLE {
+            
+            
+            locationManager.startUpdatingLocation()
+        }
+        else {
+            if locationTimer.isValid {
+                locationTimer.invalidate()
+            }
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -114,6 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         if(currentUser.user_id > 0){
             currentUser.user_latitude = currentLatitude
             currentUser.user_longitude = currentLongitude
+            
         }
         manager.stopUpdatingLocation()
     }

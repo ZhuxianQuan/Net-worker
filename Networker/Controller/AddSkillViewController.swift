@@ -13,13 +13,8 @@ class AddSkillViewController : BaseViewController {
     
     var status = 0
     @IBOutlet weak var skillNameText: UITextField!
-    @IBOutlet weak var skillTagText: UITextField!
-    
     @IBOutlet weak var pricePerHour: UITextField!
     @IBOutlet weak var skillQualificationsText: UITextField!
-    
-    let STATUS_SKILL_SELECT = 1
-    let STATUS_TAG_SELECT = 2
     
 
     @IBOutlet weak var tableViewTopConstraint: NSLayoutConstraint!
@@ -28,8 +23,6 @@ class AddSkillViewController : BaseViewController {
     
     var preDefinedSkills : [SkillModel] = []
     var skills : [SkillModel] = []
-    var tags : [TagModel] = []
-    var customTags : [TagModel] = []
     
     var fromWhere = 0
     
@@ -45,10 +38,23 @@ class AddSkillViewController : BaseViewController {
     }
     
     @IBAction func skillNameChanged(_ sender: UITextField) {
-        status = STATUS_SKILL_SELECT
         let keyString = sender.text!
         tableViewTopConstraint.constant = 2
-        skills = FMDBManagerGetData.getMatchedSkills(keyword: keyString, skills: preDefinedSkills)
+        let matchedSkills = FMDBManagerGetData().getSkills(keyString)
+        skills = []
+        for skill in matchedSkills {
+            var existing = false
+            for preSkill in preDefinedSkills {
+                if skill.skill_id == preSkill.skill_id {
+                    existing = true
+                    break
+                }
+            }
+            if !existing {
+                skills.append(skill)
+            }
+        }
+        
         if skills.count == 0{
             skillsTableView.isHidden = true
         }
@@ -58,21 +64,6 @@ class AddSkillViewController : BaseViewController {
         }
     }
     
-    @IBAction func skillTagChanged(_ sender: UITextField) {
-        status = STATUS_TAG_SELECT
-        let keyString = sender.text!
-        tableViewTopConstraint.constant = 44
-        tags = FMDBManagerGetData.getMatchedTags(keyword: keyString, tags: definedTags)
-        if tags.count == 0{
-            skillsTableView.isHidden = true
-        }
-        else{
-            skillsTableView.isHidden = false
-            skillsTableView.reloadData()
-        }
-        
-    }
-   
     @IBAction func backButtonTapped(_ sender: Any) {
         
         _ = navigationController?.popViewController(animated: true)
@@ -95,7 +86,7 @@ class AddSkillViewController : BaseViewController {
             let vcs = navigationController?.viewControllers
             let skillVC = vcs?[(vcs?.count)! - 2]
             if skillVC != nil{
-                (skillVC as! SkillsViewController).user.user_skills.append(selectedSkill)
+                (skillVC as! SkillsViewController).user.user_skills.append(selectedSkill.skill_full_string)
             }
         }
         _ = self.navigationController?.popViewController(animated: true)
@@ -116,36 +107,22 @@ extension AddSkillViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if status == STATUS_SKILL_SELECT {
-            return skills.count
-        }
-        else if status == STATUS_TAG_SELECT {
-            return tags.count
-        }
-        return 0
+        
+        return skills.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let index = indexPath.row
         let cell = tableView.dequeueReusableCell(withIdentifier: "SkillItemCell")
-        if status == STATUS_SKILL_SELECT {
-            if index == 0{
-                cell?.backgroundColor = UIColor.lightGray
-            }
-            else{
-                cell?.backgroundColor = UIColor.white
-            }
-            cell?.textLabel?.text = "#" + skills[index].skill_title
+        
+        if index == 0{
+            cell?.backgroundColor = UIColor.lightGray
         }
-        else if status == STATUS_TAG_SELECT{
-            if index == 0{
-                cell?.backgroundColor = UIColor.lightGray
-            }
-            else{
-                cell?.backgroundColor = UIColor.white
-            }
-            cell?.textLabel?.text = "#" + tags[index].tag_string
+        else{
+            cell?.backgroundColor = UIColor.white
         }
+        cell?.textLabel?.text = "#" + skills[index].skill_title
+        
         
         return cell!
     }
@@ -155,22 +132,14 @@ extension AddSkillViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if status == STATUS_SKILL_SELECT{
-            let skill = skills[indexPath.row]
-            skillNameText.text = "#" + skill.skill_title
-            skillTagText.text = skill.getTagsString()
-            selectedSkill = skill
-        }
-        else if status == STATUS_TAG_SELECT{
-            let tag = tags[indexPath.row]
-            if skillTagText.text!.characters.count > 0{
-                skillTagText.text = skillTagText.text! + ", #" + tag.tag_string
-            }
-            else {
-                skillTagText.text = "#" + tag.tag_string
-            }
-            customTags.append(tag)
-        }
+        
+        let skill = skills[indexPath.row]
+        skillNameText.text = "#" + skill.skill_title
+        //skillTagText.text = skill.getTagsString()
+        selectedSkill = skill
+        
         tableView.isHidden = true
     }
+    
+    
 }

@@ -21,11 +21,7 @@ class HomeViewController: BaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        mapView.showsUserLocation = true
-        
-        
-        
-        
+        mapView.showsUserLocation = true        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,11 +32,7 @@ class HomeViewController: BaseViewController {
         else {
             backButton.isHidden = true
         }
-        if !(mapView.userLocation.coordinate.longitude == 0 && mapView.userLocation.coordinate.latitude == 0) {
-            currentLongitude = mapView.userLocation.coordinate.longitude
-            currentLatitude = mapView.userLocation.coordinate.latitude
-            getHomeData()
-        }
+        getHomeData()
 
     }
     
@@ -56,16 +48,7 @@ class HomeViewController: BaseViewController {
     
     
     func getHomeData(){
-        ApiFunctions.getHomeData(completion: {
-            message, users in
-            if message == Constants.PROCESS_SUCCESS {
-                
-                self.setRegionForLocation(location : CLLocationCoordinate2D(latitude: currentLatitude, longitude: currentLongitude), spanRadius : 1609.00 * currentUser.user_rangedistance, animated: true)
-                self.addRadiusCircle()
-                self.nearMeWorkers = users
-                self.arrangeFriends()
-            }
-        })
+        
     }
     
     
@@ -208,15 +191,6 @@ extension HomeViewController: MKMapViewDelegate{
             return overlay as! MKOverlayRenderer
         }
         
-    }
-    
-    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
-        
-        currentLatitude = userLocation.coordinate.latitude
-        currentLongitude = userLocation.coordinate.longitude
-        if self.nearMeWorkers.count == 0{
-            self.getHomeData()
-        }
     }
     
 }

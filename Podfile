@@ -24,5 +24,6 @@ pod 'M13Checkbox'
 pod 'SwiftyJSON'
 pod 'Koyomi'
 pod 'LinkedinSwift'
+pod 'Stripe'
 
 end

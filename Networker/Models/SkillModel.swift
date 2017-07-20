@@ -11,7 +11,7 @@ import Foundation
 
 class SkillModel{
     
-    var skill_id : Int64 = 0
+    var skill_id : Int = 0
     //if user wants to add new job id, then he has to use server data.
     //if user wants to add new job not exists in server id has to be -1
     var skill_title = ""
@@ -19,32 +19,34 @@ class SkillModel{
     var skill_price : Double = 0.0
     var skill_qualifications = ""
     
-    static let localTableName = "skills"
-    static let localTableString = [
-        Constants.KEY_SKILL_ID : "BIGINT",
-        Constants.KEY_SKILL_TITLE : "TEXT"
-    ]
+    var tagString: String {
+        get {
+            var result = ""
+            for tag in skill_tags{
+                if result.characters.count == 0 {
+                    result = "#" + tag.tag_string
+                }
+                else {
+                    result = result + ", #" + tag.tag_string
+                }
+            }
+            return result
+        }
+    }
     
+    var skill_full_string : String {
+        get {
+            return String(format: "s:%d:p:%lf:q:%@,", skill_id, skill_price,skill_qualifications)
+        }
+    }
     
+    /*
     func getSkillObject() -> [String: String] {
         var result : [String: String] = [:]
         result[Constants.KEY_SKILL_ID] = "\(skill_id)"
         result[Constants.KEY_SKILL_TITLE] = skill_title
-        result[Constants.KEY_SKILL_TAGS] = getTagsString()
         return result
-    }
+    }*/
     
-    func getTagsString() -> String {
-        
-        var result = ""
-        for tag in skill_tags{
-            result = result + "#" + tag.tag_string + ", "
-        }
-        if result.characters.count > 0{
-            result = result + "__**"
-        }
-        return result.replacingOccurrences(of: ", __**", with: "")
-        
-    }
     
 }

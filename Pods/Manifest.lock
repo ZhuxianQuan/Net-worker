@@ -100,6 +100,7 @@ PODS:
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
+  - Stripe (11.0.0)
   - SwiftyJSON (3.1.4)
   - Toast-Swift (2.0.0)
 
@@ -119,6 +120,7 @@ DEPENDENCIES:
   - LinkedinSwift
   - M13Checkbox
   - SDWebImage
+  - Stripe
   - SwiftyJSON
   - Toast-Swift
 
@@ -149,9 +151,10 @@ SPEC CHECKSUMS:
   M13Checkbox: c132a7e0eb964731855eff67b883a0b21b7c0977
   Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  Stripe: 9861af8b1fc99421fdcc849f8c71dceaa9fd6ef9
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   Toast-Swift: 5b2f8f720f7e78e48511f693df1f9c9a6e38a25a
 
-PODFILE CHECKSUM: 519caf8e687cf86bf2d02cb9bb0e993f97d2f964
+PODFILE CHECKSUM: febd921e6aaae5e0519e457d4b075c3dba2612dc
 
 COCOAPODS: 1.2.1

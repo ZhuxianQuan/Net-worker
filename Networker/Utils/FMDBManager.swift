@@ -10,7 +10,7 @@
 
 import Foundation
 import FMDB
-
+import SwiftyJSON
 
 class FMDBManager{
     
@@ -28,9 +28,7 @@ class FMDBManager{
         {
             return
         }
-        database.open()
         createTables()
-        database.close()
         
     }
     
@@ -38,29 +36,38 @@ class FMDBManager{
     func createTables()
     {
         
+        database.open()
         do {
-            
-            //create categories table
-    /*        try database.executeUpdate(createTableString(tableName:FriendModel.localTableName, tableObject: FriendModel.localTableObject, primaryKey: FriendModel.localTablePrimaryKey), values: nil)
-            try database.executeUpdate(createTableString(tableName: MessageModel.localTableName, tableObject: MessageModel.localTableObject, primaryKey: FriendModel.localTablePrimaryKey), values: nil)
-            try database.executeUpdate(createTableString(tableName: UserModel.localTableName, tableObject: UserModel.localTableObject, primaryKey: UserModel.localTablePrimaryKey), values: nil)*/
+            let dataModel = LocalDataModels()
+            try database.executeUpdate(createTableString(tableName:dataModel.TBL_CATEGORY, tableObject: dataModel.getKeys(dataModel.TBL_CATEGORY), primaryKey: dataModel.getPrimaryKey(dataModel.TBL_CATEGORY)), values: nil)
+            try database.executeUpdate(createTableString(tableName:dataModel.TBL_SKILL, tableObject: dataModel.getKeys(dataModel.TBL_SKILL), primaryKey: dataModel.getPrimaryKey(dataModel.TBL_SKILL)), values: nil)
+            try database.executeUpdate(createTableString(tableName:dataModel.TBL_SKILL_TAG, tableObject: dataModel.getKeys(dataModel.TBL_SKILL_TAG), primaryKey: dataModel.getPrimaryKey(dataModel.TBL_SKILL_TAG)), values: nil)
+            try database.executeUpdate(createTableString(tableName:dataModel.TBL_TAG, tableObject: dataModel.getKeys(dataModel.TBL_TAG), primaryKey: dataModel.getPrimaryKey(dataModel.TBL_TAG)), values: nil)
             
         } catch {
             print("failed: \(error.localizedDescription)")
         }
         
+        database.close()
+        
     }
     
     func emptyTables()
     {
+        
+        database.open()
         do{
-           /* try database.executeUpdate("DROP TABLE " + FriendModel.localTableName, values: nil)
-            try database.executeUpdate("DROP TABLE " + MessageModel.localTableName, values: nil)
-            try database.executeUpdate("DROP TABLE " + UserModel.localTableName, values: nil)*/
+            let dataModel = LocalDataModels()
+            try database.executeUpdate("DROP TABLE " + dataModel.TBL_CATEGORY, values: nil)
+            try database.executeUpdate("DROP TABLE " + dataModel.TBL_SKILL, values: nil)
+            try database.executeUpdate("DROP TABLE " + dataModel.TBL_SKILL_TAG, values: nil)
+            try database.executeUpdate("DROP TABLE " + dataModel.TBL_TAG, values: nil)
         }
         catch{
             print("failed: \(error.localizedDescription)")
         }
+        
+        database.close()
     }
     
     func createTableString(tableName: String, tableObject: [String: String], primaryKey: String) -> String{
@@ -78,29 +85,26 @@ class FMDBManager{
         
         resultString.remove(at: resultString.index(before: resultString.endIndex))
         resultString.append(")")
-        
-        NSLog("create tableString ===== \(resultString)")
         return resultString
     }
     
-    func insertOrUpdateRecordQuery(tableObject: [String: String], tableName: String, tableData: [String: AnyObject], primaryKey: String) -> String{
+    func insertRecord(tableObject: [String: String], tableName: String, tableData: JSON, primaryKey: String) {
         
+        database.open()
+        let keys = tableObject.keys
         
-        var insertString = "INSERT OR REPLACE INTO \(tableName) "
+        var insertString = "INSERT INTO \(tableName) "
         var keysString = "("
         var valuesString = "("
         
-        for (key,_) in tableObject{
+        for key in keys{
             
             keysString.append("\(key),")
             valuesString += " '"
-            if(key == primaryKey){
-                valuesString += ("(SELECT \(key) FROM \(tableName) where \(key)= \(tableData[key] as AnyObject))")
-            }
-            else{
-                valuesString += ("\(tableData[key] as AnyObject)")
-            }
-            valuesString += "' ,"
+            var valueString = "\(getValue(value: tableData, type: tableObject[key]!, key: key))"//"\(tableData[key])"
+            valueString = valueString.replacingOccurrences(of: "'", with: "''")
+            
+            valuesString += valueString + "' ,"
             
         }
         keysString.remove(at: keysString.index(before: keysString.endIndex))
@@ -110,29 +114,78 @@ class FMDBManager{
         valuesString.append(")")
         
         insertString.append(keysString)
-        insertString.append(valuesString.replacingOccurrences(of: "Optional(", with: "").replacingOccurrences(of: ")',", with: "',"))
+        insertString.append(valuesString)
         
-        NSLog(insertString)
-        
-        return insertString
+        do{
+            try database.executeUpdate(insertString, values: nil)
+        }
+        catch{
+            print("failed: \(error.localizedDescription)")
+        }
+        database.close()
         
     }
     
     
-    func getDataFromFMDB(with query: String, tableObject: [String: String]) -> [AnyObject]{
+    
+    func UpdateRecord(tableObject: Any?, tableName: String, tableData: Any,  matchKeys:[String]){
         
-        var result : [AnyObject] = []
+        database.open()
+        let tableDict = tableObject as! NSDictionary
+        let keys = tableDict.allKeys
+        
+        let values = tableData as! NSDictionary
+        var insertString = "UPDATE \(tableName) SET "
+        var valuesString = ""
+        var matchItemsCompareString = " WHERE "
+        for matchKey in matchKeys{
+            matchItemsCompareString += "\(matchKey as AnyObject) = '\(values[matchKey] as AnyObject)' AND "
+        }
+        matchItemsCompareString.append("====")
+        matchItemsCompareString = matchItemsCompareString.replacingOccurrences(of: "AND ====", with: "")
+        
+        for key in keys{
+            var valueString = ""
+            
+            
+            valuesString += "\(key) = '"
+            valueString = "\(values[key] as AnyObject)"
+            valueString = valueString.replacingOccurrences(of: "'", with: "''")
+            valueString.append("'")
+            
+            valuesString += valueString + " ,"
+            
+        }
+        
+        valuesString.remove(at: valuesString.index(before: valuesString.endIndex))
+        insertString.append(valuesString.replacingOccurrences(of: ")',", with: "',"))
+        insertString.append(matchItemsCompareString)
+        
+        do{
+            try database.executeUpdate(insertString, values: nil)
+        }
+        catch{
+            print("failed: \(error.localizedDescription)")
+        }
+        database.close()
+        
+    }
+    
+
+    
+    func getDataFromFMDB(with query: String, tableObject: [String: String]) -> [[String: AnyObject]]{
+        
+        var result = [[String: AnyObject]]()
         database.open()
         do{
             let rs = try database.executeQuery(query, values: nil)
             
             while rs.next(){
                 var resultItem : [String: AnyObject] = [:]
-                NSLog("\(tableObject)")
                 for item in tableObject{
                     resultItem[item.key] = getObjectFromKey(value: rs, type: item.value, key: item.key)
                 }
-                result.append(resultItem as AnyObject)
+                result.append(resultItem)
             }
             
         }catch {
@@ -144,7 +197,7 @@ class FMDBManager{
     
     func getObjectFromKey(value: FMResultSet, type: String, key: String) -> AnyObject{
         
-        if (type.hasPrefix("VARCHAR")){
+        if (type.hasPrefix("VARCHAR") || type.hasPrefix("TEXT")){
             return value.string(forColumn: key) as AnyObject
         }
         else if(type.hasPrefix("TINYINT")){
@@ -162,6 +215,39 @@ class FMDBManager{
             return Double(value.string(forColumn: key)!) as AnyObject
         }
         return "" as AnyObject
+    }
+    
+    func getValue(value: JSON, type: String, key: String) -> Any {
+        
+        if (type.hasPrefix("VARCHAR") || type.hasPrefix("TEXT")){
+            return value[key].nonNullStringValue
+        }
+        else if(type.hasPrefix("TINYINT")){
+            return value[key].nonNullIntValue
+        }
+        else if(type.hasPrefix("BIGINT")){
+            return value[key].nonNullInt64Value
+        }
+        else if(type.hasPrefix("INT"))
+        {
+            return value[key].nonNullIntValue
+        }
+        else if(type.hasPrefix("DOUBLE"))
+        {
+            return value[key].nonNullDoubleValue
+        }
+        return ""
+    }
+    
+    func executeQuery(_ query: String) {
+        database.open()
+        do {
+            try database.executeQuery(query, values: nil)
+            
+        } catch {
+            print("failed: \(error.localizedDescription)")
+        }
+        database.close()
     }
     
 }

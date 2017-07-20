@@ -23,12 +23,8 @@ class ParseHelper {
         user.user_postcode = rawData[Constants.KEY_USER_POSTCODE].nonNullStringValue
         user.user_birthday = rawData[Constants.KEY_USER_BIRTHDAY].nonNullStringValue
         user.user_profileimageurl = rawData[Constants.KEY_USER_PROFILEIMAGEURL].nonNullStringValue
-        var skills : [SkillModel] = []
-        let skillsObject = rawData[Constants.KEY_USER_SKILLS].arrayValue
-        for skillObject in skillsObject{
-            skills.append(parseSkill(skillObject))
-        }
-        user.user_skills = skills
+        
+        user.user_skills = rawData[Constants.KEY_USER_SKILLS].nonNullStringValue
         user.user_available = rawData[Constants.KEY_USER_AVAILABLE].nonNullIntValue
         user.user_latitude = rawData[Constants.KEY_USER_LATITUDE].nonNullDoubleValue
         user.user_longitude = rawData[Constants.KEY_USER_LONGITUDE].nonNullDoubleValue
@@ -44,7 +40,7 @@ class ParseHelper {
         
         let skill = SkillModel()
         
-        skill.skill_id = rawData[Constants.KEY_SKILL_ID].nonNullInt64Value
+        skill.skill_id = rawData[Constants.KEY_SKILL_ID].nonNullIntValue
         skill.skill_title = rawData[Constants.KEY_SKILL_TITLE].nonNullStringValue
         skill.skill_qualifications = rawData[Constants.KEY_SKILL_TAGS].nonNullStringValue
         let tagsObject = rawData[Constants.KEY_SKILL_TAGS].arrayValue
@@ -58,7 +54,7 @@ class ParseHelper {
     
     static func parseTag(_ rawData: JSON) -> TagModel {
         let tag = TagModel()
-        tag.tag_id = rawData[Constants.KEY_TAG_ID].nonNullInt64Value
+        tag.tag_id = rawData[Constants.KEY_TAG_ID].nonNullIntValue
         tag.tag_string = rawData[Constants.KEY_TAG_STRING].nonNullStringValue
         return tag
     }

@@ -84,7 +84,6 @@ extension SearchMatchedUsersViewController : UITableViewDataSource, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "MatchedUserTableViewCell") as! MatchedUserTableViewCell
         
         let index = indexPath.row
-        cell.setCell(matchedUsers[index], FMDBManagerGetData.getIndexOfSkill(skill, skills: matchedUsers[index].user_skills))
         return cell
     }
     

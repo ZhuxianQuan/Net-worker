@@ -20,8 +20,6 @@ var currentUser : UserModel = UserModel() {
         }
     }
 }
-var definedSkills : [SkillModel] = []
-var definedTags : [TagModel] = []
 
 class Singleton {
     

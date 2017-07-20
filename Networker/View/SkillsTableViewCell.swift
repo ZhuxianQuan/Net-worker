@@ -41,7 +41,7 @@ class SkillsTableViewCell: UITableViewCell {
     {
         self.skill = skill
         skillTitleLabel.text = "#" + skill.skill_title
-        taggedWordsLabel.text = skill.getTagsString()
+        taggedWordsLabel.text = skill.tagString
         priceLabel.text = "£\(skill.skill_price)"
         qualificationLabel.text = skill.skill_qualifications
         

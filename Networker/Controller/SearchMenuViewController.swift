@@ -51,8 +51,8 @@ class SearchMenuViewController: BaseViewController {
         }
     }
     func loadMenu(){
-        skills = definedSkills
-        
+        skills = FMDBManagerGetData().getSkills()
+        self.menuItemTableView.reloadData()
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {
@@ -91,7 +91,7 @@ extension SearchMenuViewController : UITableViewDelegate, UITableViewDataSource 
 extension SearchMenuViewController : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let keyword = searchText
-        skills = FMDBManagerGetData.getMatchedSkills(keyword: keyword, skills: definedSkills)
+        skills = FMDBManagerGetData().getSkills(keyword)
         menuItemTableView.reloadData()
     }
     

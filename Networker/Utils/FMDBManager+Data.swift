@@ -7,104 +7,202 @@
 //
 
 import Foundation
+import SwiftyJSON
 
+class LocalDataModels {
+    
+    let TBL_CATEGORY        = "tbl_category"
+    let TBL_SKILL           = "tbl_skill"
+    let TBL_SKILL_TAG       = "tbl_skill_tag"
+    let TBL_TAG             = "tbl_tag"
+    
+    func getPrimaryKey(_ tablename: String) -> String{
+        switch tablename {
+        case TBL_CATEGORY:
+            return "category_id"
+        case TBL_SKILL:
+            return Constants.KEY_SKILL_ID
+        case TBL_SKILL_TAG:
+            return "id"
+        case TBL_SKILL:
+            return "skill_id"
+        case TBL_TAG:
+            return "tag_id"
+        default:
+            return ""
+        }
+    }
+    
+    func getKeys(_ tablename: String) -> [String: String] {
+        var result = [String: String]()
+        
+        switch tablename {
+        case TBL_CATEGORY:
+            result = [
+                "category_id" : "INT",
+                "category_name" : "TEXT"
+            ]
+            break
+        case TBL_SKILL:
+            result = [
+                "skill_id" : "INT",
+                "skill_title" : "TEXT",
+                "category_id" : "INT"
+            ]
+            break
+        case TBL_SKILL_TAG:
+            result = [
+                "id" : "INT",
+                "skill_id" : "INT",
+                "tag_id" : "INT"
+            ]
+            break
+        case TBL_TAG:
+            result = [
+                "tag_id" : "INT",
+                "tag_string" : "TEXT"
+            ]
+            break
+        default:
+            break
+        }
+        return result
+    }
+}
 
 class FMDBManagerSetData{
     
-    
+    func saveCategories(_ rawData: [JSON]) {
+        for categoryObject in rawData {
+            let localDataModels = LocalDataModels()
+            fmdbManager.insertRecord(tableObject: localDataModels.getKeys(localDataModels.TBL_CATEGORY), tableName: localDataModels.TBL_CATEGORY, tableData: categoryObject, primaryKey: localDataModels.getPrimaryKey(localDataModels.TBL_CATEGORY))
+            
+        }
+    }
+    func saveSkills(_ rawData: [JSON]) {
+        for skillObject in rawData {
+            let localDataModels = LocalDataModels()
+            fmdbManager.insertRecord(tableObject: localDataModels.getKeys(localDataModels.TBL_SKILL), tableName: localDataModels.TBL_SKILL, tableData: skillObject, primaryKey: localDataModels.getPrimaryKey(localDataModels.TBL_SKILL))
+            
+        }
+    }
+    func saveTags(_ rawData: [JSON]) {
+        for tagObject in rawData {
+            let localDataModels = LocalDataModels()
+            fmdbManager.insertRecord(tableObject: localDataModels.getKeys(localDataModels.TBL_TAG), tableName: localDataModels.TBL_TAG, tableData: tagObject, primaryKey: localDataModels.getPrimaryKey(localDataModels.TBL_TAG))
+            
+        }
+    }
+    func saveSkill_Tags(_ rawData: [JSON]) {
+        for skilltagObject in rawData {
+            let localDataModels = LocalDataModels()
+            fmdbManager.insertRecord(tableObject: localDataModels.getKeys(localDataModels.TBL_SKILL_TAG), tableName: localDataModels.TBL_SKILL_TAG, tableData: skilltagObject, primaryKey: localDataModels.getPrimaryKey(localDataModels.TBL_SKILL_TAG))
+            
+        }
+    }
 }
 
 class FMDBManagerGetData{
     
-    static func getMatchedSkills(keyword: String, skills : [SkillModel]) -> [SkillModel] {
-        var result : [SkillModel] = []
-        if keyword.characters.count > 0{
-            for skill in skills {
-                if skill.skill_title.lowercased().contains(keyword.lowercased()){
-                    result.append(skill)
-                }
-            }
-            return getSortedSkills(skills: result, keyword: keyword)
-        }
-        else{
-            return skills
-        }
-    }
     
-    static func getMatchedTags(keyword: String, tags : [TagModel]) -> [TagModel] {
-        var result : [TagModel] = []
-        for tag in tags {
-            if tag.tag_string.lowercased().contains(keyword.lowercased()){
-                result.append(tag)
-            }
+    func getSkill(_ id: String) -> SkillModel?{
+        let query = "select * from tbl_skill where skill_id = \(id)"
+        let localModels = LocalDataModels()
+        let results = fmdbManager.getDataFromFMDB(with: query, tableObject: localModels.getKeys(localModels.TBL_SKILL))
+        if results.count > 0 {
+            let object = results[0]
+            let skill = SkillModel()
+            skill.skill_id = object["skill_id"] as! Int
+            skill.skill_title = object["skill_title"] as! String
+            skill.skill_tags = getTagsInSkill(skill.skill_id)
+            return skill
         }
-        return getSortedTags(tags: result, keyword: keyword)
-    }
-    
-    
-    static func getSortedSkills(skills : [SkillModel], keyword: String) -> [SkillModel]{
-        let sortedArray = skills.sorted {
-            ($0.skill_title.localizedStandardRange(of: keyword.lowercased())?.lowerBound)! < ($1.skill_title.localizedStandardRange(of: keyword.lowercased())?.lowerBound)!
+        else {
+            return nil
         }
-        return sortedArray
-    }
-    
-    static func getSortedTags(tags: [TagModel], keyword: String) -> [TagModel] {
-        let sortedArray = tags.sorted {
-            ($0.tag_string.localizedStandardRange(of: keyword.lowercased())?.lowerBound)! < ($1.tag_string.localizedStandardRange(of: keyword.lowercased())?.lowerBound)!
-        }
-        return sortedArray
-    }
-    
-    static func removeSkills(existing : [SkillModel], defined preDefinedSkills: [SkillModel]) -> [SkillModel] {
-        var existingSkills = existing
-        var result : [SkillModel] = []
-        var index = 0
         
-        for skill in preDefinedSkills {
-            var existIndex = 0
-            var isExists = false
-            for existingSkill in existingSkills {
-                if skill.skill_id == existingSkill.skill_id && skill.skill_title == existingSkill.skill_title {
-                    existingSkills.remove(at: existIndex)
-                    isExists = true
-                    break
-                }
-                else{
-                    
-                }
-                existIndex += 1
-            }
-            if !isExists {
+    }
+    
+    func getSkills(_ keywords: String? = nil) -> [SkillModel]{
+        var result = [SkillModel]()
+        if keywords == nil || keywords?.characters.count == 0{
+            let query = "select * from tbl_skill"
+            let localModels = LocalDataModels()
+            let results = fmdbManager.getDataFromFMDB(with: query, tableObject: localModels.getKeys(localModels.TBL_SKILL))
+            for object in results {
+                let skill = SkillModel()
+                skill.skill_id = object["skill_id"] as! Int
+                skill.skill_title = object["skill_title"] as! String
+                skill.skill_tags = getTagsInSkill(skill.skill_id)
                 result.append(skill)
             }
+        }
+        else {
             
-            index += 1
+            let keywordString = keywords?.replacingOccurrences(of: ",", with: " ").replacingOccurrences(of: ":", with: " ")
+            let keywordArray = keywordString?.components(separatedBy: " ")
+            var skilltitleString = ""
+            var categoryString = ""
+            var tagString = ""
+            
+            for keyword in keywordArray! {
+                if keyword.characters.count > 0 {
+                    if skilltitleString.characters.count == 0 {
+                        skilltitleString.append(" skill_title like '%\(keywords!)%' ")
+                        categoryString.append(" category_name like '%\(keywords!)%' ")
+                        tagString.append(" tag_string like '%\(keywords!)%' ")
+                    }
+                    else {
+                        skilltitleString.append(" OR skill_title like '%\(keywords!)%' ")
+                        categoryString.append(" OR  category_name like '%\(keywords!)%' ")
+                        tagString.append(" OR tag_string like '%\(keywords!)%' ")
+                    }
+                }
+            }
+            
+            let query = "select skill_id, skill_title,category_id from tbl_skill where \(skilltitleString) union select a.skill_id, a.skill_title,a.category_id from tbl_skill a inner join  tbl_category b on a.category_id = b.category_id where \(categoryString)  union select a.skill_id, a.skill_title,a.category_id from tbl_skill a inner join  tbl_skill_tag b on a.skill_id = b.skill_id inner join tbl_tag c on b.tag_id = c.tag_id where \(tagString)  order by skill_title"
+            
+            let localModels = LocalDataModels()
+            let results = fmdbManager.getDataFromFMDB(with: query, tableObject: localModels.getKeys(localModels.TBL_SKILL))
+            for object in results {
+                let skill = SkillModel()
+                skill.skill_id = object["skill_id"] as! Int
+                skill.skill_title = object["skill_title"] as! String
+                skill.skill_tags = getTagsInSkill(skill.skill_id)
+                result.append(skill)
+            }
+
+        }
+        
+        return result
+    }
+    
+    func getMatchedTags(_ keyword: String) -> [TagModel]{
+        var result = [TagModel]()
+        let query = "select * from tbl_tag where tag_string like '%\(keyword)%'"
+        let localModels = LocalDataModels()
+        let results = fmdbManager.getDataFromFMDB(with: query, tableObject: localModels.getKeys(localModels.TBL_TAG))
+        for object in results {
+            let tag = TagModel()
+            tag.tag_id = object["tag_id"] as! Int
+            tag.tag_string = object["tag_string"] as! String
+            result.append(tag)
         }
         return result
     }
     
-    
-    static func getIndexOfSkill(_ skill: SkillModel, skills : [SkillModel]) -> Int {
-        var index = 0
-        for subSkill in skills {
-            
-            if skill.skill_id == subSkill.skill_id {
-                return index
-            }
-            index += 1
+    func getTagsInSkill(_ id: Int) -> [TagModel]{
+        var result = [TagModel]()
+        let query = "select * from tbl_skill_tag a inner join tbl_tag b on a.tag_id = b.tag_id where a.skill_id = \(id)"
+        let localModels = LocalDataModels()
+        let results = fmdbManager.getDataFromFMDB(with: query, tableObject: localModels.getKeys(localModels.TBL_TAG))
+        for object in results {
+            let tag = TagModel()
+            tag.tag_id = object["tag_id"] as! Int
+            tag.tag_string = object["tag_string"] as! String
+            result.append(tag)
         }
-        return -1
+        return result
     }
     
-    static func getSkillsString(skills : [SkillModel]) -> String {
-        var result = ""
-        for skill in skills {
-            result += ":\(skill.skill_id)"
-        }
-        if result.characters.count > 0{
-            result += "---"
-        }
-        return result.replacingOccurrences(of: ":---", with: "")
-    }
 }

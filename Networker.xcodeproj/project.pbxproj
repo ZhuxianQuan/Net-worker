@@ -44,7 +44,6 @@
 		0A5304801E7609A400244C3D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A53047F1E7609A400244C3D /* Constants.swift */; };
 		0A5304821E760D9800244C3D /* ApiFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5304811E760D9800244C3D /* ApiFunctions.swift */; };
 		0A5304841E7633B500244C3D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5304831E7633B500244C3D /* RegisterViewController.swift */; };
-		0A59DBB31E7C98170077A5F6 /* TestJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A59DBB21E7C98170077A5F6 /* TestJson.swift */; };
 		0A59DBB51E7C98E50077A5F6 /* FMDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A59DBB41E7C98E50077A5F6 /* FMDBManager.swift */; };
 		0A59DBB71E7CCDB00077A5F6 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A59DBB61E7CCDB00077A5F6 /* AnnotationView.swift */; };
 		0A59DBB91E7CCDCE0077A5F6 /* StarbuckAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A59DBB81E7CCDCE0077A5F6 /* StarbuckAnnotation.swift */; };
@@ -121,7 +120,6 @@
 		0A53047F1E7609A400244C3D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0A5304811E760D9800244C3D /* ApiFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiFunctions.swift; sourceTree = "<group>"; };
 		0A5304831E7633B500244C3D /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		0A59DBB21E7C98170077A5F6 /* TestJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestJson.swift; sourceTree = "<group>"; };
 		0A59DBB41E7C98E50077A5F6 /* FMDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDBManager.swift; sourceTree = "<group>"; };
 		0A59DBB61E7CCDB00077A5F6 /* AnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		0A59DBB81E7CCDCE0077A5F6 /* StarbuckAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarbuckAnnotation.swift; sourceTree = "<group>"; };
@@ -377,7 +375,6 @@
 		0A59DBB11E7C98070077A5F6 /* Test Data */ = {
 			isa = PBXGroup;
 			children = (
-				0A59DBB21E7C98170077A5F6 /* TestJson.swift */,
 			);
 			name = "Test Data";
 			sourceTree = "<group>";
@@ -700,7 +697,6 @@
 				0A1AA60E1E75DBA50010F651 /* BaseViewController.swift in Sources */,
 				0A5304841E7633B500244C3D /* RegisterViewController.swift in Sources */,
 				0A7B8A801E8A5656001A0468 /* ScheduleListTableViewCell.swift in Sources */,
-				0A59DBB31E7C98170077A5F6 /* TestJson.swift in Sources */,
 				0A8C93E01E7AE49D0031EE0F /* TagModel.swift in Sources */,
 				0A59DBBF1E7CCE550077A5F6 /* FirebaseStorageUtils.swift in Sources */,
 				0A59DBB91E7CCDCE0077A5F6 /* StarbuckAnnotation.swift in Sources */,
