@@ -36,19 +36,12 @@ class SplashViewController: BaseViewController {
     }
     
     func updateLocalData() {
-        //showLoadingView()
         
         if UserDefaults.standard.value(forKey: Constants.KEY_USER_EMAIL) != nil {
             ApiFunctions.login(email: UserDefaults.standard.value(forKey: Constants.KEY_USER_EMAIL) as! String, password: UserDefaults.standard.value(forKey: Constants.KEY_USER_PASSWORD) as! String, completion: {
                 message in
                 self.loading += 1
-                if message == Constants.PROCESS_SUCCESS{
-                    self.loadingCompleted()
-                }
-                else {
-                    self.hideLoadingView()
-                    self.showToastWithDuration(string: message, duration: 3.0)
-                }
+                self.loadingCompleted()
             })
         }
         else {
@@ -88,7 +81,7 @@ class SplashViewController: BaseViewController {
             timer.invalidate()
             self.hideLoadingView()
             if loading == maxLoading{
-                if currentUser.user_id > 0{
+                if currentUser != nil{
                     self.gotoMainScene()
                 }
                 else {

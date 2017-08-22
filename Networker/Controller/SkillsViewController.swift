@@ -64,6 +64,37 @@ class SkillsViewController: BaseViewController {
         self.view.endEditing(true)
     }
     
+    @IBAction func continueButtonTapped(_ sender: Any) {
+        
+        if agreementCheck.checkState == .checked {
+            if availableSwitch.isOn {
+                self.user.user_available = Constants.VALUE_USER_AVAILABLE
+                
+            }
+            let params = [Constants.KEY_USER_ID : user.user_id as AnyObject,
+                          Constants.KEY_USER_SKILLS : user.user_skills as AnyObject,
+                          Constants.KEY_USER_AVAILABLE : user.user_available as AnyObject]
+            self.showLoadingView()
+            ApiFunctions.updateProfile(profile: params, completion: {
+                message in
+                self.hideLoadingView()
+                if message == Constants.PROCESS_SUCCESS {
+                    currentUser?.user_skills = self.user.user_skills
+                    currentUser?.user_available = self.user.user_available
+                    self.gotoMainScene()
+                }
+                else {
+                    self.showToastWithDuration(string: message, duration: 3.0)
+                }
+                
+            })
+        }
+        else
+        {
+            self.showToastWithDuration(string: "You should agree terms and conditions", duration: 3.0)
+        }
+        
+    }
 }
 
 extension SkillsViewController : UITableViewDelegate, UITableViewDataSource {

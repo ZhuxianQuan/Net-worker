@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KYDrawerController
 
 class MenuViewController: BaseViewController {
 
@@ -31,8 +32,8 @@ class MenuViewController: BaseViewController {
     }
     
     func setUserInfo() {
-        nameLabel.text = currentUser.user_firstname
-        profileImageView.setImageWith(currentUser.user_profileimageurl, placeholderImage: UIImage(named: "icon_profile")!)
+        nameLabel.text = currentUser?.user_firstname
+        profileImageView.setImageWith((currentUser?.user_profileimageurl)!, placeholderImage: UIImage(named: "icon_profile")!)
         
     }
     
@@ -55,7 +56,7 @@ class MenuViewController: BaseViewController {
             CommonUtils.logout()
             self.gotoLoginScence()
             break
-        case "Personal details":
+        case "Personal details":            
             break
         case "Availability":
             break

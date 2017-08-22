@@ -71,7 +71,7 @@ class UserModel {
         result[Constants.KEY_USER_LONGITUDE] = user_longitude as AnyObject
         result[Constants.KEY_USER_RANGEDISTANCE] = user_rangedistance as AnyObject
         result[Constants.KEY_USER_POSTCODE] = user_postcode as AnyObject
-        
+        result[Constants.KEY_USER_BIRTHDAY] = user_birthday as AnyObject
         result[Constants.KEY_USER_AVAILABLE] = user_available as AnyObject
         
         //result[Constants.KEY_USER_RATINGS]

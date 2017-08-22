@@ -51,7 +51,6 @@
 		0A59DBBF1E7CCE550077A5F6 /* FirebaseStorageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A59DBBC1E7CCE550077A5F6 /* FirebaseStorageUtils.swift */; };
 		0A59DBC01E7CCE550077A5F6 /* FirebaseUserAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A59DBBD1E7CCE550077A5F6 /* FirebaseUserAuthentication.swift */; };
 		0A59DBC41E7CD1060077A5F6 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A59DBC31E7CD1060077A5F6 /* DateExtension.swift */; };
-		0A59DBC91E7CE2150077A5F6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A59DBC81E7CE2150077A5F6 /* GoogleService-Info.plist */; };
 		0A6841791E88B59400B8926F /* UserAvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6841781E88B59400B8926F /* UserAvailabilityViewController.swift */; };
 		0A68417F1E890D3100B8926F /* DayScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A68417E1E890D3100B8926F /* DayScheduleModel.swift */; };
 		0A6841811E8916C600B8926F /* AddScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6841801E8916C600B8926F /* AddScheduleViewController.swift */; };
@@ -71,11 +70,13 @@
 		0AA79E6D1E874DB30020DE8B /* UserSkillsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA79E6C1E874DB30020DE8B /* UserSkillsTableViewCell.swift */; };
 		0AA79E6F1E8754E70020DE8B /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA79E6E1E8754E70020DE8B /* ReviewTableViewCell.swift */; };
 		0AA79E711E8764590020DE8B /* Koyomi+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA79E701E8764590020DE8B /* Koyomi+Extension.swift */; };
-		0AB18D881E8860CF00C5B7A4 /* KYDrawerViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB18D871E8860CF00C5B7A4 /* KYDrawerViewController+Extension.swift */; };
+		0AB18D881E8860CF00C5B7A4 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB18D871E8860CF00C5B7A4 /* UINavigationController+Extension.swift */; };
 		0AD219041E7B4427001E7865 /* SkillsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD219031E7B4427001E7865 /* SkillsTableViewCell.swift */; };
 		0AED02AB1E87D8A70058D637 /* DailyScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED02AA1E87D8A70058D637 /* DailyScheduleViewController.swift */; };
 		82BFADE43C544A394DCBF956 /* Pods_Networker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0037CB8F35E0C7003867F45F /* Pods_Networker.framework */; };
+		E17749C51F4C1D14005531D1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17749C41F4C1D14005531D1 /* ProfileViewController.swift */; };
 		E181A2A11EED137700148484 /* SwiftyJSON+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181A2A01EED137700148484 /* SwiftyJSON+Extension.swift */; };
+		E1886DAA1F4B2CEE003E1D56 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1886DA91F4B2CEE003E1D56 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,7 +129,6 @@
 		0A59DBBD1E7CCE550077A5F6 /* FirebaseUserAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUserAuthentication.swift; sourceTree = "<group>"; };
 		0A59DBC31E7CD1060077A5F6 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		0A59DBC51E7CE18C0077A5F6 /* Networker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Networker.entitlements; sourceTree = "<group>"; };
-		0A59DBC81E7CE2150077A5F6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0A6841781E88B59400B8926F /* UserAvailabilityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAvailabilityViewController.swift; sourceTree = "<group>"; };
 		0A68417E1E890D3100B8926F /* DayScheduleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayScheduleModel.swift; sourceTree = "<group>"; };
 		0A6841801E8916C600B8926F /* AddScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddScheduleViewController.swift; sourceTree = "<group>"; };
@@ -148,10 +148,12 @@
 		0AA79E6C1E874DB30020DE8B /* UserSkillsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSkillsTableViewCell.swift; sourceTree = "<group>"; };
 		0AA79E6E1E8754E70020DE8B /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		0AA79E701E8764590020DE8B /* Koyomi+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Koyomi+Extension.swift"; sourceTree = "<group>"; };
-		0AB18D871E8860CF00C5B7A4 /* KYDrawerViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "KYDrawerViewController+Extension.swift"; sourceTree = "<group>"; };
+		0AB18D871E8860CF00C5B7A4 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		0AD219031E7B4427001E7865 /* SkillsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillsTableViewCell.swift; sourceTree = "<group>"; };
 		0AED02AA1E87D8A70058D637 /* DailyScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyScheduleViewController.swift; sourceTree = "<group>"; };
+		E17749C41F4C1D14005531D1 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E181A2A01EED137700148484 /* SwiftyJSON+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftyJSON+Extension.swift"; sourceTree = "<group>"; };
+		E1886DA91F4B2CEE003E1D56 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ED2D8F081500C49690489A09 /* Pods-Networker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Networker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Networker/Pods-Networker.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -197,7 +199,7 @@
 				0A1AA6001E75927C0010F651 /* Vender */,
 				0A1AA5FF1E75927C0010F651 /* Utils */,
 				0A1AA5EF1E75920A0010F651 /* Info.plist */,
-				0A59DBC81E7CE2150077A5F6 /* GoogleService-Info.plist */,
+				E1886DA91F4B2CEE003E1D56 /* GoogleService-Info.plist */,
 			);
 			path = Networker;
 			sourceTree = "<group>";
@@ -265,7 +267,7 @@
 			children = (
 				0A3B87931E7FCDB500140D6C /* FloatRatingView.swift */,
 				0AA79E701E8764590020DE8B /* Koyomi+Extension.swift */,
-				0AB18D871E8860CF00C5B7A4 /* KYDrawerViewController+Extension.swift */,
+				0AB18D871E8860CF00C5B7A4 /* UINavigationController+Extension.swift */,
 			);
 			path = Vender;
 			sourceTree = "<group>";
@@ -327,6 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				0A405B291E768AB9005C2618 /* HomeViewController.swift */,
+				E17749C41F4C1D14005531D1 /* ProfileViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -546,7 +549,7 @@
 				TargetAttributes = {
 					0A1AA5DF1E75920A0010F651 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 4WGDATJ3CA;
+						DevelopmentTeam = 395S2ULVA8;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -581,7 +584,7 @@
 			files = (
 				0A1AA6051E75927C0010F651 /* Main.storyboard in Resources */,
 				0A1AA6031E75927C0010F651 /* Assets.xcassets in Resources */,
-				0A59DBC91E7CE2150077A5F6 /* GoogleService-Info.plist in Resources */,
+				E1886DAA1F4B2CEE003E1D56 /* GoogleService-Info.plist in Resources */,
 				0A405B1D1E765421005C2618 /* Favorite.storyboard in Resources */,
 				0A1AA6041E75927C0010F651 /* LaunchScreen.storyboard in Resources */,
 				0A405B1F1E765433005C2618 /* Chatting.storyboard in Resources */,
@@ -652,7 +655,7 @@
 				0A2AA0141E75F6D700B41F23 /* fontawesome-webfont.ttf in Sources */,
 				0A3B87921E7FA8C200140D6C /* MatchedUserTableViewCell.swift in Sources */,
 				0A5304801E7609A400244C3D /* Constants.swift in Sources */,
-				0AB18D881E8860CF00C5B7A4 /* KYDrawerViewController+Extension.swift in Sources */,
+				0AB18D881E8860CF00C5B7A4 /* UINavigationController+Extension.swift in Sources */,
 				0A2AA0151E75F6D700B41F23 /* HelveticaNeue-Medium_22622.ttf in Sources */,
 				0AA79E6D1E874DB30020DE8B /* UserSkillsTableViewCell.swift in Sources */,
 				0AED02AB1E87D8A70058D637 /* DailyScheduleViewController.swift in Sources */,
@@ -688,6 +691,7 @@
 				0AA79E6B1E874D480020DE8B /* ReviewsViewController.swift in Sources */,
 				0A3B878E1E7F9DA400140D6C /* UIView+Extension.swift in Sources */,
 				0A3B87941E7FCDB500140D6C /* FloatRatingView.swift in Sources */,
+				E17749C51F4C1D14005531D1 /* ProfileViewController.swift in Sources */,
 				0A405B2A1E768AB9005C2618 /* HomeViewController.swift in Sources */,
 				0A298DB11E8990F00006B7BC /* DayScheduleTableViewCell.swift in Sources */,
 				0A6841811E8916C600B8926F /* AddScheduleViewController.swift in Sources */,
@@ -827,12 +831,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Networker/Networker.entitlements;
-				DEVELOPMENT_TEAM = 4WGDATJ3CA;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 395S2ULVA8;
 				INFOPLIST_FILE = Networker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.shark.Networker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.conker.Networker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -843,12 +850,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Networker/Networker.entitlements;
-				DEVELOPMENT_TEAM = 4WGDATJ3CA;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 395S2ULVA8;
 				INFOPLIST_FILE = Networker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.shark.Networker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.conker.Networker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

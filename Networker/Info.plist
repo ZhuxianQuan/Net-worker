@@ -21,17 +21,19 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>li{Your LinkedIn app ID}</string>
+				<string>li77osn90uk0d88q</string>
 				<string>fb1940076186215412</string>
 			</array>
 		</dict>
 	</array>
+	<key>CFBundleVersion</key>
+	<string>1</string>
 	<key>FacebookAppID</key>
 	<string>1940076186215412</string>
 	<key>FacebookDisplayName</key>
 	<string>Networker</string>
 	<key>LIAppId</key>
-	<string>{Your LinkedIn app ID}</string>
+	<string>77osn90uk0d88q</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -39,8 +41,6 @@
 		<string>fbauth2</string>
 		<string>fbshareextension</string>
 	</array>
-	<key>CFBundleVersion</key>
-	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -53,15 +53,17 @@
 			<dict>
 				<key>NSExceptionAllowsInsecureHTTPLoads</key>
 				<true/>
-				<key>NSIncludesSubdomains</key>
-				<true/>
 				<key>NSExceptionRequiresForwardSecrecy</key>
 				<false/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
 			</dict>
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) camera use</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>App wants to use user location</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>{human-readable reason for photo access}</string>
 	<key>UIAppFonts</key>
@@ -90,7 +92,5 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>App wants to use user location</string>
 </dict>
 </plist>

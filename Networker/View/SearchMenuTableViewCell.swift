@@ -31,6 +31,7 @@ class SearchMenuTableViewCell: UITableViewCell {
         else{
             menuItemLabel.text = "Search Near me"
             menuItemLabel.underlineText()
+            
         }
     }
 

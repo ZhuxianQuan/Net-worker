@@ -91,14 +91,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
     
     func updateTimer(){
         
-        locationTimer = Timer.scheduledTimer(timeInterval: 30, target: self, selector: #selector(updateLocation), userInfo: nil, repeats: true)
+        locationTimer = Timer.scheduledTimer(timeInterval: 15, target: self, selector: #selector(updateLocation), userInfo: nil, repeats: true)
     }
     
     func updateLocation()
     {
-        if currentUser.user_available == Constants.VALUE_USER_AVAILABLE {
-            
-            
+        if currentUser?.user_available == Constants.VALUE_USER_AVAILABLE {
             locationManager.startUpdatingLocation()
         }
         else {
@@ -114,9 +112,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         
         currentLatitude = (location?.coordinate.latitude)! as Double
         currentLongitude = (location?.coordinate.longitude)! as Double
-        if(currentUser.user_id > 0){
-            currentUser.user_latitude = currentLatitude
-            currentUser.user_longitude = currentLongitude
+        if currentUser != nil{
+            currentUser?.user_latitude = currentLatitude
+            currentUser?.user_longitude = currentLongitude
+            ApiFunctions.uploadPosition(completion: {
+                message in
+            })
             
         }
         manager.stopUpdatingLocation()

@@ -1,15 +1,16 @@
 //
-//  RegisterViewController.swift
+//  ProfileViewController.swift
 //  Networker
 //
-//  Created by Big Shark on 13/03/2017.
+//  Created by Quan Zhuxian on 22/08/2017.
 //  Copyright © 2017 shark. All rights reserved.
 //
 
 import UIKit
 
-class RegisterViewController: BaseViewController {
+class ProfileViewController: BaseViewController {
 
+    
     @IBOutlet weak var tblScroll: UITableView!
     @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     var profileImage : UIImage?
@@ -34,30 +35,35 @@ class RegisterViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        user = currentUser!
         keyboardControl()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func setUserDetail() {
+        firstName.text = user.user_firstname
+        lastName.text = user.user_lastname
+        email.text = user.user_email
+        password.text = user.user_password
+        address1.text = user.user_address1
+        address2.text = user.user_address2
+        address3.text = user.user_address3
+        postcode.text = user.user_postcode
+        birthday.text = user.user_birthday
+        password.text = user.user_password
     }
-    */
+    
     @IBAction func backButtonTapped(_ sender: UIButton) {
         _ = navigationController?.popViewController(animated: true)
     }
-
+    
     @IBAction func cancelButtonTapped(_ sender: UIButton) {
         
     }
@@ -65,7 +71,7 @@ class RegisterViewController: BaseViewController {
     @IBAction func contentViewTapped(_ sender: Any) {
         self.view.endEditing(true)
     }
-    @IBAction func registerButtonTapped(_ sender: Any) {
+    @IBAction func updateButtonTapped(_ sender: Any) {
         
         let checkResult = checkValid()
         if checkResult == Constants.PROCESS_SUCCESS {
@@ -189,9 +195,9 @@ class RegisterViewController: BaseViewController {
         
         return Constants.PROCESS_SUCCESS
         
-    
+        
     }
-
+    
     @IBAction func textFieldEditing(_ sender: UITextField) {
         
         let datePickerView:UIDatePicker = UIDatePicker()
@@ -202,7 +208,7 @@ class RegisterViewController: BaseViewController {
         
         datePickerView.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
         
-
+        
     }
     
     func datePickerValueChanged(_ sender: UIDatePicker) {
@@ -215,7 +221,7 @@ class RegisterViewController: BaseViewController {
 }
 
 // MARK: - @extension SinglePostVC
-extension RegisterViewController {
+extension ProfileViewController {
     
     func keyboardControl() {
         /**
@@ -284,7 +290,7 @@ extension RegisterViewController {
                 }
                 else
                 {
-                   
+                    
                     self.scrollViewBottomConstraint.constant = 0
                 }
                 
@@ -295,7 +301,7 @@ extension RegisterViewController {
 }
 
 
-extension RegisterViewController: UITextFieldDelegate {
+extension ProfileViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == firstName{
@@ -304,11 +310,11 @@ extension RegisterViewController: UITextFieldDelegate {
         else if textField == lastName {
             email.becomeFirstResponder()
         }
-        
+            
         else if textField == email {
             password.becomeFirstResponder()
         }
-        
+            
         else if textField == password {
             address1.becomeFirstResponder()
         }
@@ -318,15 +324,15 @@ extension RegisterViewController: UITextFieldDelegate {
         else if textField == address2 {
             address3.becomeFirstResponder()
         }
-        
+            
         else if textField == address3 {
             postcode.becomeFirstResponder()
         }
-        
+            
         else if textField == postcode {
             birthday.becomeFirstResponder()
         }
-        
+            
         else {
             self.view.endEditing(true)
         }
@@ -337,7 +343,7 @@ extension RegisterViewController: UITextFieldDelegate {
 }
 
 
-extension RegisterViewController:  UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+extension ProfileViewController:  UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     
     

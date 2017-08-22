@@ -1,49 +1,35 @@
-//
-//  KYDrawerViewController+Extension.swift
-//  Networker
-//
-//  Created by Big Shark on 27/03/2017.
-//  Copyright © 2017 shark. All rights reserved.
+
 //
 
-import Foundation
-import KYDrawerController
+import UIKit
 
-extension KYDrawerController {
-    
-    //override func prepare(
-
-    override open func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if (segue.identifier == "main"){
-            
-            let storyboardId = self.value(forKey: "storyboardIdentifier") as! String
-            switch  storyboardId{
-            case "HomeDrawer":
-                let nav = segue.destination as! UINavigationController
-                nav.viewControllers = [getNavRootViewController(Constants.STORYBOARD_HOME)]
+extension UINavigationController {
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+        if let identifier = self.value(forKey: "storyboardIdentifier") {
+            switch identifier as! String{
+            case "HomeNav":
+                self.viewControllers = [getNavRootViewController(Constants.STORYBOARD_HOME)]
                 break
-            case "SearchDrawer":
-                let nav = segue.destination as! UINavigationController
-                nav.viewControllers = [getNavRootViewController(Constants.STORYBOARD_SEARCH)]
+            case "SearchNav":
+                self.viewControllers = [getNavRootViewController(Constants.STORYBOARD_SEARCH)]
                 break
-            case "ScheduleDrawer":
-                let nav = segue.destination as! UINavigationController
-                nav.viewControllers = [getNavRootViewController(Constants.STORYBOARD_SCHEDULE)]
+            case "ScheduleNav":
+                self.viewControllers = [getNavRootViewController(Constants.STORYBOARD_SCHEDULE)]
                 break
-            case "FavoriteDrawer":
-                let nav = segue.destination as! UINavigationController
-                nav.viewControllers = [getNavRootViewController(Constants.STORYBOARD_FAVORITE)]
+            case "FavoriteNav":
+                self.viewControllers = [getNavRootViewController(Constants.STORYBOARD_FAVORITE)]
                 break
-            case "ChattingDrawer":
-                let nav = segue.destination as! UINavigationController
-                nav.viewControllers = [getNavRootViewController(Constants.STORYBOARD_CHATTING)]
+            case "ChattingNav":
+                self.viewControllers = [getNavRootViewController(Constants.STORYBOARD_CHATTING)]
                 break
             default:
-                break
+                return
             }
         }
+        
     }
+    
     
     
     func getStoryboard(id: Int) -> UIStoryboard{
@@ -88,5 +74,6 @@ extension KYDrawerController {
             return storyboard.instantiateViewController(withIdentifier: "HomeViewController")
         }
     }
+    
 
 }

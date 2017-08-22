@@ -252,6 +252,18 @@ class CommonUtils: AnyObject{
         }
     }
     
+    static func saveImageToLocal(_ filename: String, data: Data) {
+        var savedFilePath = "\(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])"  + "/" + filename
+        
+        do {
+            savedFilePath = "file:" + savedFilePath
+            try data.write(to: URL(string: savedFilePath)!)
+        }
+        catch {
+            print(error)
+        }
+    }
+    
     
 
     

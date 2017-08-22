@@ -40,6 +40,8 @@ class SearchMenuViewController: BaseViewController {
         let skilledUserVC = storyboard?.instantiateViewController(withIdentifier: "SearchMatchedUsersViewController") as! SearchMatchedUsersViewController
         skilledUserVC.skill = skill
         navigationController?.pushViewController(skilledUserVC, animated: true)
+
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

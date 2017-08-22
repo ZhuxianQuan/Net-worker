@@ -133,7 +133,7 @@ class AddScheduleViewController: BaseViewController {
                 }
                 let dayScheduleModel = DayScheduleModel()
                 dayScheduleModel.schedule_date = currentDate
-                dayScheduleModel.schedule_user_id = currentUser.user_id
+                dayScheduleModel.schedule_user_id = (currentUser?.user_id)!
                 dayScheduleModel.schedule_dayData = [scheduleData]
                 dailyScheduleVC.monthSchedule.append(dayScheduleModel)
                 _ = self.navigationController?.popViewController(animated: true)

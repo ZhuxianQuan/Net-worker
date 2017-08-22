@@ -86,7 +86,7 @@ class HomeViewController: BaseViewController {
     //func add radius circle
     
     func addRadiusCircle(){
-        let circle = MKCircle(center: CLLocationCoordinate2D(latitude: currentLatitude, longitude: currentLongitude) , radius: currentUser.user_rangedistance * 1609)
+        let circle = MKCircle(center: CLLocationCoordinate2D(latitude: currentLatitude, longitude: currentLongitude) , radius: (currentUser?.user_rangedistance)! * 1609)
         self.mapView.add(circle)
     }
 

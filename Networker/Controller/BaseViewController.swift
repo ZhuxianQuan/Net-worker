@@ -20,7 +20,7 @@ class BaseViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-        drawerController = self.navigationController?.parent as? KYDrawerController
+        drawerController = self.tabBarController?.parent as? KYDrawerController
         if drawerController != nil {
             drawerController?.drawerDirection = .right
             //drawerOpened = false
@@ -35,11 +35,13 @@ class BaseViewController: UIViewController{
     
 
     override func viewWillAppear(_ animated : Bool) {
-        if (self.navigationController?.viewControllers.count)! > 1 {
-            btnback.isHidden = false
-        }
-        else {
-             btnback.isHidden = true
+        if self.navigationController != nil {
+            if (self.navigationController?.viewControllers.count)! > 1 {
+                btnback.isHidden = false
+            }
+            else {
+                 btnback.isHidden = true
+            }
         }
     }
 
@@ -48,32 +50,14 @@ class BaseViewController: UIViewController{
         self.view.endEditing(true)
     }
     
-    
-    
-    func showToastWithDuration(string: String!, duration: Double) {
-        self.view.makeToast(string, duration: duration, position: .bottom)
-    }
-    
-    func showLoadingView()
-    {
-        self.view.makeToastActivity(.center)
-        self.view.isUserInteractionEnabled = false
-    }
-    
-    func hideLoadingView()
-    {
-        self.view.hideToastActivity()
-        self.view.isUserInteractionEnabled = true
-    }
-    
     func gotoMainScene() {
         
         let window = UIApplication.shared.keyWindow
         let storyboard = getStoryboard(id: Constants.STORYBOARD_MAIN)
 
-        let mainTab = storyboard.instantiateViewController(withIdentifier: "MainTab") as! UITabBarController
+        let mainTab = storyboard.instantiateViewController(withIdentifier: "KYDrawerController")
         window?.rootViewController = mainTab
-        
+        window?.makeKeyAndVisible()
     }
     
     func gotoLoginScence() {
@@ -83,8 +67,8 @@ class BaseViewController: UIViewController{
         startNav.viewControllers = [storyboard.instantiateViewController(withIdentifier: "LoginViewController")]
         let window = UIApplication.shared.keyWindow
         window?.rootViewController = startNav
+        window?.makeKeyAndVisible()
         
-
     }
     
     
@@ -107,4 +91,26 @@ class BaseViewController: UIViewController{
         }
     }
     
+}
+
+extension UIViewController {
+    
+    
+    
+    func showToastWithDuration(string: String!, duration: Double) {
+        self.view.makeToast(string, duration: duration, position: .bottom)
+    }
+    
+    func showLoadingView()
+    {
+        self.view.makeToastActivity(.center)
+        self.view.isUserInteractionEnabled = false
+    }
+    
+    func hideLoadingView()
+    {
+        self.view.hideToastActivity()
+        self.view.isUserInteractionEnabled = true
+    }
+
 }

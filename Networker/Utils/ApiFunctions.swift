@@ -12,9 +12,9 @@ import SwiftyJSON
 
 class ApiFunctions{    
     
-    static let SERVER_BASE_URL          = "http://35.166.129.141"
+    //static let SERVER_BASE_URL          = "http://35.166.129.141"
     
-    //static let SERVER_BASE_URL          = "http://192.168.1.82:2000/Networker"
+    static let SERVER_BASE_URL          = "http://192.168.1.120:2000/Networker"
     static let SERVER_URL               = SERVER_BASE_URL + "/index.php/Api/"
     
     static let REQ_GET_ALLSKILLS        = SERVER_URL + "getSkills"
@@ -23,8 +23,8 @@ class ApiFunctions{
     static let REQ_UPDATEUSER           = SERVER_URL + "updateUser"
     static let REQ_ADDUSERSKILL         = SERVER_URL + "addUserSkill"
     static let REQ_LOGIN                = SERVER_URL + "login"
-    static let REQ_UPDATEPROFILEIMAGE   = SERVER_URL + "updateProfileImage"
     static let REQ_GETSKILLVERSION      = SERVER_URL + "getSkillVersion"
+    static let REQ_UPLOADPOSITION       = SERVER_URL + "uploadPosition"
     
     
     static func login(email: String, password: String, completion: @escaping (String) -> () ){
@@ -217,6 +217,7 @@ class ApiFunctions{
                             let message = json[Constants.RES_MESSAGE].stringValue
                             if message == Constants.PROCESS_SUCCESS {
                                 let imageurl = json[Constants.KEY_IMAGEURL].stringValue
+                                CommonUtils.saveImageToLocal(name, data: imageData)
                                 completion(message, imageurl)
                             }
                             else {
@@ -262,9 +263,9 @@ class ApiFunctions{
         
     }
     
-    static func updateProfile(_ user: UserModel, completion: @escaping (String) -> ()) {
-        let userObject = user.getUserObject()
-        Alamofire.request(REQ_REGISTER, method: .post, parameters: userObject).responseJSON { response in
+    static func updateProfile(profile: [String: AnyObject], completion: @escaping (String) -> ()) {
+        
+        Alamofire.request(REQ_UPDATEUSER, method: .post, parameters: profile).responseJSON { response in
             if response.result.isFailure{
                 completion(Constants.CHECK_NETWORK_ERROR)
             }
@@ -272,20 +273,17 @@ class ApiFunctions{
             {
                 let json = JSON(response.result.value!)
                 let message = json[Constants.RES_MESSAGE].stringValue
-                if message == Constants.PROCESS_SUCCESS {
-                    completion(Constants.PROCESS_SUCCESS)
-                }
-                else {
-                    completion(message)
-                }
+                completion(message)
             }
         }
     }
     
-    static func updateProfileImage(userid: String, imageurl: String, completion: @escaping(String) -> ()) {
-        let params = [Constants.KEY_USER_ID: userid,
-                      Constants.KEY_USER_PROFILEIMAGEURL: imageurl]
-        Alamofire.request(REQ_UPDATEPROFILEIMAGE, method: .post, parameters: params).responseJSON { response in
+    static func uploadPosition(completion: @escaping (String) -> ()) {
+        let params = ["user_latitude" : currentLatitude as AnyObject,
+                      "user_longitude" : currentLongitude as AnyObject,
+                      "user_id" : currentUser!.user_id as AnyObject,
+                      "user_available" : currentUser!.user_available as AnyObject]
+        Alamofire.request(REQ_UPLOADPOSITION, method: .post, parameters: params).responseJSON { response in
             if response.result.isFailure{
                 completion(Constants.CHECK_NETWORK_ERROR)
             }
@@ -293,15 +291,9 @@ class ApiFunctions{
             {
                 let json = JSON(response.result.value!)
                 let message = json[Constants.RES_MESSAGE].stringValue
-                if message == Constants.PROCESS_SUCCESS {
-                    completion(Constants.PROCESS_SUCCESS)
-                }
-                else {
-                    completion(message)
-                }
+                completion(message)
             }
         }
-        
     }
     
     

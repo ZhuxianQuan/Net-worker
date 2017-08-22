@@ -20,7 +20,7 @@
         <scene sceneID="7n3-Vz-bto">
             <objects>
                 <navigationController storyboardIdentifier="StartNav" id="fGc-an-dy3" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="V77-TD-ggq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="V77-TD-ggq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1395,6 +1395,9 @@
                                                     <state key="normal" title="Continue">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="continueButtonTapped:" destination="cjt-nP-ewi" eventType="touchUpInside" id="fdA-Cm-7Ek"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -1752,7 +1755,7 @@
                                         <rect key="frame" x="130" y="5" width="234" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                         <connections>
                                             <outlet property="delegate" destination="ZrE-Hy-nvm" id="ArB-aG-bF8"/>
                                         </connections>
@@ -1871,6 +1874,32 @@
             </objects>
             <point key="canvasLocation" x="2526.0869565217395" y="-85.59782608695653"/>
         </scene>
+        <!--Drawer Controller-->
+        <scene sceneID="xzW-RO-t4r">
+            <objects>
+                <viewController storyboardIdentifier="KYDrawerController" id="a6R-pU-7k3" customClass="KYDrawerController" customModule="KYDrawerController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="W3g-6M-Gzc"/>
+                        <viewControllerLayoutGuide type="bottom" id="8pb-w8-hdS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3O0-ui-AAw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="mainSegueIdentifier" value="main"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="drawerSegueIdentifier" value="drawer"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="f96-a3-BZb" kind="custom" identifier="main" customClass="KYEmbedMainControllerSegue" customModule="KYDrawerController" id="Ty7-gJ-61A"/>
+                        <segue destination="0xE-dB-Y7y" kind="custom" identifier="drawer" customClass="KYEmbedDrawerControllerSegue" customModule="KYDrawerController" id="b1a-Sp-WZk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tMR-ci-OfV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3445" y="255"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="4yM-8N-Adb">
             <objects>
@@ -1881,67 +1910,16 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="6g6-XU-WbL" kind="relationship" relationship="viewControllers" id="yVv-iv-O2V"/>
-                        <segue destination="rWV-Be-5fM" kind="relationship" relationship="viewControllers" id="XwB-DD-IDW"/>
-                        <segue destination="NO5-F3-QNs" kind="relationship" relationship="viewControllers" id="qdc-ef-lRk"/>
-                        <segue destination="lQb-Kq-BiW" kind="relationship" relationship="viewControllers" id="BKK-VE-iyE"/>
-                        <segue destination="yo7-IB-Omy" kind="relationship" relationship="viewControllers" id="0rv-QM-1zZ"/>
+                        <segue destination="qHN-qh-JHj" kind="relationship" relationship="viewControllers" id="ipl-aA-A79"/>
+                        <segue destination="MCu-b4-07r" kind="relationship" relationship="viewControllers" id="LHz-xb-zox"/>
+                        <segue destination="6hk-CW-Y5p" kind="relationship" relationship="viewControllers" id="Lz2-1N-Lzt"/>
+                        <segue destination="B2H-6J-oho" kind="relationship" relationship="viewControllers" id="1yX-sS-ZJb"/>
+                        <segue destination="IgH-YY-UKq" kind="relationship" relationship="viewControllers" id="3Dn-Xu-bR2"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pqs-St-NYz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3988" y="-179"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="mFE-Rd-wq4">
-            <objects>
-                <navigationController id="17P-vV-X8Y" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="icon_home" id="1Nd-YC-pqc">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
-                    </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="R6Y-zS-HJV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="0xE-dB-Y7y" kind="relationship" relationship="rootViewController" id="43M-Ty-GW9"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wtw-eO-oje" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6120" y="-2126"/>
-        </scene>
-        <!--Drawer Controller-->
-        <scene sceneID="Okr-I3-AOP">
-            <objects>
-                <viewController restorationIdentifier="HomeDrawer" storyboardIdentifier="HomeDrawer" id="6g6-XU-WbL" customClass="KYDrawerController" customModule="KYDrawerController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xz9-0W-5Ij"/>
-                        <viewControllerLayoutGuide type="bottom" id="Bzp-pw-cgL"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8pX-Dw-hXC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="icon_home" id="Mg6-gI-Ety">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
-                    </tabBarItem>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="mainSegueIdentifier" value="main"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="drawerSegueIdentifier" value="drawer"/>
-                        <userDefinedRuntimeAttribute type="number" keyPath="drawerWidth">
-                            <real key="value" value="250"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <segue destination="17P-vV-X8Y" kind="custom" identifier="drawer" customClass="KYEmbedDrawerControllerSegue" customModule="KYDrawerController" id="UvL-Jr-zdy"/>
-                        <segue destination="qHN-qh-JHj" kind="custom" identifier="main" customClass="KYEmbedMainControllerSegue" customModule="KYDrawerController" id="TwW-0v-IPN"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2Zr-yR-k2I" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5201" y="-1461"/>
+            <point key="canvasLocation" x="4355" y="-593"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="AeO-Nc-Mb9">
@@ -2053,211 +2031,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="skI-c4-izT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7986.9565217391309" y="-325.27173913043481"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="FSl-a1-ZU0">
-            <objects>
-                <navigationController id="MiF-UH-oxx" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="icon_home" id="5gi-Dd-sAn">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
-                    </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MBE-5i-Bv8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="0xE-dB-Y7y" kind="relationship" relationship="rootViewController" id="hrt-aT-kRw"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Q46-d7-B6h" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6657" y="-907"/>
-        </scene>
-        <!--Drawer Controller-->
-        <scene sceneID="2pL-fQ-k5G">
-            <objects>
-                <viewController storyboardIdentifier="SearchDrawer" id="rWV-Be-5fM" customClass="KYDrawerController" customModule="KYDrawerController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="lsb-RE-45H"/>
-                        <viewControllerLayoutGuide type="bottom" id="GRC-K2-5Fh"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="QCk-aI-6W6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="icon_search" id="pe4-sJ-fj5">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
-                    </tabBarItem>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="mainSegueIdentifier" value="main"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="drawerSegueIdentifier" value="drawer"/>
-                        <userDefinedRuntimeAttribute type="number" keyPath="drawerWidth">
-                            <real key="value" value="250"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <segue destination="MiF-UH-oxx" kind="custom" identifier="drawer" customClass="KYEmbedDrawerControllerSegue" customModule="KYDrawerController" id="Ja3-Bv-Ioo"/>
-                        <segue destination="MCu-b4-07r" kind="custom" identifier="main" customClass="KYEmbedMainControllerSegue" customModule="KYDrawerController" id="sdD-6s-QuM"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BbP-Ng-HcD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5238" y="-775"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ost-L3-Vyp">
-            <objects>
-                <navigationController id="Qbn-fs-GMh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="icon_home" id="enu-L3-e82">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
-                    </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KMQ-vn-yYC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="0xE-dB-Y7y" kind="relationship" relationship="rootViewController" id="jHW-ra-BYb"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Dkg-23-Fwv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6230" y="7"/>
-        </scene>
-        <!--Drawer Controller-->
-        <scene sceneID="JCb-p5-XaH">
-            <objects>
-                <viewController storyboardIdentifier="ScheduleDrawer" id="NO5-F3-QNs" customClass="KYDrawerController" customModule="KYDrawerController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="bqM-Sr-acR"/>
-                        <viewControllerLayoutGuide type="bottom" id="MUg-o1-tSq"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kyx-bY-63u">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="icon_schedule" id="L08-eH-uto">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
-                    </tabBarItem>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="mainSegueIdentifier" value="main"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="drawerSegueIdentifier" value="drawer"/>
-                        <userDefinedRuntimeAttribute type="number" keyPath="drawerWidth">
-                            <real key="value" value="250"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <segue destination="Qbn-fs-GMh" kind="custom" identifier="drawer" customClass="KYEmbedDrawerControllerSegue" customModule="KYDrawerController" id="ksW-3N-oqM"/>
-                        <segue destination="6hk-CW-Y5p" kind="custom" identifier="main" customClass="KYEmbedMainControllerSegue" customModule="KYDrawerController" id="RZr-Dq-77c"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MUZ-QO-aiD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5387" y="-113"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="H2v-x9-qKg">
-            <objects>
-                <navigationController id="wZI-jF-LZV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="icon_home" id="6Pf-xf-eLd">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
-                    </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QJ0-uI-bAy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="0xE-dB-Y7y" kind="relationship" relationship="rootViewController" id="sgF-ho-Uhe"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Fw8-ji-nsY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6545" y="836"/>
-        </scene>
-        <!--Drawer Controller-->
-        <scene sceneID="aTq-PW-IIV">
-            <objects>
-                <viewController storyboardIdentifier="FavoriteDrawer" id="lQb-Kq-BiW" customClass="KYDrawerController" customModule="KYDrawerController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="9up-0G-DuR"/>
-                        <viewControllerLayoutGuide type="bottom" id="PVk-Nt-3dr"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Kfx-Xy-bLo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="icon_like" id="wf9-E2-nE8">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
-                    </tabBarItem>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="mainSegueIdentifier" value="main"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="drawerSegueIdentifier" value="drawer"/>
-                        <userDefinedRuntimeAttribute type="number" keyPath="drawerWidth">
-                            <real key="value" value="250"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <segue destination="wZI-jF-LZV" kind="custom" identifier="drawer" customClass="KYEmbedDrawerControllerSegue" customModule="KYDrawerController" id="EGf-1p-vOB"/>
-                        <segue destination="B2H-6J-oho" kind="custom" identifier="main" customClass="KYEmbedMainControllerSegue" customModule="KYDrawerController" id="4Y1-Ih-P0F"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="D21-LG-Q1G" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5436" y="571"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="kmZ-2q-cmQ">
-            <objects>
-                <navigationController id="1Iz-Tz-2wh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="icon_home" id="4ag-ih-06x">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
-                    </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="i6J-wc-Ckk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="0xE-dB-Y7y" kind="relationship" relationship="rootViewController" id="fSa-Bh-iVz"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hSi-wj-Gzn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6358" y="1397"/>
-        </scene>
-        <!--Drawer Controller-->
-        <scene sceneID="e90-Qk-mww">
-            <objects>
-                <viewController storyboardIdentifier="ChattingDrawer" id="yo7-IB-Omy" customClass="KYDrawerController" customModule="KYDrawerController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="9tH-K7-Gzd"/>
-                        <viewControllerLayoutGuide type="bottom" id="Ytg-q5-oUM"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="c4i-vr-amW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="" image="icon_chatting" id="Lzn-fA-ubX">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
-                    </tabBarItem>
-                    <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="mainSegueIdentifier" value="main"/>
-                        <userDefinedRuntimeAttribute type="string" keyPath="drawerSegueIdentifier" value="drawer"/>
-                        <userDefinedRuntimeAttribute type="number" keyPath="drawerWidth">
-                            <real key="value" value="250"/>
-                        </userDefinedRuntimeAttribute>
-                    </userDefinedRuntimeAttributes>
-                    <connections>
-                        <segue destination="1Iz-Tz-2wh" kind="custom" identifier="drawer" customClass="KYEmbedDrawerControllerSegue" customModule="KYDrawerController" id="1oH-Fo-UPe"/>
-                        <segue destination="IgH-YY-UKq" kind="custom" identifier="main" customClass="KYEmbedMainControllerSegue" customModule="KYDrawerController" id="6tT-sR-L3s"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="P9F-Co-Z0U" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5216" y="1295"/>
+            <point key="canvasLocation" x="4354" y="860"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="InK-j9-Mao">
@@ -2266,78 +2040,78 @@
                     <tabBarItem key="tabBarItem" title="" image="icon_home" id="x3v-AE-RdT">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KD6-GF-wKb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="KD6-GF-wKb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2q7-Af-VzM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7470" y="-1765"/>
+            <point key="canvasLocation" x="5606" y="-1587"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="BrP-M5-Fyf">
             <objects>
                 <navigationController storyboardIdentifier="SearchNav" id="MCu-b4-07r" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="icon_home" id="Ql1-XZ-ruQ">
+                    <tabBarItem key="tabBarItem" title="" image="icon_search" id="Ql1-XZ-ruQ">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tf0-1d-lqd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="tf0-1d-lqd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RuJ-pY-mLi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7059" y="-716"/>
+            <point key="canvasLocation" x="5606" y="-844"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="y7i-GK-9O9">
             <objects>
                 <navigationController storyboardIdentifier="ScheduleNav" id="6hk-CW-Y5p" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="icon_home" id="Qhb-fM-aq4">
+                    <tabBarItem key="tabBarItem" title="" image="icon_schedule" id="Qhb-fM-aq4">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jQM-9k-xWF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jQM-9k-xWF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZKw-Gd-dah" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6942" y="-17"/>
+            <point key="canvasLocation" x="5606" y="-86"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vbG-Uc-3KA">
             <objects>
                 <navigationController storyboardIdentifier="FavoriteNav" id="B2H-6J-oho" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="icon_home" id="yml-G7-3ie">
+                    <tabBarItem key="tabBarItem" title="" image="icon_like" id="yml-G7-3ie">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="O1a-ph-oaU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="O1a-ph-oaU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VHL-Rm-izG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7414" y="639"/>
+            <point key="canvasLocation" x="5606" y="646"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="E1v-xJ-dKy">
             <objects>
                 <navigationController storyboardIdentifier="ChattingNav" id="IgH-YY-UKq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="icon_home" id="O5G-X5-WmP">
+                    <tabBarItem key="tabBarItem" title="" image="icon_chatting" id="O5G-X5-WmP">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bc5-Ud-5Cr">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="bc5-Ud-5Cr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AgW-R0-Moa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6532" y="1873"/>
+            <point key="canvasLocation" x="5606" y="1502"/>
         </scene>
     </scenes>
     <resources>
@@ -2366,7 +2140,4 @@
         <image name="logo_bee" width="565" height="347"/>
         <image name="splash-background" width="414" height="736"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="sgF-ho-Uhe"/>
-    </inferredMetricsTieBreakers>
 </document>
