@@ -28,9 +28,15 @@ class ApiFunctions{
     
     
     static func login(email: String, password: String, completion: @escaping (String) -> () ){
+        var token = ""
+        if let tokenObject = UserDefaults.standard.value(forKey: Constants.KEY_USER_TOKEN) {
+            token = tokenObject as! String
+        }
+        
         //currentUser = ParseHelper.parseUser(JSON(TestJson.getMe()))
         let params = [Constants.KEY_USER_EMAIL: email,
-                      Constants.KEY_USER_PASSWORD: password]
+                      Constants.KEY_USER_PASSWORD: password,
+                      Constants.KEY_USER_TOKEN : token]
         Alamofire.request(REQ_LOGIN, method: .post, parameters: params).responseJSON { response in
             if response.result.isFailure{
                 completion(Constants.CHECK_NETWORK_ERROR)

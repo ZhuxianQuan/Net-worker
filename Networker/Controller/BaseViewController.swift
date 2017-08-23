@@ -98,7 +98,12 @@ extension UIViewController {
     
     
     func showToastWithDuration(string: String!, duration: Double) {
-        self.view.makeToast(string, duration: duration, position: .bottom)
+        if let tabbar = self.tabBarController {
+            tabbar.view.makeToast(string, duration: duration, position: .bottom)
+        }
+        else {
+            self.view.makeToast(string, duration: duration, position: .bottom)
+        }
     }
     
     func showLoadingView()

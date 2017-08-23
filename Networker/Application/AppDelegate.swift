@@ -99,11 +99,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         if currentUser?.user_available == Constants.VALUE_USER_AVAILABLE {
             locationManager.startUpdatingLocation()
         }
-        else {
-            if locationTimer.isValid {
-                locationTimer.invalidate()
-            }
-        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -157,7 +152,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         if let refreshedToken = InstanceID.instanceID().token() {
             print("InstanceID token: \(refreshedToken)")
             
-            //UserDefault.setString(value: refreshedToken, key: "token")
+            UserDefaults.standard.set(refreshedToken, forKey: Constants.KEY_USER_TOKEN)
+            if currentUser != nil {
+                ApiFunctions.updateProfile(profile: [Constants.KEY_USER_ID: currentUser!.user_id as AnyObject, Constants.KEY_USER_TOKEN : refreshedToken as AnyObject], completion: {
+                    _ in
+                })
+            }
         }
         
         // Connect to FCM since connection may have failed when attempted before having a token.
@@ -279,6 +279,12 @@ extension AppDelegate : MessagingDelegate {
     
     func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
         print("Firebase registration token: \(fcmToken)")
+        UserDefaults.standard.set(fcmToken, forKey: Constants.KEY_USER_TOKEN)
+        if currentUser != nil {
+            ApiFunctions.updateProfile(profile: [Constants.KEY_USER_ID: currentUser!.user_id as AnyObject, Constants.KEY_USER_TOKEN : fcmToken as AnyObject], completion: {
+                _ in
+            })
+        }
     }
     
     // [START refresh_token]

@@ -77,7 +77,7 @@ class RegisterViewController: BaseViewController {
                     self.user = currentUser!
                     if self.profileImage != nil {
                         let data = UIImageJPEGRepresentation(self.profileImage!, 0.5)
-                        ApiFunctions.uploadImage(name: "profile_\(currentUser!.user_id)", imageData: data!, completion: {
+                        ApiFunctions.uploadImage(name: "profile_\(currentUser!.user_id).jpg", imageData: data!, completion: {
                             message, url in
                             if message == Constants.PROCESS_SUCCESS {
                                 self.user.user_profileimageurl = url
@@ -198,8 +198,6 @@ class RegisterViewController: BaseViewController {
         datePickerView.datePickerMode = UIDatePickerMode.date
         
         sender.inputView = datePickerView
-        
-        
         datePickerView.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
         
 
@@ -208,8 +206,8 @@ class RegisterViewController: BaseViewController {
     func datePickerValueChanged(_ sender: UIDatePicker) {
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .none
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        //dateFormatter.timeStyle = .none
         birthday.text = dateFormatter.string(from: sender.date)
     }
 }

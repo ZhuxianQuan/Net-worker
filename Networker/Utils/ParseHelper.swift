@@ -20,8 +20,11 @@ class ParseHelper {
         user.user_email = rawData[Constants.KEY_USER_EMAIL].nonNullStringValue
         user.user_password = rawData[Constants.KEY_USER_PASSWORD].nonNullStringValue
         user.user_address1 = rawData[Constants.KEY_USER_ADDRESS1].nonNullStringValue
+        user.user_address2 = rawData[Constants.KEY_USER_ADDRESS2].nonNullStringValue
+        user.user_address3 = rawData[Constants.KEY_USER_ADDRESS3].nonNullStringValue
         user.user_postcode = rawData[Constants.KEY_USER_POSTCODE].nonNullStringValue
         user.user_birthday = rawData[Constants.KEY_USER_BIRTHDAY].nonNullStringValue
+        user.user_aboutme = rawData[Constants.KEY_USER_ABOUTME].nonNullStringValue
         user.user_profileimageurl = rawData[Constants.KEY_USER_PROFILEIMAGEURL].nonNullStringValue
         
         user.user_skills = rawData[Constants.KEY_USER_SKILLS].nonNullStringValue

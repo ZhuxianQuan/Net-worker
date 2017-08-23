@@ -78,6 +78,7 @@ class Constants {
     static let KEY_USER_RANGEDISTANCE       = "user_rangedistance"
     static let KEY_USER_RATINGS             = "user_ratings"    
     static let KEY_USER_ABOUTME             = "user_aboutme"
+    static let KEY_USER_TOKEN               = "user_token"
     
     //rating model
     

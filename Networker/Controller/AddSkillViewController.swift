@@ -27,6 +27,7 @@ class AddSkillViewController : BaseViewController {
     var fromWhere = 0
     
     let FROM_SKILLSVC = 1
+    let FROM_MYSKILLSVC = 2
     
     @IBOutlet weak var skillsTableView: UITableView!
     
@@ -72,21 +73,27 @@ class AddSkillViewController : BaseViewController {
     
     
     @IBAction func addSkillButtonTapped(_ sender: Any) {
+        
+        if selectedSkill.skill_id > 0{
+            
+        }
+        else{
+            selectedSkill.skill_title = skillNameText.text!
+        }
+        if Double(pricePerHour.text!) != nil{
+            selectedSkill.skill_price = Double(pricePerHour.text!)!
+            selectedSkill.skill_qualifications = skillQualificationsText.text!
+        }
+        let vcs = navigationController?.viewControllers
+        let skillVC = vcs?[(vcs?.count)! - 2]
         if fromWhere == FROM_SKILLSVC{
-            if selectedSkill.skill_id > 0{
-                
-            }
-            else{
-                selectedSkill.skill_title = skillNameText.text!
-            }
-            if Double(pricePerHour.text!) != nil{
-                selectedSkill.skill_price = Double(pricePerHour.text!)!
-                selectedSkill.skill_qualifications = skillQualificationsText.text!
-            }
-            let vcs = navigationController?.viewControllers
-            let skillVC = vcs?[(vcs?.count)! - 2]
             if skillVC != nil{
                 (skillVC as! SkillsViewController).user.user_skills.append(selectedSkill.skill_full_string)
+            }
+        }
+        else if fromWhere == FROM_MYSKILLSVC {
+            if skillVC != nil{
+                (skillVC as! MySkillsViewController).user.user_skills.append(selectedSkill.skill_full_string)
             }
         }
         _ = self.navigationController?.popViewController(animated: true)

@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import SDWebImage
 /*
 class UnderlinedLabel: UILabel {
     
@@ -37,7 +36,6 @@ extension UILabel {
 
 extension UIImageView{
     
-    
     func setImageWith(color: UIColor)
     {        
         image = image?.withRenderingMode(.alwaysTemplate)
@@ -45,20 +43,36 @@ extension UIImageView{
     }
     
     func setImageWith(_ urlString : String, placeholderImage: UIImage) {
-        
-        let localUrl = CommonUtils.getSavedFileUrl(urlString)
-        if localUrl == nil {
-            image = placeholderImage
-            ApiFunctions.downloadFile(urlString: urlString) { (message, url) in
-                if message == Constants.PROCESS_SUCCESS {
-                    self.sd_setImage(with: url)
+        self.image = placeholderImage
+        if urlString.characters.count > 0 {
+            let localUrl = CommonUtils.getSavedFileUrl(urlString)
+            if localUrl == nil {
+                image = placeholderImage
+                ApiFunctions.downloadFile(urlString: urlString) { (message, url) in
+                    if message == Constants.PROCESS_SUCCESS {
+                        do
+                        {
+                            let imageData = try Data(contentsOf: CommonUtils.getSavedFileUrl(urlString)!)
+                            self.image = UIImage(data: imageData)
+                        }
+                        catch {
+                            self.image = placeholderImage
+                        }
+                    }
                 }
             }
+            else {
+                do
+                {
+                    let imageData = try Data(contentsOf: localUrl!)
+                    self.image = UIImage(data: imageData)
+                }
+                catch {
+                    self.image = placeholderImage
+                }
+            }
+
         }
-        else {
-            self.sd_setImage(with: localUrl!, completed: nil)
-        }
-        
     }
 }
 

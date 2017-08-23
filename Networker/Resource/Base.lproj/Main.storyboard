@@ -250,7 +250,7 @@
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MHb-Ij-dgS">
-                                        <rect key="frame" x="33" y="8" width="301" height="20"/>
+                                        <rect key="frame" x="33" y="8.3333333333333428" width="301" height="20"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="NeueHelveticaBQ-Light" family="Neue Helvetica BQ" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES"/>
@@ -290,7 +290,7 @@
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QV5-Yp-VY9">
-                                        <rect key="frame" x="33" y="8" width="301" height="20"/>
+                                        <rect key="frame" x="33" y="8.3333333333333428" width="301" height="19.999999999999972"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="NeueHelveticaBQ-Light" family="Neue Helvetica BQ" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -626,16 +626,16 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ues-oU-mE2">
-                                                    <rect key="frame" x="46" y="129" width="74" height="21"/>
+                                                    <rect key="frame" x="46" y="139" width="74" height="21"/>
                                                     <fontDescription key="fontDescription" name="NeueHelveticaBQ-Light" family="Neue Helvetica BQ" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eoG-hP-ZRB">
-                                                    <rect key="frame" x="30" y="180" width="100" height="196"/>
+                                                    <rect key="frame" x="30" y="170" width="100" height="206"/>
                                                     <subviews>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ndA-YF-qNI">
-                                                            <rect key="frame" x="5" y="5" width="90" height="186"/>
+                                                            <rect key="frame" x="5" y="5" width="90" height="196"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -662,8 +662,8 @@
                                                 <constraint firstItem="Flu-HH-cbk" firstAttribute="leading" secondItem="cTW-9h-QQD" secondAttribute="leading" id="FSx-fw-1FN"/>
                                                 <constraint firstItem="Ues-oU-mE2" firstAttribute="centerX" secondItem="cTW-9h-QQD" secondAttribute="centerX" id="H1H-v4-BWU"/>
                                                 <constraint firstAttribute="trailing" secondItem="eoG-hP-ZRB" secondAttribute="trailing" constant="10" id="Kay-Q6-FAO"/>
-                                                <constraint firstItem="Ues-oU-mE2" firstAttribute="top" secondItem="cTW-9h-QQD" secondAttribute="bottom" constant="10" id="WAm-4d-hMo"/>
-                                                <constraint firstItem="eoG-hP-ZRB" firstAttribute="top" secondItem="Ues-oU-mE2" secondAttribute="bottom" constant="30" id="aBM-ZH-ycS"/>
+                                                <constraint firstItem="Ues-oU-mE2" firstAttribute="top" secondItem="cTW-9h-QQD" secondAttribute="bottom" constant="20" id="WAm-4d-hMo"/>
+                                                <constraint firstItem="eoG-hP-ZRB" firstAttribute="top" secondItem="Ues-oU-mE2" secondAttribute="bottom" constant="10" id="aBM-ZH-ycS"/>
                                                 <constraint firstItem="Flu-HH-cbk" firstAttribute="trailing" secondItem="cTW-9h-QQD" secondAttribute="trailing" id="bdT-fq-bz3"/>
                                                 <constraint firstAttribute="trailing" secondItem="cTW-9h-QQD" secondAttribute="trailing" constant="8" id="gfC-2e-pKp"/>
                                                 <constraint firstItem="cTW-9h-QQD" firstAttribute="leading" secondItem="qET-Z7-HEe" secondAttribute="leading" constant="33" id="hto-dN-EcB"/>
@@ -1064,18 +1064,6 @@
                                             <constraint firstItem="7sb-iY-Ipf" firstAttribute="bottom" secondItem="LQE-Z6-a39" secondAttribute="bottom" id="tCG-Pc-x6k"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OGJ-qU-Ik8">
-                                        <rect key="frame" x="364" y="14" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="40" id="UhP-OT-diR"/>
-                                            <constraint firstAttribute="height" constant="40" id="xAw-7n-WeD"/>
-                                        </constraints>
-                                        <state key="normal" image="icon_cancel"/>
-                                        <connections>
-                                            <action selector="cancelButtonTapped:" destination="7li-ax-P8N" eventType="touchUpInside" id="nym-cv-Sk5"/>
-                                            <action selector="shareButtonTapped:" destination="S90-OR-dmF" eventType="touchUpInside" id="jZg-hN-zov"/>
-                                        </connections>
-                                    </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_bee" translatesAutoresizingMaskIntoConstraints="NO" id="IJL-Vr-Tdy">
                                         <rect key="frame" x="101" y="23" width="36" height="22"/>
                                         <constraints>
@@ -1102,9 +1090,7 @@
                                     <constraint firstItem="36a-FX-ZIl" firstAttribute="top" secondItem="55I-SF-R2n" secondAttribute="top" constant="12" id="1ZG-7T-aD5"/>
                                     <constraint firstItem="J10-4y-NCY" firstAttribute="leading" secondItem="55I-SF-R2n" secondAttribute="leading" constant="5" id="1tJ-IM-NLM"/>
                                     <constraint firstAttribute="bottom" secondItem="36a-FX-ZIl" secondAttribute="bottom" constant="12" id="2qK-GN-DR2"/>
-                                    <constraint firstAttribute="trailing" secondItem="OGJ-qU-Ik8" secondAttribute="trailing" constant="10" id="4OI-Xi-tE1"/>
                                     <constraint firstAttribute="height" constant="67" id="68t-s0-EWx"/>
-                                    <constraint firstItem="OGJ-qU-Ik8" firstAttribute="centerY" secondItem="55I-SF-R2n" secondAttribute="centerY" id="HHA-vs-5AD"/>
                                     <constraint firstItem="IJL-Vr-Tdy" firstAttribute="centerY" secondItem="55I-SF-R2n" secondAttribute="centerY" id="Hwq-HW-cBA"/>
                                     <constraint firstItem="36a-FX-ZIl" firstAttribute="leading" secondItem="IJL-Vr-Tdy" secondAttribute="trailing" id="KqJ-qq-5Bm"/>
                                     <constraint firstItem="J10-4y-NCY" firstAttribute="centerY" secondItem="55I-SF-R2n" secondAttribute="centerY" id="XvP-YS-dll"/>
@@ -1210,6 +1196,7 @@
                                         <connections>
                                             <action selector="cancelButtonTapped:" destination="7li-ax-P8N" eventType="touchUpInside" id="VA6-mp-dIf"/>
                                             <action selector="shareButtonTapped:" destination="S90-OR-dmF" eventType="touchUpInside" id="OgC-yj-oPg"/>
+                                            <action selector="skipButtonTapped:" destination="cjt-nP-ewi" eventType="touchUpInside" id="hNj-WE-xHU"/>
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_bee" translatesAutoresizingMaskIntoConstraints="NO" id="IAu-ea-EYc">
@@ -1302,7 +1289,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VWF-SR-BTX" customClass="STPPaymentCardTextField">
-                                                    <rect key="frame" x="15" y="38" width="344" height="44"/>
+                                                    <rect key="frame" x="15" y="36" width="344" height="46"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                             </subviews>
@@ -1311,6 +1298,7 @@
                                                 <constraint firstAttribute="height" constant="90" id="Eho-1G-ljR"/>
                                                 <constraint firstItem="V1P-XC-fAn" firstAttribute="leading" secondItem="rnd-rl-gCl" secondAttribute="leading" constant="20" id="HgF-qt-XaK"/>
                                                 <constraint firstItem="VWF-SR-BTX" firstAttribute="leading" secondItem="rnd-rl-gCl" secondAttribute="leading" constant="15" id="NnR-17-9ks"/>
+                                                <constraint firstItem="VWF-SR-BTX" firstAttribute="top" secondItem="V1P-XC-fAn" secondAttribute="bottom" constant="15" id="bax-9v-5NL"/>
                                                 <constraint firstAttribute="bottom" secondItem="VWF-SR-BTX" secondAttribute="bottom" constant="8" id="d6f-o1-Emt"/>
                                                 <constraint firstAttribute="trailing" secondItem="VWF-SR-BTX" secondAttribute="trailing" constant="15" id="hGl-Es-hNa"/>
                                                 <constraint firstItem="V1P-XC-fAn" firstAttribute="top" secondItem="rnd-rl-gCl" secondAttribute="top" id="vSF-mf-TUt"/>
@@ -1606,7 +1594,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1757.9710144927537" y="-82.33695652173914"/>
+            <point key="canvasLocation" x="1733" y="-86"/>
         </scene>
         <!--Add Skill View Controller-->
         <scene sceneID="bT3-ZS-SYP">

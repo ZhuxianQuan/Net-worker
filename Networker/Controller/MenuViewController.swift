@@ -23,6 +23,10 @@ class MenuViewController: BaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         setUserInfo()
     }
 
@@ -51,18 +55,40 @@ class MenuViewController: BaseViewController {
     func showView(_ index: Int) {
         let title = menuStringArray[index]
         
+        let currentNav = getCurrentNav()
+        let drawerController = self.parent as? KYDrawerController
+        drawerController?.setDrawerState(.closed, animated: true)
         switch  title {
         case Constants.SIDE_MENU_SIGN_OUT:
             CommonUtils.logout()
             self.gotoLoginScence()
             break
-        case "Personal details":            
+        case Constants.SIDE_MENU_PERSONAL_DETAILS:
+            let profileVC = getStoryboard(id: Constants.STORYBOARD_HOME).instantiateViewController(withIdentifier: "ProfileViewController")
+            currentNav?.pushViewController(profileVC, animated: true)
             break
-        case "Availability":
+        case Constants.SIDE_MENU_SKILLS:
+            let skillsVC = getStoryboard(id: Constants.STORYBOARD_HOME).instantiateViewController(withIdentifier: "MySkillsViewController")
+            currentNav?.pushViewController(skillsVC, animated: true)
             break
         default:
             break
         }
+    }
+    
+    func getCurrentNav() -> UINavigationController? {
+        if let drawerController = self.parent as? KYDrawerController {
+            if let tabbarController = drawerController.mainViewController as? UITabBarController {
+                return tabbarController.viewControllers?[tabbarController.selectedIndex] as? UINavigationController
+            }
+            else {
+                return nil
+            }
+        }
+        else {
+            return nil
+        }
+        
     }
 
 }

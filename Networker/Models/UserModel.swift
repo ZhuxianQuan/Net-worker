@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import SwiftyJSON
 
 class UserModel {
     
@@ -50,8 +50,15 @@ class UserModel {
     var user_rangedistance = 5.0
     var user_ratings : [RatingModel] = []
     var user_aboutme = ""
-//    var user_payment
-
+    var user_token: String {
+        get {
+            if let token = UserDefaults.standard.value(forKey: Constants.KEY_USER_TOKEN) {
+                return token as! String
+            }
+            return ""
+        }
+    }
+    
     
     func getUserObject() -> [String: AnyObject]{
         var result : [String : AnyObject] = [:]
@@ -67,12 +74,13 @@ class UserModel {
         result[Constants.KEY_USER_SKILLS] = user_skills as AnyObject
         result[Constants.KEY_USER_AVAILABLE] = user_available as AnyObject
         result[Constants.KEY_USER_PROFILEIMAGEURL] = user_profileimageurl as AnyObject
-        result[Constants.KEY_USER_LATITUDE] = user_latitude as AnyObject
-        result[Constants.KEY_USER_LONGITUDE] = user_longitude as AnyObject
+        result[Constants.KEY_USER_LATITUDE] = currentLatitude as AnyObject
+        result[Constants.KEY_USER_LONGITUDE] = currentLongitude as AnyObject
         result[Constants.KEY_USER_RANGEDISTANCE] = user_rangedistance as AnyObject
         result[Constants.KEY_USER_POSTCODE] = user_postcode as AnyObject
         result[Constants.KEY_USER_BIRTHDAY] = user_birthday as AnyObject
         result[Constants.KEY_USER_AVAILABLE] = user_available as AnyObject
+        result[Constants.KEY_USER_TOKEN] = user_token as AnyObject
         
         //result[Constants.KEY_USER_RATINGS]
         return result

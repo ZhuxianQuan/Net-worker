@@ -70,11 +70,12 @@
 		0AA79E6D1E874DB30020DE8B /* UserSkillsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA79E6C1E874DB30020DE8B /* UserSkillsTableViewCell.swift */; };
 		0AA79E6F1E8754E70020DE8B /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA79E6E1E8754E70020DE8B /* ReviewTableViewCell.swift */; };
 		0AA79E711E8764590020DE8B /* Koyomi+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA79E701E8764590020DE8B /* Koyomi+Extension.swift */; };
-		0AB18D881E8860CF00C5B7A4 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB18D871E8860CF00C5B7A4 /* UINavigationController+Extension.swift */; };
 		0AD219041E7B4427001E7865 /* SkillsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD219031E7B4427001E7865 /* SkillsTableViewCell.swift */; };
 		0AED02AB1E87D8A70058D637 /* DailyScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED02AA1E87D8A70058D637 /* DailyScheduleViewController.swift */; };
 		82BFADE43C544A394DCBF956 /* Pods_Networker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0037CB8F35E0C7003867F45F /* Pods_Networker.framework */; };
 		E17749C51F4C1D14005531D1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17749C41F4C1D14005531D1 /* ProfileViewController.swift */; };
+		E17749C71F4D236A005531D1 /* MySkillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17749C61F4D236A005531D1 /* MySkillsViewController.swift */; };
+		E17749C91F4D2F12005531D1 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17749C81F4D2F12005531D1 /* UINavigationController+Extension.swift */; };
 		E181A2A11EED137700148484 /* SwiftyJSON+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181A2A01EED137700148484 /* SwiftyJSON+Extension.swift */; };
 		E1886DAA1F4B2CEE003E1D56 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1886DA91F4B2CEE003E1D56 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -148,10 +149,11 @@
 		0AA79E6C1E874DB30020DE8B /* UserSkillsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSkillsTableViewCell.swift; sourceTree = "<group>"; };
 		0AA79E6E1E8754E70020DE8B /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		0AA79E701E8764590020DE8B /* Koyomi+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Koyomi+Extension.swift"; sourceTree = "<group>"; };
-		0AB18D871E8860CF00C5B7A4 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		0AD219031E7B4427001E7865 /* SkillsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillsTableViewCell.swift; sourceTree = "<group>"; };
 		0AED02AA1E87D8A70058D637 /* DailyScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyScheduleViewController.swift; sourceTree = "<group>"; };
 		E17749C41F4C1D14005531D1 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		E17749C61F4D236A005531D1 /* MySkillsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySkillsViewController.swift; sourceTree = "<group>"; };
+		E17749C81F4D2F12005531D1 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		E181A2A01EED137700148484 /* SwiftyJSON+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftyJSON+Extension.swift"; sourceTree = "<group>"; };
 		E1886DA91F4B2CEE003E1D56 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ED2D8F081500C49690489A09 /* Pods-Networker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Networker.release.xcconfig"; path = "Pods/Target Support Files/Pods-Networker/Pods-Networker.release.xcconfig"; sourceTree = "<group>"; };
@@ -267,7 +269,6 @@
 			children = (
 				0A3B87931E7FCDB500140D6C /* FloatRatingView.swift */,
 				0AA79E701E8764590020DE8B /* Koyomi+Extension.swift */,
-				0AB18D871E8860CF00C5B7A4 /* UINavigationController+Extension.swift */,
 			);
 			path = Vender;
 			sourceTree = "<group>";
@@ -330,6 +331,7 @@
 			children = (
 				0A405B291E768AB9005C2618 /* HomeViewController.swift */,
 				E17749C41F4C1D14005531D1 /* ProfileViewController.swift */,
+				E17749C61F4D236A005531D1 /* MySkillsViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -462,6 +464,7 @@
 			isa = PBXGroup;
 			children = (
 				0A8D425D1E8839C100B9B547 /* MenuViewController.swift */,
+				E17749C81F4D2F12005531D1 /* UINavigationController+Extension.swift */,
 			);
 			name = KYDrawer;
 			sourceTree = "<group>";
@@ -655,7 +658,6 @@
 				0A2AA0141E75F6D700B41F23 /* fontawesome-webfont.ttf in Sources */,
 				0A3B87921E7FA8C200140D6C /* MatchedUserTableViewCell.swift in Sources */,
 				0A5304801E7609A400244C3D /* Constants.swift in Sources */,
-				0AB18D881E8860CF00C5B7A4 /* UINavigationController+Extension.swift in Sources */,
 				0A2AA0151E75F6D700B41F23 /* HelveticaNeue-Medium_22622.ttf in Sources */,
 				0AA79E6D1E874DB30020DE8B /* UserSkillsTableViewCell.swift in Sources */,
 				0AED02AB1E87D8A70058D637 /* DailyScheduleViewController.swift in Sources */,
@@ -666,6 +668,7 @@
 				0A6897A91E7E1CFA000226B9 /* FMDBManager+Data.swift in Sources */,
 				0A405B211E7687F6005C2618 /* SkillsViewController.swift in Sources */,
 				0A3B878C1E7F9B8D00140D6C /* SearchMenuTableViewCell.swift in Sources */,
+				E17749C91F4D2F12005531D1 /* UINavigationController+Extension.swift in Sources */,
 				E181A2A11EED137700148484 /* SwiftyJSON+Extension.swift in Sources */,
 				0AD219041E7B4427001E7865 /* SkillsTableViewCell.swift in Sources */,
 				0A59DBBE1E7CCE550077A5F6 /* FirebaseRealTimeMessage.swift in Sources */,
@@ -673,6 +676,7 @@
 				0AA79E6F1E8754E70020DE8B /* ReviewTableViewCell.swift in Sources */,
 				0A3B87961E7FCDD400140D6C /* RatingModel.swift in Sources */,
 				0A3B87901E7FA19D00140D6C /* SearchMatchedUsersViewController.swift in Sources */,
+				E17749C71F4D236A005531D1 /* MySkillsViewController.swift in Sources */,
 				0A2AA0171E75F6D700B41F23 /* neue-helvetica-45-light-58981f95881bb.otf in Sources */,
 				0A6841791E88B59400B8926F /* UserAvailabilityViewController.swift in Sources */,
 				0A6897A71E7DF6A1000226B9 /* AddSkillViewController.swift in Sources */,

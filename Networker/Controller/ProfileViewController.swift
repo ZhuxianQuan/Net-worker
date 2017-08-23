@@ -39,6 +39,7 @@ class ProfileViewController: BaseViewController {
         // Do any additional setup after loading the view.
         user = currentUser!
         keyboardControl()
+        setUserDetail()
     }
     
     override func didReceiveMemoryWarning() {
@@ -48,6 +49,7 @@ class ProfileViewController: BaseViewController {
     
     
     func setUserDetail() {
+        imvProfile.setImageWith((currentUser?.user_profileimageurl)!, placeholderImage: #imageLiteral(resourceName: "icon_profile"))
         firstName.text = user.user_firstname
         lastName.text = user.user_lastname
         email.text = user.user_email
@@ -58,43 +60,54 @@ class ProfileViewController: BaseViewController {
         postcode.text = user.user_postcode
         birthday.text = user.user_birthday
         password.text = user.user_password
+        aboutMe.text = user.user_aboutme
     }
     
     @IBAction func backButtonTapped(_ sender: UIButton) {
         _ = navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func cancelButtonTapped(_ sender: UIButton) {
-        
-    }
+    
     
     @IBAction func contentViewTapped(_ sender: Any) {
         self.view.endEditing(true)
     }
     @IBAction func updateButtonTapped(_ sender: Any) {
-        
+        self.view.endEditing(true)
         let checkResult = checkValid()
         if checkResult == Constants.PROCESS_SUCCESS {
             showLoadingView()
-            ApiFunctions.register(user, completion: {
+            let profile = [Constants.KEY_USER_ID: currentUser!.user_id as AnyObject,
+                           Constants.KEY_USER_FIRSTNAME: user.user_firstname as AnyObject,
+                           Constants.KEY_USER_LASTNAME: user.user_lastname as AnyObject,
+                           Constants.KEY_USER_EMAIL: user.user_email as AnyObject,
+                           Constants.KEY_USER_PASSWORD: user.user_password as AnyObject,
+                           Constants.KEY_USER_POSTCODE: user.user_postcode as AnyObject,
+                           Constants.KEY_USER_ADDRESS1: user.user_address1 as AnyObject,
+                           Constants.KEY_USER_ADDRESS2: user.user_address2 as AnyObject,
+                           Constants.KEY_USER_ADDRESS3: user.user_address3 as AnyObject,
+                           Constants.KEY_USER_ABOUTME: user.user_aboutme as AnyObject]
+            ApiFunctions.updateProfile(profile: profile, completion: {
                 message in
-                
                 if message == Constants.PROCESS_SUCCESS {
-                    self.user = currentUser!
+                    currentUser = self.user
                     if self.profileImage != nil {
                         let data = UIImageJPEGRepresentation(self.profileImage!, 0.5)
-                        ApiFunctions.uploadImage(name: "profile_\(currentUser!.user_id)", imageData: data!, completion: {
+                        ApiFunctions.uploadImage(name: "profile_\(currentUser!.user_id).jpg", imageData: data!, completion: {
                             message, url in
                             if message == Constants.PROCESS_SUCCESS {
                                 self.user.user_profileimageurl = url
                                 ApiFunctions.updateProfile(profile: [Constants.KEY_USER_ID: self.user.user_id as AnyObject, Constants.KEY_USER_PROFILEIMAGEURL: url as AnyObject], completion: {
                                     message in
+                                    self.hideLoadingView()
+                                    
                                     if message == Constants.PROCESS_SUCCESS {
-                                        self.navigationController?.showToastWithDuration(string: "Image uploaded successfully", duration: 3.0)
-                                        self.gotoSkillVC()
+                                        currentUser?.user_profileimageurl = url
+                                        self.showToastWithDuration(string: "Image uploaded successfully", duration: 3.0)
+                                        //self.gotoSkillVC()
                                     }
                                     else {
-                                        self.hideLoadingView()
+                                        
                                         self.showToastWithDuration(string: message, duration: 3.0)
                                     }
                                 })
@@ -107,7 +120,7 @@ class ProfileViewController: BaseViewController {
                     }
                     else {
                         self.hideLoadingView()
-                        self.gotoSkillVC()
+                        //self.gotoSkillVC()
                     }
                 }
                 else {
@@ -120,13 +133,13 @@ class ProfileViewController: BaseViewController {
             self.showToastWithDuration(string: checkResult, duration: 3.0)
         }
     }
-    
+    /*
     func gotoSkillVC() {
         
         let skillVC = self.storyboard?.instantiateViewController(withIdentifier: "SkillsViewController") as! SkillsViewController
         skillVC.user = user
         self.navigationController?.viewControllers = [skillVC]
-    }
+    }*/
     
     @IBAction func uploadImageButtonTapped(_ sender: Any) {
         if user.user_id > 0{
@@ -214,9 +227,10 @@ class ProfileViewController: BaseViewController {
     func datePickerValueChanged(_ sender: UIDatePicker) {
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .none
+        dateFormatter.dateFormat = "dd/MM/yyyy"
+        //dateFormatter.timeStyle = .none
         birthday.text = dateFormatter.string(from: sender.date)
+
     }
 }
 

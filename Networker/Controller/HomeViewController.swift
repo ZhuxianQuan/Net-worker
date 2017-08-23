@@ -14,6 +14,7 @@ class HomeViewController: BaseViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var availableSwitch: UISwitch!
     
     var nearMeWorkers : [UserModel] = []
     
@@ -25,6 +26,13 @@ class HomeViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        if currentUser?.user_available == Constants.VALUE_USER_AVAILABLE {
+            availableSwitch.isOn = true
+        }
+        else {
+            availableSwitch.isOn = false
+        }
         initMapView()
         if navigationController!.viewControllers.count > 1{
             backButton.isHidden = false
@@ -51,6 +59,14 @@ class HomeViewController: BaseViewController {
         
     }
     
+    @IBAction func availableSwitched(_ sender: UISwitch) {
+        if sender.isOn {
+            currentUser?.user_available = Constants.VALUE_USER_AVAILABLE
+        }
+        else {
+            currentUser?.user_available = Constants.VALUE_USER_BUSY
+        }
+    }
     
     func arrangeFriends() {
         

@@ -1,35 +1,25 @@
 //
-//  SkillsViewController.swift
+//  MySkillsViewController.swift
 //  Networker
 //
-//  Created by Big Shark on 13/03/2017.
+//  Created by Quan Zhuxian on 23/08/2017.
 //  Copyright © 2017 shark. All rights reserved.
 //
 
 import UIKit
-import M13Checkbox
-import Stripe
 
-
-class SkillsViewController: BaseViewController {
-    
+class MySkillsViewController: BaseViewController {
     
     @IBOutlet weak var skillsTableView: UITableView!
-
-    @IBOutlet weak var agreementCheck: M13Checkbox!
-    
-    @IBOutlet weak var cardView: STPPaymentCardTextField!
-    
-    @IBOutlet weak var availableSwitch: UISwitch!
     @IBOutlet weak var continueButton: UIButton!
-    
     
     var user = UserModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
+        user.user_skills = (currentUser?.user_skills)!
         skillsTableView.estimatedRowHeight = 50
     }
     
@@ -39,7 +29,7 @@ class SkillsViewController: BaseViewController {
         //skillsViewHeightConstraint.constant = skillsTableView.contentSize.height
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -50,57 +40,43 @@ class SkillsViewController: BaseViewController {
         _ = self.navigationController?.popViewController(animated: true)
         self.view.endEditing(true)
     }
-
+    
     @IBAction func addSkill(_ sender: Any) {
         self.view.endEditing(true)
-        let addSkillVC = storyboard?.instantiateViewController(withIdentifier: "AddSkillViewController") as! AddSkillViewController
-        addSkillVC.fromWhere = addSkillVC.FROM_SKILLSVC
+        let addSkillVC = getStoryboard(id: Constants.STORYBOARD_MAIN).instantiateViewController(withIdentifier: "AddSkillViewController") as! AddSkillViewController
+        addSkillVC.fromWhere = addSkillVC.FROM_MYSKILLSVC
         addSkillVC.preDefinedSkills = user.user_skill_array
         navigationController?.pushViewController(addSkillVC, animated: true)
     }
     
     
-    @IBAction func skipButtonTapped(_ sender: Any) {
-        self.gotoMainScene()
-    }
     @IBAction func skillsTableViewTapped(_ sender: Any) {
         self.view.endEditing(true)
     }
     
     @IBAction func continueButtonTapped(_ sender: Any) {
         
-        if agreementCheck.checkState == .checked {
-            if availableSwitch.isOn {
-                self.user.user_available = Constants.VALUE_USER_AVAILABLE
-                
+        
+        let params = [Constants.KEY_USER_ID : currentUser!.user_id as AnyObject,
+                      Constants.KEY_USER_SKILLS : user.user_skills as AnyObject]
+        self.showLoadingView()
+        ApiFunctions.updateProfile(profile: params, completion: {
+            message in
+            self.hideLoadingView()
+            if message == Constants.PROCESS_SUCCESS {
+                currentUser?.user_skills = self.user.user_skills
+                self.showToastWithDuration(string: "Skills updated successfully", duration: 1.5)
             }
-            let params = [Constants.KEY_USER_ID : user.user_id as AnyObject,
-                          Constants.KEY_USER_SKILLS : user.user_skills as AnyObject,
-                          Constants.KEY_USER_AVAILABLE : user.user_available as AnyObject]
-            self.showLoadingView()
-            ApiFunctions.updateProfile(profile: params, completion: {
-                message in
-                self.hideLoadingView()
-                if message == Constants.PROCESS_SUCCESS {
-                    currentUser?.user_skills = self.user.user_skills
-                    currentUser?.user_available = self.user.user_available
-                    self.gotoMainScene()
-                }
-                else {
-                    self.showToastWithDuration(string: message, duration: 3.0)
-                }
-                
-            })
-        }
-        else
-        {
-            self.showToastWithDuration(string: "You should agree terms and conditions", duration: 3.0)
-        }
+            else {
+                self.showToastWithDuration(string: message, duration: 3.0)
+            }
+            
+        })
         
     }
 }
 
-extension SkillsViewController : UITableViewDelegate, UITableViewDataSource {
+extension MySkillsViewController : UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
