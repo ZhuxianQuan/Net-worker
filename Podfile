@@ -19,10 +19,7 @@ pod 'FacebookCore'
 pod 'FacebookLogin'
 pod 'KYDrawerController'
 pod 'Alamofire'
-pod ‘SDWebImage’
-pod 'M13Checkbox'
 pod 'SwiftyJSON'
-pod 'Koyomi'
 pod 'LinkedinSwift'
 pod 'Stripe'
 

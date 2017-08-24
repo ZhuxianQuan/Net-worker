@@ -75,6 +75,34 @@
 		E145959F1F4EC65B00EA72E6 /* WeekdayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E145959E1F4EC65B00EA72E6 /* WeekdayTableViewCell.swift */; };
 		E14595A11F4ED55E00EA72E6 /* DealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595A01F4ED55E00EA72E6 /* DealModel.swift */; };
 		E14595A31F4ED66D00EA72E6 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595A21F4ED66D00EA72E6 /* DateUtils.swift */; };
+		E14595C11F4F02E300EA72E6 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595B71F4F02E300EA72E6 /* DateExtension.swift */; };
+		E14595C21F4F02E300EA72E6 /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595B81F4F02E300EA72E6 /* DateModel.swift */; };
+		E14595C31F4F02E300EA72E6 /* DictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595B91F4F02E300EA72E6 /* DictionaryExtension.swift */; };
+		E14595C41F4F02E300EA72E6 /* Koyomi.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595BA1F4F02E300EA72E6 /* Koyomi.swift */; };
+		E14595C51F4F02E300EA72E6 /* KoyomiCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595BB1F4F02E300EA72E6 /* KoyomiCell.swift */; };
+		E14595C61F4F02E300EA72E6 /* KoyomiLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595BC1F4F02E300EA72E6 /* KoyomiLayout.swift */; };
+		E14595C71F4F02E300EA72E6 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595BD1F4F02E300EA72E6 /* UIColorExtension.swift */; };
+		E14595C81F4F02E300EA72E6 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595BE1F4F02E300EA72E6 /* UIViewExtension.swift */; };
+		E14595C91F4F02E300EA72E6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = E14595BF1F4F02E300EA72E6 /* LICENSE */; };
+		E14595CA1F4F02E300EA72E6 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E14595C01F4F02E300EA72E6 /* README.md */; };
+		E14595E01F4F032E00EA72E6 /* M13Checkbox+IB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595CC1F4F032E00EA72E6 /* M13Checkbox+IB.swift */; };
+		E14595E11F4F032E00EA72E6 /* M13Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595CD1F4F032E00EA72E6 /* M13Checkbox.swift */; };
+		E14595E21F4F032E00EA72E6 /* M13CheckboxAnimationGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595CE1F4F032E00EA72E6 /* M13CheckboxAnimationGenerator.swift */; };
+		E14595E31F4F032E00EA72E6 /* M13CheckboxController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595CF1F4F032E00EA72E6 /* M13CheckboxController.swift */; };
+		E14595E41F4F032E00EA72E6 /* M13CheckboxGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595D01F4F032E00EA72E6 /* M13CheckboxGestureRecognizer.swift */; };
+		E14595E51F4F032E00EA72E6 /* M13CheckboxBounceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595D21F4F032E00EA72E6 /* M13CheckboxBounceController.swift */; };
+		E14595E61F4F032E00EA72E6 /* M13CheckboxDotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595D31F4F032E00EA72E6 /* M13CheckboxDotController.swift */; };
+		E14595E71F4F032E00EA72E6 /* M13CheckboxExpandController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595D41F4F032E00EA72E6 /* M13CheckboxExpandController.swift */; };
+		E14595E81F4F032E00EA72E6 /* M13CheckboxFadeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595D51F4F032E00EA72E6 /* M13CheckboxFadeController.swift */; };
+		E14595E91F4F032E00EA72E6 /* M13CheckboxFillController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595D61F4F032E00EA72E6 /* M13CheckboxFillController.swift */; };
+		E14595EA1F4F032E00EA72E6 /* M13CheckboxFlatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595D71F4F032E00EA72E6 /* M13CheckboxFlatController.swift */; };
+		E14595EB1F4F032E00EA72E6 /* M13CheckboxSpiralController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595D81F4F032E00EA72E6 /* M13CheckboxSpiralController.swift */; };
+		E14595EC1F4F032E00EA72E6 /* M13CheckboxStrokeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595D91F4F032E00EA72E6 /* M13CheckboxStrokeController.swift */; };
+		E14595ED1F4F032E00EA72E6 /* M13CheckboxAddRemovePathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595DB1F4F032E00EA72E6 /* M13CheckboxAddRemovePathGenerator.swift */; };
+		E14595EE1F4F032E00EA72E6 /* M13CheckboxCheckPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595DC1F4F032E00EA72E6 /* M13CheckboxCheckPathGenerator.swift */; };
+		E14595EF1F4F032E00EA72E6 /* M13CheckboxDisclosurePathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595DD1F4F032E00EA72E6 /* M13CheckboxDisclosurePathGenerator.swift */; };
+		E14595F01F4F032E00EA72E6 /* M13CheckboxPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595DE1F4F032E00EA72E6 /* M13CheckboxPathGenerator.swift */; };
+		E14595F11F4F032E00EA72E6 /* M13CheckboxRadioPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595DF1F4F032E00EA72E6 /* M13CheckboxRadioPathGenerator.swift */; };
 		E17749C51F4C1D14005531D1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17749C41F4C1D14005531D1 /* ProfileViewController.swift */; };
 		E17749C71F4D236A005531D1 /* MySkillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17749C61F4D236A005531D1 /* MySkillsViewController.swift */; };
 		E17749C91F4D2F12005531D1 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17749C81F4D2F12005531D1 /* UINavigationController+Extension.swift */; };
@@ -155,6 +183,34 @@
 		E145959E1F4EC65B00EA72E6 /* WeekdayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekdayTableViewCell.swift; sourceTree = "<group>"; };
 		E14595A01F4ED55E00EA72E6 /* DealModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealModel.swift; sourceTree = "<group>"; };
 		E14595A21F4ED66D00EA72E6 /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
+		E14595B71F4F02E300EA72E6 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		E14595B81F4F02E300EA72E6 /* DateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
+		E14595B91F4F02E300EA72E6 /* DictionaryExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DictionaryExtension.swift; sourceTree = "<group>"; };
+		E14595BA1F4F02E300EA72E6 /* Koyomi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Koyomi.swift; sourceTree = "<group>"; };
+		E14595BB1F4F02E300EA72E6 /* KoyomiCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KoyomiCell.swift; sourceTree = "<group>"; };
+		E14595BC1F4F02E300EA72E6 /* KoyomiLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KoyomiLayout.swift; sourceTree = "<group>"; };
+		E14595BD1F4F02E300EA72E6 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		E14595BE1F4F02E300EA72E6 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		E14595BF1F4F02E300EA72E6 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		E14595C01F4F02E300EA72E6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E14595CC1F4F032E00EA72E6 /* M13Checkbox+IB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "M13Checkbox+IB.swift"; sourceTree = "<group>"; };
+		E14595CD1F4F032E00EA72E6 /* M13Checkbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13Checkbox.swift; sourceTree = "<group>"; };
+		E14595CE1F4F032E00EA72E6 /* M13CheckboxAnimationGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxAnimationGenerator.swift; sourceTree = "<group>"; };
+		E14595CF1F4F032E00EA72E6 /* M13CheckboxController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxController.swift; sourceTree = "<group>"; };
+		E14595D01F4F032E00EA72E6 /* M13CheckboxGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxGestureRecognizer.swift; sourceTree = "<group>"; };
+		E14595D21F4F032E00EA72E6 /* M13CheckboxBounceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxBounceController.swift; sourceTree = "<group>"; };
+		E14595D31F4F032E00EA72E6 /* M13CheckboxDotController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxDotController.swift; sourceTree = "<group>"; };
+		E14595D41F4F032E00EA72E6 /* M13CheckboxExpandController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxExpandController.swift; sourceTree = "<group>"; };
+		E14595D51F4F032E00EA72E6 /* M13CheckboxFadeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxFadeController.swift; sourceTree = "<group>"; };
+		E14595D61F4F032E00EA72E6 /* M13CheckboxFillController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxFillController.swift; sourceTree = "<group>"; };
+		E14595D71F4F032E00EA72E6 /* M13CheckboxFlatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxFlatController.swift; sourceTree = "<group>"; };
+		E14595D81F4F032E00EA72E6 /* M13CheckboxSpiralController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxSpiralController.swift; sourceTree = "<group>"; };
+		E14595D91F4F032E00EA72E6 /* M13CheckboxStrokeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxStrokeController.swift; sourceTree = "<group>"; };
+		E14595DB1F4F032E00EA72E6 /* M13CheckboxAddRemovePathGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxAddRemovePathGenerator.swift; sourceTree = "<group>"; };
+		E14595DC1F4F032E00EA72E6 /* M13CheckboxCheckPathGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxCheckPathGenerator.swift; sourceTree = "<group>"; };
+		E14595DD1F4F032E00EA72E6 /* M13CheckboxDisclosurePathGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxDisclosurePathGenerator.swift; sourceTree = "<group>"; };
+		E14595DE1F4F032E00EA72E6 /* M13CheckboxPathGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxPathGenerator.swift; sourceTree = "<group>"; };
+		E14595DF1F4F032E00EA72E6 /* M13CheckboxRadioPathGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxRadioPathGenerator.swift; sourceTree = "<group>"; };
 		E17749C41F4C1D14005531D1 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E17749C61F4D236A005531D1 /* MySkillsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySkillsViewController.swift; sourceTree = "<group>"; };
 		E17749C81F4D2F12005531D1 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
@@ -271,6 +327,8 @@
 		0A1AA6001E75927C0010F651 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				E14595B51F4F02E300EA72E6 /* Koyomi */,
+				E14595CB1F4F032E00EA72E6 /* Sources */,
 				0A3B87931E7FCDB500140D6C /* FloatRatingView.swift */,
 				0AA79E701E8764590020DE8B /* Koyomi+Extension.swift */,
 			);
@@ -515,6 +573,72 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E14595B51F4F02E300EA72E6 /* Koyomi */ = {
+			isa = PBXGroup;
+			children = (
+				E14595B61F4F02E300EA72E6 /* Koyomi */,
+				E14595BF1F4F02E300EA72E6 /* LICENSE */,
+				E14595C01F4F02E300EA72E6 /* README.md */,
+			);
+			path = Koyomi;
+			sourceTree = "<group>";
+		};
+		E14595B61F4F02E300EA72E6 /* Koyomi */ = {
+			isa = PBXGroup;
+			children = (
+				E14595B71F4F02E300EA72E6 /* DateExtension.swift */,
+				E14595B81F4F02E300EA72E6 /* DateModel.swift */,
+				E14595B91F4F02E300EA72E6 /* DictionaryExtension.swift */,
+				E14595BA1F4F02E300EA72E6 /* Koyomi.swift */,
+				E14595BB1F4F02E300EA72E6 /* KoyomiCell.swift */,
+				E14595BC1F4F02E300EA72E6 /* KoyomiLayout.swift */,
+				E14595BD1F4F02E300EA72E6 /* UIColorExtension.swift */,
+				E14595BE1F4F02E300EA72E6 /* UIViewExtension.swift */,
+			);
+			path = Koyomi;
+			sourceTree = "<group>";
+		};
+		E14595CB1F4F032E00EA72E6 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				E14595CC1F4F032E00EA72E6 /* M13Checkbox+IB.swift */,
+				E14595CD1F4F032E00EA72E6 /* M13Checkbox.swift */,
+				E14595CE1F4F032E00EA72E6 /* M13CheckboxAnimationGenerator.swift */,
+				E14595CF1F4F032E00EA72E6 /* M13CheckboxController.swift */,
+				E14595D01F4F032E00EA72E6 /* M13CheckboxGestureRecognizer.swift */,
+				E14595D11F4F032E00EA72E6 /* Managers */,
+				E14595DA1F4F032E00EA72E6 /* Paths */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		E14595D11F4F032E00EA72E6 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E14595D21F4F032E00EA72E6 /* M13CheckboxBounceController.swift */,
+				E14595D31F4F032E00EA72E6 /* M13CheckboxDotController.swift */,
+				E14595D41F4F032E00EA72E6 /* M13CheckboxExpandController.swift */,
+				E14595D51F4F032E00EA72E6 /* M13CheckboxFadeController.swift */,
+				E14595D61F4F032E00EA72E6 /* M13CheckboxFillController.swift */,
+				E14595D71F4F032E00EA72E6 /* M13CheckboxFlatController.swift */,
+				E14595D81F4F032E00EA72E6 /* M13CheckboxSpiralController.swift */,
+				E14595D91F4F032E00EA72E6 /* M13CheckboxStrokeController.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		E14595DA1F4F032E00EA72E6 /* Paths */ = {
+			isa = PBXGroup;
+			children = (
+				E14595DB1F4F032E00EA72E6 /* M13CheckboxAddRemovePathGenerator.swift */,
+				E14595DC1F4F032E00EA72E6 /* M13CheckboxCheckPathGenerator.swift */,
+				E14595DD1F4F032E00EA72E6 /* M13CheckboxDisclosurePathGenerator.swift */,
+				E14595DE1F4F032E00EA72E6 /* M13CheckboxPathGenerator.swift */,
+				E14595DF1F4F032E00EA72E6 /* M13CheckboxRadioPathGenerator.swift */,
+			);
+			path = Paths;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -587,6 +711,7 @@
 				0A1AA6031E75927C0010F651 /* Assets.xcassets in Resources */,
 				E1886DAA1F4B2CEE003E1D56 /* GoogleService-Info.plist in Resources */,
 				0A405B1D1E765421005C2618 /* Favorite.storyboard in Resources */,
+				E14595C91F4F02E300EA72E6 /* LICENSE in Resources */,
 				0A1AA6041E75927C0010F651 /* LaunchScreen.storyboard in Resources */,
 				0A405B1F1E765433005C2618 /* Chatting.storyboard in Resources */,
 				0A405B171E7653D3005C2618 /* Home.storyboard in Resources */,
@@ -651,14 +776,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A405B231E76892F005C2618 /* SearchViewController.swift in Sources */,
+				E14595ED1F4F032E00EA72E6 /* M13CheckboxAddRemovePathGenerator.swift in Sources */,
+				E14595EE1F4F032E00EA72E6 /* M13CheckboxCheckPathGenerator.swift in Sources */,
 				0AA79E711E8764590020DE8B /* Koyomi+Extension.swift in Sources */,
 				0A2AA0141E75F6D700B41F23 /* fontawesome-webfont.ttf in Sources */,
 				0A3B87921E7FA8C200140D6C /* MatchedUserTableViewCell.swift in Sources */,
 				0A5304801E7609A400244C3D /* Constants.swift in Sources */,
 				0A2AA0151E75F6D700B41F23 /* HelveticaNeue-Medium_22622.ttf in Sources */,
+				E14595CA1F4F02E300EA72E6 /* README.md in Sources */,
 				0AA79E6D1E874DB30020DE8B /* UserSkillsTableViewCell.swift in Sources */,
 				0AED02AB1E87D8A70058D637 /* DailyScheduleViewController.swift in Sources */,
 				0A59DBB51E7C98E50077A5F6 /* FMDBManager.swift in Sources */,
+				E14595C41F4F02E300EA72E6 /* Koyomi.swift in Sources */,
 				0A2AA0161E75F6D700B41F23 /* HelveticaNeue.ttf in Sources */,
 				0A405B2C1E768B01005C2618 /* SearchMenuViewController.swift in Sources */,
 				0AA79E691E874D0D0020DE8B /* UserProfileViewController.swift in Sources */,
@@ -666,51 +795,74 @@
 				0A405B211E7687F6005C2618 /* SkillsViewController.swift in Sources */,
 				0A3B878C1E7F9B8D00140D6C /* SearchMenuTableViewCell.swift in Sources */,
 				E17749C91F4D2F12005531D1 /* UINavigationController+Extension.swift in Sources */,
+				E14595EF1F4F032E00EA72E6 /* M13CheckboxDisclosurePathGenerator.swift in Sources */,
 				E181A2A11EED137700148484 /* SwiftyJSON+Extension.swift in Sources */,
 				0AD219041E7B4427001E7865 /* SkillsTableViewCell.swift in Sources */,
 				0A59DBBE1E7CCE550077A5F6 /* FirebaseRealTimeMessage.swift in Sources */,
 				0A5304821E760D9800244C3D /* ApiFunctions.swift in Sources */,
 				0AA79E6F1E8754E70020DE8B /* ReviewTableViewCell.swift in Sources */,
 				0A3B87961E7FCDD400140D6C /* RatingModel.swift in Sources */,
+				E14595E71F4F032E00EA72E6 /* M13CheckboxExpandController.swift in Sources */,
 				0A3B87901E7FA19D00140D6C /* SearchMatchedUsersViewController.swift in Sources */,
 				E17749C71F4D236A005531D1 /* MySkillsViewController.swift in Sources */,
 				0A2AA0171E75F6D700B41F23 /* neue-helvetica-45-light-58981f95881bb.otf in Sources */,
 				0A6841791E88B59400B8926F /* UserAvailabilityViewController.swift in Sources */,
 				0A6897A71E7DF6A1000226B9 /* AddSkillViewController.swift in Sources */,
+				E14595C31F4F02E300EA72E6 /* DictionaryExtension.swift in Sources */,
+				E14595EC1F4F032E00EA72E6 /* M13CheckboxStrokeController.swift in Sources */,
 				0A405B2E1E7693E2005C2618 /* SortByViewController.swift in Sources */,
 				0A2AA0181E75F6D700B41F23 /* taile.ttf in Sources */,
+				E14595E41F4F032E00EA72E6 /* M13CheckboxGestureRecognizer.swift in Sources */,
 				E145959F1F4EC65B00EA72E6 /* WeekdayTableViewCell.swift in Sources */,
 				0A8C93E21E7AE77A0031EE0F /* ParseHelper.swift in Sources */,
 				0A3EEBB21E7A43B70009706B /* ScheduleViewController.swift in Sources */,
 				0A1AA6021E75927C0010F651 /* AppDelegate.swift in Sources */,
+				E14595C51F4F02E300EA72E6 /* KoyomiCell.swift in Sources */,
 				0A6897AB1E7E1EFF000226B9 /* Singleton.swift in Sources */,
 				0A53047E1E76096600244C3D /* CommonUtils.swift in Sources */,
+				E14595EB1F4F032E00EA72E6 /* M13CheckboxSpiralController.swift in Sources */,
 				0A8C93E41E7AE7B20031EE0F /* UserModel.swift in Sources */,
 				0A7B8A771E8A540F001A0468 /* UserScheduleListViewController.swift in Sources */,
 				0A59DBB71E7CCDB00077A5F6 /* AnnotationView.swift in Sources */,
 				0A3EEBB41E7A43D30009706B /* FavoriteViewController.swift in Sources */,
 				0A3EEBB61E7A44140009706B /* ChattingViewController.swift in Sources */,
 				0AA79E6B1E874D480020DE8B /* ReviewsViewController.swift in Sources */,
+				E14595E51F4F032E00EA72E6 /* M13CheckboxBounceController.swift in Sources */,
+				E14595C11F4F02E300EA72E6 /* DateExtension.swift in Sources */,
+				E14595E91F4F032E00EA72E6 /* M13CheckboxFillController.swift in Sources */,
 				0A3B878E1E7F9DA400140D6C /* UIView+Extension.swift in Sources */,
 				0A3B87941E7FCDB500140D6C /* FloatRatingView.swift in Sources */,
 				E17749C51F4C1D14005531D1 /* ProfileViewController.swift in Sources */,
+				E14595EA1F4F032E00EA72E6 /* M13CheckboxFlatController.swift in Sources */,
 				0A405B2A1E768AB9005C2618 /* HomeViewController.swift in Sources */,
+				E14595E11F4F032E00EA72E6 /* M13Checkbox.swift in Sources */,
 				0A298DB11E8990F00006B7BC /* DayScheduleTableViewCell.swift in Sources */,
 				0A7B8A751E8A3D8B001A0468 /* FavoriteUserTableViewCell.swift in Sources */,
 				0A8D425E1E8839C100B9B547 /* MenuViewController.swift in Sources */,
+				E14595E21F4F032E00EA72E6 /* M13CheckboxAnimationGenerator.swift in Sources */,
+				E14595E01F4F032E00EA72E6 /* M13Checkbox+IB.swift in Sources */,
 				0A3EEBB81E7AD3100009706B /* SkillModel.swift in Sources */,
+				E14595C61F4F02E300EA72E6 /* KoyomiLayout.swift in Sources */,
+				E14595E81F4F032E00EA72E6 /* M13CheckboxFadeController.swift in Sources */,
 				0A1AA60E1E75DBA50010F651 /* BaseViewController.swift in Sources */,
 				0A5304841E7633B500244C3D /* RegisterViewController.swift in Sources */,
 				0A7B8A801E8A5656001A0468 /* ScheduleListTableViewCell.swift in Sources */,
+				E14595C71F4F02E300EA72E6 /* UIColorExtension.swift in Sources */,
+				E14595F11F4F032E00EA72E6 /* M13CheckboxRadioPathGenerator.swift in Sources */,
 				0A8C93E01E7AE49D0031EE0F /* TagModel.swift in Sources */,
 				E14595A11F4ED55E00EA72E6 /* DealModel.swift in Sources */,
+				E14595C21F4F02E300EA72E6 /* DateModel.swift in Sources */,
 				E145959D1F4EC41400EA72E6 /* AddScheduleViewController.swift in Sources */,
+				E14595E31F4F032E00EA72E6 /* M13CheckboxController.swift in Sources */,
 				0A59DBBF1E7CCE550077A5F6 /* FirebaseStorageUtils.swift in Sources */,
 				E14595A31F4ED66D00EA72E6 /* DateUtils.swift in Sources */,
+				E14595E61F4F032E00EA72E6 /* M13CheckboxDotController.swift in Sources */,
 				0A59DBB91E7CCDCE0077A5F6 /* StarbuckAnnotation.swift in Sources */,
 				0A59DBC01E7CCE550077A5F6 /* FirebaseUserAuthentication.swift in Sources */,
+				E14595F01F4F032E00EA72E6 /* M13CheckboxPathGenerator.swift in Sources */,
 				0A1AA6131E75E3B60010F651 /* LoginViewController.swift in Sources */,
 				0A7B8A731E8A2F8A001A0468 /* CategoryModel.swift in Sources */,
+				E14595C81F4F02E300EA72E6 /* UIViewExtension.swift in Sources */,
 				0A1AA6111E75DBE00010F651 /* SplashViewController.swift in Sources */,
 				0A68417F1E890D3100B8926F /* DayScheduleModel.swift in Sources */,
 			);

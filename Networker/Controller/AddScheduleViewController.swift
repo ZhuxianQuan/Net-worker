@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import Koyomi
+
+
 class AddScheduleViewController: BaseViewController {
     
     @IBOutlet weak var fromTextField: UITextField!
@@ -57,8 +58,6 @@ class AddScheduleViewController: BaseViewController {
 
     
     @IBAction func addScheduleButtonTapped(_ sender: Any) {
-        
-        
         
     }
 }

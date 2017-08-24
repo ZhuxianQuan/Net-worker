@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Koyomi
 
 extension Koyomi {
     func getMonthValue() -> Int {

@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import M13Checkbox
-
 import FacebookCore
 import FacebookLogin
 

@@ -64,17 +64,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Koyomi.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>LinkedinSwift.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>M13Checkbox.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -117,7 +107,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>20A9DD9ABBF08BC57372A26C35327BF1</key>
+		<key>09563D4C5107E2B753FF6D6F02E009F1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0B55C2E2AE86D060684BFB0F87CAD17F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>17BFE4D4CA7F9A0C2BA0782CDC4FAE86</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -127,22 +127,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2919D614CFA79749B7302521FC2B8B38</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>2E2E8FC899A8ABAE0D93B2194AADB22B</key>
+		<key>252C95D65E82DE783D2BA0ACE128494F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>44CAD6CE523055ED339E87154473A254</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>4FC34E9C597E2AACB325462CCF6F042B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -157,17 +147,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>6CFFB439B38716C66C7E23C903C44AF3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>6D5CEDECD3D8DC52EA507E0431BDA8A0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>7335E9C9689F3B8A16F063A884748533</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>78DF7555E88AD3552879D4FE9873B0DE</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -182,22 +172,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>90360C3E5BD3B101EF577184214B2708</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B2A02ECC9C87A3E6A6967C78D0AAD1F2</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>B4121D3B507ACAC290C37AF691D07F53</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C0E9466A1FEDC3EC0D71EE7071693A34</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -217,12 +202,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E50B13B1EDE5F4FACB7C833368F0F1E3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E8B7CDD75CB3A3F3EDCBFD5A260F7826</key>
+		<key>E6E6DB7BCE05E9E05F8CC522EA17D20F</key>
 		<dict>
 			<key>primary</key>
 			<true/>

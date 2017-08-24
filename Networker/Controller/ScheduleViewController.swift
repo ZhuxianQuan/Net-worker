@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Koyomi
 
 class ScheduleViewController: BaseViewController {
     

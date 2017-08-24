@@ -23,7 +23,7 @@ class FirebaseStorageUtils
         
         // Create a storage reference from our storage service
         
-        let fileURL = toURL + "/" + userid  + "\(getGlobalTime())" + ".mp4"
+        let fileURL = toURL + "/" + userid  + "\(Date().timeIntervalSince1970)" + ".mp4"
         let storageRef = storage.reference(forURL: fileURL)
         // File located on disk
         let localFile = url
