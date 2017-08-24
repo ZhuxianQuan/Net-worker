@@ -10,31 +10,65 @@ import Foundation
 import UIKit
 
 
-typealias ScheduleTime = (hour: Int , minute : Int)
-typealias ScheduleDataTagColor = (red: CGFloat, green: CGFloat , blue: CGFloat, alpha: CGFloat)
-typealias ScheduleDate = (year: Int, month: Int, day: Int)
-typealias ScheduleMonth = (year: Int, month: Int)
 
 class DayScheduleModel {
-    var schedule_user_id: Int64 = 0
-    var schedule_date = ScheduleDate(year: 0, month: 0, day: 0)
-    var schedule_dayData : [ScheduleData] = []
     
-    func getDateString() -> String {
-        return "\(schedule_date.day)/\(CommonUtils.getMonthName(schedule_date.month)) \(schedule_date.year)"
+    let MORNING = 50
+    let AFTERNOON = 51
+    let EVENING = 52
+    
+    var user_id : Int64 = 0
+    var schedule_id : Int = 0
+    var day : Int = 0
+    var day_schedule : Int64 = 0
+    var notes = ""
+    
+    func setBusy(time : Int) {
+        if time == MORNING{
+            day_schedule = day_schedule - (day_schedule & Int64(255 << 16))
+        }
+        else if time == AFTERNOON {
+            day_schedule = day_schedule - (day_schedule & Int64(255 << 24))
+        }
+        else if time == EVENING {
+            day_schedule = day_schedule - (day_schedule & Int64(255 << 32))
+        }
+        else {
+            day_schedule = day_schedule - (day_schedule & Int64(1 << time))
+        }
     }
     
-    func getMonthString() -> String {
-        return "\(CommonUtils.getMonthName(schedule_date.month)) \(schedule_date.year)"
+    func setAvailable(time : Int) {
+        if time == MORNING{
+            day_schedule = day_schedule | Int64(255 << 16)
+        }
+        else if time == AFTERNOON {
+            day_schedule = day_schedule | Int64(255 << 24)
+        }
+        else if time == EVENING {
+            day_schedule = day_schedule | Int64(255 << 32)
+        }
+        else {
+            day_schedule = day_schedule | Int64(1 << time)
+        }
+    }
+    
+    func setAvailableAllDay() {
+        day_schedule = Int64(1 << 48) - 1
+    }
+    
+    func setBusyAllDay() {
+        day_schedule = 0
+    }
+    
+    func getScheduleArray() -> [EventSchedule] {
+        var events = [EventSchedule]()
+        
+        return events
     }
 }
 
-class ScheduleData {
-    
-    var start_time = ScheduleTime(hour: 0 , minute: 0)
-    var end_time = ScheduleTime(hour: 0 , minute: 0)
-    var work_title = ""
-    var job = SkillModel()
-    var tag_color = ScheduleDataTagColor(red: 90.0/255.0, green: 190.0/255.0, blue: 226.0/255.0, alpha: 1)
-    
+class EventSchedule {
+    //var day :
 }
+

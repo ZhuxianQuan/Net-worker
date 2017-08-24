@@ -50,10 +50,8 @@
 		0A59DBBE1E7CCE550077A5F6 /* FirebaseRealTimeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A59DBBB1E7CCE550077A5F6 /* FirebaseRealTimeMessage.swift */; };
 		0A59DBBF1E7CCE550077A5F6 /* FirebaseStorageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A59DBBC1E7CCE550077A5F6 /* FirebaseStorageUtils.swift */; };
 		0A59DBC01E7CCE550077A5F6 /* FirebaseUserAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A59DBBD1E7CCE550077A5F6 /* FirebaseUserAuthentication.swift */; };
-		0A59DBC41E7CD1060077A5F6 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A59DBC31E7CD1060077A5F6 /* DateExtension.swift */; };
 		0A6841791E88B59400B8926F /* UserAvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6841781E88B59400B8926F /* UserAvailabilityViewController.swift */; };
 		0A68417F1E890D3100B8926F /* DayScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A68417E1E890D3100B8926F /* DayScheduleModel.swift */; };
-		0A6841811E8916C600B8926F /* AddScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6841801E8916C600B8926F /* AddScheduleViewController.swift */; };
 		0A6897A71E7DF6A1000226B9 /* AddSkillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6897A61E7DF6A1000226B9 /* AddSkillViewController.swift */; };
 		0A6897A91E7E1CFA000226B9 /* FMDBManager+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6897A81E7E1CFA000226B9 /* FMDBManager+Data.swift */; };
 		0A6897AB1E7E1EFF000226B9 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6897AA1E7E1EFF000226B9 /* Singleton.swift */; };
@@ -73,6 +71,10 @@
 		0AD219041E7B4427001E7865 /* SkillsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD219031E7B4427001E7865 /* SkillsTableViewCell.swift */; };
 		0AED02AB1E87D8A70058D637 /* DailyScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED02AA1E87D8A70058D637 /* DailyScheduleViewController.swift */; };
 		82BFADE43C544A394DCBF956 /* Pods_Networker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0037CB8F35E0C7003867F45F /* Pods_Networker.framework */; };
+		E145959D1F4EC41400EA72E6 /* AddScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E145959C1F4EC41400EA72E6 /* AddScheduleViewController.swift */; };
+		E145959F1F4EC65B00EA72E6 /* WeekdayTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E145959E1F4EC65B00EA72E6 /* WeekdayTableViewCell.swift */; };
+		E14595A11F4ED55E00EA72E6 /* DealModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595A01F4ED55E00EA72E6 /* DealModel.swift */; };
+		E14595A31F4ED66D00EA72E6 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595A21F4ED66D00EA72E6 /* DateUtils.swift */; };
 		E17749C51F4C1D14005531D1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17749C41F4C1D14005531D1 /* ProfileViewController.swift */; };
 		E17749C71F4D236A005531D1 /* MySkillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17749C61F4D236A005531D1 /* MySkillsViewController.swift */; };
 		E17749C91F4D2F12005531D1 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17749C81F4D2F12005531D1 /* UINavigationController+Extension.swift */; };
@@ -128,11 +130,9 @@
 		0A59DBBB1E7CCE550077A5F6 /* FirebaseRealTimeMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseRealTimeMessage.swift; sourceTree = "<group>"; };
 		0A59DBBC1E7CCE550077A5F6 /* FirebaseStorageUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseStorageUtils.swift; sourceTree = "<group>"; };
 		0A59DBBD1E7CCE550077A5F6 /* FirebaseUserAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUserAuthentication.swift; sourceTree = "<group>"; };
-		0A59DBC31E7CD1060077A5F6 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		0A59DBC51E7CE18C0077A5F6 /* Networker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Networker.entitlements; sourceTree = "<group>"; };
 		0A6841781E88B59400B8926F /* UserAvailabilityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAvailabilityViewController.swift; sourceTree = "<group>"; };
 		0A68417E1E890D3100B8926F /* DayScheduleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayScheduleModel.swift; sourceTree = "<group>"; };
-		0A6841801E8916C600B8926F /* AddScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddScheduleViewController.swift; sourceTree = "<group>"; };
 		0A6897A61E7DF6A1000226B9 /* AddSkillViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddSkillViewController.swift; sourceTree = "<group>"; };
 		0A6897A81E7E1CFA000226B9 /* FMDBManager+Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FMDBManager+Data.swift"; sourceTree = "<group>"; };
 		0A6897AA1E7E1EFF000226B9 /* Singleton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
@@ -151,6 +151,10 @@
 		0AA79E701E8764590020DE8B /* Koyomi+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Koyomi+Extension.swift"; sourceTree = "<group>"; };
 		0AD219031E7B4427001E7865 /* SkillsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillsTableViewCell.swift; sourceTree = "<group>"; };
 		0AED02AA1E87D8A70058D637 /* DailyScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyScheduleViewController.swift; sourceTree = "<group>"; };
+		E145959C1F4EC41400EA72E6 /* AddScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddScheduleViewController.swift; sourceTree = "<group>"; };
+		E145959E1F4EC65B00EA72E6 /* WeekdayTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekdayTableViewCell.swift; sourceTree = "<group>"; };
+		E14595A01F4ED55E00EA72E6 /* DealModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealModel.swift; sourceTree = "<group>"; };
+		E14595A21F4ED66D00EA72E6 /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		E17749C41F4C1D14005531D1 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E17749C61F4D236A005531D1 /* MySkillsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySkillsViewController.swift; sourceTree = "<group>"; };
 		E17749C81F4D2F12005531D1 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
@@ -238,6 +242,7 @@
 				0A3B87951E7FCDD400140D6C /* RatingModel.swift */,
 				0A68417E1E890D3100B8926F /* DayScheduleModel.swift */,
 				0A7B8A721E8A2F8A001A0468 /* CategoryModel.swift */,
+				E14595A01F4ED55E00EA72E6 /* DealModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -256,7 +261,6 @@
 			isa = PBXGroup;
 			children = (
 				0A59DBBA1E7CCE4C0077A5F6 /* FirebaseUtils */,
-				0A59DBB11E7C98070077A5F6 /* Test Data */,
 				0AD219061E7B5616001E7865 /* Common */,
 				0AD219071E7B5622001E7865 /* Api */,
 				0AD219051E7B560A001E7865 /* FMDB */,
@@ -355,8 +359,8 @@
 			children = (
 				0A3EEBB11E7A43B70009706B /* ScheduleViewController.swift */,
 				0AED02AA1E87D8A70058D637 /* DailyScheduleViewController.swift */,
-				0A6841801E8916C600B8926F /* AddScheduleViewController.swift */,
 				0A7B8A761E8A540F001A0468 /* UserScheduleListViewController.swift */,
+				E145959C1F4EC41400EA72E6 /* AddScheduleViewController.swift */,
 			);
 			name = Calendar;
 			sourceTree = "<group>";
@@ -375,13 +379,6 @@
 				0A3EEBB51E7A44140009706B /* ChattingViewController.swift */,
 			);
 			name = Messaging;
-			sourceTree = "<group>";
-		};
-		0A59DBB11E7C98070077A5F6 /* Test Data */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Test Data";
 			sourceTree = "<group>";
 		};
 		0A59DBBA1E7CCE4C0077A5F6 /* FirebaseUtils */ = {
@@ -440,6 +437,7 @@
 			isa = PBXGroup;
 			children = (
 				0A298DB01E8990F00006B7BC /* DayScheduleTableViewCell.swift */,
+				E145959E1F4EC65B00EA72E6 /* WeekdayTableViewCell.swift */,
 			);
 			name = "Daily Schedule";
 			sourceTree = "<group>";
@@ -483,10 +481,10 @@
 			children = (
 				0A53047D1E76096600244C3D /* CommonUtils.swift */,
 				0A53047F1E7609A400244C3D /* Constants.swift */,
-				0A59DBC31E7CD1060077A5F6 /* DateExtension.swift */,
 				0A6897AA1E7E1EFF000226B9 /* Singleton.swift */,
 				0A3B878D1E7F9DA400140D6C /* UIView+Extension.swift */,
 				E181A2A01EED137700148484 /* SwiftyJSON+Extension.swift */,
+				E14595A21F4ED66D00EA72E6 /* DateUtils.swift */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -654,7 +652,6 @@
 			files = (
 				0A405B231E76892F005C2618 /* SearchViewController.swift in Sources */,
 				0AA79E711E8764590020DE8B /* Koyomi+Extension.swift in Sources */,
-				0A59DBC41E7CD1060077A5F6 /* DateExtension.swift in Sources */,
 				0A2AA0141E75F6D700B41F23 /* fontawesome-webfont.ttf in Sources */,
 				0A3B87921E7FA8C200140D6C /* MatchedUserTableViewCell.swift in Sources */,
 				0A5304801E7609A400244C3D /* Constants.swift in Sources */,
@@ -682,6 +679,7 @@
 				0A6897A71E7DF6A1000226B9 /* AddSkillViewController.swift in Sources */,
 				0A405B2E1E7693E2005C2618 /* SortByViewController.swift in Sources */,
 				0A2AA0181E75F6D700B41F23 /* taile.ttf in Sources */,
+				E145959F1F4EC65B00EA72E6 /* WeekdayTableViewCell.swift in Sources */,
 				0A8C93E21E7AE77A0031EE0F /* ParseHelper.swift in Sources */,
 				0A3EEBB21E7A43B70009706B /* ScheduleViewController.swift in Sources */,
 				0A1AA6021E75927C0010F651 /* AppDelegate.swift in Sources */,
@@ -698,7 +696,6 @@
 				E17749C51F4C1D14005531D1 /* ProfileViewController.swift in Sources */,
 				0A405B2A1E768AB9005C2618 /* HomeViewController.swift in Sources */,
 				0A298DB11E8990F00006B7BC /* DayScheduleTableViewCell.swift in Sources */,
-				0A6841811E8916C600B8926F /* AddScheduleViewController.swift in Sources */,
 				0A7B8A751E8A3D8B001A0468 /* FavoriteUserTableViewCell.swift in Sources */,
 				0A8D425E1E8839C100B9B547 /* MenuViewController.swift in Sources */,
 				0A3EEBB81E7AD3100009706B /* SkillModel.swift in Sources */,
@@ -706,7 +703,10 @@
 				0A5304841E7633B500244C3D /* RegisterViewController.swift in Sources */,
 				0A7B8A801E8A5656001A0468 /* ScheduleListTableViewCell.swift in Sources */,
 				0A8C93E01E7AE49D0031EE0F /* TagModel.swift in Sources */,
+				E14595A11F4ED55E00EA72E6 /* DealModel.swift in Sources */,
+				E145959D1F4EC41400EA72E6 /* AddScheduleViewController.swift in Sources */,
 				0A59DBBF1E7CCE550077A5F6 /* FirebaseStorageUtils.swift in Sources */,
+				E14595A31F4ED66D00EA72E6 /* DateUtils.swift in Sources */,
 				0A59DBB91E7CCDCE0077A5F6 /* StarbuckAnnotation.swift in Sources */,
 				0A59DBC01E7CCE550077A5F6 /* FirebaseUserAuthentication.swift in Sources */,
 				0A1AA6131E75E3B60010F651 /* LoginViewController.swift in Sources */,

@@ -59,6 +59,7 @@ class UserModel {
         }
     }
     
+    var user_schedules = [DayScheduleModel]()
     
     func getUserObject() -> [String: AnyObject]{
         var result : [String : AnyObject] = [:]

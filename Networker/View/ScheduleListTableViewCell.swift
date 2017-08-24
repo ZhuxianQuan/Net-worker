@@ -29,7 +29,7 @@ class ScheduleListTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setCell(_ scheduleData : ScheduleData?) {
+    func setCell(_ scheduleData : DealModel?) {
         if scheduleData == nil {
             jobLabel.text = "Job"
             dateLabel.text = "Date"

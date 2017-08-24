@@ -16,6 +16,8 @@ class BaseViewController: UIViewController{
     //var drawerOpened : Bool!
     
     var btnback = UIButton()
+    var screenSize = UIScreen.main.bounds.size
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

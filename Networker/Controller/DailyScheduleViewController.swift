@@ -20,16 +20,25 @@ class DailyScheduleViewController: BaseViewController {
     
     @IBOutlet weak var settingsImageView: UIImageView!
     @IBOutlet weak var addImageView: UIImageView!
-    var monthSchedule : [DayScheduleModel] = []
-    var currentMonth = ScheduleMonth(year: 0, month : 1)
+    var schedules : [DayScheduleModel] = []
+    @IBOutlet weak var dayTableView: UITableView!
+    
+    
+    var selectedDay = 0
+
+    var weekdays = [Int]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        scheduleMonthLabel.text = "\(CommonUtils.getMonthName(currentMonth.month)) \(currentMonth.year)"
+        schedules = currentUser!.user_schedules
+        
         
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -50,7 +59,7 @@ class DailyScheduleViewController: BaseViewController {
     
     @IBAction func addButtonTapped(_ sender: Any) {
         let addScheduleVC = storyboard?.instantiateViewController(withIdentifier: "AddScheduleViewController") as! AddScheduleViewController
-        addScheduleVC.currentMonth = currentMonth
+        //addScheduleVC.currentMonth = currentMonth
         self.navigationController?.pushViewController(addScheduleVC, animated: true)
     }
     
@@ -65,20 +74,37 @@ class DailyScheduleViewController: BaseViewController {
 
 
 extension DailyScheduleViewController : UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return monthSchedule.count
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return monthSchedule[section].schedule_dayData.count
+        if tableView == dayTableView {
+            return 7
+        }
+        else {
+            if let schedule = CommonUtils.getDaySchedule(day: selectedDay, schedules: schedules) {
+                return schedule.getScheduleArray().count
+            }
+            else {
+                return 0
+            }
+        }
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DayScheduleTableViewCell") as! DayScheduleTableViewCell
-        cell.setCell(monthSchedule[indexPath.section].schedule_dayData[indexPath.row])
-        
-        return cell
+        if tableView == dayTableView {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WeekdayTableViewCell") as! WeekdayTableViewCell
+            cell.setCell(weekdays[indexPath.row])
+            return cell
+        }
+        else {
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DayScheduleTableViewCell") as! DayScheduleTableViewCell
+            if let schedule = CommonUtils.getDaySchedule(day: selectedDay, schedules: schedules) {
+                let event = schedule.getScheduleArray()[indexPath.row]
+                cell.setCell(event)
+            }
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -88,8 +114,8 @@ extension DailyScheduleViewController : UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
-    
+    /*
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return monthSchedule[section].getDateString()
-    }
+    }*/
 }

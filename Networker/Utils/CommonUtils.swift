@@ -102,10 +102,10 @@ class CommonUtils: AnyObject{
         }
         return sortedArray
     }
-    
+    /*
     static func getStringForTags(){
         
-    }
+    }*/
     
     static func getRandomNumber(_ maxValue : Int) -> Int{
         return Int(arc4random_uniform(UInt32(maxValue)))
@@ -115,113 +115,6 @@ class CommonUtils: AnyObject{
         var distance : Double = 0
         return distance
     }
-    
-    static func getMonthName(_ month: Int) -> String {
-        var monthString = ""
-        switch month {
-        case 1:
-            monthString = "January"
-            break
-        case 2:
-            monthString = "February"
-            break
-        case 3:
-            monthString = "March"
-            break
-        case 4:
-            monthString = "April"
-            break
-        case 5:
-            monthString = "May"
-            break
-        case 6:
-            monthString = "June"
-            break
-        case 7:
-            monthString = "July"
-            break
-        case 8:
-            monthString = "August"
-            break
-        case 9:
-            monthString = "September"
-            break
-        case 10:
-            monthString = "October"
-            break
-        case 11:
-            monthString = "November"
-            break
-        default:
-            monthString = "December"
-            break
-        }
-        return monthString
-    }
-    
-    static func getDaysCount(month: Int, year : Int) -> Int {
-        switch month {
-        case 1:
-            return 31
-            
-        case 2:
-            if year % 4 == 0{
-                if year % 400 == 0 {
-                    return 29
-                }
-                else if year % 100 == 0{
-                    return 28
-                }
-                else{
-                    return 29
-                }
-            }
-            else {
-                return 28
-            }
-            
-        case 3:
-            return 31
-            
-        case 4:
-            return 30
-            
-        case 5:
-            return 31
-            
-        case 6:
-            return 30
-            
-        case 7:
-            return 31
-            
-        case 8:
-            return 31
-            
-        case 9:
-            return 30
-            
-        case 10:
-            return 31
-            
-        case 11:
-            return 30
-            
-        default:
-            return 31
-            
-        }
-    }
-    
-    static func getScheduleMonth(_ monthString : String) -> ScheduleMonth{
-        var month = 0
-        var year = 0
-        let monthArray = monthString.components(separatedBy: " ")
-        month = Int(monthArray[0])!
-        year = Int(monthArray[1])!
-        return ScheduleMonth(year: year, month: month)
-    }
-    
     
     static func getDistanceFromMe(_ user: UserModel) -> Double{
         let mylocation = CLLocation(latitude: currentLatitude, longitude: currentLongitude)
@@ -265,6 +158,29 @@ class CommonUtils: AnyObject{
     }
     
     
+    //MARK: - Schedule related functions
+    
+    //get total value for month
+    static func getTotalValueofMonth(days: Int) -> Int64 {
+        return Int64(1 << (days - 1)) - 1
+    }
+    
+    ///***Get the number of days in given month and year
+    
+        
+    static func getDaySchedule(day : Int, schedules: [DayScheduleModel]) -> DayScheduleModel?{
+        for schedule in schedules {
+            if day == schedule.day {
+                return schedule
+            }
+        }
+        return nil
+    }
+    
+    
+    
+
+
 
     
     

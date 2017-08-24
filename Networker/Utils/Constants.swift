@@ -90,6 +90,15 @@ class Constants {
     static let KEY_RATING_TIMESTAMP         = "rating_timestamp"
     static let KEY_RATING_SENDERNAME        = "rating_sendername"
     
+    
+    //schedule model
+    
+    static let KEY_SCHEDULE_ID              = "schedule_id"
+    static let KEY_SCHEDULE_DAY             = "day"
+    static let KEY_SCHEDULE_NOTES           = "notes"
+    static let KEY_SCHEDULE_DAYVALUE        = "day_schedule"
+    
+    
     //fmdbmanager
     
     static let DB_NAME                      = "net-worker"

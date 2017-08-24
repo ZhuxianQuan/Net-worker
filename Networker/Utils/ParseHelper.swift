@@ -73,6 +73,17 @@ class ParseHelper {
         rating.rating_sendername = rawData[Constants.KEY_RATING_SENDERNAME].nonNullStringValue
         return rating
     }
+    
+    static func parseSchedule(_ rawData: JSON) -> DayScheduleModel {
+        
+        let schedule = DayScheduleModel()
+        schedule.schedule_id = rawData[Constants.KEY_SCHEDULE_ID].nonNullIntValue
+        schedule.day_schedule = rawData[Constants.KEY_SCHEDULE_DAYVALUE].nonNullInt64Value
+        schedule.day = rawData[Constants.KEY_SCHEDULE_DAY].nonNullIntValue
+        schedule.notes = rawData[Constants.KEY_SCHEDULE_NOTES].nonNullStringValue
+        return schedule
+        
+    }
 
     
 }

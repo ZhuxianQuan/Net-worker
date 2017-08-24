@@ -81,9 +81,7 @@ class ScheduleViewController: BaseViewController {
     @IBAction func scheduleDayButtonTapped(_ sender: UIView) {
         if selectedDate != nil {
             let dailyScheduleVC = self.storyboard?.instantiateViewController(withIdentifier: "DailyScheduleViewController") as! DailyScheduleViewController
-            //dailyScheduleVC.date = selectedDate
-            let monthString = calendarView.currentDateString(withFormat: "MM yyyy")
-            dailyScheduleVC.currentMonth = CommonUtils.getScheduleMonth(monthString)
+            dailyScheduleVC.selectedDay = calendarView.getMonthValue()
             self.navigationController?.pushViewController(dailyScheduleVC, animated: true)
         }
     }

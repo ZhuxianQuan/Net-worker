@@ -10,6 +10,11 @@ import Foundation
 import Koyomi
 
 extension Koyomi {
-    
+    func getMonthValue() -> Int {
+        let monthString = currentDateString(withFormat: "MM yyyy")
+        let string = monthString.components(separatedBy: " ")
+        return Int(string[1])! * 100 + Int(string[0])!
+        
+    }
 }
 

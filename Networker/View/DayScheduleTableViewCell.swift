@@ -26,11 +26,8 @@ class DayScheduleTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setCell(_ dayScheduleData: ScheduleData) {
-        startTimeLabel.text = "\(dayScheduleData.start_time.hour):\(dayScheduleData.start_time.minute)"
-        endTime.text = "\(dayScheduleData.end_time.hour):\(dayScheduleData.end_time.minute)"
-        workingTitleLabel.text = dayScheduleData.work_title
-        scheduleTagColorView.backgroundColor = UIColor(red: dayScheduleData.tag_color.red, green: dayScheduleData.tag_color.green, blue: dayScheduleData.tag_color.blue, alpha: dayScheduleData.tag_color.alpha)
+    func setCell(_ event: EventSchedule) {
+        
     }
 
 }
