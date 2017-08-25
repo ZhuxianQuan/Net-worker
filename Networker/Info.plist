@@ -88,6 +88,10 @@
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>NSCalendarsUsageDescription</key>
+	<string>App wants to access to your calendar to add schedule</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>App wants to access to your reminder to add schedule</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

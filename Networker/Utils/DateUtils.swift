@@ -72,12 +72,100 @@ class DateUtils {
     
     //time string functions
     
-    // 1 : 0 - 0:30
-    // 16 : 7:30 - 8:00
+    // 1 : 0:00
+    // 16 : 7:30
+    //48: 23: 30
+    
     static func getString(from : Int) -> String {
         let hour = Int((from - 1) / 2)
-        let min = (from % 2) == 0 ? "30" : "00"
-        return "\(hour):\(min)"
+        let min = (from % 2) == 0 ? 30 : 00
+        if hour < 12 {
+            return String(format: "%d : %02d AM", hour, min)
+        }
+        else {
+            return String(format: "%d : %02d PM", hour == 12 ? 12 : hour - 12, min)
+        }
     }
+    
+    static func getWeekDays(_ date: Date) -> [Int] {
+        
+        let calendar = Calendar.current
+        let weekday = calendar.component(.weekday, from: date)
+        var weekdays = [Int]()
+        for index in 1 ... 7 {
+            let newInterval = Int64(date.timeIntervalSince1970) + 86400 * Int64(index - weekday)
+            let newDate = Date(timeIntervalSince1970: TimeInterval(newInterval))
+            if getDayValue(newDate) >= getDayValue(Date()){
+                weekdays.append(getDayValue(newDate))
+            }
+        }
+        return weekdays
+    }
+    
+    static func getDayValue(_ date: Date) -> Int{
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: date)
+        let month = calendar.component(.month, from: date)
+        let day = calendar.component(.day, from: date)
+        return year * 10000 + month * 100 + day
+    }
+    
+    static func getDate(_ dayValue: Int, time: Int? = nil) -> Date {
+        let year = dayValue / 10000
+        let month = dayValue / 100 - year * 100
+        let day = dayValue % 100
+        var components = DateComponents()
+        if time != nil {
+            let hour = Int((time! - 1) / 2)
+            let min = (time! % 2) == 0 ? 30 : 00
+            components = DateComponents(year: year, month: month, day: day, hour: hour, minute: min)
+        }
+        else {
+            components = DateComponents(year: year, month: month, day: day)
+        }
+        let calendar = Calendar.current
+        return calendar.date(from: components)!
+    }
+    
+    static func getDateString(dayValue: Int) -> String {
+        let year = dayValue / 10000
+        let month = dayValue / 100 - year * 100
+        let day = dayValue % 100
+        let components = DateComponents(year: year, month: month, day: day)
+        let calendar = Calendar.current
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMMM d"
+        return formatter.string(from: calendar.date(from: components)!)
+    }
+    
+    static func getFullDateString(_ date: Date) -> String {
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d MMMM yyyy"
+        return formatter.string(from: date)
+    }
+    
+    static func getWeekdayString(_ value: Int) -> String{
+        switch value {
+        case 1:
+            return "Sunday"
+        case 2:
+            return "Monday"
+        case 3:
+            return "Tuesday"
+        case 4:
+            return "Wednesday"
+        case 5:
+            return "Thursday"
+        case 6:
+            return "Friday"
+        case 7:
+            return "Saturday"
+        default:
+            return ""
+        }
+    }
+    
+
 
 }

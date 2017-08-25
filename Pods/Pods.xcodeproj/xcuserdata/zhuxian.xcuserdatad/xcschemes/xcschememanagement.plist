@@ -104,20 +104,20 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>leveldb-library.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>nanopb.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>09563D4C5107E2B753FF6D6F02E009F1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>0B55C2E2AE86D060684BFB0F87CAD17F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>17BFE4D4CA7F9A0C2BA0782CDC4FAE86</key>
+		<key>0F80557B05736C2CF51847078DB2A5B7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -127,7 +127,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>252C95D65E82DE783D2BA0ACE128494F</key>
+		<key>266AE1506DAD13D34C0725E909C0C476</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>357F74B1EF7381C780D5F7B7AD20C87F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>36B0B296E65FCB1D099BF6848C4A4231</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>3E89704D4590957EB882C4A69774DC28</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -147,7 +162,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6CFFB439B38716C66C7E23C903C44AF3</key>
+		<key>658A6C24F5BAD1E5D120DAF889B9E1DA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -167,6 +182,11 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>85A40A3D4709F3E9025820A79C1EA874</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>88E9EC28B8B46C3631E6B242B50F4442</key>
 		<dict>
 			<key>primary</key>
@@ -182,12 +202,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C0E9466A1FEDC3EC0D71EE7071693A34</key>
+		<key>CF671F7E57B92905F1CC91D036D6B4A7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CF671F7E57B92905F1CC91D036D6B4A7</key>
+		<key>D4480160E554700095EAFC4805F701BB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -202,7 +222,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E6E6DB7BCE05E9E05F8CC522EA17D20F</key>
+		<key>E4DD95323C54A78F879DAB0F1508B8E7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

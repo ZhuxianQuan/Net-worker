@@ -183,14 +183,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         }
         let alertObject = userInfo["aps"] as! [String: AnyObject]
         let alertString = alertObject["alert"] as! String
-        /*
-         if let vc = getCurrentViewController(vc: rvc) {
-         let alertView = AlertView()
-         alertView.message = alertString
-         alertView.showAlertView()
-         vc.view.addSubview(alertView)
-         
-         }*/
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {

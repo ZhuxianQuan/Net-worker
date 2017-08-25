@@ -212,128 +212,6 @@ class RegisterViewController: BaseViewController {
     }
 }
 
-// MARK: - @extension SinglePostVC
-extension RegisterViewController {
-    
-    func keyboardControl() {
-        /**
-         Keyboard notifications
-         */
-        let notificationCenter = NotificationCenter.default
-        
-        notificationCenter.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(keyboardDidShow(_:)), name: .UIKeyboardDidShow, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(keyboardDidHide(_:)), name: .UIKeyboardDidHide, object: nil)
-    }
-    
-    func keyboardWillShow(_ notification: Notification)
-    {
-        self.keyboardControl(notification, isShowing: true)
-    }
-    
-    func keyboardDidShow(_ notification: Notification)
-    {
-        
-    }
-    func keyboardWillHide(_ notification: Notification)
-    {
-        self.keyboardControl(notification, isShowing: false)
-    }
-    func keyboardDidHide(_ notification: Notification)
-    {
-        
-    }
-    
-    func keyboardControl(_ notification: Notification, isShowing: Bool)
-    {
-        var userInfo = notification.userInfo!
-        let keyboardRect = (userInfo[UIKeyboardFrameEndUserInfoKey]! as AnyObject).cgRectValue
-        let curve = (userInfo[UIKeyboardAnimationCurveUserInfoKey]! as AnyObject).uint32Value
-        
-        let convertedFrame = self.view.convert(keyboardRect!, from: nil)
-        let heightOffset = self.view.bounds.size.height - convertedFrame.origin.y
-        let options = UIViewAnimationOptions(rawValue: UInt(curve!) << 16 | UIViewAnimationOptions.beginFromCurrentState.rawValue)
-        let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey]! as AnyObject).doubleValue
-        
-        
-        UIView.animate(
-            withDuration: duration!,
-            delay: 0,
-            options: options,
-            animations: {
-                if isShowing{
-                    //self.tblScroll.contentOffset.y += heightOffset
-                    if self.scrollViewBottomConstraint.constant == 0 {
-                        self.tblScroll.frame.size.height -= heightOffset
-                    }
-                    
-                }
-                else
-                {
-                    //self.tblScroll.contentOffset.y -= keyboardRect!.height
-                    self.scrollViewBottomConstraint.constant = 0
-                    
-                }
-        },
-            completion: { bool in
-                if isShowing{
-                    self.scrollViewBottomConstraint.constant = heightOffset
-                }
-                else
-                {
-                   
-                    self.scrollViewBottomConstraint.constant = 0
-                }
-                
-                
-        })
-    }
-    
-}
-
-
-extension RegisterViewController: UITextFieldDelegate {
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == firstName{
-            lastName.becomeFirstResponder()
-        }
-        else if textField == lastName {
-            email.becomeFirstResponder()
-        }
-        
-        else if textField == email {
-            password.becomeFirstResponder()
-        }
-        
-        else if textField == password {
-            address1.becomeFirstResponder()
-        }
-        else if textField == address1 {
-            address2.becomeFirstResponder()
-        }
-        else if textField == address2 {
-            address3.becomeFirstResponder()
-        }
-        
-        else if textField == address3 {
-            postcode.becomeFirstResponder()
-        }
-        
-        else if textField == postcode {
-            birthday.becomeFirstResponder()
-        }
-        
-        else {
-            self.view.endEditing(true)
-        }
-        
-        return true
-    }
-    
-}
-
 
 extension RegisterViewController:  UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
@@ -404,4 +282,128 @@ extension RegisterViewController:  UINavigationControllerDelegate, UIImagePicker
     
     
 }
+
+
+// MARK: - @extension SinglePostVC
+extension RegisterViewController {
+    
+    func keyboardControl() {
+        /**
+         Keyboard notifications
+         */
+        let notificationCenter = NotificationCenter.default
+        
+        notificationCenter.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(keyboardDidShow(_:)), name: .UIKeyboardDidShow, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(keyboardDidHide(_:)), name: .UIKeyboardDidHide, object: nil)
+    }
+    
+    func keyboardWillShow(_ notification: Notification)
+    {
+        self.keyboardControl(notification, isShowing: true)
+    }
+    
+    func keyboardDidShow(_ notification: Notification)
+    {
+        
+    }
+    func keyboardWillHide(_ notification: Notification)
+    {
+        self.keyboardControl(notification, isShowing: false)
+    }
+    func keyboardDidHide(_ notification: Notification)
+    {
+        
+    }
+    
+    func keyboardControl(_ notification: Notification, isShowing: Bool)
+    {
+        var userInfo = notification.userInfo!
+        let keyboardRect = (userInfo[UIKeyboardFrameEndUserInfoKey]! as AnyObject).cgRectValue
+        let curve = (userInfo[UIKeyboardAnimationCurveUserInfoKey]! as AnyObject).uint32Value
+        
+        let convertedFrame = self.view.convert(keyboardRect!, from: nil)
+        let heightOffset = self.view.bounds.size.height - convertedFrame.origin.y
+        let options = UIViewAnimationOptions(rawValue: UInt(curve!) << 16 | UIViewAnimationOptions.beginFromCurrentState.rawValue)
+        let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey]! as AnyObject).doubleValue
+        
+        
+        UIView.animate(
+            withDuration: duration!,
+            delay: 0,
+            options: options,
+            animations: {
+                if isShowing{
+                    //self.tblScroll.contentOffset.y += heightOffset
+                    if self.scrollViewBottomConstraint.constant == 0 {
+                        self.tblScroll.frame.size.height -= heightOffset
+                    }
+                    
+                }
+                else
+                {
+                    //self.tblScroll.contentOffset.y -= keyboardRect!.height
+                    self.scrollViewBottomConstraint.constant = 0
+                    
+                }
+        },
+            completion: { bool in
+                if isShowing{
+                    self.scrollViewBottomConstraint.constant = heightOffset
+                }
+                else
+                {
+                    
+                    self.scrollViewBottomConstraint.constant = 0
+                }
+                
+                
+        })
+    }
+    
+}
+
+
+extension RegisterViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == firstName{
+            lastName.becomeFirstResponder()
+        }
+        else if textField == lastName {
+            email.becomeFirstResponder()
+        }
+            
+        else if textField == email {
+            password.becomeFirstResponder()
+        }
+            
+        else if textField == password {
+            address1.becomeFirstResponder()
+        }
+        else if textField == address1 {
+            address2.becomeFirstResponder()
+        }
+        else if textField == address2 {
+            address3.becomeFirstResponder()
+        }
+            
+        else if textField == address3 {
+            postcode.becomeFirstResponder()
+        }
+            
+        else if textField == postcode {
+            birthday.becomeFirstResponder()
+        }
+            
+        else {
+            self.view.endEditing(true)
+        }
+        
+        return true
+    }
+    
+}
+
 

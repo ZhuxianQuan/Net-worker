@@ -314,7 +314,7 @@
                                                     <rect key="frame" x="0.0" y="20" width="220" height="86"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jenny: 1.2m dist, £12/hr," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MNe-2L-Ia2">
-                                                            <rect key="frame" x="33.5" y="13.5" width="154.5" height="16.5"/>
+                                                            <rect key="frame" x="35" y="13" width="151" height="17.5"/>
                                                             <fontDescription key="fontDescription" name="NeueHelveticaBQ-Light" family="Neue Helvetica BQ" pointSize="14"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
@@ -1346,10 +1346,10 @@
                                         </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ztq-u4-du6">
-                                                <rect key="frame" x="0.0" y="0.0" width="34.428571428571431" height="25"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                    <rect key="frame" x="0.0" y="0.0" width="34.428571428571431" height="25"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </view>
                                             </collectionViewCell>

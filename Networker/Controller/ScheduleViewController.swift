@@ -36,7 +36,7 @@ class ScheduleViewController: BaseViewController {
             let screenSize = UIScreen.main.bounds.size
             calendarView.frame.size = CGSize(width: screenSize.width - 76, height: screenSize.width - 64)
             calendarView.currentDateFormat = "MMMM yyyy"
-            calendarView.isHiddenOtherMonth = true
+            //calendarView.isHiddenOtherMonth = true
             //calendarView.is
         
         }
@@ -80,7 +80,7 @@ class ScheduleViewController: BaseViewController {
     @IBAction func scheduleDayButtonTapped(_ sender: UIView) {
         if selectedDate != nil {
             let dailyScheduleVC = self.storyboard?.instantiateViewController(withIdentifier: "DailyScheduleViewController") as! DailyScheduleViewController
-            dailyScheduleVC.selectedDay = calendarView.getMonthValue()
+            dailyScheduleVC.selectedDay = selectedDate
             self.navigationController?.pushViewController(dailyScheduleVC, animated: true)
         }
     }
@@ -92,11 +92,11 @@ extension ScheduleViewController : KoyomiDelegate {
     
     func koyomi(_ koyomi: Koyomi, didSelect date: Date?, forItemAt indexPath: IndexPath) {
         
-        let currentDate = Date()
         if Int64((date?.timeIntervalSinceNow)!) >= -86400 {
             selectedDate = date
         }
     }
+    
     
     func koyomi(_ koyomi: Koyomi, currentDateString dateString: String) {
         

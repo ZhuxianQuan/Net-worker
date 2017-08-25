@@ -15,7 +15,7 @@ class CommonUtils: AnyObject{
     
     static func isValidEmail(_ email: String) -> Bool {
         
-        let emailRegEx = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailTest.evaluate(with: email)
@@ -26,9 +26,7 @@ class CommonUtils: AnyObject{
     
     static func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage {
         
-        
         let rect = CGRect(x:0, y: 0, width : targetSize.width, height : targetSize.height)
-        
         // Actually do the resizing to the rect using the ImageContext stuff
         UIGraphicsBeginImageContextWithOptions(targetSize, false, 1.0)
         image.draw(in: rect)
@@ -110,11 +108,11 @@ class CommonUtils: AnyObject{
     static func getRandomNumber(_ maxValue : Int) -> Int{
         return Int(arc4random_uniform(UInt32(maxValue)))
     }
-    
+    /*
     static func getDistance(location1 : (Double, Double) , location2 : (Double, Double)) -> Double{
         var distance : Double = 0
         return distance
-    }
+    }*/
     
     static func getDistanceFromMe(_ user: UserModel) -> Double{
         let mylocation = CLLocation(latitude: currentLatitude, longitude: currentLongitude)
@@ -155,8 +153,7 @@ class CommonUtils: AnyObject{
         catch {
             print(error)
         }
-    }
-    
+    }    
     
     //MARK: - Schedule related functions
     
@@ -176,14 +173,7 @@ class CommonUtils: AnyObject{
         }
         return nil
     }
-    
-    
-    
 
-
-
-    
-    
 }
 
 

@@ -24,7 +24,7 @@ class DailyScheduleViewController: BaseViewController {
     @IBOutlet weak var dayTableView: UITableView!
     
     
-    var selectedDay = 0
+    var selectedDay = Date()
 
     var weekdays = [Int]()
     
@@ -34,7 +34,9 @@ class DailyScheduleViewController: BaseViewController {
 
         // Do any additional setup after loading the view.
         schedules = currentUser!.user_schedules
-        
+        dailyScheduleTableView.estimatedRowHeight = 80
+        weekdays = DateUtils.getWeekDays(selectedDay)
+        scheduleMonthLabel.text = DateUtils.getFullDateString(selectedDay)
         
     }
     
@@ -59,8 +61,17 @@ class DailyScheduleViewController: BaseViewController {
     
     @IBAction func addButtonTapped(_ sender: Any) {
         let addScheduleVC = storyboard?.instantiateViewController(withIdentifier: "AddScheduleViewController") as! AddScheduleViewController
-        //addScheduleVC.currentMonth = currentMonth
-        self.navigationController?.pushViewController(addScheduleVC, animated: true)
+        if let schedule = CommonUtils.getDaySchedule(day: DateUtils.getDayValue(selectedDay), schedules: schedules) {
+            addScheduleVC.schedule = schedule
+        }
+        else {
+            let schedule = DayScheduleModel()
+            schedule.day = DateUtils.getDayValue(selectedDay)
+            addScheduleVC.schedule = schedule
+            
+        }
+        addScheduleVC.modalPresentationStyle = .overCurrentContext
+        self.tabBarController?.present(addScheduleVC, animated: true, completion: nil)
     }
     
     @IBAction func monthViewButtonTapped(_ sender: UIButton) {
@@ -77,10 +88,10 @@ extension DailyScheduleViewController : UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == dayTableView {
-            return 7
+            return weekdays.count
         }
         else {
-            if let schedule = CommonUtils.getDaySchedule(day: selectedDay, schedules: schedules) {
+            if let schedule = CommonUtils.getDaySchedule(day: DateUtils.getDayValue(selectedDay), schedules: schedules) {
                 return schedule.getScheduleArray().count
             }
             else {
@@ -93,13 +104,19 @@ extension DailyScheduleViewController : UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == dayTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "WeekdayTableViewCell") as! WeekdayTableViewCell
-            cell.setCell(weekdays[indexPath.row])
+            cell.setCell(weekdays[indexPath.row], weekday: (7 - weekdays.count) + indexPath.row + 1)
+            if DateUtils.getDate(weekdays[indexPath.row]) == selectedDay {
+                cell.selectCell(true)
+            }
+            else {
+                cell.selectCell(false)
+            }
             return cell
         }
         else {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "DayScheduleTableViewCell") as! DayScheduleTableViewCell
-            if let schedule = CommonUtils.getDaySchedule(day: selectedDay, schedules: schedules) {
+            if let schedule = CommonUtils.getDaySchedule(day: DateUtils.getDayValue(selectedDay), schedules: schedules) {
                 let event = schedule.getScheduleArray()[indexPath.row]
                 cell.setCell(event)
             }
@@ -108,14 +125,26 @@ extension DailyScheduleViewController : UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        if tableView == dayTableView {
+            return 80
+        }
+        else {
+            return UITableViewAutomaticDimension
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == dayTableView {
+            if DateUtils.getDayValue(DateUtils.getDate(weekdays[indexPath.row])) >= DateUtils.getDayValue(Date()) {
+                selectedDay = DateUtils.getDate(weekdays[indexPath.row])
+                scheduleMonthLabel.text = DateUtils.getFullDateString(selectedDay)
+                tableView.reloadData()
+            }
         
+        }
+        else {
+            
+        }
     }
-    /*
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return monthSchedule[section].getDateString()
-    }*/
+    
 }

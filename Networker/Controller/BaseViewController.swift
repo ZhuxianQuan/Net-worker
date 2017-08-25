@@ -56,8 +56,9 @@ class BaseViewController: UIViewController{
         
         let window = UIApplication.shared.keyWindow
         let storyboard = getStoryboard(id: Constants.STORYBOARD_MAIN)
+        
 
-        let mainTab = storyboard.instantiateViewController(withIdentifier: "KYDrawerController")
+        let mainTab = /*storyboard.instantiateViewController(withIdentifier: "MainTab")*/storyboard.instantiateViewController(withIdentifier: "KYDrawerController")
         window?.rootViewController = mainTab
         window?.makeKeyAndVisible()
     }

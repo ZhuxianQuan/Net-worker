@@ -83,8 +83,6 @@
 		E14595C61F4F02E300EA72E6 /* KoyomiLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595BC1F4F02E300EA72E6 /* KoyomiLayout.swift */; };
 		E14595C71F4F02E300EA72E6 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595BD1F4F02E300EA72E6 /* UIColorExtension.swift */; };
 		E14595C81F4F02E300EA72E6 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595BE1F4F02E300EA72E6 /* UIViewExtension.swift */; };
-		E14595C91F4F02E300EA72E6 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = E14595BF1F4F02E300EA72E6 /* LICENSE */; };
-		E14595CA1F4F02E300EA72E6 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E14595C01F4F02E300EA72E6 /* README.md */; };
 		E14595E01F4F032E00EA72E6 /* M13Checkbox+IB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595CC1F4F032E00EA72E6 /* M13Checkbox+IB.swift */; };
 		E14595E11F4F032E00EA72E6 /* M13Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595CD1F4F032E00EA72E6 /* M13Checkbox.swift */; };
 		E14595E21F4F032E00EA72E6 /* M13CheckboxAnimationGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595CE1F4F032E00EA72E6 /* M13CheckboxAnimationGenerator.swift */; };
@@ -191,8 +189,6 @@
 		E14595BC1F4F02E300EA72E6 /* KoyomiLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KoyomiLayout.swift; sourceTree = "<group>"; };
 		E14595BD1F4F02E300EA72E6 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		E14595BE1F4F02E300EA72E6 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
-		E14595BF1F4F02E300EA72E6 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		E14595C01F4F02E300EA72E6 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E14595CC1F4F032E00EA72E6 /* M13Checkbox+IB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "M13Checkbox+IB.swift"; sourceTree = "<group>"; };
 		E14595CD1F4F032E00EA72E6 /* M13Checkbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13Checkbox.swift; sourceTree = "<group>"; };
 		E14595CE1F4F032E00EA72E6 /* M13CheckboxAnimationGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxAnimationGenerator.swift; sourceTree = "<group>"; };
@@ -577,8 +573,6 @@
 			isa = PBXGroup;
 			children = (
 				E14595B61F4F02E300EA72E6 /* Koyomi */,
-				E14595BF1F4F02E300EA72E6 /* LICENSE */,
-				E14595C01F4F02E300EA72E6 /* README.md */,
 			);
 			path = Koyomi;
 			sourceTree = "<group>";
@@ -711,7 +705,6 @@
 				0A1AA6031E75927C0010F651 /* Assets.xcassets in Resources */,
 				E1886DAA1F4B2CEE003E1D56 /* GoogleService-Info.plist in Resources */,
 				0A405B1D1E765421005C2618 /* Favorite.storyboard in Resources */,
-				E14595C91F4F02E300EA72E6 /* LICENSE in Resources */,
 				0A1AA6041E75927C0010F651 /* LaunchScreen.storyboard in Resources */,
 				0A405B1F1E765433005C2618 /* Chatting.storyboard in Resources */,
 				0A405B171E7653D3005C2618 /* Home.storyboard in Resources */,
@@ -729,9 +722,50 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Networker/Pods-Networker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/IOSLinkedInAPIFix/IOSLinkedInAPIFix.framework",
+				"${BUILT_PRODUCTS_DIR}/KYDrawerController/KYDrawerController.framework",
+				"${BUILT_PRODUCTS_DIR}/LinkedinSwift/LinkedinSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IOSLinkedInAPIFix.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KYDrawerController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LinkedinSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -744,13 +778,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Networker-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DF2CBD3C376AD5674645F6B5 /* [CP] Copy Pods Resources */ = {
@@ -783,7 +820,6 @@
 				0A3B87921E7FA8C200140D6C /* MatchedUserTableViewCell.swift in Sources */,
 				0A5304801E7609A400244C3D /* Constants.swift in Sources */,
 				0A2AA0151E75F6D700B41F23 /* HelveticaNeue-Medium_22622.ttf in Sources */,
-				E14595CA1F4F02E300EA72E6 /* README.md in Sources */,
 				0AA79E6D1E874DB30020DE8B /* UserSkillsTableViewCell.swift in Sources */,
 				0AED02AB1E87D8A70058D637 /* DailyScheduleViewController.swift in Sources */,
 				0A59DBB51E7C98E50077A5F6 /* FMDBManager.swift in Sources */,
