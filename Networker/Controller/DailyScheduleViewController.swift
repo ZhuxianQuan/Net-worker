@@ -61,15 +61,6 @@ class DailyScheduleViewController: BaseViewController {
     
     @IBAction func addButtonTapped(_ sender: Any) {
         let addScheduleVC = storyboard?.instantiateViewController(withIdentifier: "AddScheduleViewController") as! AddScheduleViewController
-        if let schedule = CommonUtils.getDaySchedule(day: DateUtils.getDayValue(selectedDay), schedules: schedules) {
-            addScheduleVC.schedule = schedule
-        }
-        else {
-            let schedule = DayScheduleModel()
-            schedule.day = DateUtils.getDayValue(selectedDay)
-            addScheduleVC.schedule = schedule
-            
-        }
         addScheduleVC.modalPresentationStyle = .overCurrentContext
         self.tabBarController?.present(addScheduleVC, animated: true, completion: nil)
     }
@@ -92,7 +83,7 @@ extension DailyScheduleViewController : UITableViewDelegate, UITableViewDataSour
         }
         else {
             if let schedule = CommonUtils.getDaySchedule(day: DateUtils.getDayValue(selectedDay), schedules: schedules) {
-                return schedule.getScheduleArray().count
+                return schedule.schedule_events.count
             }
             else {
                 return 0
@@ -117,7 +108,7 @@ extension DailyScheduleViewController : UITableViewDelegate, UITableViewDataSour
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "DayScheduleTableViewCell") as! DayScheduleTableViewCell
             if let schedule = CommonUtils.getDaySchedule(day: DateUtils.getDayValue(selectedDay), schedules: schedules) {
-                let event = schedule.getScheduleArray()[indexPath.row]
+                let event = schedule.schedule_events[indexPath.row]
                 cell.setCell(event)
             }
             return cell

@@ -60,6 +60,22 @@ extension JSON
         }
     }
     
+    public var nonNullFloatValue: Float{
+        get {
+            if self.string != nil{
+                if Float(self.string!)!>0{
+                    return Float(self.string!)!
+                }
+            }
+            if self.number?.floatValue == nil{
+                return 0.0
+            }
+            else{
+                return (self.number?.floatValue)!
+            }
+        }
+    }
+    
     
     public var nonNullStringValue: String{
         get {

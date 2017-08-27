@@ -50,6 +50,7 @@ class UserModel {
     var user_rangedistance = 5.0
     var user_ratings : [RatingModel] = []
     var user_aboutme = ""
+    var user_avgmarks : Float = 0.0
     var user_token: String {
         get {
             if let token = UserDefaults.standard.value(forKey: Constants.KEY_USER_TOKEN) {
@@ -82,7 +83,7 @@ class UserModel {
         result[Constants.KEY_USER_BIRTHDAY] = user_birthday as AnyObject
         result[Constants.KEY_USER_AVAILABLE] = user_available as AnyObject
         result[Constants.KEY_USER_TOKEN] = user_token as AnyObject
-        
+        result[Constants.KEY_USER_ABOUTME] = user_aboutme as AnyObject
         //result[Constants.KEY_USER_RATINGS]
         return result
     }
@@ -98,6 +99,15 @@ class UserModel {
         else {
             return nil
         }
+    }
+    
+    func getSkillPrice(_ skill_id : Int) -> Double {
+        for skill in user_skill_array {
+            if skill.skill_id == skill_id {
+                return skill.skill_price
+            }
+        }
+        return 0
     }
     
     

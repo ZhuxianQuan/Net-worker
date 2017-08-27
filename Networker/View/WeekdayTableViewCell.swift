@@ -36,9 +36,7 @@ class WeekdayTableViewCell: UITableViewCell {
             dayLabel.layer.borderColor = UIColor.white.cgColor
             dayLabel.text = "\(day % 100)"
             let month = (day / 100) % 100
-            let monthstr = DateUtils.getMonthName(month)
-            let index = monthstr.index(monthstr.startIndex, offsetBy: 3)
-            monthLabel.text = monthstr.substring(to: index)
+            monthLabel.text = DateUtils.getMonthName(month).getSubString(count: 3)
             weekDayLabel.text = DateUtils.getWeekdayString(weekday)
         }
         else {

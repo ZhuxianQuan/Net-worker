@@ -20,7 +20,7 @@
         <scene sceneID="7n3-Vz-bto">
             <objects>
                 <navigationController storyboardIdentifier="StartNav" id="fGc-an-dy3" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="V77-TD-ggq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="V77-TD-ggq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -250,7 +250,7 @@
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MHb-Ij-dgS">
-                                        <rect key="frame" x="33" y="8" width="301" height="20"/>
+                                        <rect key="frame" x="33" y="8.3333333333333428" width="301" height="20"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="NeueHelveticaBQ-Light" family="Neue Helvetica BQ" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES"/>
@@ -290,7 +290,7 @@
                                         </constraints>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QV5-Yp-VY9">
-                                        <rect key="frame" x="33" y="8" width="301" height="20"/>
+                                        <rect key="frame" x="33" y="8.3333333333333428" width="301" height="19.999999999999972"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="NeueHelveticaBQ-Light" family="Neue Helvetica BQ" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
@@ -1313,7 +1313,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0kT-ip-LcO" customClass="M13Checkbox" customModule="M13Checkbox">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0kT-ip-LcO" customClass="M13Checkbox" customModule="Networker" customModuleProvider="target">
                                                     <rect key="frame" x="8" y="24" width="18" height="18"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -2028,7 +2028,7 @@
                     <tabBarItem key="tabBarItem" title="" image="icon_home" id="x3v-AE-RdT">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="KD6-GF-wKb">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KD6-GF-wKb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2044,7 +2044,7 @@
                     <tabBarItem key="tabBarItem" title="" image="icon_search" id="Ql1-XZ-ruQ">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="tf0-1d-lqd">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tf0-1d-lqd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2060,7 +2060,7 @@
                     <tabBarItem key="tabBarItem" title="" image="icon_schedule" id="Qhb-fM-aq4">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="jQM-9k-xWF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="jQM-9k-xWF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2076,7 +2076,7 @@
                     <tabBarItem key="tabBarItem" title="" image="icon_like" id="yml-G7-3ie">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="O1a-ph-oaU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="O1a-ph-oaU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2092,7 +2092,7 @@
                     <tabBarItem key="tabBarItem" title="" image="icon_chatting" id="O5G-X5-WmP">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="bc5-Ud-5Cr">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bc5-Ud-5Cr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

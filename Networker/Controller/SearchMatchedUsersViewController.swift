@@ -16,8 +16,9 @@ class SearchMatchedUsersViewController: BaseViewController {
     
     @IBOutlet weak var matchedUsersTableView: UITableView!
     var skill = SkillModel()
-    var matchedUsers : [UserModel] = []
     var users : [UserModel] = []
+    var currentIndex = 0
+    var isLast = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,26 +49,18 @@ class SearchMatchedUsersViewController: BaseViewController {
     }
     
     func getSkillMatchedUsers() {
-        ApiFunctions.getSkillMatchedUsers(skillId : skill.skill_id, completion :{
+        
+        ApiFunctions.getSkillMatchedUsers(skill.skill_id, filter: "name:" + searchBar.text!, day: DateUtils.getDayValue(Date()), time: 0xFFFFFF << 16, index: currentIndex, completion: {
             message, users in
             if message == Constants.PROCESS_SUCCESS {
-                self.users = users
-                self.matchedUsers = users
+                if users.count == 0 {
+                    self.isLast = true
+                }
+                self.users.append(contentsOf: users)
                 self.matchedUsersTableView.reloadData()
             }
         })
     }
-    
-    func getNameMatchedUsers(_ keyword : String){
-        ApiFunctions.getNameMatchedUsers(keyword: keyword, from: users, completion: {
-            message, users in
-            if message == Constants.PROCESS_SUCCESS {
-                self.matchedUsers = users
-                self.matchedUsersTableView.reloadData()
-            }
-        })
-    }
-    
 }
 
 
@@ -77,13 +70,13 @@ extension SearchMatchedUsersViewController : UITableViewDataSource, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return matchedUsers.count
+        return users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MatchedUserTableViewCell") as! MatchedUserTableViewCell
-        
         let index = indexPath.row
+        cell.setCell(users[index], skill_id: skill.skill_id)
         return cell
     }
     
@@ -95,10 +88,11 @@ extension SearchMatchedUsersViewController : UITableViewDataSource, UITableViewD
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let index = indexPath.row
-        let user = matchedUsers[index]
+        let user = users[index]
         let cell = tableView.cellForRow(at: indexPath) as! MatchedUserTableViewCell
         let userDetailVC = storyboard?.instantiateViewController(withIdentifier: "UserProfileViewController") as! UserProfileViewController
         userDetailVC.user = user
+        userDetailVC.hidesBottomBarWhenPushed = true
         userDetailVC.userDataString = cell.userDataLabel.text!
         self.navigationController?.pushViewController(userDetailVC, animated: true)
         
@@ -107,7 +101,12 @@ extension SearchMatchedUsersViewController : UITableViewDataSource, UITableViewD
 
 extension SearchMatchedUsersViewController : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        let keyword = searchText
-        getNameMatchedUsers(keyword)
+        
+        
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        getSkillMatchedUsers()
+        
     }
 }

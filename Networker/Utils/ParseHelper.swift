@@ -26,16 +26,12 @@ class ParseHelper {
         user.user_birthday = rawData[Constants.KEY_USER_BIRTHDAY].nonNullStringValue
         user.user_aboutme = rawData[Constants.KEY_USER_ABOUTME].nonNullStringValue
         user.user_profileimageurl = rawData[Constants.KEY_USER_PROFILEIMAGEURL].nonNullStringValue
-        
         user.user_skills = rawData[Constants.KEY_USER_SKILLS].nonNullStringValue
         user.user_available = rawData[Constants.KEY_USER_AVAILABLE].nonNullIntValue
         user.user_latitude = rawData[Constants.KEY_USER_LATITUDE].nonNullDoubleValue
         user.user_longitude = rawData[Constants.KEY_USER_LONGITUDE].nonNullDoubleValue
         user.user_rangedistance = rawData[Constants.KEY_USER_RANGEDISTANCE].nonNullDoubleValue
-        let ratingsArray = rawData[Constants.KEY_USER_RATINGS].arrayValue
-        for ratingObject in ratingsArray{
-            user.user_ratings.append(parseRating(ratingObject))
-        }
+        user.user_avgmarks = rawData[Constants.KEY_USER_AVGRATING].nonNullFloatValue
         return user
     }
     

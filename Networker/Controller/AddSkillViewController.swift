@@ -129,8 +129,6 @@ extension AddSkillViewController : UITableViewDelegate, UITableViewDataSource {
             cell?.backgroundColor = UIColor.white
         }
         cell?.textLabel?.text = "#" + skills[index].skill_title
-        
-        
         return cell!
     }
     

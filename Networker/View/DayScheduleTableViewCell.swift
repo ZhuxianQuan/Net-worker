@@ -27,6 +27,9 @@ class DayScheduleTableViewCell: UITableViewCell {
     }
     
     func setCell(_ event: EventSchedule) {
+        startTimeLabel.text = DateUtils.getString(from: event.startTime)
+        endTime.text = DateUtils.getString(from: event.endTime)
+        workingTitleLabel.text = event.notes
         
     }
 

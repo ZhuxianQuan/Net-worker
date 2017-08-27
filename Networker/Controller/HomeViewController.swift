@@ -22,7 +22,8 @@ class HomeViewController: BaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        mapView.showsUserLocation = true        
+        mapView.showsUserLocation = true
+        setRegionForLocation(location: CLLocationCoordinate2D(latitude: CLLocationDegrees(currentLatitude), longitude: CLLocationDegrees(currentLongitude)), spanRadius: currentUser!.user_rangedistance, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,6 +41,7 @@ class HomeViewController: BaseViewController {
         else {
             backButton.isHidden = true
         }
+        
         getHomeData()
 
     }
@@ -56,7 +58,19 @@ class HomeViewController: BaseViewController {
     
     
     func getHomeData(){
-        
+        initMapView()
+        self.showLoadingView()
+        ApiFunctions.getNearByWorkers(completion: {
+            message, users in
+            self.hideLoadingView()
+            if message == Constants.PROCESS_SUCCESS {
+                self.nearMeWorkers = users
+                self.arrangeFriends()
+            }
+            else {
+                self.showToastWithDuration(string: message, duration: 3.0)
+            }
+        })
     }
     
     @IBAction func availableSwitched(_ sender: UISwitch) {
@@ -89,7 +103,7 @@ class HomeViewController: BaseViewController {
         spanRadius:Double,
         animated:Bool)
     {
-        let span = 2.0 * spanRadius
+        let span = 2.0 * spanRadius * 1609
         let region = MKCoordinateRegionMakeWithDistance(location, span, span)
         mapView.setRegion(region, animated: animated)
     }

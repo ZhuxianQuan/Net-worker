@@ -12,9 +12,9 @@ import SwiftyJSON
 
 class ApiFunctions{    
     
-    //static let SERVER_BASE_URL          = "http://35.166.129.141"
+    static let SERVER_BASE_URL          = "http://35.166.129.141"
     
-    static let SERVER_BASE_URL          = "http://192.168.1.120:2000/Networker"
+    //static let SERVER_BASE_URL          = "http://192.168.1.120:2000/Networker"
     static let SERVER_URL               = SERVER_BASE_URL + "/index.php/Api/"
     
     static let REQ_GET_ALLSKILLS        = SERVER_URL + "getSkills"
@@ -25,6 +25,9 @@ class ApiFunctions{
     static let REQ_LOGIN                = SERVER_URL + "login"
     static let REQ_GETSKILLVERSION      = SERVER_URL + "getSkillVersion"
     static let REQ_UPLOADPOSITION       = SERVER_URL + "uploadPosition"
+    static let REQ_SAVESCHEDULE         = SERVER_URL + "saveUserSchedule"
+    static let REQ_SEARCHUSERS          = SERVER_URL + "searchMatchedUsers"
+    static let REQ_GETNEARBYWORKERS     = SERVER_URL + "getNearByWorkers"
     
     
     static func login(email: String, password: String, completion: @escaping (String) -> () ){
@@ -199,10 +202,6 @@ class ApiFunctions{
         completion(Constants.PROCESS_SUCCESS, users)
     }
     
-    static func getSkillMatchedUsers(skillId: Int, completion: @escaping(String, [UserModel]) -> ()){
-        var result : [UserModel] = []
-        
-    }
     
     static func uploadImage(name: String, imageData: Data, completion: @escaping (String, String) -> ()) {
         Alamofire.upload(
@@ -298,6 +297,75 @@ class ApiFunctions{
                 let json = JSON(response.result.value!)
                 let message = json[Constants.RES_MESSAGE].stringValue
                 completion(message)
+            }
+        }
+    }
+    
+    static func saveUserSchedule(_ schedule: DayScheduleModel, completion: @escaping (String, DayScheduleModel?) -> ()) {
+        Alamofire.request(REQ_SAVESCHEDULE, method: .post, parameters: schedule.getObject()).responseJSON { response in
+            if response.result.isFailure{
+                completion(Constants.CHECK_NETWORK_ERROR, nil)
+            }
+            else
+            {
+                let json = JSON(response.result.value!)
+                let message = json[Constants.RES_MESSAGE].stringValue
+                schedule.schedule_id = json[Constants.KEY_SCHEDULE_ID].nonNullIntValue
+                completion(message, schedule)
+            }
+        }
+        
+    }
+    
+    static func getSkillMatchedUsers(_ skill_id: Int, filter: String, day: Int, time: Int, index: Int, completion: @escaping (String, [UserModel]) -> ()) {
+        let params = [Constants.KEY_SKILL_ID: skill_id as AnyObject,
+                      "filter" : filter as AnyObject,
+                      "day": day as AnyObject,
+                      "time" : time as AnyObject,
+                      "index": index as AnyObject,
+                      "latitude" : currentLatitude as AnyObject,
+                      "longitude" : currentLongitude as AnyObject,
+                      Constants.KEY_USER_ID : currentUser!.user_id as AnyObject
+        ]
+        Alamofire.request(REQ_SEARCHUSERS, method: .post, parameters: params).responseJSON { response in
+            if response.result.isFailure{
+                completion(Constants.CHECK_NETWORK_ERROR, [])
+            }
+            else
+            {
+                let json = JSON(response.result.value!)
+                let message = json[Constants.RES_MESSAGE].stringValue
+                let userObjects = json["users"].arrayValue
+                var users = [UserModel]()
+                for object in userObjects {
+                    users.append(ParseHelper.parseUser(object))
+                }
+                completion(message, users)
+            }
+        }
+    }
+    
+    static func getNearByWorkers(completion: @escaping (String, [UserModel]) -> ()) {
+        let params = [
+            Constants.KEY_USER_ID : currentUser?.user_id as AnyObject,
+            "distance" : currentUser?.user_rangedistance as AnyObject,
+            "latitude" : currentLatitude as AnyObject,
+            "longitude" : currentLongitude as AnyObject
+        ]
+        Alamofire.request(REQ_GETNEARBYWORKERS, method: .post, parameters: params).responseJSON { response in
+            if response.result.isFailure{
+                completion(Constants.CHECK_NETWORK_ERROR, [])
+            }
+            else
+            {
+                let json = JSON(response.result.value!)
+                let message = json[Constants.RES_MESSAGE].stringValue
+                let userObjects = json["users"].arrayValue
+                var users = [UserModel]()
+                for object in userObjects {
+                    users.append(ParseHelper.parseUser(object))
+                }
+                completion(message, users)
             }
         }
     }

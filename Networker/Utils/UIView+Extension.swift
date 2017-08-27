@@ -76,4 +76,11 @@ extension UIImageView{
     }
 }
 
+extension String {
+    func getSubString(count: Int) -> String {        
+        let index = self.index(self.startIndex, offsetBy: count)
+        return self.substring(to: index)
+    }
+}
+
 

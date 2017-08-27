@@ -25,7 +25,6 @@ class ScheduleViewController: BaseViewController {
             //calendarView.circularViewDiameter = 0.2
             calendarView.calendarDelegate = self
             calendarView.inset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            //koyomi.weeks = ("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat")
             calendarView.style = .standard
             calendarView.dayPosition = .center
             calendarView.selectionMode = .multiple(style: .circle)//.sequence(style: .semicircleEdge)

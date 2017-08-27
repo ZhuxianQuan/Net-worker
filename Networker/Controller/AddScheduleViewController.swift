@@ -16,14 +16,16 @@ class AddScheduleViewController: BaseViewController {
     @IBOutlet weak var dayLabel: UILabel!
     @IBOutlet weak var notesTextView: UITextView!
     
-    var schedule : DayScheduleModel!
+    @IBOutlet weak var viewTopConstraint: NSLayoutConstraint!
+    //var schedule : DayScheduleModel!
     var times = [Int]()
-    
-    
-    var event = EventSchedule()
-    
-    
+    var days = [Int]()
     let picker = UIPickerView()
+    
+    var startDay = 0
+    var endDay = 0
+    var startTime = 0
+    var endTime = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,73 +36,80 @@ class AddScheduleViewController: BaseViewController {
         picker.delegate = self
         picker.dataSource = self
         fromTextField.inputView = picker
-        
         toTextField.inputView = picker
-        
         fromTextField.delegate = self
         toTextField.delegate = self
         keyboardControl()
-        event.day = schedule.day
-        dayLabel.text = DateUtils.getDateString(dayValue: event.day)
+        //dayLabel.text = DateUtils.getShortDateString(dayValue: event.day)
+        days = DateUtils.getDaysArray()
     }
-    
-    @IBAction func selectPreTime(_ sender: UIButton) {
-        selectButton(sender.tag)
-    }
-    
-    func deselectButtons() {
-        for tag in 101...104 {
-            (self.view.viewWithTag(tag) as! UIButton).setTitleColor(.black, for: .normal)
-        }
-    }
-    
-    func selectButton(_ tag : Int) {
-        
-    }
-
     
     @IBAction func addScheduleButtonTapped(_ sender: Any) {
-        if event.endTime > 0 && event.startTime > 0 {
-            event.notes = notesTextView.text
-            schedule.addEvent(event)
+        
+        if startDay != 0 && endDay != 0 {
+            if notesTextView.text.characters.count > 0 {
+                let events = EventSchedule.createEventsFrom(startDay: startDay, endDay: endDay, startTime: startTime, endTime: endTime, notes: notesTextView.text)
+                self.showLoadingView()
+            }
+            else {
+                self.showToastWithDuration(string: "Please input notes", duration: 3.0)
+            }
+        }
+        else {
+            self.showToastWithDuration(string: "Please select time", duration: 3.0)
         }
     }
     
-    @IBAction func outSideTapped(_ sender: Any) {
+    
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        
         self.view.endEditing(true)
         self.dismiss(animated: true, completion: nil)
     }
-    
 }
 
 extension AddScheduleViewController : UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        return 2
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return times.count
+        if component == 1 {
+            return times.count
+        }
+        else {
+            return days.count
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if fromTextField.isEditing {
-            event.startTime = times[row]
-            fromTextField.text = DateUtils.getString(from: times[row])
-            
-            if event.endTime <= event.startTime {
-                event.endTime = 0
+            startDay = days[picker.selectedRow(inComponent: 0)]
+            startTime = times[picker.selectedRow(inComponent: 1)]
+            fromTextField.text = DateUtils.getShortDateString(dayValue: startDay) + ", " + DateUtils.getString(from: startTime)
+            if endTime <= startTime || startDay > endDay{
+                endTime = 0
+                endDay = 0
                 toTextField.text = ""
             }
         }
         else if toTextField.isEditing {
-            event.endTime = times[row]
-            toTextField.text = DateUtils.getString(from: times[row])
+            endDay = days[picker.selectedRow(inComponent: 0)]
+            endTime = times[picker.selectedRow(inComponent: 1)]
+            toTextField.text = DateUtils.getShortDateString(dayValue: endDay) + ", " + DateUtils.getString(from: endTime)
         }
+    
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return DateUtils.getString(from: times[row])
+        if component == 0 {
+            return DateUtils.getShortDateString(dayValue: days[row])
+        }
+        else if component == 1 {
+            return DateUtils.getString(from: times[row])
+        }
+        return nil
     }
     
 }
@@ -110,11 +119,15 @@ extension AddScheduleViewController : UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         times = []
+        days = []
+        
         if textField == fromTextField {
             times.append(contentsOf: 17 ... 40)
+            days = DateUtils.getDaysArray()
         }
         else if textField == toTextField {            
-            times.append(contentsOf: event.startTime + 1 ... 41)
+            times.append(contentsOf: startTime + 1 ... 41)
+            days = DateUtils.getDaysArray(from: startDay, to: 99999999)
         }
         self.picker.reloadAllComponents()
         return true
@@ -138,9 +151,9 @@ extension AddScheduleViewController {
     
     func keyboardWillShow(_ notification: Notification)
     {
-        if !fromTextField.isEditing && !toTextField.isEditing {
-            self.keyboardControl(notification, isShowing: true)
-        }
+        //if !fromTextField.isEditing && !toTextField.isEditing {
+        self.keyboardControl(notification, isShowing: true)
+        //}
     }
     
     func keyboardDidShow(_ notification: Notification)
@@ -174,28 +187,19 @@ extension AddScheduleViewController {
             delay: 0,
             options: options,
             animations: {
-                if isShowing{
-                    
-                    self.view.frame.origin.y = -heightOffset + 60
-                    
-                }
-                else
-                {
-                    //self.tblScroll.contentOffset.y -= keyboardRect!.height
-                    self.view.frame.origin.y = 0
-                    
-                }
+                
         },
             completion: {
                 _ in
                 if isShowing{
-                    self.view.frame.origin.y = -heightOffset + 60
-                    
+                    self.view.frame.origin.y = 0
+                    self.viewTopConstraint.constant = -heightOffset + 120
                 }
                 else
                 {
                     //self.tblScroll.contentOffset.y -= keyboardRect!.height
                     self.view.frame.origin.y = 0
+                    self.viewTopConstraint.constant = 60
                     
                 }
         })

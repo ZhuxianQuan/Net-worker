@@ -24,9 +24,10 @@ class MatchedUserTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setCell(_ user: UserModel, _ skillIndex: Int) {
+    func setCell(_ user: UserModel, skill_id : Int) {
         //userDataLabel.text = "\(user.user_firstname) : \(getDistance)m"
-        userDataLabel.text = String(format: "%@ : %.2lfm dist, £%.1lf/hr", user.user_firstname, CommonUtils.getDistanceFromMe(user), "$30")//"\(user.user_firstname) : %"
+        userDataLabel.text = String(format: "%@ : %.2lfm dist, £%.1lf/hr", user.user_firstname, CommonUtils.getDistanceFromMe(user), user.getSkillPrice(skill_id))//"\(user.user_firstname) : %"
+        ratingView.rating = user.user_avgmarks
     }
     
 

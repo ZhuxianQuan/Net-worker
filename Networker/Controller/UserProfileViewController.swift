@@ -37,6 +37,7 @@ class UserProfileViewController: BaseViewController {
         
         userDataLabel.text = userDataString
         aboutMeTextView.text = user.user_aboutme
+        ratingView.rating = user.user_avgmarks
         profileImageView.sd_setImage(with: URL(string: user.user_profileimageurl), placeholderImage: UIImage(named: "icon_profile"))
     }
     
@@ -45,8 +46,8 @@ class UserProfileViewController: BaseViewController {
         
     }
     @IBAction func availabilityButtonTapped(_ sender: Any) {
-        let storyboard = getStoryboard(id : Constants.STORYBOARD_SCHEDULE)
-        let scheduleVC = storyboard.instantiateViewController(withIdentifier: "ScheduleViewController") as! ScheduleViewController
+        //let storyboard = getStoryboard(id : Constants.STORYBOARD_SCHEDULE)
+        let scheduleVC = self.storyboard?.instantiateViewController(withIdentifier: "UserAvailabilityViewController") as! UserAvailabilityViewController
         scheduleVC.user = user
         self.navigationController?.pushViewController(scheduleVC, animated: true)
     }

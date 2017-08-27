@@ -102,6 +102,19 @@ class DateUtils {
         return weekdays
     }
     
+    static func getDaysArray() -> [Int]{
+        var days = [Int]()
+        let date = Date()
+        for index in 0 ..< 60 {
+            let newInterval = Int64(date.timeIntervalSince1970) + 86400 * Int64(index)
+            let newDate = Date(timeIntervalSince1970: TimeInterval(newInterval))
+            if getDayValue(newDate) >= getDayValue(Date()){
+                days.append(getDayValue(newDate))
+            }
+        }
+        return days
+    }
+    
     static func getDayValue(_ date: Date) -> Int{
         let calendar = Calendar.current
         let year = calendar.component(.year, from: date)
@@ -138,6 +151,17 @@ class DateUtils {
         return formatter.string(from: calendar.date(from: components)!)
     }
     
+    
+    static func getShortDateString(dayValue: Int) -> String {
+        let year = dayValue / 10000
+        let month = dayValue / 100 - year * 100
+        let day = dayValue % 100
+        let components = DateComponents(year: year, month: month, day: day)
+        let calendar = Calendar.current
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d"
+        return formatter.string(from: calendar.date(from: components)!)
+    }
     static func getFullDateString(_ date: Date) -> String {
         
         let formatter = DateFormatter()
@@ -164,6 +188,19 @@ class DateUtils {
         default:
             return ""
         }
+    }
+    
+    static func getDaysArray(from : Int, to : Int) -> [Int] {
+        var days = [Int]()
+        let availableDays = getDaysArray()
+        for day in availableDays {
+            if day >= from && day <= to {
+                days.append(day)
+            }
+        }
+        
+        return days
+        
     }
     
 
