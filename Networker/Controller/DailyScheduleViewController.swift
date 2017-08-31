@@ -57,6 +57,15 @@ class DailyScheduleViewController: BaseViewController {
     }
 
     @IBAction func SettingsButtonTapped(_ sender: Any) {
+        /*let selector = UIStoryboard(name: "WWCalendarTimeSelector", bundle: nil).instantiateViewController(withIdentifier: "WWCalendarTimeSelector") as! WWCalendarTimeSelector
+        selector.delegate = self
+        selector.optionStyles.showDateMonth(false)
+        selector.optionStyles.showMonth(false)
+        selector.optionStyles.showYear(false)
+        selector.optionStyles.showTime(true)
+        
+        
+        present(selector, animated: true, completion: nil)*/
     }
     
     @IBAction func addButtonTapped(_ sender: Any) {
@@ -138,4 +147,25 @@ extension DailyScheduleViewController : UITableViewDelegate, UITableViewDataSour
         }
     }
     
+}
+
+extension DailyScheduleViewController: WWCalendarTimeSelectorProtocol {
+    
+    func WWCalendarTimeSelectorDone(_ selector: WWCalendarTimeSelector, date: Date) {
+        print("Selected \n\(date)\n---")
+        /*singleDate = date
+        dateLabel.text = date.stringFromFormat("d' 'MMMM' 'yyyy', 'h':'mma")*/
+    }
+    
+    func WWCalendarTimeSelectorDone(_ selector: WWCalendarTimeSelector, dates: [Date]) {
+        print("Selected Multiple Dates \n\(dates)\n---")
+        /*if let date = dates.first {
+            singleDate = date
+            dateLabel.text = date.stringFromFormat("d' 'MMMM' 'yyyy', 'h':'mma")
+        }
+        else {
+            dateLabel.text = "No Date Selected"
+        }
+        multipleDates = dates*/
+    }
 }

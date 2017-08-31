@@ -27,7 +27,7 @@ class ScheduleViewController: BaseViewController {
             calendarView.inset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             calendarView.style = .standard
             calendarView.dayPosition = .center
-            calendarView.selectionMode = .multiple(style: .circle)//.sequence(style: .semicircleEdge)
+            calendarView.selectionMode = .single(style: .circle)
             calendarView.selectedStyleColor = Constants.GREEN_SCHEDULE_COLOR
             calendarView
                 .setDayFont(size: 12)
@@ -35,9 +35,7 @@ class ScheduleViewController: BaseViewController {
             let screenSize = UIScreen.main.bounds.size
             calendarView.frame.size = CGSize(width: screenSize.width - 76, height: screenSize.width - 64)
             calendarView.currentDateFormat = "MMMM yyyy"
-            //calendarView.isHiddenOtherMonth = true
-            //calendarView.is
-        
+            
         }
     }
 
@@ -64,11 +62,16 @@ class ScheduleViewController: BaseViewController {
     
     
     @IBAction func prevButtonTapped(_ sender: UIButton) {
-        calendarView.display(in: .previous)
+        if calendarView.getMonthValue() > DateUtils.getDayValue(Date()) / 100 {
+            calendarView.display(in: .previous)
+        }
     }
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
-        calendarView.display(in: .next)
+        let nextMonth = Date(timeIntervalSinceNow: 86400 * 62)
+        if calendarView.getMonthValue() < DateUtils.getDayValue(nextMonth) / 100 {
+            calendarView.display(in: .next)
+        }
     }
 
     @IBAction func backButtonTapped(_ sender: Any) {
@@ -90,9 +93,16 @@ class ScheduleViewController: BaseViewController {
 extension ScheduleViewController : KoyomiDelegate {
     
     func koyomi(_ koyomi: Koyomi, didSelect date: Date?, forItemAt indexPath: IndexPath) {
-        
-        if Int64((date?.timeIntervalSinceNow)!) >= -86400 {
+        let sinceFromNow = Int64((date?.timeIntervalSinceNow)!)
+        if sinceFromNow >= -86400 && sinceFromNow < 86400 * 62 {
             selectedDate = date
+            
+            if DateUtils.getDayValue(selectedDate) / 100 > koyomi.getMonthValue() {
+                koyomi.display(in: .next)
+            }
+            else if DateUtils.getDayValue(selectedDate) / 100 < koyomi.getMonthValue() {
+                koyomi.display(in: .previous)
+            }
         }
     }
     

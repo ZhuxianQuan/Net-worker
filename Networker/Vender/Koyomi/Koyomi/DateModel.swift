@@ -48,7 +48,7 @@ final class DateModel: NSObject {
     fileprivate var selectedDates: [Date: Bool] = [:]
     fileprivate var highlightedDates: [Date] = []
     fileprivate var currentDate: Date = .init()
-    
+    fileprivate var scheduledDates: [Date] = []
     // MARK: - Initialization
     
     override init() {
@@ -250,6 +250,7 @@ final class DateModel: NSObject {
         let date = currentDates[indexPath.row]
         return highlightedDates.contains(date)
     }
+    
     
     func setHighlightedDates(from: Date, to: Date?) {
         guard let fromDate = from.formated() else { return }

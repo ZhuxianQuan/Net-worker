@@ -415,7 +415,12 @@ private extension Koyomi {
         } else {
 
             // Configure appearance properties for day cell
-            isSelected = model.isSelect(with: indexPath)
+            if DateUtils.getDayValue(date) >= DateUtils.getDayValue(Date()) {
+                isSelected = model.isSelect(with: indexPath)
+            }
+            else {
+                isSelected = false
+            }
             
             textColor = {
                 var baseColor: UIColor {

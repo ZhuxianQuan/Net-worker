@@ -49,7 +49,7 @@ class AddScheduleViewController: BaseViewController {
         if startDay != 0 && endDay != 0 {
             if notesTextView.text.characters.count > 0 {
                 let events = EventSchedule.createEventsFrom(startDay: startDay, endDay: endDay, startTime: startTime, endTime: endTime, notes: notesTextView.text)
-                self.showLoadingView()
+                //self.showLoadingView()
             }
             else {
                 self.showToastWithDuration(string: "Please input notes", duration: 3.0)

@@ -162,6 +162,7 @@ class DateUtils {
         formatter.dateFormat = "MMM d"
         return formatter.string(from: calendar.date(from: components)!)
     }
+    
     static func getFullDateString(_ date: Date) -> String {
         
         let formatter = DateFormatter()

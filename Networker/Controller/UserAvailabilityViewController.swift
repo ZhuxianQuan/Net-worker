@@ -60,11 +60,17 @@ class UserAvailabilityViewController: BaseViewController {
     
     
     @IBAction func prevButtonTapped(_ sender: UIButton) {
-        calendarView.display(in: .previous)
+        if calendarView.getMonthValue() > DateUtils.getDayValue(Date()) / 100 {
+            calendarView.display(in: .previous)
+        }
     }
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
-        calendarView.display(in: .next)
+        let nextMonth = Date(timeIntervalSinceNow: 86400 * 62)
+        if calendarView.getMonthValue() < DateUtils.getDayValue(nextMonth) / 100 {
+            calendarView.display(in: .next)
+        }
+
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {
