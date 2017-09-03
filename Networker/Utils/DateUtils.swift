@@ -102,6 +102,7 @@ class DateUtils {
         return weekdays
     }
     
+    
     static func getDaysArray() -> [Int]{
         var days = [Int]()
         let date = Date()
@@ -203,6 +204,22 @@ class DateUtils {
         return days
         
     }
+    
+    static func getNextMonth(date: Date) -> Date {
+        return Calendar.current.date(byAdding: .month, value: 1, to: date)!
+    }
+    
+    static func getPreMonth(date: Date) -> Date {
+        return Calendar.current.date(byAdding: .month, value: -1, to: date)!
+    }
+    
+    static func getMonthString( date: Date) -> String {
+        let monthFormatter = DateFormatter()
+        monthFormatter.dateFormat = "MMMM yyyy"
+        return monthFormatter.string(from: date)
+    }
+    
+    
     
 
 

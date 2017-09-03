@@ -13,32 +13,28 @@ class ScheduleViewController: BaseViewController {
  
     //variable related with calendar
     //@IBOutlet weak var calendarView: Koyomi!
-    @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
     
-    var user = UserModel()
     var selectedDate : Date!
     
+    var schedules: [DayScheduleModel] = []
     
-    @IBOutlet fileprivate weak var calendarView: Koyomi! {
+    @IBOutlet weak var calendarView: FSCalendar! {
         didSet {
-            //calendarView.circularViewDiameter = 0.2
-            calendarView.calendarDelegate = self
-            calendarView.inset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            calendarView.style = .standard
-            calendarView.dayPosition = .center
-            calendarView.selectionMode = .single(style: .circle)
-            calendarView.selectedStyleColor = Constants.GREEN_SCHEDULE_COLOR
-            calendarView
-                .setDayFont(size: 12)
-                .setWeekFont(size: 12)
-            let screenSize = UIScreen.main.bounds.size
-            calendarView.frame.size = CGSize(width: screenSize.width - 76, height: screenSize.width - 64)
-            calendarView.currentDateFormat = "MMMM yyyy"
             
+            calendarView.delegate = self
+            calendarView.dataSource = self
         }
     }
-
+    fileprivate let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyyMMdd"
+        return formatter
+    }()
+    
+    
+    fileprivate let gregorian: NSCalendar! = NSCalendar(calendarIdentifier:NSCalendar.Identifier.gregorian)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if self.navigationController?.viewControllers.count == 1 {
@@ -47,12 +43,15 @@ class ScheduleViewController: BaseViewController {
         else{
             backButton.isHidden = false
         }
-        calendarView.display(in: .current)
+        
+        //set calendar view
+    
+        selectedDate = Date()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        calendarView.reloadData()        
+        calendarView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -60,19 +59,6 @@ class ScheduleViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    @IBAction func prevButtonTapped(_ sender: UIButton) {
-        if calendarView.getMonthValue() > DateUtils.getDayValue(Date()) / 100 {
-            calendarView.display(in: .previous)
-        }
-    }
-    
-    @IBAction func nextButtonTapped(_ sender: UIButton) {
-        let nextMonth = Date(timeIntervalSinceNow: 86400 * 62)
-        if calendarView.getMonthValue() < DateUtils.getDayValue(nextMonth) / 100 {
-            calendarView.display(in: .next)
-        }
-    }
 
     @IBAction func backButtonTapped(_ sender: Any) {
         _ = self.navigationController?.popViewController(animated : true)
@@ -88,30 +74,39 @@ class ScheduleViewController: BaseViewController {
     }
 }
 
-
-
-extension ScheduleViewController : KoyomiDelegate {
+extension ScheduleViewController : FSCalendarDelegate , FSCalendarDataSource {
     
-    func koyomi(_ koyomi: Koyomi, didSelect date: Date?, forItemAt indexPath: IndexPath) {
-        let sinceFromNow = Int64((date?.timeIntervalSinceNow)!)
-        if sinceFromNow >= -86400 && sinceFromNow < 86400 * 62 {
-            selectedDate = date
-            
-            if DateUtils.getDayValue(selectedDate) / 100 > koyomi.getMonthValue() {
-                koyomi.display(in: .next)
+    
+    func maximumDate(for calendar: FSCalendar) -> Date {
+        return Date().addingTimeInterval(86400 * 62)
+    }
+    
+    func minimumDate(for calendar: FSCalendar) -> Date {
+        return Date()
+    }
+    
+    
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        print("calendar did select date \(self.formatter.string(from: date))")
+        if monthPosition == .previous || monthPosition == .next {
+            calendar.setCurrentPage(date, animated: true)
+        }
+        selectedDate = date
+    }
+    
+
+    func calendar(_ calendar: FSCalendar, numberOfEventsFor date: Date) -> Int {
+        let day = Int(formatter.string(from: date))!
+        for schedule in schedules {
+            if schedule.day == day {
+                return 1
             }
-            else if DateUtils.getDayValue(selectedDate) / 100 < koyomi.getMonthValue() {
-                koyomi.display(in: .previous)
+            else if schedule.day > day {
+                break
             }
         }
+        return 0
     }
-    
-    
-    func koyomi(_ koyomi: Koyomi, currentDateString dateString: String) {
-        
-        monthLabel.text = dateString
-    }
-    
-    
     
 }
+

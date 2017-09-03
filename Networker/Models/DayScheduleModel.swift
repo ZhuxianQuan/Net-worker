@@ -93,12 +93,15 @@ class DayScheduleModel {
     }
     
     func mergeEvent(_ event: EventSchedule, events :[EventSchedule], completion: @escaping([EventSchedule]) -> ()) {
-        var result = [EventSchedule]()
         if events.count == 0 {
-            result = [event]            
+            event.addEventToCalendar(completion: {
+                message in
+                completion([event])
+            })
         }
         else {
             
+            var result = [EventSchedule]()
             if events[0].startTime < event.startTime {
                 let firstEvent = events[0]
                 firstEvent.endTime = event.startTime
@@ -110,6 +113,7 @@ class DayScheduleModel {
                 lastEvent.startTime = event.endTime
                 result.append(lastEvent)
             }
+            
             var loaded = 0
             var maxLoaded = events.count
             for event in events {

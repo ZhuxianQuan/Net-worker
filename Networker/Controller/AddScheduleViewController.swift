@@ -27,6 +27,9 @@ class AddScheduleViewController: BaseViewController {
     var startTime = 0
     var endTime = 0
     
+    
+    var selectedDay = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         picker.frame.size = CGSize(width: screenSize.width, height: 200)
@@ -40,16 +43,22 @@ class AddScheduleViewController: BaseViewController {
         fromTextField.delegate = self
         toTextField.delegate = self
         keyboardControl()
-        //dayLabel.text = DateUtils.getShortDateString(dayValue: event.day)
         days = DateUtils.getDaysArray()
     }
     
     @IBAction func addScheduleButtonTapped(_ sender: Any) {
         
+        self.view.endEditing(true)
         if startDay != 0 && endDay != 0 {
             if notesTextView.text.characters.count > 0 {
                 let events = EventSchedule.createEventsFrom(startDay: startDay, endDay: endDay, startTime: startTime, endTime: endTime, notes: notesTextView.text)
-                //self.showLoadingView()
+                
+                self.showLoadingView()
+                saveEvents(events, completion: {
+                    message in
+                    self.hideLoadingView()
+                    self.dismiss(animated: true, completion: nil)
+                })
             }
             else {
                 self.showToastWithDuration(string: "Please input notes", duration: 3.0)
@@ -59,6 +68,70 @@ class AddScheduleViewController: BaseViewController {
             self.showToastWithDuration(string: "Please select time", duration: 3.0)
         }
     }
+    
+    func saveEvents(_ events: [EventSchedule], completion: @escaping (String) -> ()) {
+        var leftEvents = events
+        var changedScheules = [DayScheduleModel]()
+        let schedules = currentUser!.user_schedules
+        
+        
+        for schedule in schedules {
+            if schedule.day <= endDay{
+                if schedule.day >= startDay {
+                    for event in leftEvents {
+                        if schedule.day > event.day {
+                            let schedule = DayScheduleModel()
+                            schedule.user_id = currentUser!.user_id
+                            schedule.day = event.day
+                            schedule.day_schedule = event.eventTimeValue
+                            schedule.addEvent(event, completion: {
+                                message in
+                                changedScheules.append(schedule)
+                                if changedScheules.count == events.count {
+                                    completion(Constants.PROCESS_SUCCESS)
+                                }
+                            })
+                            leftEvents.remove(at: 0)
+                            continue
+                        }
+                        else if schedule.day == event.day {
+                            schedule.addEvent(event, completion: {
+                                message in
+                                changedScheules.append(schedule)
+                                if changedScheules.count == events.count {
+                                    completion(Constants.PROCESS_SUCCESS)
+                                }
+                            })
+                            leftEvents.remove(at: 0)
+                            break
+                        }
+                        
+                    }
+                }
+            }
+            else {
+                break
+            }
+            
+        }
+        
+        for event in leftEvents {
+            let schedule = DayScheduleModel()
+            schedule.user_id = currentUser!.user_id
+            schedule.day = event.day
+            schedule.day_schedule = event.eventTimeValue
+            schedule.addEvent(event, completion: {
+                message in
+                changedScheules.append(schedule)
+                if changedScheules.count == events.count {
+                    completion(Constants.PROCESS_SUCCESS)
+                }
+            })
+            leftEvents.remove(at: 0)
+        }
+        
+    }
+    
     
     
     @IBAction func cancelButtonTapped(_ sender: Any) {
@@ -120,7 +193,6 @@ extension AddScheduleViewController : UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         times = []
         days = []
-        
         if textField == fromTextField {
             times.append(contentsOf: 17 ... 40)
             days = DateUtils.getDaysArray()

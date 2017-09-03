@@ -148,24 +148,3 @@ extension DailyScheduleViewController : UITableViewDelegate, UITableViewDataSour
     }
     
 }
-
-extension DailyScheduleViewController: WWCalendarTimeSelectorProtocol {
-    
-    func WWCalendarTimeSelectorDone(_ selector: WWCalendarTimeSelector, date: Date) {
-        print("Selected \n\(date)\n---")
-        /*singleDate = date
-        dateLabel.text = date.stringFromFormat("d' 'MMMM' 'yyyy', 'h':'mma")*/
-    }
-    
-    func WWCalendarTimeSelectorDone(_ selector: WWCalendarTimeSelector, dates: [Date]) {
-        print("Selected Multiple Dates \n\(dates)\n---")
-        /*if let date = dates.first {
-            singleDate = date
-            dateLabel.text = date.stringFromFormat("d' 'MMMM' 'yyyy', 'h':'mma")
-        }
-        else {
-            dateLabel.text = "No Date Selected"
-        }
-        multipleDates = dates*/
-    }
-}

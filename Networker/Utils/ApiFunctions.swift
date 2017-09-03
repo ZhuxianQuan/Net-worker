@@ -317,6 +317,10 @@ class ApiFunctions{
         
     }
     
+    static func saveChangedUserSchedule(_ schedules: [DayScheduleModel], completion: (String) -> ()) {
+        
+    }
+    
     static func getSkillMatchedUsers(_ skill_id: Int, filter: String, day: Int, time: Int, index: Int, completion: @escaping (String, [UserModel]) -> ()) {
         let params = [Constants.KEY_SKILL_ID: skill_id as AnyObject,
                       "filter" : filter as AnyObject,

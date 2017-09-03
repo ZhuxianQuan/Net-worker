@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TagModel: UIView {
+class TagModel {
 
     /*
     // Only override draw() if you perform custom drawing.
