@@ -80,6 +80,7 @@ class Constants {
     static let KEY_USER_ABOUTME             = "user_aboutme"
     static let KEY_USER_TOKEN               = "user_token"
     static let KEY_USER_AVGRATING           = "avg_marks"
+    static let KEY_USER_SCHEDULES           = "user_schedules"
     
     //rating model
     

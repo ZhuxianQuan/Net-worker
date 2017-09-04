@@ -26,6 +26,7 @@ class ApiFunctions{
     static let REQ_GETSKILLVERSION      = SERVER_URL + "getSkillVersion"
     static let REQ_UPLOADPOSITION       = SERVER_URL + "uploadPosition"
     static let REQ_SAVESCHEDULE         = SERVER_URL + "saveUserSchedule"
+    static let REQ_SAVESCHEDULES        = SERVER_URL + "saveUserSchedules"
     static let REQ_SEARCHUSERS          = SERVER_URL + "searchMatchedUsers"
     static let REQ_GETNEARBYWORKERS     = SERVER_URL + "getNearByWorkers"
     
@@ -50,6 +51,9 @@ class ApiFunctions{
                 let message = json[Constants.RES_MESSAGE].stringValue
                 if message == Constants.PROCESS_SUCCESS {
                     currentUser = ParseHelper.parseUser(json[Constants.RES_USER_INFO])
+                    for scheduleObject in json[Constants.KEY_USER_SCHEDULES].arrayValue {
+                        currentUser?.user_schedules.append(ParseHelper.parseSchedule(scheduleObject))
+                    }
                     completion(Constants.PROCESS_SUCCESS)
                 }
                 else {
@@ -300,7 +304,7 @@ class ApiFunctions{
             }
         }
     }
-    
+    /*
     static func saveUserSchedule(_ schedule: DayScheduleModel, completion: @escaping (String, DayScheduleModel?) -> ()) {
         Alamofire.request(REQ_SAVESCHEDULE, method: .post, parameters: schedule.getObject()).responseJSON { response in
             if response.result.isFailure{
@@ -315,10 +319,49 @@ class ApiFunctions{
             }
         }
         
-    }
+    }*/
     
-    static func saveChangedUserSchedule(_ schedules: [DayScheduleModel], completion: (String) -> ()) {
-        
+    static func saveChangedUserSchedule(_ schedules: [DayScheduleModel], completion: @escaping (String) -> ()) {
+        var scheduleArray = [String: AnyObject]()
+        var objects = [AnyObject]()
+        for schedule in schedules {
+            objects.append(schedule.getObject() as AnyObject)
+        }
+        scheduleArray["schedules"] = objects as AnyObject
+        scheduleArray["user_id"] = currentUser!.user_id as AnyObject
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: scheduleArray, options: .prettyPrinted)
+            var request = URLRequest(url: URL(string: REQ_SAVESCHEDULES)!)
+            request.httpBody = jsonData
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+
+            Alamofire.request(request).responseJSON { response in
+                if response.result.isFailure{
+                    completion(Constants.CHECK_NETWORK_ERROR)
+                }
+                else
+                {
+                    let json = JSON(response.result.value!)
+                    let message = json[Constants.RES_MESSAGE].nonNullStringValue
+                    if message == Constants.PROCESS_SUCCESS {
+                        var schedules = [DayScheduleModel]()
+                        for scheduleObject in json[Constants.KEY_USER_SCHEDULES].arrayValue {
+                            schedules.append(ParseHelper.parseSchedule(scheduleObject))
+                        }
+                        currentUser?.user_schedules = schedules
+                        completion(message)
+                    }
+                    else {
+                        completion(message)
+                    }
+                    
+                }
+            }
+        }
+        catch {
+            completion(Constants.PROCESS_FAIL)
+        }
     }
     
     static func getSkillMatchedUsers(_ skill_id: Int, filter: String, day: Int, time: Int, index: Int, completion: @escaping (String, [UserModel]) -> ()) {
@@ -376,4 +419,6 @@ class ApiFunctions{
     
     
 }
+
+
 

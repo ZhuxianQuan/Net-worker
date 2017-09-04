@@ -73,10 +73,12 @@ class ParseHelper {
     static func parseSchedule(_ rawData: JSON) -> DayScheduleModel {
         
         let schedule = DayScheduleModel()
+        schedule.user_id = rawData[Constants.KEY_USER_ID].nonNullInt64Value
         schedule.schedule_id = rawData[Constants.KEY_SCHEDULE_ID].nonNullIntValue
         schedule.day_schedule = rawData[Constants.KEY_SCHEDULE_DAYVALUE].nonNullInt64Value
         schedule.day = rawData[Constants.KEY_SCHEDULE_DAY].nonNullIntValue
         schedule.notes = rawData[Constants.KEY_SCHEDULE_NOTES].nonNullStringValue
+        schedule.day_schedule = rawData[Constants.KEY_SCHEDULE_DAYVALUE].nonNullInt64Value
         return schedule
         
     }

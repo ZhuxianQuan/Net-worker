@@ -20,7 +20,11 @@ class DailyScheduleViewController: BaseViewController {
     
     @IBOutlet weak var settingsImageView: UIImageView!
     @IBOutlet weak var addImageView: UIImageView!
-    var schedules : [DayScheduleModel] = []
+    var schedules: [DayScheduleModel] {
+        get {
+            return currentUser!.user_schedules
+        }
+    }
     @IBOutlet weak var dayTableView: UITableView!
     
     
@@ -33,23 +37,19 @@ class DailyScheduleViewController: BaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        schedules = currentUser!.user_schedules
         dailyScheduleTableView.estimatedRowHeight = 80
         weekdays = DateUtils.getWeekDays(selectedDay)
         scheduleMonthLabel.text = DateUtils.getFullDateString(selectedDay)
         
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        dailyScheduleTableView.reloadData()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-
-    func getSchedule() {
-        
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {
@@ -139,6 +139,7 @@ extension DailyScheduleViewController : UITableViewDelegate, UITableViewDataSour
                 selectedDay = DateUtils.getDate(weekdays[indexPath.row])
                 scheduleMonthLabel.text = DateUtils.getFullDateString(selectedDay)
                 tableView.reloadData()
+                dailyScheduleTableView.reloadData()
             }
         
         }

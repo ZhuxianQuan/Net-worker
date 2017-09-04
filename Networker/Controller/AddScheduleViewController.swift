@@ -55,9 +55,24 @@ class AddScheduleViewController: BaseViewController {
                 
                 self.showLoadingView()
                 saveEvents(events, completion: {
-                    message in
-                    self.hideLoadingView()
-                    self.dismiss(animated: true, completion: nil)
+                    message, schedules in
+                    if message == Constants.PROCESS_SUCCESS {
+                        ApiFunctions.saveChangedUserSchedule(schedules, completion: {
+                            message in
+                            self.hideLoadingView()
+                            if message == Constants.PROCESS_SUCCESS {
+                                self.dismiss(animated: true, completion: nil)
+                            }
+                            else {
+                                self.showToastWithDuration(string: message, duration: 3.0)
+                            }
+                            
+                        })
+                    }
+                    else {
+                        self.hideLoadingView()
+                        self.showToastWithDuration(string: message, duration: 3.0)
+                    }
                 })
             }
             else {
@@ -69,11 +84,10 @@ class AddScheduleViewController: BaseViewController {
         }
     }
     
-    func saveEvents(_ events: [EventSchedule], completion: @escaping (String) -> ()) {
+    func saveEvents(_ events: [EventSchedule], completion: @escaping (String, [DayScheduleModel]) -> ()) {
         var leftEvents = events
         var changedScheules = [DayScheduleModel]()
-        let schedules = currentUser!.user_schedules
-        
+        let schedules = currentUser!.user_schedules       
         
         for schedule in schedules {
             if schedule.day <= endDay{
@@ -88,7 +102,7 @@ class AddScheduleViewController: BaseViewController {
                                 message in
                                 changedScheules.append(schedule)
                                 if changedScheules.count == events.count {
-                                    completion(Constants.PROCESS_SUCCESS)
+                                    completion(Constants.PROCESS_SUCCESS, changedScheules)
                                 }
                             })
                             leftEvents.remove(at: 0)
@@ -99,7 +113,7 @@ class AddScheduleViewController: BaseViewController {
                                 message in
                                 changedScheules.append(schedule)
                                 if changedScheules.count == events.count {
-                                    completion(Constants.PROCESS_SUCCESS)
+                                    completion(Constants.PROCESS_SUCCESS, changedScheules)
                                 }
                             })
                             leftEvents.remove(at: 0)
@@ -124,7 +138,7 @@ class AddScheduleViewController: BaseViewController {
                 message in
                 changedScheules.append(schedule)
                 if changedScheules.count == events.count {
-                    completion(Constants.PROCESS_SUCCESS)
+                    completion(Constants.PROCESS_SUCCESS, changedScheules)
                 }
             })
             leftEvents.remove(at: 0)

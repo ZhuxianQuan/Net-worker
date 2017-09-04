@@ -69,16 +69,9 @@ class DayScheduleModel {
         }
     }
     
-    func setAvailableAllDay() {
-        day_schedule = Int64(1 << 48) - 1
-    }
-    
-    func setBusyAllDay() {
-        day_schedule = 0
-    }
     
     func addEvent(_ event: EventSchedule, completion: @escaping (String) -> ()) {
-        day_schedule = day_schedule & event.eventTimeValue
+        day_schedule = day_schedule | event.eventTimeValue
         var events = [EventSchedule]()
         let arrays = getEventArrays(event)
         mergeEvent(event, events: arrays.1, completion: {
@@ -100,7 +93,6 @@ class DayScheduleModel {
             })
         }
         else {
-            
             var result = [EventSchedule]()
             if events[0].startTime < event.startTime {
                 let firstEvent = events[0]
@@ -174,7 +166,7 @@ class DayScheduleModel {
         result[Constants.KEY_SCHEDULE_ID] = schedule_id as AnyObject
         result[Constants.KEY_SCHEDULE_DAY] = day as AnyObject
         result[Constants.KEY_SCHEDULE_DAYVALUE] = day_schedule as AnyObject
-        result[Constants.KEY_SCHEDULE_NOTES] = notes as  AnyObject
+        result[Constants.KEY_SCHEDULE_NOTES] = notes as AnyObject
         result[Constants.KEY_USER_ID] = user_id as AnyObject
         return result
     }
@@ -291,4 +283,5 @@ class EventSchedule {
     }
     
 }
+
 

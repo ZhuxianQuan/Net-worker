@@ -17,7 +17,11 @@ class ScheduleViewController: BaseViewController {
     
     var selectedDate : Date!
     
-    var schedules: [DayScheduleModel] = []
+    var schedules: [DayScheduleModel] {
+        get {
+            return currentUser!.user_schedules
+        }
+    }
     
     @IBOutlet weak var calendarView: FSCalendar! {
         didSet {
