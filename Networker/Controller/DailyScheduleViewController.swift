@@ -81,6 +81,11 @@ class DailyScheduleViewController: BaseViewController {
     @IBAction func daysButtonTapped(_ sender: UIButton) {
     }
     
+    
+    @IBAction func menuButtonTapped(_ sender: Any) {
+        drawerController?.setDrawerState(.opened, animated: true)
+    }
+    
 }
 
 

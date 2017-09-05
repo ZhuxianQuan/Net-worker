@@ -146,4 +146,9 @@ class Constants {
     static let VALUE_PASSWORD_FB            = "FBPASSWORD_NETWORKER"
     static let VALUE_PASSWORD_LI            = "LIPASSWORD_NETWORKER"
     
+    static let VALUE_DEAL_PENDING           = 1
+    static let VALUE_DEAL_ACCEPTED          = 2
+    static let VALUE_DEAL_PROCESSING        = 3
+    static let VALUE_DEAL_COMPLETED         = 4
+    
 }

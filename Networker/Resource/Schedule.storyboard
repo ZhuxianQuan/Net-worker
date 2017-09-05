@@ -65,6 +65,9 @@
                                             <constraint firstAttribute="height" constant="50" id="7K5-h8-wTb"/>
                                         </constraints>
                                         <state key="normal" image="icon_menu"/>
+                                        <connections>
+                                            <action selector="menuButtonTapped:" destination="biZ-hT-9Qf" eventType="touchUpInside" id="xT5-TO-Ed9"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_bee" translatesAutoresizingMaskIntoConstraints="NO" id="KAa-gO-lSu">
                                         <rect key="frame" x="54" y="22.5" width="36" height="22"/>
@@ -365,6 +368,9 @@
                                             <constraint firstAttribute="height" constant="50" id="neR-ZZ-ZFm"/>
                                         </constraints>
                                         <state key="normal" image="icon_menu"/>
+                                        <connections>
+                                            <action selector="menuButtonTapped:" destination="eWV-7G-znV" eventType="touchUpInside" id="UMW-e3-WkC"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_bee" translatesAutoresizingMaskIntoConstraints="NO" id="cxF-QD-Qt9">
                                         <rect key="frame" x="54" y="23" width="36" height="22"/>
@@ -651,6 +657,9 @@
                                             <constraint firstAttribute="height" constant="50" id="uib-29-bwp"/>
                                         </constraints>
                                         <state key="normal" image="icon_menu"/>
+                                        <connections>
+                                            <action selector="menuButtonTapped:" destination="Cfq-xe-vxt" eventType="touchUpInside" id="PUi-Ig-4Tf"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_bee" translatesAutoresizingMaskIntoConstraints="NO" id="1hL-kC-7ag">
                                         <rect key="frame" x="54" y="23" width="36" height="22"/>
@@ -757,7 +766,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Sj-zJ-zXM">
-                                                        <rect key="frame" x="27.5" y="35" width="35.5" height="21"/>
+                                                        <rect key="frame" x="28" y="35" width="35.5" height="21"/>
                                                         <fontDescription key="fontDescription" name="NeueHelveticaBQ-Light" family="Neue Helvetica BQ" pointSize="17"/>
                                                         <color key="textColor" red="0.13725490200000001" green="0.67450980390000004" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1232,7 +1241,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Asy-Rq-lcB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1672.5" y="100.35211267605634"/>
+            <point key="canvasLocation" x="-3626" y="165"/>
         </scene>
     </scenes>
     <resources>

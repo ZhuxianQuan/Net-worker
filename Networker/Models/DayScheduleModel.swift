@@ -39,37 +39,6 @@ class DayScheduleModel {
         }
     }
     
-    func setBusy(time : Int) {
-        if time == MORNING{
-            day_schedule = day_schedule - (day_schedule & Int64(255 << 16))
-        }
-        else if time == AFTERNOON {
-            day_schedule = day_schedule - (day_schedule & Int64(255 << 24))
-        }
-        else if time == EVENING {
-            day_schedule = day_schedule - (day_schedule & Int64(255 << 32))
-        }
-        else {
-            day_schedule = day_schedule - (day_schedule & Int64(1 << time))
-        }
-    }
-    
-    func setAvailable(time : Int) {
-        if time == MORNING{
-            day_schedule = day_schedule | Int64(255 << 16)
-        }
-        else if time == AFTERNOON {
-            day_schedule = day_schedule | Int64(255 << 24)
-        }
-        else if time == EVENING {
-            day_schedule = day_schedule | Int64(255 << 32)
-        }
-        else {
-            day_schedule = day_schedule | Int64(1 << time)
-        }
-    }
-    
-    
     func addEvent(_ event: EventSchedule, completion: @escaping (String) -> ()) {
         day_schedule = day_schedule | event.eventTimeValue
         var events = [EventSchedule]()

@@ -53,6 +53,11 @@ class UserProfileViewController: BaseViewController {
     }
     
     @IBAction func reviewsButtonTapped(_ sender: Any) {
+        
+    }
+    
+    @IBAction func menuButtonTapped(_ sender: Any) {
+        drawerController?.setDrawerState(.opened, animated: true)
     }
    
 }

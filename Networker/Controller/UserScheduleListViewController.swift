@@ -24,6 +24,10 @@ class UserScheduleListViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    @IBAction func menuButtonTapped(_ sender: Any) {
+        drawerController?.setDrawerState(.opened, animated: true)
+    }
 
 
 }

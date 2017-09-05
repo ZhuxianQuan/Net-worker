@@ -61,6 +61,11 @@ class FavoriteViewController: BaseViewController {
         
         favoriteTableViewCell.reloadData()
     }
+    
+    
+    @IBAction func menuButtonTapped(_ sender: Any) {
+        drawerController?.setDrawerState(.opened, animated: true)
+    }
 
     
 }

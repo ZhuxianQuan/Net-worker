@@ -173,6 +173,16 @@ class CommonUtils: AnyObject{
         }
         return nil
     }
+    
+    static func getMatchedUsers(keyword : String, users: [UserModel]) -> [UserModel] {
+        var result = [UserModel]()
+        for user in users {
+            if (user.user_firstname + " " + user.user_lastname).contains(keyword) {
+                result.append(user)
+            }
+        }
+        return result
+    }
 
 }
 

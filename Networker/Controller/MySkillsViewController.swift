@@ -74,6 +74,11 @@ class MySkillsViewController: BaseViewController {
         })
         
     }
+    
+    
+    @IBAction func menuButtonTapped(_ sender: Any) {
+        drawerController?.setDrawerState(.opened, animated: true)
+    }
 }
 
 extension MySkillsViewController : UITableViewDelegate, UITableViewDataSource {

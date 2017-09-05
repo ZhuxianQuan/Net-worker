@@ -34,12 +34,15 @@ class SearchMenuViewController: BaseViewController {
     
     @IBAction func itemTapped(_ sender: UIButton) {
         let index = (sender.tag - 10) / 10
-    
-        var skill = SkillModel()
-        skill = skills[index]
-        let skilledUserVC = storyboard?.instantiateViewController(withIdentifier: "SearchMatchedUsersViewController") as! SearchMatchedUsersViewController
-        skilledUserVC.skill = skill
-        navigationController?.pushViewController(skilledUserVC, animated: true)
+        let skill = skills[index]
+        let selectTimeVC = storyboard?.instantiateViewController(withIdentifier: "SelectTimeViewController") as! SelectTimeViewController
+        let deal = DealModel()
+        deal.deal_client = currentUser!
+        deal.deal_status = Constants.VALUE_DEAL_PENDING
+        deal.deal_skill = skill
+        selectTimeVC.deal = deal
+        selectTimeVC.navController = self.navigationController
+        self.present(selectTimeVC, animated: true, completion: nil)
 
         
     }
@@ -59,6 +62,10 @@ class SearchMenuViewController: BaseViewController {
     
     @IBAction func backButtonTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func menuButtonTapped(_ sender: Any) {
+        drawerController?.setDrawerState(.opened, animated: true)
     }
 }
 

@@ -27,7 +27,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>FacebookAppID</key>
 	<string>1940076186215412</string>
 	<key>FacebookDisplayName</key>
@@ -60,12 +60,16 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCalendarsUsageDescription</key>
+	<string>App wants to access to your calendar to add schedule</string>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) camera use</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>App wants to use user location</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>{human-readable reason for photo access}</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>App wants to access to your reminder to add schedule</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>HelveticaNeue</string>
@@ -88,10 +92,6 @@
 	<array>
 		<string>armv7</string>
 	</array>
-	<key>NSCalendarsUsageDescription</key>
-	<string>App wants to access to your calendar to add schedule</string>
-	<key>NSRemindersUsageDescription</key>
-	<string>App wants to access to your reminder to add schedule</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

@@ -83,4 +83,11 @@ extension String {
     }
 }
 
+extension UIColor {
+    
+    convenience init(hex: Int) {
+        self.init(red: CGFloat(0xFF & (hex >> 16)) / 255.0, green: CGFloat(0xFF & (hex >> 8)) / 255.0, blue: CGFloat(0xFF & hex) / 255.0, alpha: 1)
+    }
+}
+
 

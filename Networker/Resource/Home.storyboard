@@ -716,6 +716,17 @@
                                             <action selector="backButtonTapped:" destination="eqb-Kd-p4S" eventType="touchUpInside" id="hFt-4U-yZu"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="10E-gI-Hsf">
+                                        <rect key="frame" x="364" y="8.6666666666666714" width="40" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="KPP-wG-1GE"/>
+                                            <constraint firstAttribute="height" constant="50" id="PhD-UA-xue"/>
+                                        </constraints>
+                                        <state key="normal" image="icon_menu"/>
+                                        <connections>
+                                            <action selector="menuButtonTapped:" destination="eqb-Kd-p4S" eventType="touchUpInside" id="ygI-gj-BtB"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -724,9 +735,11 @@
                                     <constraint firstItem="KJa-c9-Du2" firstAttribute="top" secondItem="2fU-JZ-ama" secondAttribute="top" constant="12" id="F85-fI-lzh"/>
                                     <constraint firstItem="AHb-qb-Uxq" firstAttribute="leading" secondItem="2fU-JZ-ama" secondAttribute="leading" constant="5" id="UXg-lg-h3m"/>
                                     <constraint firstAttribute="height" constant="67" id="aVE-A5-WVt"/>
+                                    <constraint firstItem="10E-gI-Hsf" firstAttribute="centerY" secondItem="2fU-JZ-ama" secondAttribute="centerY" id="ew5-Ot-muS"/>
                                     <constraint firstItem="AHb-qb-Uxq" firstAttribute="centerY" secondItem="2fU-JZ-ama" secondAttribute="centerY" id="hU0-Qd-zpO"/>
                                     <constraint firstItem="KJa-c9-Du2" firstAttribute="leading" secondItem="BuH-qP-Q2s" secondAttribute="trailing" id="mhZ-rp-x2H"/>
                                     <constraint firstAttribute="bottom" secondItem="KJa-c9-Du2" secondAttribute="bottom" constant="12" id="rGT-gG-C4M"/>
+                                    <constraint firstAttribute="trailing" secondItem="10E-gI-Hsf" secondAttribute="trailing" constant="10" id="rlG-pc-fX7"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -833,15 +846,28 @@
                                             <action selector="backButtonTapped:" destination="8ta-Ba-Mf2" eventType="touchUpInside" id="zzF-dr-1hl"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ogI-v3-3Wu">
+                                        <rect key="frame" x="364" y="8.6666666666666714" width="40" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="7AV-kl-bhW"/>
+                                            <constraint firstAttribute="width" constant="40" id="rru-NH-0Sn"/>
+                                        </constraints>
+                                        <state key="normal" image="icon_menu"/>
+                                        <connections>
+                                            <action selector="menuButtonTapped:" destination="8ta-Ba-Mf2" eventType="touchUpInside" id="yUs-8g-uoS"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="67" id="029-Qj-TCh"/>
                                     <constraint firstItem="2EV-hb-Pfr" firstAttribute="centerY" secondItem="Cxr-uw-OWw" secondAttribute="centerY" id="7oa-UO-3Cl"/>
                                     <constraint firstItem="9Ob-qk-ryc" firstAttribute="centerY" secondItem="Cxr-uw-OWw" secondAttribute="centerY" id="AAC-8f-ixw"/>
+                                    <constraint firstAttribute="trailing" secondItem="ogI-v3-3Wu" secondAttribute="trailing" constant="10" id="Lk2-nV-VZ7"/>
                                     <constraint firstItem="2EV-hb-Pfr" firstAttribute="leading" secondItem="Cxr-uw-OWw" secondAttribute="leading" constant="5" id="Q8Y-qy-LHg"/>
                                     <constraint firstAttribute="bottom" secondItem="dpL-K3-r2a" secondAttribute="bottom" constant="12" id="gZn-dp-spe"/>
                                     <constraint firstItem="dpL-K3-r2a" firstAttribute="centerX" secondItem="Cxr-uw-OWw" secondAttribute="centerX" id="hE4-GC-hot"/>
+                                    <constraint firstItem="ogI-v3-3Wu" firstAttribute="centerY" secondItem="Cxr-uw-OWw" secondAttribute="centerY" id="hPb-PE-rl0"/>
                                     <constraint firstItem="dpL-K3-r2a" firstAttribute="leading" secondItem="9Ob-qk-ryc" secondAttribute="trailing" id="w6O-8b-tvm"/>
                                     <constraint firstItem="dpL-K3-r2a" firstAttribute="top" secondItem="Cxr-uw-OWw" secondAttribute="top" constant="12" id="xld-G8-qgZ"/>
                                 </constraints>

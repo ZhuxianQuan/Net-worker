@@ -364,15 +364,17 @@ class ApiFunctions{
         }
     }
     
-    static func getSkillMatchedUsers(_ skill_id: Int, filter: String, day: Int, time: Int, index: Int, completion: @escaping (String, [UserModel]) -> ()) {
-        let params = [Constants.KEY_SKILL_ID: skill_id as AnyObject,
-                      "filter" : filter as AnyObject,
-                      "day": day as AnyObject,
-                      "time" : time as AnyObject,
-                      "index": index as AnyObject,
+    static func getSkillMatchedUsers(deal: DealModel, completion: @escaping (String, [UserModel]) -> ()) {
+        let params = [Constants.KEY_SKILL_ID: deal.deal_skill.skill_id as AnyObject,
+                      "startday": deal.deal_startday as AnyObject,
+                      "endday": deal.deal_endday as AnyObject,
+                      "starttime" : deal.deal_starttime as AnyObject,
+                      "endtime" : deal.deal_endtime as AnyObject,
                       "latitude" : currentLatitude as AnyObject,
                       "longitude" : currentLongitude as AnyObject,
-                      Constants.KEY_USER_ID : currentUser!.user_id as AnyObject
+                      "distance" : deal.deal_distance as AnyObject,
+                      "time" : (Int64(1 << (deal.deal_endtime - deal.deal_starttime) - 1) << Int64(deal.deal_starttime - 1)) as AnyObject,
+                      Constants.KEY_USER_ID : deal.deal_client.user_id as  AnyObject
         ]
         Alamofire.request(REQ_SEARCHUSERS, method: .post, parameters: params).responseJSON { response in
             if response.result.isFailure{

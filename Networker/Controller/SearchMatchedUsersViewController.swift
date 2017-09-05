@@ -15,16 +15,20 @@ class SearchMatchedUsersViewController: BaseViewController {
     @IBOutlet weak var searchFilterLabel: UILabel!
     
     @IBOutlet weak var matchedUsersTableView: UITableView!
-    var skill = SkillModel()
     var users : [UserModel] = []
-    var currentIndex = 0
+    //var currentIndex = 0
     var isLast = false
+    
+    var deal: DealModel!
+    
+    
+    var skillMatchedUsers = [UserModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        searchBar.placeholder = "#" + skill.skill_title
+        searchBar.placeholder = "#" + deal.deal_skill.skill_title
         getSkillMatchedUsers()
     
     }
@@ -34,32 +38,28 @@ class SearchMatchedUsersViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     @IBAction func backButtonTapped(_ sender: Any) {
         _ = self.navigationController?.popViewController(animated: true)
     }
     
     func getSkillMatchedUsers() {
-        
-        ApiFunctions.getSkillMatchedUsers(skill.skill_id, filter: "name:" + searchBar.text!, day: DateUtils.getDayValue(Date()), time: 0xFFFFFF << 16, index: currentIndex, completion: {
+        self.showLoadingView()
+        ApiFunctions.getSkillMatchedUsers(deal: deal, completion: {
             message, users in
+            self.hideLoadingView()
             if message == Constants.PROCESS_SUCCESS {
-                if users.count == 0 {
-                    self.isLast = true
-                }
-                self.users.append(contentsOf: users)
+                self.skillMatchedUsers = users
+                self.users = users
                 self.matchedUsersTableView.reloadData()
             }
+            else {
+                self.showToastWithDuration(string: message, duration: 3.0)
+            }
         })
+    }
+    
+    @IBAction func menuButtonTapped(_ sender: Any) {
+        drawerController?.setDrawerState(.opened, animated: true)
     }
 }
 
@@ -76,7 +76,7 @@ extension SearchMatchedUsersViewController : UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MatchedUserTableViewCell") as! MatchedUserTableViewCell
         let index = indexPath.row
-        cell.setCell(users[index], skill_id: skill.skill_id)
+        cell.setCell(users[index], skill_id: deal.deal_skill.skill_id)
         return cell
     }
     
@@ -101,12 +101,8 @@ extension SearchMatchedUsersViewController : UITableViewDataSource, UITableViewD
 
 extension SearchMatchedUsersViewController : UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
-        
+        users = CommonUtils.getMatchedUsers(keyword: searchText, users: skillMatchedUsers)
+        self.matchedUsersTableView.reloadData()
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        getSkillMatchedUsers()
-        
-    }
 }

@@ -76,6 +76,11 @@ class ScheduleViewController: BaseViewController {
             self.navigationController?.pushViewController(dailyScheduleVC, animated: true)
         }
     }
+    
+    
+    @IBAction func menuButtonTapped(_ sender: Any) {
+        drawerController?.setDrawerState(.opened, animated: true)
+    }
 }
 
 extension ScheduleViewController : FSCalendarDelegate , FSCalendarDataSource {

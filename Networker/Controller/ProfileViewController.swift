@@ -72,6 +72,12 @@ class ProfileViewController: BaseViewController {
     @IBAction func contentViewTapped(_ sender: Any) {
         self.view.endEditing(true)
     }
+    
+    
+    @IBAction func menuButtonTapped(_ sender: Any) {
+        drawerController?.setDrawerState(.opened, animated: true)
+    }
+    
     @IBAction func updateButtonTapped(_ sender: Any) {
         self.view.endEditing(true)
         let checkResult = checkValid()
