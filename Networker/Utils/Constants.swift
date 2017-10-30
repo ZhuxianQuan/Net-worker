@@ -64,9 +64,7 @@ class Constants {
     static let KEY_USER_LASTNAME            = "user_lastname"
     static let KEY_USER_EMAIL               = "user_email"
     static let KEY_USER_PASSWORD            = "user_password"
-    static let KEY_USER_ADDRESS1            = "user_address1"
-    static let KEY_USER_ADDRESS2            = "user_address2"
-    static let KEY_USER_ADDRESS3            = "user_address3"
+    static let KEY_USER_ADDRESS             = "user_address"
     static let KEY_USER_POSTCODE            = "user_postcode"
     static let KEY_USER_BIRTHDAY            = "user_birthday"
     //static let KEY_USER_ISCUSTOMER          = "user_iscustomer"
@@ -91,6 +89,21 @@ class Constants {
     static let KEY_RATING_MARKS             = "rating_marks"
     static let KEY_RATING_TIMESTAMP         = "rating_timestamp"
     static let KEY_RATING_SENDERNAME        = "rating_sendername"
+    
+    //deal model
+    
+    static let KEY_DEAL_ID                  = "deal_id"
+    static let KEY_DEAL_CLIENT              = "deal_client"
+    static let KEY_DEAL_WORKER              = "deal_worker"
+    static let KEY_DEAL_STARTTIME           = "deal_starttime"
+    static let KEY_DEAL_ENDTIME             = "deal_endtime"
+    static let KEY_DEAL_STARTDAY            = "deal_startday"
+    static let KEY_DEAL_ENDDAY              = "deal_endday"
+    static let KEY_DEAL_NOTES               = "deal_notes"
+    static let KEY_DEAL_SKILL               = "deal_skill"
+    static let KEY_REQUEST_ID               = "request_id"
+    static let KEY_REQUEST_STATUS           = "request_status"
+    static let KEY_REQUEST_TIMESTAMP        = "request_timestamp"
     
     
     //schedule model
@@ -150,5 +163,11 @@ class Constants {
     static let VALUE_DEAL_ACCEPTED          = 2
     static let VALUE_DEAL_PROCESSING        = 3
     static let VALUE_DEAL_COMPLETED         = 4
+    
+    static let TITLE_GOT_JOB_REQUEST        = "New Job Request"
+    static let TITLE_JOB_REJECTED           = "Job Rejection Alert"
+    static let TITLE_JOB_CONFIRMED          = "Confirmed!"
+    static let TITLE_JOB_COMPLETED          = "Completed"
+    static let TITLE_JOB_GOT_REVIEW         = "Review"
     
 }

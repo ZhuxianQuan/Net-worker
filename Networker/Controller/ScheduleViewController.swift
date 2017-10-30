@@ -75,8 +75,7 @@ class ScheduleViewController: BaseViewController {
             dailyScheduleVC.selectedDay = selectedDate
             self.navigationController?.pushViewController(dailyScheduleVC, animated: true)
         }
-    }
-    
+    }    
     
     @IBAction func menuButtonTapped(_ sender: Any) {
         drawerController?.setDrawerState(.opened, animated: true)

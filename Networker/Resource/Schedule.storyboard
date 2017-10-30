@@ -144,7 +144,7 @@
                                                 <rect key="frame" x="45" y="10" width="230" height="40"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available to work?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B82-vl-zx4">
-                                                        <rect key="frame" x="15" y="12" width="123" height="17.5"/>
+                                                        <rect key="frame" x="15" y="11.5" width="119" height="18.5"/>
                                                         <fontDescription key="fontDescription" name="NeueHelveticaBQ-Light" family="Neue Helvetica BQ" pointSize="15"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>

@@ -153,4 +153,27 @@ extension DailyScheduleViewController : UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "DELETE"
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.showLoadingView()
+            if let schedule = CommonUtils.getDaySchedule(day: DateUtils.getDayValue(selectedDay), schedules: schedules) {
+                let event = schedule.schedule_events[indexPath.row]
+                schedule.removeEvent(event, completion: {
+                    message in
+                    ApiFunctions.saveChangedUserSchedule([schedule], completion: {
+                        message in
+                        self.hideLoadingView()
+                        tableView.reloadData()
+                    })
+                })
+                
+            }
+        }
+    }
+    
+    
 }

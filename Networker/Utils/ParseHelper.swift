@@ -19,9 +19,7 @@ class ParseHelper {
         user.user_lastname = rawData[Constants.KEY_USER_LASTNAME].nonNullStringValue
         user.user_email = rawData[Constants.KEY_USER_EMAIL].nonNullStringValue
         user.user_password = rawData[Constants.KEY_USER_PASSWORD].nonNullStringValue
-        user.user_address1 = rawData[Constants.KEY_USER_ADDRESS1].nonNullStringValue
-        user.user_address2 = rawData[Constants.KEY_USER_ADDRESS2].nonNullStringValue
-        user.user_address3 = rawData[Constants.KEY_USER_ADDRESS3].nonNullStringValue
+        user.user_address = rawData[Constants.KEY_USER_ADDRESS].nonNullStringValue
         user.user_postcode = rawData[Constants.KEY_USER_POSTCODE].nonNullStringValue
         user.user_birthday = rawData[Constants.KEY_USER_BIRTHDAY].nonNullStringValue
         user.user_aboutme = rawData[Constants.KEY_USER_ABOUTME].nonNullStringValue
@@ -81,6 +79,27 @@ class ParseHelper {
         schedule.day_schedule = rawData[Constants.KEY_SCHEDULE_DAYVALUE].nonNullInt64Value
         return schedule
         
+    }
+    
+    static func parseDeal(_ rawData: JSON) -> DealModel{
+        
+        let deal = DealModel()
+        deal.deal_id = rawData[Constants.KEY_DEAL_ID].nonNullInt64Value
+        deal.deal_client = parseUser(rawData[Constants.KEY_DEAL_CLIENT])
+        deal.deal_worker = parseUser(rawData[Constants.KEY_DEAL_WORKER])
+        deal.deal_starttime = rawData[Constants.KEY_DEAL_STARTTIME].nonNullIntValue
+        deal.deal_endtime = rawData[Constants.KEY_DEAL_ENDTIME].nonNullIntValue
+        deal.deal_startday = rawData[Constants.KEY_DEAL_STARTDAY].nonNullIntValue
+        deal.deal_endday = rawData[Constants.KEY_DEAL_ENDDAY].nonNullIntValue
+        deal.deal_status = rawData[Constants.KEY_REQUEST_STATUS].nonNullIntValue
+        let skill_id = rawData[Constants.KEY_DEAL_SKILL].nonNullIntValue
+        deal.deal_skill = FMDBManagerGetData().getSkill(skill_id)!
+        deal.deal_notes = rawData[Constants.KEY_DEAL_NOTES].nonNullStringValue
+        deal.request_id = rawData[Constants.KEY_REQUEST_ID].nonNullInt64Value
+        deal.request_status = rawData[Constants.KEY_REQUEST_STATUS].nonNullIntValue
+        deal.request_timestamp = rawData[Constants.KEY_REQUEST_TIMESTAMP].nonNullInt64Value
+        
+        return deal
     }
 
     

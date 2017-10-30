@@ -55,7 +55,6 @@ class MenuViewController: BaseViewController {
     
     func showView(_ index: Int) {
         let title = menuStringArray[index]
-        
         let currentNav = getCurrentNav()
         let drawerController = self.parent as? KYDrawerController
         drawerController?.setDrawerState(.closed, animated: true)
@@ -66,11 +65,22 @@ class MenuViewController: BaseViewController {
             break
         case Constants.SIDE_MENU_PERSONAL_DETAILS:
             let profileVC = getStoryboard(id: Constants.STORYBOARD_HOME).instantiateViewController(withIdentifier: "ProfileViewController")
-            currentNav?.pushViewController(profileVC, animated: true)
+            if (currentNav?.viewControllers[(currentNav?.viewControllers.count)! - 1].isKind(of: ProfileViewController.self))! {
+                
+            }
+            else {
+                currentNav?.pushViewController(profileVC, animated: true)
+            }
             break
         case Constants.SIDE_MENU_SKILLS:
             let skillsVC = getStoryboard(id: Constants.STORYBOARD_HOME).instantiateViewController(withIdentifier: "MySkillsViewController")
-            currentNav?.pushViewController(skillsVC, animated: true)
+            
+            if (currentNav?.viewControllers[(currentNav?.viewControllers.count)! - 1].isKind(of: MySkillsViewController.self))! {
+                
+            }
+            else {
+                currentNav?.pushViewController(skillsVC, animated: true)
+            }
             break
         default:
             break

@@ -44,6 +44,18 @@ class UserAvailabilityViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.showLoadingView()
+        ApiFunctions.getUserSchedule(user.user_id, completion: {
+            message, schedules in
+            self.hideLoadingView()
+            if message == Constants.PROCESS_SUCCESS {
+                self.user.user_schedules = schedules
+                self.calendarView.reloadData()
+            }
+            else {
+                self.showToastWithDuration(string: message, duration: 3.0)
+            }
+        })
         calendarView.reloadData()
     }
     
@@ -60,11 +72,11 @@ class UserAvailabilityViewController: BaseViewController {
     
     
     @IBAction func scheduleDayButtonTapped(_ sender: UIView) {
-        if selectedDate != nil {
+        /*if selectedDate != nil {
             let dailyScheduleVC = self.storyboard?.instantiateViewController(withIdentifier: "DailyScheduleViewController") as! DailyScheduleViewController
             dailyScheduleVC.selectedDay = selectedDate
             self.navigationController?.pushViewController(dailyScheduleVC, animated: true)
-        }
+        }*/
     }
     
     @IBAction func menuButtonTapped(_ sender: Any) {

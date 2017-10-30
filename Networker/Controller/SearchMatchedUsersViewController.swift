@@ -91,7 +91,8 @@ extension SearchMatchedUsersViewController : UITableViewDataSource, UITableViewD
         let user = users[index]
         let cell = tableView.cellForRow(at: indexPath) as! MatchedUserTableViewCell
         let userDetailVC = storyboard?.instantiateViewController(withIdentifier: "UserProfileViewController") as! UserProfileViewController
-        userDetailVC.user = user
+        deal.deal_worker = user
+        userDetailVC.deal = deal
         userDetailVC.hidesBottomBarWhenPushed = true
         userDetailVC.userDataString = cell.userDataLabel.text!
         self.navigationController?.pushViewController(userDetailVC, animated: true)

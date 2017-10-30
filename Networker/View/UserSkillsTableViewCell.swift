@@ -12,7 +12,7 @@ class UserSkillsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var skillTitleLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var ratingView: FloatRatingView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,7 +25,10 @@ class UserSkillsTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setCell(_ skill : SkillModel?){
+    func setCell(_ skill : SkillModel){
+        skillTitleLabel.text = "#\(skill.skill_title)"
+        priceLabel.text = "£\(skill.skill_price)"
+        ratingView.rating = skill.skill_ratings
         
     }
 

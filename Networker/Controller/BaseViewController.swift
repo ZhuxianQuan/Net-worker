@@ -18,7 +18,6 @@ class BaseViewController: UIViewController{
     var btnback = UIButton()
     var screenSize = UIScreen.main.bounds.size
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
@@ -56,9 +55,9 @@ class BaseViewController: UIViewController{
         
         let window = UIApplication.shared.keyWindow
         let storyboard = getStoryboard(id: Constants.STORYBOARD_MAIN)
-        
+        FirebaseUtils.setConnecttedRef()
 
-        let mainTab = /*storyboard.instantiateViewController(withIdentifier: "MainTab")*/storyboard.instantiateViewController(withIdentifier: "KYDrawerController")
+        let mainTab = storyboard.instantiateViewController(withIdentifier: "KYDrawerController")
         window?.rootViewController = mainTab
         window?.makeKeyAndVisible()
     }

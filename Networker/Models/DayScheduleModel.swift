@@ -139,6 +139,25 @@ class DayScheduleModel {
         result[Constants.KEY_USER_ID] = user_id as AnyObject
         return result
     }
+    
+    func removeEvent(_ event: EventSchedule, completion: @escaping (String) -> ()) {
+        
+        var newEvents = [EventSchedule]()
+        for eventitem in self.schedule_events {
+            if eventitem.startTime == event.startTime {
+                continue
+            }
+            else {
+                newEvents.append(event)
+            }
+        }
+        event.removeEventFromCalendar(completion: {
+            _ in
+            self.setNotesString(newEvents)
+            self.day_schedule -= self.day_schedule & event.eventTimeValue
+            completion(Constants.PROCESS_SUCCESS)
+        })
+    }
 }
 
 class EventSchedule {
@@ -230,6 +249,9 @@ class EventSchedule {
                 catch {
                     completion(Constants.PROCESS_FAIL)
                 }
+            }
+            else {
+                completion(Constants.PROCESS_FAIL)
             }
         })
         

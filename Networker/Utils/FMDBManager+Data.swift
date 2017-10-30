@@ -105,7 +105,7 @@ class FMDBManagerSetData{
 class FMDBManagerGetData{
     
     
-    func getSkill(_ id: String) -> SkillModel?{
+    func getSkill(_ id: Int) -> SkillModel?{
         let query = "select * from tbl_skill where skill_id = \(id)"
         let localModels = LocalDataModels()
         let results = fmdbManager.getDataFromFMDB(with: query, tableObject: localModels.getKeys(localModels.TBL_SKILL))

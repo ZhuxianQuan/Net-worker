@@ -41,8 +41,11 @@ class SearchMenuViewController: BaseViewController {
         deal.deal_status = Constants.VALUE_DEAL_PENDING
         deal.deal_skill = skill
         selectTimeVC.deal = deal
+        self.view.isUserInteractionEnabled = false
         selectTimeVC.navController = self.navigationController
-        self.present(selectTimeVC, animated: true, completion: nil)
+        self.view.endEditing(true)
+        self.present(selectTimeVC, animated: true, completion: {
+            self.view.isUserInteractionEnabled = true})
 
         
     }

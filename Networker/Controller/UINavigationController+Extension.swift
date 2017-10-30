@@ -75,7 +75,7 @@ extension UINavigationController {
             return storyboard.instantiateViewController(withIdentifier: "FavoriteViewController")
         case Constants.STORYBOARD_CHATTING:
             storyboard = getStoryboard(id: Constants.STORYBOARD_CHATTING)
-            return storyboard.instantiateViewController(withIdentifier: "ChattingViewController")
+            return storyboard.instantiateViewController(withIdentifier: "ChatListViewController")
         default:
             storyboard = getStoryboard(id: Constants.STORYBOARD_MAIN)
             return storyboard.instantiateViewController(withIdentifier: "HomeViewController")

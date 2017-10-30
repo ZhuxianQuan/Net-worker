@@ -18,6 +18,7 @@ class SkillModel{
     var skill_tags : [TagModel] = []
     var skill_price : Double = 0.0
     var skill_qualifications = ""
+    var skill_ratings : Float = 0
     
     var tagString: String {
         get {

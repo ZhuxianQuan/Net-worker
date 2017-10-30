@@ -28,7 +28,7 @@
 		0A3B87961E7FCDD400140D6C /* RatingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3B87951E7FCDD400140D6C /* RatingModel.swift */; };
 		0A3EEBB21E7A43B70009706B /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3EEBB11E7A43B70009706B /* ScheduleViewController.swift */; };
 		0A3EEBB41E7A43D30009706B /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3EEBB31E7A43D30009706B /* FavoriteViewController.swift */; };
-		0A3EEBB61E7A44140009706B /* ChattingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3EEBB51E7A44140009706B /* ChattingViewController.swift */; };
+		0A3EEBB61E7A44140009706B /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3EEBB51E7A44140009706B /* ChatViewController.swift */; };
 		0A3EEBB81E7AD3100009706B /* SkillModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3EEBB71E7AD3100009706B /* SkillModel.swift */; };
 		0A405B171E7653D3005C2618 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A405B161E7653D3005C2618 /* Home.storyboard */; };
 		0A405B191E7653E3005C2618 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A405B181E7653E3005C2618 /* Search.storyboard */; };
@@ -44,12 +44,12 @@
 		0A5304801E7609A400244C3D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A53047F1E7609A400244C3D /* Constants.swift */; };
 		0A5304821E760D9800244C3D /* ApiFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5304811E760D9800244C3D /* ApiFunctions.swift */; };
 		0A5304841E7633B500244C3D /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5304831E7633B500244C3D /* RegisterViewController.swift */; };
+		0A5856C41F980AD5002DA04D /* ChatListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5856C31F980AD5002DA04D /* ChatListTableViewCell.swift */; };
+		0A5856C61F980B2A002DA04D /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5856C51F980B2A002DA04D /* ContactModel.swift */; };
 		0A59DBB51E7C98E50077A5F6 /* FMDBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A59DBB41E7C98E50077A5F6 /* FMDBManager.swift */; };
 		0A59DBB71E7CCDB00077A5F6 /* AnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A59DBB61E7CCDB00077A5F6 /* AnnotationView.swift */; };
 		0A59DBB91E7CCDCE0077A5F6 /* StarbuckAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A59DBB81E7CCDCE0077A5F6 /* StarbuckAnnotation.swift */; };
-		0A59DBBE1E7CCE550077A5F6 /* FirebaseRealTimeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A59DBBB1E7CCE550077A5F6 /* FirebaseRealTimeMessage.swift */; };
 		0A59DBBF1E7CCE550077A5F6 /* FirebaseStorageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A59DBBC1E7CCE550077A5F6 /* FirebaseStorageUtils.swift */; };
-		0A59DBC01E7CCE550077A5F6 /* FirebaseUserAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A59DBBD1E7CCE550077A5F6 /* FirebaseUserAuthentication.swift */; };
 		0A6841791E88B59400B8926F /* UserAvailabilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6841781E88B59400B8926F /* UserAvailabilityViewController.swift */; };
 		0A68417F1E890D3100B8926F /* DayScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A68417E1E890D3100B8926F /* DayScheduleModel.swift */; };
 		0A6897A71E7DF6A1000226B9 /* AddSkillViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6897A61E7DF6A1000226B9 /* AddSkillViewController.swift */; };
@@ -68,6 +68,26 @@
 		0AA79E6D1E874DB30020DE8B /* UserSkillsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA79E6C1E874DB30020DE8B /* UserSkillsTableViewCell.swift */; };
 		0AA79E6F1E8754E70020DE8B /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA79E6E1E8754E70020DE8B /* ReviewTableViewCell.swift */; };
 		0AD219041E7B4427001E7865 /* SkillsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD219031E7B4427001E7865 /* SkillsTableViewCell.swift */; };
+		0ADEBE971F97F8B000DC8E23 /* FirebaseUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADEBE961F97F8B000DC8E23 /* FirebaseUtils.swift */; };
+		0ADEBEAF1F97F90A00DC8E23 /* BaseMessageCollectionViewCellAvatarStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADEBE991F97F90A00DC8E23 /* BaseMessageCollectionViewCellAvatarStyle.swift */; };
+		0ADEBEB01F97F90A00DC8E23 /* BaseMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADEBE9A1F97F90A00DC8E23 /* BaseMessageHandler.swift */; };
+		0ADEBEB11F97F90A00DC8E23 /* ChatItemsDemoDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADEBE9B1F97F90A00DC8E23 /* ChatItemsDemoDecorator.swift */; };
+		0ADEBEB21F97F90A00DC8E23 /* MessageDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADEBE9C1F97F90A00DC8E23 /* MessageDataSource.swift */; };
+		0ADEBEB31F97F90A00DC8E23 /* MessageSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADEBE9D1F97F90A00DC8E23 /* MessageSender.swift */; };
+		0ADEBEB41F97F90A00DC8E23 /* DemoPhotoMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADEBE9F1F97F90A00DC8E23 /* DemoPhotoMessageHandler.swift */; };
+		0ADEBEB51F97F90A00DC8E23 /* DemoPhotoMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADEBEA01F97F90A00DC8E23 /* DemoPhotoMessageModel.swift */; };
+		0ADEBEB61F97F90A00DC8E23 /* DemoPhotoMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADEBEA11F97F90A00DC8E23 /* DemoPhotoMessageViewModel.swift */; };
+		0ADEBEB71F97F90A00DC8E23 /* SendingStatusCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADEBEA31F97F90A00DC8E23 /* SendingStatusCollectionViewCell.swift */; };
+		0ADEBEB81F97F90A00DC8E23 /* SendingStatusCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0ADEBEA41F97F90A00DC8E23 /* SendingStatusCollectionViewCell.xib */; };
+		0ADEBEB91F97F90A00DC8E23 /* SendingStatusPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADEBEA51F97F90A00DC8E23 /* SendingStatusPresenter.swift */; };
+		0ADEBEBA1F97F90A00DC8E23 /* SlidingDatasSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADEBEA61F97F90A00DC8E23 /* SlidingDatasSource.swift */; };
+		0ADEBEBB1F97F90A00DC8E23 /* DemoTextMessageHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADEBEA81F97F90A00DC8E23 /* DemoTextMessageHandler.swift */; };
+		0ADEBEBC1F97F90A00DC8E23 /* DemoTextMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADEBEA91F97F90A00DC8E23 /* DemoTextMessageModel.swift */; };
+		0ADEBEBD1F97F90A00DC8E23 /* DemoTextMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADEBEAA1F97F90A00DC8E23 /* DemoTextMessageViewModel.swift */; };
+		0ADEBEBE1F97F90A00DC8E23 /* TimeSeparatorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADEBEAC1F97F90A00DC8E23 /* TimeSeparatorCollectionViewCell.swift */; };
+		0ADEBEBF1F97F90A00DC8E23 /* TimeSeparatorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADEBEAD1F97F90A00DC8E23 /* TimeSeparatorModel.swift */; };
+		0ADEBEC01F97F90A00DC8E23 /* TimeSeparatorPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADEBEAE1F97F90A00DC8E23 /* TimeSeparatorPresenter.swift */; };
+		0ADEBEC21F97FF7500DC8E23 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADEBEC11F97FF7500DC8E23 /* ChatListViewController.swift */; };
 		0AED02AB1E87D8A70058D637 /* DailyScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED02AA1E87D8A70058D637 /* DailyScheduleViewController.swift */; };
 		82BFADE43C544A394DCBF956 /* Pods_Networker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0037CB8F35E0C7003867F45F /* Pods_Networker.framework */; };
 		E12065861F5E12450054E93B /* SelectTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12065851F5E12450054E93B /* SelectTimeViewController.swift */; };
@@ -142,7 +162,7 @@
 		0A3B87951E7FCDD400140D6C /* RatingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingModel.swift; sourceTree = "<group>"; };
 		0A3EEBB11E7A43B70009706B /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		0A3EEBB31E7A43D30009706B /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
-		0A3EEBB51E7A44140009706B /* ChattingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChattingViewController.swift; sourceTree = "<group>"; };
+		0A3EEBB51E7A44140009706B /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		0A3EEBB71E7AD3100009706B /* SkillModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillModel.swift; sourceTree = "<group>"; };
 		0A405B161E7653D3005C2618 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		0A405B181E7653E3005C2618 /* Search.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
@@ -158,12 +178,12 @@
 		0A53047F1E7609A400244C3D /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0A5304811E760D9800244C3D /* ApiFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiFunctions.swift; sourceTree = "<group>"; };
 		0A5304831E7633B500244C3D /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		0A5856C31F980AD5002DA04D /* ChatListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListTableViewCell.swift; sourceTree = "<group>"; };
+		0A5856C51F980B2A002DA04D /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
 		0A59DBB41E7C98E50077A5F6 /* FMDBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDBManager.swift; sourceTree = "<group>"; };
 		0A59DBB61E7CCDB00077A5F6 /* AnnotationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnnotationView.swift; sourceTree = "<group>"; };
 		0A59DBB81E7CCDCE0077A5F6 /* StarbuckAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarbuckAnnotation.swift; sourceTree = "<group>"; };
-		0A59DBBB1E7CCE550077A5F6 /* FirebaseRealTimeMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseRealTimeMessage.swift; sourceTree = "<group>"; };
 		0A59DBBC1E7CCE550077A5F6 /* FirebaseStorageUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseStorageUtils.swift; sourceTree = "<group>"; };
-		0A59DBBD1E7CCE550077A5F6 /* FirebaseUserAuthentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUserAuthentication.swift; sourceTree = "<group>"; };
 		0A59DBC51E7CE18C0077A5F6 /* Networker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Networker.entitlements; sourceTree = "<group>"; };
 		0A6841781E88B59400B8926F /* UserAvailabilityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAvailabilityViewController.swift; sourceTree = "<group>"; };
 		0A68417E1E890D3100B8926F /* DayScheduleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayScheduleModel.swift; sourceTree = "<group>"; };
@@ -183,6 +203,26 @@
 		0AA79E6C1E874DB30020DE8B /* UserSkillsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSkillsTableViewCell.swift; sourceTree = "<group>"; };
 		0AA79E6E1E8754E70020DE8B /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 		0AD219031E7B4427001E7865 /* SkillsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkillsTableViewCell.swift; sourceTree = "<group>"; };
+		0ADEBE961F97F8B000DC8E23 /* FirebaseUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseUtils.swift; sourceTree = "<group>"; };
+		0ADEBE991F97F90A00DC8E23 /* BaseMessageCollectionViewCellAvatarStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessageCollectionViewCellAvatarStyle.swift; sourceTree = "<group>"; };
+		0ADEBE9A1F97F90A00DC8E23 /* BaseMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseMessageHandler.swift; sourceTree = "<group>"; };
+		0ADEBE9B1F97F90A00DC8E23 /* ChatItemsDemoDecorator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatItemsDemoDecorator.swift; sourceTree = "<group>"; };
+		0ADEBE9C1F97F90A00DC8E23 /* MessageDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageDataSource.swift; sourceTree = "<group>"; };
+		0ADEBE9D1F97F90A00DC8E23 /* MessageSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSender.swift; sourceTree = "<group>"; };
+		0ADEBE9F1F97F90A00DC8E23 /* DemoPhotoMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPhotoMessageHandler.swift; sourceTree = "<group>"; };
+		0ADEBEA01F97F90A00DC8E23 /* DemoPhotoMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPhotoMessageModel.swift; sourceTree = "<group>"; };
+		0ADEBEA11F97F90A00DC8E23 /* DemoPhotoMessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoPhotoMessageViewModel.swift; sourceTree = "<group>"; };
+		0ADEBEA31F97F90A00DC8E23 /* SendingStatusCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendingStatusCollectionViewCell.swift; sourceTree = "<group>"; };
+		0ADEBEA41F97F90A00DC8E23 /* SendingStatusCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SendingStatusCollectionViewCell.xib; sourceTree = "<group>"; };
+		0ADEBEA51F97F90A00DC8E23 /* SendingStatusPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SendingStatusPresenter.swift; sourceTree = "<group>"; };
+		0ADEBEA61F97F90A00DC8E23 /* SlidingDatasSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingDatasSource.swift; sourceTree = "<group>"; };
+		0ADEBEA81F97F90A00DC8E23 /* DemoTextMessageHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTextMessageHandler.swift; sourceTree = "<group>"; };
+		0ADEBEA91F97F90A00DC8E23 /* DemoTextMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTextMessageModel.swift; sourceTree = "<group>"; };
+		0ADEBEAA1F97F90A00DC8E23 /* DemoTextMessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTextMessageViewModel.swift; sourceTree = "<group>"; };
+		0ADEBEAC1F97F90A00DC8E23 /* TimeSeparatorCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSeparatorCollectionViewCell.swift; sourceTree = "<group>"; };
+		0ADEBEAD1F97F90A00DC8E23 /* TimeSeparatorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSeparatorModel.swift; sourceTree = "<group>"; };
+		0ADEBEAE1F97F90A00DC8E23 /* TimeSeparatorPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeSeparatorPresenter.swift; sourceTree = "<group>"; };
+		0ADEBEC11F97FF7500DC8E23 /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
 		0AED02AA1E87D8A70058D637 /* DailyScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyScheduleViewController.swift; sourceTree = "<group>"; };
 		E12065851F5E12450054E93B /* SelectTimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectTimeViewController.swift; sourceTree = "<group>"; };
 		E145959C1F4EC41400EA72E6 /* AddScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddScheduleViewController.swift; sourceTree = "<group>"; };
@@ -328,6 +368,7 @@
 				0A68417E1E890D3100B8926F /* DayScheduleModel.swift */,
 				0A7B8A721E8A2F8A001A0468 /* CategoryModel.swift */,
 				E14595A01F4ED55E00EA72E6 /* DealModel.swift */,
+				0A5856C51F980B2A002DA04D /* ContactModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -367,14 +408,18 @@
 		0A1AA6011E75927C0010F651 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0A7B8A781E8A5549001A0468 /* Login & RegisterSkills */,
-				0A7B8A791E8A5567001A0468 /* MapViewAnnotation */,
-				0A7B8A7A1E8A557D001A0468 /* Search MenuCell */,
-				0A7B8A7B1E8A55A1001A0468 /* MatchedUserCell */,
-				0A7B8A7C1E8A55DF001A0468 /* User Reviews and Skills */,
-				0A7B8A7D1E8A55FF001A0468 /* Daily Schedule */,
-				0A7B8A7E1E8A5617001A0468 /* FavoriteUserTableViewCell */,
-				0A7B8A811E8A565E001A0468 /* ScheduleListTableViewCell */,
+				0AD219031E7B4427001E7865 /* SkillsTableViewCell.swift */,
+				0A59DBB61E7CCDB00077A5F6 /* AnnotationView.swift */,
+				0A59DBB81E7CCDCE0077A5F6 /* StarbuckAnnotation.swift */,
+				0A3B878B1E7F9B8D00140D6C /* SearchMenuTableViewCell.swift */,
+				0A3B87911E7FA8C200140D6C /* MatchedUserTableViewCell.swift */,
+				0AA79E6C1E874DB30020DE8B /* UserSkillsTableViewCell.swift */,
+				0AA79E6E1E8754E70020DE8B /* ReviewTableViewCell.swift */,
+				0A298DB01E8990F00006B7BC /* DayScheduleTableViewCell.swift */,
+				E145959E1F4EC65B00EA72E6 /* WeekdayTableViewCell.swift */,
+				0A7B8A741E8A3D8B001A0468 /* FavoriteUserTableViewCell.swift */,
+				0A7B8A7F1E8A5656001A0468 /* ScheduleListTableViewCell.swift */,
+				0A5856C31F980AD5002DA04D /* ChatListTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -464,7 +509,9 @@
 		0A405B281E76897D005C2618 /* Messaging */ = {
 			isa = PBXGroup;
 			children = (
-				0A3EEBB51E7A44140009706B /* ChattingViewController.swift */,
+				0ADEBE981F97F90A00DC8E23 /* Message */,
+				0A3EEBB51E7A44140009706B /* ChatViewController.swift */,
+				0ADEBEC11F97FF7500DC8E23 /* ChatListViewController.swift */,
 			);
 			name = Messaging;
 			sourceTree = "<group>";
@@ -472,78 +519,10 @@
 		0A59DBBA1E7CCE4C0077A5F6 /* FirebaseUtils */ = {
 			isa = PBXGroup;
 			children = (
-				0A59DBBB1E7CCE550077A5F6 /* FirebaseRealTimeMessage.swift */,
 				0A59DBBC1E7CCE550077A5F6 /* FirebaseStorageUtils.swift */,
-				0A59DBBD1E7CCE550077A5F6 /* FirebaseUserAuthentication.swift */,
+				0ADEBE961F97F8B000DC8E23 /* FirebaseUtils.swift */,
 			);
 			name = FirebaseUtils;
-			sourceTree = "<group>";
-		};
-		0A7B8A781E8A5549001A0468 /* Login & RegisterSkills */ = {
-			isa = PBXGroup;
-			children = (
-				0AD219031E7B4427001E7865 /* SkillsTableViewCell.swift */,
-			);
-			name = "Login & RegisterSkills";
-			sourceTree = "<group>";
-		};
-		0A7B8A791E8A5567001A0468 /* MapViewAnnotation */ = {
-			isa = PBXGroup;
-			children = (
-				0A59DBB61E7CCDB00077A5F6 /* AnnotationView.swift */,
-				0A59DBB81E7CCDCE0077A5F6 /* StarbuckAnnotation.swift */,
-			);
-			name = MapViewAnnotation;
-			sourceTree = "<group>";
-		};
-		0A7B8A7A1E8A557D001A0468 /* Search MenuCell */ = {
-			isa = PBXGroup;
-			children = (
-				0A3B878B1E7F9B8D00140D6C /* SearchMenuTableViewCell.swift */,
-			);
-			name = "Search MenuCell";
-			sourceTree = "<group>";
-		};
-		0A7B8A7B1E8A55A1001A0468 /* MatchedUserCell */ = {
-			isa = PBXGroup;
-			children = (
-				0A3B87911E7FA8C200140D6C /* MatchedUserTableViewCell.swift */,
-			);
-			name = MatchedUserCell;
-			sourceTree = "<group>";
-		};
-		0A7B8A7C1E8A55DF001A0468 /* User Reviews and Skills */ = {
-			isa = PBXGroup;
-			children = (
-				0AA79E6C1E874DB30020DE8B /* UserSkillsTableViewCell.swift */,
-				0AA79E6E1E8754E70020DE8B /* ReviewTableViewCell.swift */,
-			);
-			name = "User Reviews and Skills";
-			sourceTree = "<group>";
-		};
-		0A7B8A7D1E8A55FF001A0468 /* Daily Schedule */ = {
-			isa = PBXGroup;
-			children = (
-				0A298DB01E8990F00006B7BC /* DayScheduleTableViewCell.swift */,
-				E145959E1F4EC65B00EA72E6 /* WeekdayTableViewCell.swift */,
-			);
-			name = "Daily Schedule";
-			sourceTree = "<group>";
-		};
-		0A7B8A7E1E8A5617001A0468 /* FavoriteUserTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				0A7B8A741E8A3D8B001A0468 /* FavoriteUserTableViewCell.swift */,
-			);
-			name = FavoriteUserTableViewCell;
-			sourceTree = "<group>";
-		};
-		0A7B8A811E8A565E001A0468 /* ScheduleListTableViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				0A7B8A7F1E8A5656001A0468 /* ScheduleListTableViewCell.swift */,
-			);
-			name = ScheduleListTableViewCell;
 			sourceTree = "<group>";
 		};
 		0A8D425C1E88398700B9B547 /* KYDrawer */ = {
@@ -584,6 +563,63 @@
 				0A8C93E11E7AE77A0031EE0F /* ParseHelper.swift */,
 			);
 			name = Api;
+			sourceTree = "<group>";
+		};
+		0ADEBE981F97F90A00DC8E23 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				0ADEBE991F97F90A00DC8E23 /* BaseMessageCollectionViewCellAvatarStyle.swift */,
+				0ADEBE9A1F97F90A00DC8E23 /* BaseMessageHandler.swift */,
+				0ADEBE9B1F97F90A00DC8E23 /* ChatItemsDemoDecorator.swift */,
+				0ADEBE9C1F97F90A00DC8E23 /* MessageDataSource.swift */,
+				0ADEBE9D1F97F90A00DC8E23 /* MessageSender.swift */,
+				0ADEBE9E1F97F90A00DC8E23 /* Photo Messages */,
+				0ADEBEA21F97F90A00DC8E23 /* Sending status */,
+				0ADEBEA61F97F90A00DC8E23 /* SlidingDatasSource.swift */,
+				0ADEBEA71F97F90A00DC8E23 /* Text Messages */,
+				0ADEBEAB1F97F90A00DC8E23 /* Time Separator */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		0ADEBE9E1F97F90A00DC8E23 /* Photo Messages */ = {
+			isa = PBXGroup;
+			children = (
+				0ADEBE9F1F97F90A00DC8E23 /* DemoPhotoMessageHandler.swift */,
+				0ADEBEA01F97F90A00DC8E23 /* DemoPhotoMessageModel.swift */,
+				0ADEBEA11F97F90A00DC8E23 /* DemoPhotoMessageViewModel.swift */,
+			);
+			path = "Photo Messages";
+			sourceTree = "<group>";
+		};
+		0ADEBEA21F97F90A00DC8E23 /* Sending status */ = {
+			isa = PBXGroup;
+			children = (
+				0ADEBEA31F97F90A00DC8E23 /* SendingStatusCollectionViewCell.swift */,
+				0ADEBEA41F97F90A00DC8E23 /* SendingStatusCollectionViewCell.xib */,
+				0ADEBEA51F97F90A00DC8E23 /* SendingStatusPresenter.swift */,
+			);
+			path = "Sending status";
+			sourceTree = "<group>";
+		};
+		0ADEBEA71F97F90A00DC8E23 /* Text Messages */ = {
+			isa = PBXGroup;
+			children = (
+				0ADEBEA81F97F90A00DC8E23 /* DemoTextMessageHandler.swift */,
+				0ADEBEA91F97F90A00DC8E23 /* DemoTextMessageModel.swift */,
+				0ADEBEAA1F97F90A00DC8E23 /* DemoTextMessageViewModel.swift */,
+			);
+			path = "Text Messages";
+			sourceTree = "<group>";
+		};
+		0ADEBEAB1F97F90A00DC8E23 /* Time Separator */ = {
+			isa = PBXGroup;
+			children = (
+				0ADEBEAC1F97F90A00DC8E23 /* TimeSeparatorCollectionViewCell.swift */,
+				0ADEBEAD1F97F90A00DC8E23 /* TimeSeparatorModel.swift */,
+				0ADEBEAE1F97F90A00DC8E23 /* TimeSeparatorPresenter.swift */,
+			);
+			path = "Time Separator";
 			sourceTree = "<group>";
 		};
 		B14A3005BF268AE4B4BD809C /* Pods */ = {
@@ -713,13 +749,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = shark;
 				TargetAttributes = {
 					0A1AA5DF1E75920A0010F651 = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 395S2ULVA8;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 1;
@@ -752,6 +788,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A1AA6051E75927C0010F651 /* Main.storyboard in Resources */,
+				0ADEBEB81F97F90A00DC8E23 /* SendingStatusCollectionViewCell.xib in Resources */,
 				0A1AA6031E75927C0010F651 /* Assets.xcassets in Resources */,
 				E1886DAA1F4B2CEE003E1D56 /* GoogleService-Info.plist in Resources */,
 				0A405B1D1E765421005C2618 /* Favorite.storyboard in Resources */,
@@ -776,6 +813,8 @@
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/Chatto/Chatto.framework",
+				"${BUILT_PRODUCTS_DIR}/ChattoAdditions/ChattoAdditions.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
@@ -799,6 +838,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Chatto.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChattoAdditions.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
@@ -864,6 +905,8 @@
 			files = (
 				0A405B231E76892F005C2618 /* SearchViewController.swift in Sources */,
 				0A2AA0141E75F6D700B41F23 /* fontawesome-webfont.ttf in Sources */,
+				0A5856C61F980B2A002DA04D /* ContactModel.swift in Sources */,
+				0ADEBEB61F97F90A00DC8E23 /* DemoPhotoMessageViewModel.swift in Sources */,
 				E1FF62641F5A593800C84EDB /* FSCalendarCollectionViewLayout.m in Sources */,
 				0A3B87921E7FA8C200140D6C /* MatchedUserTableViewCell.swift in Sources */,
 				0A5304801E7609A400244C3D /* Constants.swift in Sources */,
@@ -874,12 +917,15 @@
 				0A2AA0161E75F6D700B41F23 /* HelveticaNeue.ttf in Sources */,
 				E1FF62621F5A593800C84EDB /* FSCalendarCell.m in Sources */,
 				0A405B2C1E768B01005C2618 /* SearchMenuViewController.swift in Sources */,
+				0ADEBE971F97F8B000DC8E23 /* FirebaseUtils.swift in Sources */,
 				E177DAD81F56C2B200DE1518 /* M13CheckboxGestureRecognizer.swift in Sources */,
 				E1FF626A1F5A593800C84EDB /* FSCalendarScopeHandle.m in Sources */,
 				0AA79E691E874D0D0020DE8B /* UserProfileViewController.swift in Sources */,
 				0A6897A91E7E1CFA000226B9 /* FMDBManager+Data.swift in Sources */,
+				0ADEBEC01F97F90A00DC8E23 /* TimeSeparatorPresenter.swift in Sources */,
 				0A405B211E7687F6005C2618 /* SkillsViewController.swift in Sources */,
 				0A3B878C1E7F9B8D00140D6C /* SearchMenuTableViewCell.swift in Sources */,
+				0ADEBEBF1F97F90A00DC8E23 /* TimeSeparatorModel.swift in Sources */,
 				E17749C91F4D2F12005531D1 /* UINavigationController+Extension.swift in Sources */,
 				E181A2A11EED137700148484 /* SwiftyJSON+Extension.swift in Sources */,
 				E177DAD71F56C2B200DE1518 /* M13CheckboxController.swift in Sources */,
@@ -887,28 +933,36 @@
 				E1FF626B1F5A593800C84EDB /* FSCalendarStickyHeader.m in Sources */,
 				E177DAE41F56C2B200DE1518 /* M13CheckboxPathGenerator.swift in Sources */,
 				E177DADE1F56C2B200DE1518 /* M13CheckboxFlatController.swift in Sources */,
-				0A59DBBE1E7CCE550077A5F6 /* FirebaseRealTimeMessage.swift in Sources */,
+				0ADEBEB91F97F90A00DC8E23 /* SendingStatusPresenter.swift in Sources */,
 				0A5304821E760D9800244C3D /* ApiFunctions.swift in Sources */,
 				0AA79E6F1E8754E70020DE8B /* ReviewTableViewCell.swift in Sources */,
+				0ADEBEBA1F97F90A00DC8E23 /* SlidingDatasSource.swift in Sources */,
 				0A3B87961E7FCDD400140D6C /* RatingModel.swift in Sources */,
 				E177DADD1F56C2B200DE1518 /* M13CheckboxFillController.swift in Sources */,
 				E177DAE51F56C2B200DE1518 /* M13CheckboxRadioPathGenerator.swift in Sources */,
 				E177DADF1F56C2B200DE1518 /* M13CheckboxSpiralController.swift in Sources */,
 				E177DAE01F56C2B200DE1518 /* M13CheckboxStrokeController.swift in Sources */,
 				E12065861F5E12450054E93B /* SelectTimeViewController.swift in Sources */,
+				0ADEBEB71F97F90A00DC8E23 /* SendingStatusCollectionViewCell.swift in Sources */,
+				0ADEBEB21F97F90A00DC8E23 /* MessageDataSource.swift in Sources */,
 				0A3B87901E7FA19D00140D6C /* SearchMatchedUsersViewController.swift in Sources */,
 				E17749C71F4D236A005531D1 /* MySkillsViewController.swift in Sources */,
 				E1FF626C1F5A593800C84EDB /* FSCalendarTransitionCoordinator.m in Sources */,
+				0ADEBEAF1F97F90A00DC8E23 /* BaseMessageCollectionViewCellAvatarStyle.swift in Sources */,
 				0A2AA0171E75F6D700B41F23 /* neue-helvetica-45-light-58981f95881bb.otf in Sources */,
 				0A6841791E88B59400B8926F /* UserAvailabilityViewController.swift in Sources */,
 				0A6897A71E7DF6A1000226B9 /* AddSkillViewController.swift in Sources */,
 				E1FF62601F5A593800C84EDB /* FSCalendarAppearance.m in Sources */,
 				E1FF62661F5A593800C84EDB /* FSCalendarDelegationFactory.m in Sources */,
 				0A405B2E1E7693E2005C2618 /* SortByViewController.swift in Sources */,
+				0ADEBEB31F97F90A00DC8E23 /* MessageSender.swift in Sources */,
 				0A2AA0181E75F6D700B41F23 /* taile.ttf in Sources */,
+				0ADEBEB51F97F90A00DC8E23 /* DemoPhotoMessageModel.swift in Sources */,
+				0ADEBEB01F97F90A00DC8E23 /* BaseMessageHandler.swift in Sources */,
 				E177DAD61F56C2B200DE1518 /* M13CheckboxAnimationGenerator.swift in Sources */,
 				E145959F1F4EC65B00EA72E6 /* WeekdayTableViewCell.swift in Sources */,
 				0A8C93E21E7AE77A0031EE0F /* ParseHelper.swift in Sources */,
+				0ADEBEBB1F97F90A00DC8E23 /* DemoTextMessageHandler.swift in Sources */,
 				0A3EEBB21E7A43B70009706B /* ScheduleViewController.swift in Sources */,
 				0A1AA6021E75927C0010F651 /* AppDelegate.swift in Sources */,
 				E1FF62691F5A593800C84EDB /* FSCalendarHeaderView.m in Sources */,
@@ -916,23 +970,30 @@
 				0A6897AB1E7E1EFF000226B9 /* Singleton.swift in Sources */,
 				0A53047E1E76096600244C3D /* CommonUtils.swift in Sources */,
 				0A8C93E41E7AE7B20031EE0F /* UserModel.swift in Sources */,
+				0ADEBEBD1F97F90A00DC8E23 /* DemoTextMessageViewModel.swift in Sources */,
+				0ADEBEBE1F97F90A00DC8E23 /* TimeSeparatorCollectionViewCell.swift in Sources */,
 				0A7B8A771E8A540F001A0468 /* UserScheduleListViewController.swift in Sources */,
 				0A59DBB71E7CCDB00077A5F6 /* AnnotationView.swift in Sources */,
 				E1FF62681F5A593800C84EDB /* FSCalendarExtensions.m in Sources */,
 				0A3EEBB41E7A43D30009706B /* FavoriteViewController.swift in Sources */,
-				0A3EEBB61E7A44140009706B /* ChattingViewController.swift in Sources */,
+				0ADEBEBC1F97F90A00DC8E23 /* DemoTextMessageModel.swift in Sources */,
+				0A3EEBB61E7A44140009706B /* ChatViewController.swift in Sources */,
 				E177DAE11F56C2B200DE1518 /* M13CheckboxAddRemovePathGenerator.swift in Sources */,
 				E1FF625E1F5A593800C84EDB /* FSCalendar+Deprecated.m in Sources */,
+				0A5856C41F980AD5002DA04D /* ChatListTableViewCell.swift in Sources */,
 				0AA79E6B1E874D480020DE8B /* ReviewsViewController.swift in Sources */,
 				0A3B878E1E7F9DA400140D6C /* UIView+Extension.swift in Sources */,
+				0ADEBEC21F97FF7500DC8E23 /* ChatListViewController.swift in Sources */,
 				0A3B87941E7FCDB500140D6C /* FloatRatingView.swift in Sources */,
 				E17749C51F4C1D14005531D1 /* ProfileViewController.swift in Sources */,
 				E1FF62611F5A593800C84EDB /* FSCalendarCalculator.m in Sources */,
+				0ADEBEB41F97F90A00DC8E23 /* DemoPhotoMessageHandler.swift in Sources */,
 				E177DADA1F56C2B200DE1518 /* M13CheckboxDotController.swift in Sources */,
 				0A405B2A1E768AB9005C2618 /* HomeViewController.swift in Sources */,
 				0A298DB11E8990F00006B7BC /* DayScheduleTableViewCell.swift in Sources */,
 				0A7B8A751E8A3D8B001A0468 /* FavoriteUserTableViewCell.swift in Sources */,
 				0A8D425E1E8839C100B9B547 /* MenuViewController.swift in Sources */,
+				0ADEBEB11F97F90A00DC8E23 /* ChatItemsDemoDecorator.swift in Sources */,
 				0A3EEBB81E7AD3100009706B /* SkillModel.swift in Sources */,
 				E177DADB1F56C2B200DE1518 /* M13CheckboxExpandController.swift in Sources */,
 				0A1AA60E1E75DBA50010F651 /* BaseViewController.swift in Sources */,
@@ -949,7 +1010,6 @@
 				E1FF62671F5A593800C84EDB /* FSCalendarDelegationProxy.m in Sources */,
 				0A59DBB91E7CCDCE0077A5F6 /* StarbuckAnnotation.swift in Sources */,
 				E177DAE21F56C2B200DE1518 /* M13CheckboxCheckPathGenerator.swift in Sources */,
-				0A59DBC01E7CCE550077A5F6 /* FirebaseUserAuthentication.swift in Sources */,
 				0A1AA6131E75E3B60010F651 /* LoginViewController.swift in Sources */,
 				E177DAE31F56C2B200DE1518 /* M13CheckboxDisclosurePathGenerator.swift in Sources */,
 				E1FF62651F5A593800C84EDB /* FSCalendarConstants.m in Sources */,
@@ -993,7 +1053,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1001,7 +1063,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1043,7 +1109,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1051,7 +1119,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1083,15 +1155,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Networker/Networker.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 395S2ULVA8;
 				INFOPLIST_FILE = Networker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.conker.Networker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "788f024f-52a2-464e-b844-5ae5de4b3858";
-				PROVISIONING_PROFILE_SPECIFIER = "Net worker";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Networker/Vender/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1103,15 +1176,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Networker/Networker.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 395S2ULVA8;
 				INFOPLIST_FILE = Networker/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.conker.Networker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "788f024f-52a2-464e-b844-5ae5de4b3858";
-				PROVISIONING_PROFILE_SPECIFIER = "Net worker";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Networker/Vender/Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

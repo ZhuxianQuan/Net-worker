@@ -7,11 +7,11 @@
 //
 
 import UIKit
+import MapKit
 
 class RegisterViewController: BaseViewController {
 
-    @IBOutlet weak var tblScroll: UITableView!
-    @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
+    
     var profileImage : UIImage?
     var picker = UIImagePickerController()
     
@@ -20,23 +20,33 @@ class RegisterViewController: BaseViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var address1: UITextField!
-    @IBOutlet weak var address2: UITextField!
-    @IBOutlet weak var address3: UITextField!
+    
     @IBOutlet weak var postcode: UITextField!
     @IBOutlet weak var birthday: UITextField!
     
     @IBOutlet weak var aboutMe: UITextView!
     
+    @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var imvProfile: UIImageView!
     
     var user = UserModel()
+    
+    
+    var addressPicker = UIPickerView()
+    var filteredAddresses = [(String, String)]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         keyboardControl()
+        addressPicker.delegate = self
+        addressPicker.dataSource = self
+        addressPicker.backgroundColor = .white
+        addressPicker.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: screenSize.width, height: 220))
+        self.view.addSubview(addressPicker)
+        addressPicker.isHidden = true
     }
 
     override func didReceiveMemoryWarning() {
@@ -165,9 +175,7 @@ class RegisterViewController: BaseViewController {
         user.user_lastname = lastName.text!
         user.user_email = email.text!
         user.user_password = password.text!
-        user.user_address1 = address1.text!
-        user.user_address2 = address2.text!
-        user.user_address3 = address3.text!
+        user.user_address = address1.text!
         user.user_postcode = postcode.text!
         user.user_birthday = birthday.text!
         user.user_aboutme = aboutMe.text!
@@ -202,13 +210,38 @@ class RegisterViewController: BaseViewController {
         
 
     }
-    
     func datePickerValueChanged(_ sender: UIDatePicker) {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
         //dateFormatter.timeStyle = .none
         birthday.text = dateFormatter.string(from: sender.date)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        addressPicker.isHidden = true
+    }
+}
+
+extension RegisterViewController : UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return filteredAddresses.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return filteredAddresses[row].0
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.address1.text = filteredAddresses[row].0
+        self.postcode.text = filteredAddresses[row].1
+        
     }
 }
 
@@ -280,7 +313,6 @@ extension RegisterViewController:  UINavigationControllerDelegate, UIImagePicker
         
     }
     
-    
 }
 
 
@@ -334,28 +366,26 @@ extension RegisterViewController {
             delay: 0,
             options: options,
             animations: {
-                if isShowing{
-                    //self.tblScroll.contentOffset.y += heightOffset
-                    if self.scrollViewBottomConstraint.constant == 0 {
-                        self.tblScroll.frame.size.height -= heightOffset
+                if isShowing && self.headerViewHeightConstraint.constant == 0{
+                    if (self.screenSize.height - heightOffset - 500) < 0 {                    self.view.frame.origin.y = (self.screenSize.height - heightOffset - 500)
                     }
-                    
                 }
                 else
                 {
-                    //self.tblScroll.contentOffset.y -= keyboardRect!.height
-                    self.scrollViewBottomConstraint.constant = 0
+                    self.view.frame.origin.y = 0
                     
                 }
         },
             completion: { bool in
-                if isShowing{
-                    self.scrollViewBottomConstraint.constant = heightOffset
-                }
-                else
-                {
+                if isShowing {
+                    self.view.frame.origin.y = 0
+                    if (self.screenSize.height - heightOffset - 500) < 0 {
+                        self.headerViewHeightConstraint.constant = self.screenSize.height - heightOffset - 500
+                    }
                     
-                    self.scrollViewBottomConstraint.constant = 0
+                }
+                else {
+                    self.headerViewHeightConstraint.constant = 0
                 }
                 
                 
@@ -383,14 +413,7 @@ extension RegisterViewController: UITextFieldDelegate {
             address1.becomeFirstResponder()
         }
         else if textField == address1 {
-            address2.becomeFirstResponder()
-        }
-        else if textField == address2 {
-            address3.becomeFirstResponder()
-        }
-            
-        else if textField == address3 {
-            postcode.becomeFirstResponder()
+            birthday.becomeFirstResponder()
         }
             
         else if textField == postcode {
@@ -402,6 +425,12 @@ extension RegisterViewController: UITextFieldDelegate {
         }
         
         return true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == address1 {
+            self.addressPicker.isHidden = true
+        }
     }
     
 }

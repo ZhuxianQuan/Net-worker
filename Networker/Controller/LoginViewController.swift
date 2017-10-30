@@ -57,8 +57,7 @@ class LoginViewController: BaseViewController {
         
         let loginManager = LoginManager()
         
-        loginManager.logIn([.publicProfile , .email, .userFriends], viewController: self, completion: {
-            loginResult in
+        loginManager.logIn(readPermissions: [ReadPermission.email, ReadPermission.publicProfile, ReadPermission.userFriends], viewController: self) { (loginResult) in
             switch loginResult {
             case .failed(let error):
                 print(error)
@@ -68,7 +67,8 @@ class LoginViewController: BaseViewController {
                 print("Logged in!")
                 self.getFBUserInfo()
             }
-        })
+        }
+        
     }
     
     

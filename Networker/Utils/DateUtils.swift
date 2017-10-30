@@ -219,6 +219,14 @@ class DateUtils {
         return monthFormatter.string(from: date)
     }
     
+    static func getDateString(timestamp: Int64) -> String{
+        let date = Date(timeIntervalSince1970: TimeInterval(timestamp))
+        let formatter = DateFormatter()
+        formatter.dateFormat = "d/MM/yy"
+        return formatter.string(from: date)
+        
+    }
+    
     
     
 

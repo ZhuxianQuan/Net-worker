@@ -7,12 +7,11 @@
 //
 
 import UIKit
+import MapKit
 
 class ProfileViewController: BaseViewController {
 
     
-    @IBOutlet weak var tblScroll: UITableView!
-    @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
     var profileImage : UIImage?
     var picker = UIImagePickerController()
     
@@ -21,8 +20,6 @@ class ProfileViewController: BaseViewController {
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var address1: UITextField!
-    @IBOutlet weak var address2: UITextField!
-    @IBOutlet weak var address3: UITextField!
     @IBOutlet weak var postcode: UITextField!
     @IBOutlet weak var birthday: UITextField!
     
@@ -31,13 +28,26 @@ class ProfileViewController: BaseViewController {
     
     @IBOutlet weak var imvProfile: UIImageView!
     
+    @IBOutlet weak var headerViewHeightConstraint: NSLayoutConstraint!
     var user = UserModel()
+    
+    
+    var addressPicker = UIPickerView()
+    var filteredAddresses = [(String, String)]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         user = currentUser!
+        
+        addressPicker.delegate = self
+        addressPicker.dataSource = self
+        addressPicker.backgroundColor = .white
+        addressPicker.frame = CGRect(origin: CGPoint.zero, size: CGSize(width: screenSize.width, height: 220))
+        self.view.addSubview(addressPicker)
+        addressPicker.isHidden = true
+        
         keyboardControl()
         setUserDetail()
     }
@@ -54,9 +64,7 @@ class ProfileViewController: BaseViewController {
         lastName.text = user.user_lastname
         email.text = user.user_email
         password.text = user.user_password
-        address1.text = user.user_address1
-        address2.text = user.user_address2
-        address3.text = user.user_address3
+        address1.text = user.user_address
         postcode.text = user.user_postcode
         birthday.text = user.user_birthday
         password.text = user.user_password
@@ -89,9 +97,7 @@ class ProfileViewController: BaseViewController {
                            Constants.KEY_USER_EMAIL: user.user_email as AnyObject,
                            Constants.KEY_USER_PASSWORD: user.user_password as AnyObject,
                            Constants.KEY_USER_POSTCODE: user.user_postcode as AnyObject,
-                           Constants.KEY_USER_ADDRESS1: user.user_address1 as AnyObject,
-                           Constants.KEY_USER_ADDRESS2: user.user_address2 as AnyObject,
-                           Constants.KEY_USER_ADDRESS3: user.user_address3 as AnyObject,
+                           Constants.KEY_USER_ADDRESS: user.user_address as AnyObject,
                            Constants.KEY_USER_ABOUTME: user.user_aboutme as AnyObject]
             ApiFunctions.updateProfile(profile: profile, completion: {
                 message in
@@ -139,6 +145,52 @@ class ProfileViewController: BaseViewController {
             self.showToastWithDuration(string: checkResult, duration: 3.0)
         }
     }
+    
+    
+    @IBAction func addressEditing(_ sender: UITextField) {
+        let request = MKLocalSearchRequest()
+        request.naturalLanguageQuery = sender.text
+        let search = MKLocalSearch(request: request)
+        addressPicker.isHidden = false
+        search.start { (response, error) in
+            guard let response = response else {
+                self.showToastWithDuration(string: "No results", duration: 3.0)
+                return
+            }
+            self.filteredAddresses = []
+            
+            let mapItems = response.mapItems
+            for mapItem in mapItems {
+                let postcode = mapItem.placemark.postalCode
+                print("\n\n")
+                guard let address = mapItem.placemark.addressDictionary?["FormattedAddressLines"]
+                    else {
+                        break
+                }
+                var addressString = ""
+                for item in (address as! [String]) {
+                    if addressString.characters.count == 0 {
+                        addressString = item
+                    }
+                    else {
+                        addressString.append(", " + item)
+                    }
+                }
+                
+                if let postcode = postcode {
+                    self.filteredAddresses.append((addressString, postcode))
+                }
+                else{
+                    self.filteredAddresses.append((addressString, "133000"))
+                }
+            }
+            
+            self.addressPicker.reloadAllComponents()
+            
+        }
+        
+    }
+    
     /*
     func gotoSkillVC() {
         
@@ -190,9 +242,7 @@ class ProfileViewController: BaseViewController {
         user.user_lastname = lastName.text!
         user.user_email = email.text!
         user.user_password = password.text!
-        user.user_address1 = address1.text!
-        user.user_address2 = address2.text!
-        user.user_address3 = address3.text!
+        user.user_address = address1.text!
         user.user_postcode = postcode.text!
         user.user_birthday = birthday.text!
         user.user_aboutme = aboutMe.text!
@@ -237,6 +287,27 @@ class ProfileViewController: BaseViewController {
         //dateFormatter.timeStyle = .none
         birthday.text = dateFormatter.string(from: sender.date)
 
+    }
+}
+
+extension ProfileViewController : UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return filteredAddresses.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return filteredAddresses[row].0
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.address1.text = filteredAddresses[row].0
+        self.postcode.text = filteredAddresses[row].1
+        
     }
 }
 
@@ -290,28 +361,26 @@ extension ProfileViewController {
             delay: 0,
             options: options,
             animations: {
-                if isShowing{
-                    //self.tblScroll.contentOffset.y += heightOffset
-                    if self.scrollViewBottomConstraint.constant == 0 {
-                        self.tblScroll.frame.size.height -= heightOffset
+                if isShowing && self.headerViewHeightConstraint.constant == 0{
+                    if (self.screenSize.height - heightOffset - 500) < 0 {                    self.view.frame.origin.y = (self.screenSize.height - heightOffset - 500)
                     }
-                    
                 }
                 else
                 {
-                    //self.tblScroll.contentOffset.y -= keyboardRect!.height
-                    self.scrollViewBottomConstraint.constant = 0
+                    self.view.frame.origin.y = 0
                     
                 }
         },
             completion: { bool in
-                if isShowing{
-                    self.scrollViewBottomConstraint.constant = heightOffset
-                }
-                else
-                {
+                if isShowing {
+                    self.view.frame.origin.y = 0
+                    if (self.screenSize.height - heightOffset - 500) < 0 {
+                        self.headerViewHeightConstraint.constant = self.screenSize.height - heightOffset - 500
+                    }
                     
-                    self.scrollViewBottomConstraint.constant = 0
+                }
+                else {
+                    self.headerViewHeightConstraint.constant = 0
                 }
                 
                 
@@ -339,16 +408,8 @@ extension ProfileViewController: UITextFieldDelegate {
             address1.becomeFirstResponder()
         }
         else if textField == address1 {
-            address2.becomeFirstResponder()
+            birthday.becomeFirstResponder()
         }
-        else if textField == address2 {
-            address3.becomeFirstResponder()
-        }
-            
-        else if textField == address3 {
-            postcode.becomeFirstResponder()
-        }
-            
         else if textField == postcode {
             birthday.becomeFirstResponder()
         }
@@ -358,6 +419,13 @@ extension ProfileViewController: UITextFieldDelegate {
         }
         
         return true
+    }
+    
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == address1 {
+            self.addressPicker.isHidden = true
+        }
     }
     
 }

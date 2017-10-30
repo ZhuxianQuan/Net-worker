@@ -55,7 +55,6 @@ class SplashViewController: BaseViewController {
             self.loadingCompleted()
         })
         
-
     }
     
     func rotateLogoImage(){

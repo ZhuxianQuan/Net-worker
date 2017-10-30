@@ -12,9 +12,9 @@ import SwiftyJSON
 
 class ApiFunctions{    
     
-    static let SERVER_BASE_URL          = "http://35.167.68.193"
+    //static let SERVER_BASE_URL          = "http://35.167.68.193"
     
-    //static let SERVER_BASE_URL          = "http://192.168.1.120:2000/Networker"
+    static let SERVER_BASE_URL          = "http://192.168.1.120/NetWorker"
     static let SERVER_URL                = SERVER_BASE_URL + "/index.php/Api/"
     
     static let REQ_GET_ALLSKILLS        = SERVER_URL + "getSkills"
@@ -25,10 +25,14 @@ class ApiFunctions{
     static let REQ_LOGIN                = SERVER_URL + "login"
     static let REQ_GETSKILLVERSION      = SERVER_URL + "getSkillVersion"
     static let REQ_UPLOADPOSITION       = SERVER_URL + "uploadPosition"
-    static let REQ_SAVESCHEDULE         = SERVER_URL + "saveUserSchedule"
+    static let REQ_GETUSERSCHEDULE      = SERVER_URL + "getUserSchedule"
     static let REQ_SAVESCHEDULES        = SERVER_URL + "saveUserSchedules"
     static let REQ_SEARCHUSERS          = SERVER_URL + "searchMatchedUsers"
     static let REQ_GETNEARBYWORKERS     = SERVER_URL + "getNearByWorkers"
+    static let REQ_GETWORKERREVIEWS     = SERVER_URL + "getWorkerReviews"
+    static let REQ_GETCLIENTREVIEWS     = SERVER_URL + "getClientReviews"
+    static let REQ_SENDREQUESTTOWORKER  = SERVER_URL + "sendRequestToWorker"
+    
     
     
     static func login(email: String, password: String, completion: @escaping (String) -> () ){
@@ -418,6 +422,109 @@ class ApiFunctions{
             }
         }
     }
+    
+    static func getUserSchedule(_ userId: Int64, completion: @escaping (String, [DayScheduleModel]) -> ())
+    {
+        Alamofire.request(REQ_GETUSERSCHEDULE, method: .post, parameters: [Constants.KEY_USER_ID : userId]).responseJSON { response in
+            if response.result.isFailure{
+                completion(Constants.CHECK_NETWORK_ERROR, [])
+            }
+            else
+            {
+                let json = JSON(response.result.value!)
+                let message = json[Constants.RES_MESSAGE].stringValue
+                let userObjects = json[Constants.KEY_USER_SCHEDULES].arrayValue
+                var schedules = [DayScheduleModel]()
+                for object in userObjects {
+                    schedules.append(ParseHelper.parseSchedule(object))
+                }
+                completion(message, schedules)
+            }
+        }
+    }
+    
+    static func getWorkerReviews(_ userId: Int64, completion: @escaping (String, [RatingModel], [Int: Float]) -> ())
+    {
+        Alamofire.request(REQ_GETWORKERREVIEWS, method: .post, parameters: [Constants.KEY_USER_ID : userId]).responseJSON { response in
+            if response.result.isFailure{
+                completion(Constants.CHECK_NETWORK_ERROR, [], [:])
+            }
+            else
+            {
+                let json = JSON(response.result.value!)
+                let message = json[Constants.RES_MESSAGE].stringValue
+                let userObjects = json[Constants.KEY_USER_RATINGS].arrayValue
+                var ratings = [RatingModel]()
+                for object in userObjects {
+                    ratings.append(ParseHelper.parseRating(object))
+                }
+                var skill_marks = [Int: Float]()
+                
+                let value = json["user_skill_marks"]
+                //.dictionaryObject as! [String: String]
+                if let dict = value.dictionaryObject {
+                    let objects = dict as! [String: String]
+                    for key in objects.keys {
+                        skill_marks[Int(key)!] = Float(objects[key]!)!
+                    }
+                }
+                completion(message, ratings, skill_marks)
+            }
+        }
+    }
+    static func getClientReviews(_ userId: Int64, completion: @escaping (String, [RatingModel]) -> ())
+    {
+        Alamofire.request(REQ_GETCLIENTREVIEWS, method: .post, parameters: [Constants.KEY_USER_ID : userId]).responseJSON { response in
+            if response.result.isFailure{
+                completion(Constants.CHECK_NETWORK_ERROR, [])
+            }
+            else
+            {
+                let json = JSON(response.result.value!)
+                let message = json[Constants.RES_MESSAGE].stringValue
+                let userObjects = json[Constants.KEY_USER_RATINGS].arrayValue
+                var ratings = [RatingModel]()
+                for object in userObjects {
+                    ratings.append(ParseHelper.parseRating(object))
+                }
+                completion(message, ratings)
+            }
+        }
+    }
+    
+    static func sendRequestToWorker(deal: DealModel, completion: @escaping (String, DealModel?) -> ()) {
+        Alamofire.request(REQ_SENDREQUESTTOWORKER, method: .post, parameters: deal.getObject()).responseJSON { response in
+            if response.result.isFailure{
+                completion(Constants.CHECK_NETWORK_ERROR, nil)
+            }
+            else
+            {
+                let json = JSON(response.result.value!)
+                let message = json[Constants.RES_MESSAGE].stringValue
+                let deal = ParseHelper.parseDeal(json["deal"])
+                deal.deal_worker = ParseHelper.parseUser(json[Constants.KEY_DEAL_WORKER])
+                deal.deal_client = currentUser!
+                completion(message, deal)
+            }
+        }
+    }
+    
+    static func cancelJob() {
+        
+    }
+    
+    static func confirmJob() {
+        
+    }
+    
+    static func rejectRequest() {
+        
+    }
+    
+    static func getProcessingJobs() {
+        
+    }
+    
     
     
 }

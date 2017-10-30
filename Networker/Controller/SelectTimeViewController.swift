@@ -63,12 +63,19 @@ class SelectTimeViewController: BaseViewController {
                 deal.deal_starttime = startTime
                 deal.deal_endtime = endTime
                 deal.deal_distance = distanceSlider.value
+                deal.deal_notes = notesTextView.text
                 
-                let selectedUserVC = self.storyboard?.instantiateViewController(withIdentifier: "SearchMatchedUsersViewController") as! SearchMatchedUsersViewController
-                selectedUserVC.deal = self.deal
-                self.dismiss(animated: true, completion: {
-                    self.navController?.pushViewController(selectedUserVC, animated: true)
-                })
+                let message = checkTimeValid(deal)
+                if message == Constants.PROCESS_SUCCESS {
+                    let selectedUserVC = self.storyboard?.instantiateViewController(withIdentifier: "SearchMatchedUsersViewController") as! SearchMatchedUsersViewController
+                    selectedUserVC.deal = self.deal
+                    self.dismiss(animated: true, completion: {
+                        self.navController?.pushViewController(selectedUserVC, animated: true)
+                    })
+                }
+                else {
+                    self.showToastWithDuration(string: message, duration: 3.0)
+                }
                 
             }
             else {
@@ -81,8 +88,6 @@ class SelectTimeViewController: BaseViewController {
     }
     
     @IBAction func skipButtonTapped(_ sender: Any) {
-        let selectedUserVC = self.storyboard?.instantiateViewController(withIdentifier: "SearchMatchedUsersViewController") as! SearchMatchedUsersViewController
-        selectedUserVC.deal = self.deal
         
         //set default value : time today 0:00 ~ 23:59
         deal.deal_startday = DateUtils.getDayValue(Date())
@@ -90,11 +95,42 @@ class SelectTimeViewController: BaseViewController {
         deal.deal_starttime = 1
         deal.deal_endtime = 48
         deal.deal_distance = distanceSlider.value
-        self.dismiss(animated: true, completion: {
-            self.navController?.pushViewController(selectedUserVC, animated: true)
-        })
+        let message = checkTimeValid(deal)
+        if message == Constants.PROCESS_SUCCESS {
+        
+            let selectedUserVC = self.storyboard?.instantiateViewController(withIdentifier: "SearchMatchedUsersViewController") as! SearchMatchedUsersViewController
+            selectedUserVC.deal = self.deal
+            self.dismiss(animated: true, completion: {
+                self.navController?.pushViewController(selectedUserVC, animated: true)
+            })
+        }
+        else {
+            self.showToastWithDuration(string: message, duration: 3.0)
+        }
     }
     
+    
+    func checkTimeValid(_ deal: DealModel) -> String {
+        let days = DateUtils.getDaysArray(from: deal.deal_startday, to: deal.deal_endday)
+        for daySchedule in currentUser!.user_schedules {
+            if daySchedule.day < days[0] {
+                continue
+            }
+            else if daySchedule.day > days.last! {
+                break
+            }
+            else {
+                for day in days {
+                    if day == daySchedule.day && (daySchedule.day_schedule & Int64(1 << (deal.deal_endtime - deal.deal_starttime) - 1) << Int64(deal.deal_starttime - 1)) > 0 {
+                        
+                        return "Please check your schedule again."
+                    }
+                }
+            }
+        }
+        
+        return Constants.PROCESS_SUCCESS
+    }
     /*
     func saveEvents(_ events: [EventSchedule], completion: @escaping (String, [DayScheduleModel]) -> ()) {
         var leftEvents = events

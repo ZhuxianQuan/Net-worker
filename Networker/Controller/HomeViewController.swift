@@ -23,7 +23,7 @@ class HomeViewController: BaseViewController {
 
         // Do any additional setup after loading the view.
         mapView.showsUserLocation = true
-        setRegionForLocation(location: CLLocationCoordinate2D(latitude: CLLocationDegrees(currentLatitude), longitude: CLLocationDegrees(currentLongitude)), spanRadius: currentUser!.user_rangedistance, animated: true)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,6 +70,7 @@ class HomeViewController: BaseViewController {
             else {
                 self.showToastWithDuration(string: message, duration: 3.0)
             }
+            self.setRegionForLocation(location: CLLocationCoordinate2D(latitude: CLLocationDegrees(currentLatitude), longitude: CLLocationDegrees(currentLongitude)), spanRadius: currentUser!.user_rangedistance, animated: true)
         })
     }
     
@@ -166,6 +167,16 @@ extension HomeViewController: MKMapViewDelegate{
         annotationView?.image = image
         return annotationView
         
+    }
+    
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        if let location = userLocation.location {
+            currentLatitude = location.coordinate.latitude
+            currentLongitude = location.coordinate.longitude
+            if location.distance(from: CLLocation(latitude: mapView.centerCoordinate.latitude, longitude: mapView.centerCoordinate.longitude)) > 1639.0 {
+                getHomeData()
+            }
+        }
     }
     
     

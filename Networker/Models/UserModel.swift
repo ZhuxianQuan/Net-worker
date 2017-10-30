@@ -16,9 +16,7 @@ class UserModel {
     var user_lastname = ""
     var user_email = ""
     var user_password = ""
-    var user_address1 = ""
-    var user_address2 = ""
-    var user_address3 = ""
+    var user_address = ""
     var user_postcode = ""
     var user_birthday = ""
     var user_skills = ""
@@ -51,6 +49,8 @@ class UserModel {
     var user_ratings : [RatingModel] = []
     var user_aboutme = ""
     var user_avgmarks : Float = 0.0
+    
+    var user_skill_marks = [Int: Float]()
     var user_token: String {
         get {
             if let token = UserDefaults.standard.value(forKey: Constants.KEY_USER_TOKEN) {
@@ -69,10 +69,7 @@ class UserModel {
         result[Constants.KEY_USER_LASTNAME] = user_lastname as AnyObject
         result[Constants.KEY_USER_EMAIL] = user_email.lowercased() as AnyObject
         result[Constants.KEY_USER_PASSWORD] = user_password as AnyObject
-        result[Constants.KEY_USER_ADDRESS2] = user_address2 as AnyObject
-        result[Constants.KEY_USER_ADDRESS1] = user_address1 as AnyObject
-        result[Constants.KEY_USER_ADDRESS2] = user_address2 as AnyObject
-        result[Constants.KEY_USER_ADDRESS3] = user_address3 as AnyObject
+        result[Constants.KEY_USER_ADDRESS] = user_address as AnyObject
         result[Constants.KEY_USER_SKILLS] = user_skills as AnyObject
         result[Constants.KEY_USER_AVAILABLE] = user_available as AnyObject
         result[Constants.KEY_USER_PROFILEIMAGEURL] = user_profileimageurl as AnyObject
@@ -88,12 +85,11 @@ class UserModel {
         return result
     }
     
-    internal func getSkillFrom(_ skillString: String) -> SkillModel?{
+    fileprivate func getSkillFrom(_ skillString: String) -> SkillModel?{
         let skillObjects = skillString.components(separatedBy: ":")
-        let skill = FMDBManagerGetData().getSkill(skillObjects[1])
-        if skill != nil {
-            skill?.skill_price = Double(skillObjects[3])!
-            skill?.skill_qualifications = skillObjects[5]
+        if let skill = FMDBManagerGetData().getSkill(Int(skillObjects[1])!) {
+            skill.skill_price = Double(skillObjects[3])!
+            skill.skill_qualifications = skillObjects[5]
             return skill
         }
         else {

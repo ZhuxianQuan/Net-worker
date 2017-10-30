@@ -27,7 +27,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2</string>
+	<string>4</string>
 	<key>FacebookAppID</key>
 	<string>1940076186215412</string>
 	<key>FacebookDisplayName</key>
@@ -64,8 +64,12 @@
 	<string>App wants to access to your calendar to add schedule</string>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) camera use</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>App wants to use your location</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>App wants to use user location</string>
+	<string>App wants to use your location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>App wants to use your location</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>{human-readable reason for photo access}</string>
 	<key>NSRemindersUsageDescription</key>

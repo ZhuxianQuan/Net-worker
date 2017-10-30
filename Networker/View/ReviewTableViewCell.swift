@@ -24,5 +24,11 @@ class ReviewTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    func setCell(_ review: RatingModel) {
+        nameLabel.text = String(format: "From %@, %@:", review.rating_sendername, DateUtils.getDateString(timestamp: review.rating_timestamp))
+        reviewLabel.text = review.rating_comment
+        ratingView.rating = review.rating_marks
+    }
 
 }

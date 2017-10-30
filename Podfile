@@ -22,5 +22,7 @@ pod 'Alamofire'
 pod 'SwiftyJSON'
 pod 'LinkedinSwift'
 pod 'Stripe'
+pod 'Chatto'
+pod 'ChattoAdditions'
 
 end

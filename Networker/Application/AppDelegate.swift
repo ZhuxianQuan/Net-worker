@@ -64,12 +64,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         //location manager define
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        //locationManager.requestWhenInUseAuthorization()
         updateTimer()
         locationManager.startUpdatingLocation()
         
         UserDefaults.standard.set(25, forKey: "distance")
-        
         
         //set navigation root view controllers
         //setNavigationRoots()
@@ -82,8 +82,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
             myDict = NSDictionary(contentsOfFile: path)
         }
         if let dict = myDict {
-            
-            
             //let distobject = dict.object(forKey: "informaton Property List") as! [String: String]
             Constants.FIR_STORAGE_BASE_URL = "gs://" + (dict.value(forKey: "STORAGE_BUCKET") as! String)
         }
@@ -96,15 +94,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
     
     func updateLocation()
     {
-        if currentUser?.user_available == Constants.VALUE_USER_AVAILABLE {
-            locationManager.startUpdatingLocation()
-        }
+        locationManager.startUpdatingLocation()
+        
+        locationManager.requestAlwaysAuthorization()
+        
+    }
+    /*
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+     
+    }
+    
+    
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        
+    }*/
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
         let location = locations.first
-        
         currentLatitude = (location?.coordinate.latitude)! as Double
         currentLongitude = (location?.coordinate.longitude)! as Double
         if currentUser != nil{
@@ -117,11 +129,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         }
         manager.stopUpdatingLocation()
     }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        
-    }
-    
         
     func applicationWillResignActive(_ application: UIApplication) {
         
@@ -131,6 +138,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
         
     }
+    
+    
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
@@ -178,11 +187,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         print("Message ID: \(userInfo["gcm.message_id"]!)")
         // Print full message.{
         NSLog("\(userInfo)")
-        guard let rvc = self.window?.rootViewController else{
-            return
-        }
+        
         let alertObject = userInfo["aps"] as! [String: AnyObject]
         let alertString = alertObject["alert"] as! String
+        let title = alertObject["title"] as! String
+        processMessage(title: title, message: alertString)
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
@@ -195,11 +204,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         print("Message ID: \(userInfo["gcm.message_id"]!)")
         // Print full message.{
         NSLog("\(userInfo)")
-        guard let rvc = self.window?.rootViewController else{
-            return
-        }
+        
         let alertObject = userInfo["aps"] as! [String: AnyObject]
         let alertString = alertObject["alert"] as! String
+        let title = alertObject["title"] as! String
+        processMessage(title: title, message: alertString)
         
         // Print full message.
     }
@@ -230,6 +239,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         return true
     }
     
+    func processMessage( title: String? = nil, message : String) {
+        guard let rvc = self.window?.rootViewController else{
+            return
+        }
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let okayAction = UIAlertAction(title: "Okay", style: .default) { (_) in
+            if title == Constants.TITLE_GOT_JOB_REQUEST {
+                //ApiFunctions.
+            }
+            else if title == Constants.TITLE_JOB_REJECTED {
+                
+            }
+            else if title == Constants.TITLE_JOB_CONFIRMED {
+                
+            }
+            else if title == Constants.TITLE_JOB_COMPLETED {
+                
+            }
+            else if title == Constants.TITLE_JOB_GOT_REVIEW {
+                
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {
+            _ in
+        }
+        
+        alertVC.addAction(okayAction)
+        alertVC.addAction(cancelAction)
+        rvc.present(alertVC, animated: true, completion: nil)
+    }
     
 }
 
@@ -245,20 +285,10 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         print("Message ID: \(userInfo["gcm.message_id"]!)")
         // Print full message.
         print("%@", userInfo)
-        guard let rvc = self.window?.rootViewController else{
-            return
-        }
         let alertObject = userInfo["aps"] as! [String: AnyObject]
         let alertString = alertObject["alert"] as! String
-        /*
-         if let vc = getCurrentViewController(vc: rvc) {
-         let alertView = AlertView()
-         alertView.message = alertString
-         alertView.showAlertView()
-         vc.view.addSubview(alertView)
-         
-         }*/
-        
+        let title = alertObject["title"] as! String
+        processMessage(title: title, message: alertString)
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
