@@ -15,6 +15,12 @@ class UserModel {
     var user_firstname = ""
     var user_lastname = ""
     var user_email = ""
+    
+    var fullname : String {
+        get {
+            return user_firstname + " " + user_lastname
+        }
+    }
     var user_password = ""
     var user_address = ""
     var user_postcode = ""

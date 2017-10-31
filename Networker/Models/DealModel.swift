@@ -24,7 +24,15 @@ class DealModel {
     var deal_notes = ""
     var request_id = Int64(0)
     var request_timestamp = Int64(0)
-    var request_status = 0    
+    var request_status = 0
+    
+    
+    var deal_string : String {
+        get {
+            return String(format: "%@\n\n %@\n%@\n%@",deal_notes, DateUtils.getDateString(dayValue: deal_startday), DateUtils.getDateString(dayValue: deal_endday))
+        }
+    }
+
     
     func getObject() -> [String: AnyObject] {
         var result = [String: AnyObject]()

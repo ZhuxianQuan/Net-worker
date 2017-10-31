@@ -188,9 +188,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         // Print full message.{
         NSLog("\(userInfo)")
         
+        
         let alertObject = userInfo["aps"] as! [String: AnyObject]
-        let alertString = alertObject["alert"] as! String
-        let title = alertObject["title"] as! String
+        let alertString = alertObject["alert"]!["body"] as! String
+        let title = alertObject["alert"]!["title"] as! String
         processMessage(title: title, message: alertString)
     }
     
@@ -245,26 +246,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         }
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let okayAction = UIAlertAction(title: "Okay", style: .default) { (_) in
-            if title == Constants.TITLE_GOT_JOB_REQUEST {
-                //ApiFunctions.
+        var okayAction = UIAlertAction()
+        var cancelAction = UIAlertAction()
+        if title == Constants.TITLE_GOT_JOB_REQUEST {
+            okayAction = UIAlertAction(title: "View", style: .default) { (_) in
+                ApiFunctions.getProcessingJobs(completion: { (message) in
+                    if message == Constants.PROCESS_SUCCESS {
+                        if let deal = pendingWorkingDeals.last  {
+                            
+                            if deal.deal_status == Constants.REQUEST_STATUS_PENDING {
+                                let chatVC = BaseViewController().getStoryboard(id: Constants.STORYBOARD_CHATTING).instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
+                                chatVC.deal = deal
+                                if rvc.isKind(of: UITabBarController.self) {
+                                    let tabbarVC =  rvc as! UITabBarController
+                                    
+                                    let navVC = (tabbarVC.viewControllers![tabbarVC.selectedIndex] as! UINavigationController).pushViewController(chatVC, animated: true)
+                                    
+                                }
+                            }
+                        }
+                    }
+                })
             }
-            else if title == Constants.TITLE_JOB_REJECTED {
-                
-            }
-            else if title == Constants.TITLE_JOB_CONFIRMED {
-                
-            }
-            else if title == Constants.TITLE_JOB_COMPLETED {
-                
-            }
-            else if title == Constants.TITLE_JOB_GOT_REVIEW {
+            cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {
+                _ in
                 
             }
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {
-            _ in
+        else if title == Constants.TITLE_JOB_REJECTED {
+            ApiFunctions.getProcessingJobs(completion: { (message) in
+                if message == Constants.PROCESS_SUCCESS {
+                    if let deal = pendingMyDeals.last  {
+                        if deal.deal_status == Constants.REQUEST_STATUS_PENDING {
+                            let chatVC = BaseViewController().getStoryboard(id: Constants.STORYBOARD_CHATTING).instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
+                            chatVC.deal = deal
+                        }
+                    }
+                }
+            })
+            cancelAction = UIAlertAction(title: "Cancel", style: .cancel) {
+                _ in
+            }
         }
+        else if title == Constants.TITLE_JOB_CONFIRMED {
+            
+        }
+        else if title == Constants.TITLE_JOB_COMPLETED {
+            
+        }
+        else if title == Constants.TITLE_JOB_GOT_REVIEW {
+            
+        }
+        
         
         alertVC.addAction(okayAction)
         alertVC.addAction(cancelAction)
@@ -286,8 +319,9 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         // Print full message.
         print("%@", userInfo)
         let alertObject = userInfo["aps"] as! [String: AnyObject]
-        let alertString = alertObject["alert"] as! String
-        let title = alertObject["title"] as! String
+        
+        let alertString = alertObject["alert"]!["body"] as! String
+        let title = alertObject["alert"]!["title"] as! String
         processMessage(title: title, message: alertString)
     }
     

@@ -63,7 +63,7 @@ class LoginViewController: BaseViewController {
                 print(error)
             case .cancelled:
                 print("User cancelled login.")
-            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+            case .success( _, _,  _):
                 print("Logged in!")
                 self.getFBUserInfo()
             }
@@ -88,7 +88,7 @@ class LoginViewController: BaseViewController {
                 user.user_firstname = resultData["first_name"] as! String
                 user.user_lastname = resultData["last_name"] as! String
                 user.user_email = resultData["email"] as! String
-                user.user_email = Constants.VALUE_PASSWORD_FB
+                user.user_password = Constants.VALUE_PASSWORD_FB
                 user.user_profileimageurl = (((resultData["picture"] as! [String: AnyObject])["data"] as! [String: AnyObject])["url"] as? String)!
                 ApiFunctions.register(user, completion: {
                     message in

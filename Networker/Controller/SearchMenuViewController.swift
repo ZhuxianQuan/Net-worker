@@ -38,7 +38,7 @@ class SearchMenuViewController: BaseViewController {
         let selectTimeVC = storyboard?.instantiateViewController(withIdentifier: "SelectTimeViewController") as! SelectTimeViewController
         let deal = DealModel()
         deal.deal_client = currentUser!
-        deal.deal_status = Constants.VALUE_DEAL_PENDING
+        deal.deal_status = Constants.REQUEST_STATUS_PENDING
         deal.deal_skill = skill
         selectTimeVC.deal = deal
         self.view.isUserInteractionEnabled = false

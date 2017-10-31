@@ -32,6 +32,8 @@ class ApiFunctions{
     static let REQ_GETWORKERREVIEWS     = SERVER_URL + "getWorkerReviews"
     static let REQ_GETCLIENTREVIEWS     = SERVER_URL + "getClientReviews"
     static let REQ_SENDREQUESTTOWORKER  = SERVER_URL + "sendRequestToWorker"
+    static let REQ_GETPROCESSINGJOBS    = SERVER_URL + "getProcessingJobs"
+    static let REQ_REJECTREQUEST        = SERVER_URL + "rejectRequest"
     
     
     
@@ -57,6 +59,14 @@ class ApiFunctions{
                     currentUser = ParseHelper.parseUser(json[Constants.RES_USER_INFO])
                     for scheduleObject in json[Constants.KEY_USER_SCHEDULES].arrayValue {
                         currentUser?.user_schedules.append(ParseHelper.parseSchedule(scheduleObject))
+                    }
+                    for dealObject in json["jobs"].arrayValue {
+                        if dealObject["isclient"].intValue == 1 {
+                            pendingMyDeals.append(ParseHelper.parseDeal(dealObject))
+                        }
+                        else {
+                            pendingWorkingDeals.append(ParseHelper.parseDeal(dealObject))
+                        }
                     }
                     completion(Constants.PROCESS_SUCCESS)
                 }
@@ -502,8 +512,6 @@ class ApiFunctions{
                 let json = JSON(response.result.value!)
                 let message = json[Constants.RES_MESSAGE].stringValue
                 let deal = ParseHelper.parseDeal(json["deal"])
-                deal.deal_worker = ParseHelper.parseUser(json[Constants.KEY_DEAL_WORKER])
-                deal.deal_client = currentUser!
                 completion(message, deal)
             }
         }
@@ -517,12 +525,45 @@ class ApiFunctions{
         
     }
     
-    static func rejectRequest() {
-        
+    static func rejectRequest(_ requestId: Int64, completion : @escaping (String) -> ()) {
+        Alamofire.request(REQ_REJECTREQUEST, method: .post, parameters: ["request_id": requestId, "user_id": currentUser!.user_id]).responseJSON { response in
+            if response.result.isFailure{
+                completion(Constants.CHECK_NETWORK_ERROR)
+            }
+            else
+            {
+                let json = JSON(response.result.value!)
+                let message = json[Constants.RES_MESSAGE].stringValue
+                completion(message)
+            }
+        }
     }
     
-    static func getProcessingJobs() {
-        
+    static func getProcessingJobs(completion: @escaping (String) -> ()) {
+        Alamofire.request(REQ_GETPROCESSINGJOBS, method: .post, parameters: ["user_id" : currentUser!.user_id]).responseJSON { response in
+            if response.result.isFailure{
+                completion(Constants.CHECK_NETWORK_ERROR)
+            }
+            else
+            {
+                let json = JSON(response.result.value!)
+                let message = json[Constants.RES_MESSAGE].stringValue
+                
+                if message == Constants.PROCESS_SUCCESS {
+                    pendingMyDeals = [DealModel]()
+                    pendingWorkingDeals = [DealModel]()
+                    for dealObject in json["deals"].arrayValue {
+                        if dealObject["isclient"].intValue == 1 {
+                            pendingMyDeals.append(ParseHelper.parseDeal(dealObject))
+                        }
+                        else {
+                            pendingWorkingDeals.append(ParseHelper.parseDeal(dealObject))
+                        }
+                    }
+                }
+                completion(message)
+            }
+        }
     }
     
     

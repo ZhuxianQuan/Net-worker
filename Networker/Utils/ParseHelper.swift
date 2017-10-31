@@ -85,7 +85,14 @@ class ParseHelper {
         
         let deal = DealModel()
         deal.deal_id = rawData[Constants.KEY_DEAL_ID].nonNullInt64Value
-        deal.deal_client = parseUser(rawData[Constants.KEY_DEAL_CLIENT])
+        if rawData["isClient"].intValue == 1{
+            deal.deal_client = currentUser!
+            deal.deal_worker = parseUser(rawData)
+        }
+        else {
+            deal.deal_worker = currentUser!
+            deal.deal_client = parseUser(rawData)
+        }
         deal.deal_worker = parseUser(rawData[Constants.KEY_DEAL_WORKER])
         deal.deal_starttime = rawData[Constants.KEY_DEAL_STARTTIME].nonNullIntValue
         deal.deal_endtime = rawData[Constants.KEY_DEAL_ENDTIME].nonNullIntValue

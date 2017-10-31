@@ -54,14 +54,9 @@ class UserProfileViewController: BaseViewController {
             self.hideLoadingView()
             if message == Constants.PROCESS_SUCCESS {
                 self.deal = deal!
-                let contact = ContactModel()
-                contact.requestId = self.deal.request_id
-                contact.client = currentUser!
-                contact.worker = self.deal.deal_worker
-                
                 self.showToastWithDuration(string: "Your request sent successfully", duration: 3.0)
                 let chatVC = self.getStoryboard(id: Constants.STORYBOARD_CHATTING).instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
-                chatVC.other = contact.worker
+                chatVC.deal = deal!
                 self.navigationController?.pushViewController(chatVC, animated: true)
             }
             else {

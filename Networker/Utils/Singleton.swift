@@ -21,7 +21,8 @@ var currentUser : UserModel? {
     }
 }
 
-
+var pendingMyDeals = [DealModel]()
+var pendingWorkingDeals = [DealModel]()
 
 class Singleton {
     

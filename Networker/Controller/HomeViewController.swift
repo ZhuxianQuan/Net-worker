@@ -126,7 +126,7 @@ class HomeViewController: BaseViewController {
     }
     
     @IBAction func menuButtonTapped(_ sender: Any) {
-            drawerController?.setDrawerState(.opened, animated: true)
+          drawerController?.setDrawerState(.opened, animated: true)
     }
     
     @IBAction func searchStarted(_ sender: Any) {

@@ -18,6 +18,17 @@ class ChatViewController: BaseChatViewController {
     
     static var otherImage: UIImage?
     static var myImage: UIImage?
+    var deal = DealModel()
+    var other: UserModel {
+        get {
+            if deal.deal_worker.user_id == currentUser?.user_id {
+                return deal.deal_client
+            }
+            else {
+                return deal.deal_worker
+            }
+        }
+    }
     
     var currentRoom: String {
         get {
@@ -37,7 +48,6 @@ class ChatViewController: BaseChatViewController {
         return BaseMessageHandler(messageSender: self.messageSender)
     }()
     
-    var other : UserModel!
     
     var allLoaded = false
     
@@ -49,7 +59,7 @@ class ChatViewController: BaseChatViewController {
         
         super.viewDidLoad()
          self.title = "Messages"
-        if other != nil {
+        if deal.deal_worker.user_id != 0 {
             messageSender.roomName = currentRoom
             self.chatDataSource = dataSource
             dataSource.roomName = currentRoom

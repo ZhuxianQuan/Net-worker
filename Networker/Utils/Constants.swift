@@ -159,15 +159,19 @@ class Constants {
     static let VALUE_PASSWORD_FB            = "FBPASSWORD_NETWORKER"
     static let VALUE_PASSWORD_LI            = "LIPASSWORD_NETWORKER"
     
-    static let VALUE_DEAL_PENDING           = 1
-    static let VALUE_DEAL_ACCEPTED          = 2
-    static let VALUE_DEAL_PROCESSING        = 3
-    static let VALUE_DEAL_COMPLETED         = 4
+    static let REQUEST_STATUS_PENDING                   = 1
+    static let REQUEST_STATUS_ACCEPTED                  = 2
+    static let REQUEST_STATUS_PROCESSING                = 3
+    static let REQUEST_STATUS_COMPLETED                 = 11
+    static let REQUEST_STATUS_REJECTED_BY_WORKER        = 12
+    static let REQUEST_STATUS_CANCELLED_BY_WORKER       = 13
+    static let REQUEST_STATUS_CANCELLED_BY_CLIENT       = 14
     
     static let TITLE_GOT_JOB_REQUEST        = "New Job Request"
     static let TITLE_JOB_REJECTED           = "Job Rejection Alert"
     static let TITLE_JOB_CONFIRMED          = "Confirmed!"
     static let TITLE_JOB_COMPLETED          = "Completed"
     static let TITLE_JOB_GOT_REVIEW         = "Review"
+    
     
 }
