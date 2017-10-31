@@ -94,8 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
     
     func updateLocation()
     {
-        locationManager.startUpdatingLocation()
-        
+        locationManager.startUpdatingLocation()        
         locationManager.requestAlwaysAuthorization()
         
     }

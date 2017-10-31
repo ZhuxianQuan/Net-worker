@@ -205,9 +205,13 @@ open class BaseMessageCollectionViewCell<BubbleViewType>: UICollectionViewCell, 
         }
         self.accessoryTimestampView.attributedText = style.attributedStringForDate(viewModel.date)
         let avatarImageSize = baseStyle.avatarSize(viewModel: messageViewModel)
+        
         if avatarImageSize != CGSize.zero {
             self.avatarView.image = self.messageViewModel.avatarImage.value
         }
+        //zhuxian custom code
+        avatarView.layer.cornerRadius = avatarImageSize.width / 2
+        avatarView.layer.masksToBounds = true
         self.setNeedsLayout()
     }
 

@@ -9,8 +9,9 @@ class FirebaseUtils
     
     static let ref = Database.database().reference()
     
-    static let USER_REFERENCE               = "Users"
+    static let CONTACT_REFERENCE            = "Contacts"
     static let MESSAGE_REFERENCE            = "Messages"
+    static let USER_REFERENCE               = "Users"
     
     
     static let DATA_FROM_OBSERVER           = 1
@@ -37,23 +38,15 @@ class FirebaseUtils
             else {
                 completion(Constants.PROCESS_SUCCESS)
             }
+            let userIds = roomId.components(separatedBy: "_")
+            
+            ref.child(CONTACT_REFERENCE).child(userIds[0]).child(userIds[1]).setValue(messageObject)
+            ref.child(CONTACT_REFERENCE).child(userIds[1]).child(userIds[0]).setValue(messageObject)
+            
         }
     }
     
-    /*
-    static func setMessageObserver(completion: @escaping (String) -> ()) {
-
-        if let user = currentWorker {
-            ref.child(MESSAGE_REFERENCE).queryStarting(atValue: "h\(user.worker_id)_").observe(.childAdded, with: { (snapshot) in
-                processChat(snapshot, from: DATA_FROM_OBSERVER)
-            })
-        }
-        else if let user = currentClient {
-            ref.child(MESSAGE_REFERENCE).queryEnding(atValue: "_c\(user.client_id)").observe(.childAdded, with: { (snapshot) in
-                processChat(snapshot, from: DATA_FROM_OBSERVER)
-            })
-        }
-    }*/
+    
     
     static func readChatOnce(roomId: String, timestamp: Int64, completion: @escaping (String, [DemoMessageModelProtocol]) -> ()) {
         ref.child(MESSAGE_REFERENCE).child(roomId).queryOrdered(byChild: "timestamp").queryEnding(atValue: timestamp).queryLimited(toLast: 20).observeSingleEvent(of: .value) { (snapshot, error) in
@@ -79,10 +72,41 @@ class FirebaseUtils
         }
     }
     
-    static func setObserver(roomId: String) {
+    static func setContactRef() {
+        ref.child(CONTACT_REFERENCE).child(currentUserId).observe(.childChanged) { (snapshot, error) in
+            if error != nil {
+                
+            }
+            else {
+                
+            }
+        }
+    }
+    
+    static func removeMessageHandler(_ handler : UInt, roomId : String) {
+        ref.child(MESSAGE_REFERENCE).child(roomId).removeObserver(withHandle: handler)
+    }
+    
+    static func removeOnlineRef(_ handler: UInt, userId: String )
+    {
+        ref.child(USER_REFERENCE).child(userId).removeObserver(withHandle: handler)
+    }
+    
+    static func setOnlineRef(userId: String) -> UInt {
+        return ref.child(USER_REFERENCE).child(userId).child("connections").observe(.value, with: { (snapshot) in
+            if snapshot.children.allObjects.count == 0 {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Online Changed"), object: false)
+            }
+            else {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Online Changed"), object: true)
+            }
+        })
+    }
+    
+    static func setRoomObserver(roomId: String) -> UInt{
         
         roomLoaded = true
-        ref.child(MESSAGE_REFERENCE).child(roomId).queryLimited(toLast: 1).observe(.childAdded) { (snapshot, error) in
+        return ref.child(MESSAGE_REFERENCE).child(roomId).queryLimited(toLast: 1).observe(.childAdded) { (snapshot, error) in
             //print(snapshot)
             let childref = snapshot.value as? NSDictionary
             if let childRef = childref {
@@ -105,7 +129,7 @@ class FirebaseUtils
     static func parseMessage(_ snapshot: NSDictionary) -> DemoMessageModelProtocol {
         var isIncoming: Bool {
             get {
-                if "\(snapshot["senderId"])" == currentUserId {
+                if snapshot["senderId"] as! String == currentUserId {
                     return false
                 }
                 return true
@@ -124,6 +148,7 @@ class FirebaseUtils
         }
         
     }
+
     
     static func setConnecttedRef() {
         

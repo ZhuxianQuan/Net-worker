@@ -53,13 +53,15 @@ class ChatViewController: BaseChatViewController {
     
     var isLoading = false
     
+    var onlineHandle: UInt = 0
+    var messageHandle: UInt = 0
+    
     var pendingMessages = [DemoMessageModelProtocol]()
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
          self.title = "Messages"
-        if deal.deal_worker.user_id != 0 {
             messageSender.roomName = currentRoom
             self.chatDataSource = dataSource
             dataSource.roomName = currentRoom
@@ -68,7 +70,8 @@ class ChatViewController: BaseChatViewController {
             
             self.navigationItem.rightBarButtonItem = addIncomingMessageButton
             //let cancelButton =
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(gotoJobDetailPage))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_back"), style: .done, target: self, action: #selector(backButtonTapped))
+                //UIBarButtonItem(title: "back", style: .done, target: self, action: #selector(backButtonTapped))
            
             loadFirstMesssages()
             setMessageListener()
@@ -88,8 +91,11 @@ class ChatViewController: BaseChatViewController {
                 })
                 
             }
-        }
         
+    }
+    
+    func backButtonTapped() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     func loadFirstMesssages() {
@@ -111,9 +117,33 @@ class ChatViewController: BaseChatViewController {
     }
     
     
+    func loadPrevMesssages() {
+        isLoading = true
+        FirebaseUtils.readChatOnce(roomId: currentRoom, timestamp: Int64((chatDataSource?.chatItems[0] as! DemoMessageModelProtocol).date.timeIntervalSince1970 * 1000 - 1)) { (resultMessage, messages) in
+            self.hideLoadingView()
+            self.isLoading = false
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Loading Completed"), object: nil)
+            if resultMessage == "success" {
+                if messages.count < 20 {
+                    self.allLoaded = true
+                }
+                self.dataSource.loadPrevMessages(messages)
+            }
+            else {
+                self.showToastWithDuration(string: resultMessage, duration: 3.0)
+            }
+        }
+    }
+    
     func setMessageListener() {
-        FirebaseUtils.setObserver(roomId: currentRoom)
+        messageHandle = FirebaseUtils.setRoomObserver(roomId: currentRoom)
+        onlineHandle = FirebaseUtils.setOnlineRef(userId: "\(other.user_id)")
         
+    }
+    
+    deinit {
+        FirebaseUtils.removeMessageHandler(messageHandle, roomId: currentRoom)
+        FirebaseUtils.removeOnlineRef(onlineHandle, userId: "\(other.user_id)")
     }
     
     var chatInputPresenter: BasicChatInputBarPresenter!
@@ -204,12 +234,12 @@ class ChatViewController: BaseChatViewController {
         }
         pendingMessages = []
     }
-    /*
+    
     override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if (indexPath.row == 0 && !allLoaded) && !self.isLoading{
             loadPrevMesssages()
         }
-    }*/
+    }
     
 }
 
