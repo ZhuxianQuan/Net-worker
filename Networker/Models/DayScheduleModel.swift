@@ -31,7 +31,7 @@ class DayScheduleModel {
             var events = [EventSchedule]()
             let eventItems = notes.components(separatedBy: EVENT_DELIMITER)
             for item in eventItems {
-                if item.characters.count > 2 {
+                if item.count > 2 {
                     events.append(EventSchedule(notes: item, day: day))
                 }
             }
@@ -120,7 +120,7 @@ class DayScheduleModel {
     func setNotesString(_ events: [EventSchedule]) {
         var notesString = ""
         for event in events {
-            if notesString.characters.count == 0 {
+            if notesString.count == 0 {
                 notesString = event.total_notes
             }
             else {

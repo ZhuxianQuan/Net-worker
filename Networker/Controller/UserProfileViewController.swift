@@ -69,7 +69,7 @@ class UserProfileViewController: BaseViewController {
     @IBAction func reviewsButtonTapped(_ sender: Any) {
         self.showLoadingView()
         ApiFunctions.getWorkerReviews(deal.deal_worker.user_id, completion: {
-            message, ratings, skill_marks in
+            message,avg_marks, ratings, skill_marks in
             self.hideLoadingView()
             if message == Constants.PROCESS_SUCCESS {
                 let reviewVC = self.storyboard?.instantiateViewController(withIdentifier: "ReviewsViewController") as! ReviewsViewController

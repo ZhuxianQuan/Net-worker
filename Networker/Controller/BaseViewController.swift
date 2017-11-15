@@ -37,11 +37,12 @@ class BaseViewController: UIViewController{
 
     override func viewWillAppear(_ animated : Bool) {
         if self.navigationController != nil {
+            self.navigationController?.isNavigationBarHidden = true
             if (self.navigationController?.viewControllers.count)! > 1 {
                 btnback.isHidden = false
             }
             else {
-                 btnback.isHidden = true
+                btnback.isHidden = true
             }
         }
     }
@@ -56,6 +57,7 @@ class BaseViewController: UIViewController{
         let window = UIApplication.shared.keyWindow
         let storyboard = getStoryboard(id: Constants.STORYBOARD_MAIN)
         FirebaseUtils.setConnecttedRef()
+        FirebaseUtils.setContactRef()
 
         let mainTab = storyboard.instantiateViewController(withIdentifier: "KYDrawerController")
         window?.rootViewController = mainTab

@@ -26,6 +26,9 @@
 		0A3B87921E7FA8C200140D6C /* MatchedUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3B87911E7FA8C200140D6C /* MatchedUserTableViewCell.swift */; };
 		0A3B87941E7FCDB500140D6C /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3B87931E7FCDB500140D6C /* FloatRatingView.swift */; };
 		0A3B87961E7FCDD400140D6C /* RatingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3B87951E7FCDD400140D6C /* RatingModel.swift */; };
+		0A3C3EB81FBC36C100A90C51 /* ConfrimJobViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C3EB71FBC36C100A90C51 /* ConfrimJobViewController.swift */; };
+		0A3C3EBA1FBC40E100A90C51 /* ClientProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C3EB91FBC40E100A90C51 /* ClientProfileViewController.swift */; };
+		0A3C3EBC1FBC69FF00A90C51 /* WorkerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3C3EBB1FBC69FF00A90C51 /* WorkerViewController.swift */; };
 		0A3EEBB21E7A43B70009706B /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3EEBB11E7A43B70009706B /* ScheduleViewController.swift */; };
 		0A3EEBB41E7A43D30009706B /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3EEBB31E7A43D30009706B /* FavoriteViewController.swift */; };
 		0A3EEBB61E7A44140009706B /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3EEBB51E7A44140009706B /* ChatViewController.swift */; };
@@ -161,6 +164,9 @@
 		0A3B87911E7FA8C200140D6C /* MatchedUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchedUserTableViewCell.swift; sourceTree = "<group>"; };
 		0A3B87931E7FCDB500140D6C /* FloatRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRatingView.swift; sourceTree = "<group>"; };
 		0A3B87951E7FCDD400140D6C /* RatingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatingModel.swift; sourceTree = "<group>"; };
+		0A3C3EB71FBC36C100A90C51 /* ConfrimJobViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfrimJobViewController.swift; sourceTree = "<group>"; };
+		0A3C3EB91FBC40E100A90C51 /* ClientProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientProfileViewController.swift; sourceTree = "<group>"; };
+		0A3C3EBB1FBC69FF00A90C51 /* WorkerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerViewController.swift; sourceTree = "<group>"; };
 		0A3EEBB11E7A43B70009706B /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		0A3EEBB31E7A43D30009706B /* FavoriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		0A3EEBB51E7A44140009706B /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -515,6 +521,9 @@
 				0ADEBE981F97F90A00DC8E23 /* Message */,
 				0A3EEBB51E7A44140009706B /* ChatViewController.swift */,
 				0ADEBEC11F97FF7500DC8E23 /* ChatListViewController.swift */,
+				0A3C3EB71FBC36C100A90C51 /* ConfrimJobViewController.swift */,
+				0A3C3EB91FBC40E100A90C51 /* ClientProfileViewController.swift */,
+				0A3C3EBB1FBC69FF00A90C51 /* WorkerViewController.swift */,
 			);
 			name = Messaging;
 			sourceTree = "<group>";
@@ -924,9 +933,11 @@
 				E177DAD81F56C2B200DE1518 /* M13CheckboxGestureRecognizer.swift in Sources */,
 				E1FF626A1F5A593800C84EDB /* FSCalendarScopeHandle.m in Sources */,
 				0AA79E691E874D0D0020DE8B /* UserProfileViewController.swift in Sources */,
+				0A3C3EBA1FBC40E100A90C51 /* ClientProfileViewController.swift in Sources */,
 				0A6897A91E7E1CFA000226B9 /* FMDBManager+Data.swift in Sources */,
 				0ADEBEC01F97F90A00DC8E23 /* TimeSeparatorPresenter.swift in Sources */,
 				0A405B211E7687F6005C2618 /* SkillsViewController.swift in Sources */,
+				0A3C3EBC1FBC69FF00A90C51 /* WorkerViewController.swift in Sources */,
 				0A3B878C1E7F9B8D00140D6C /* SearchMenuTableViewCell.swift in Sources */,
 				0ADEBEBF1F97F90A00DC8E23 /* TimeSeparatorModel.swift in Sources */,
 				E17749C91F4D2F12005531D1 /* UINavigationController+Extension.swift in Sources */,
@@ -1009,6 +1020,7 @@
 				E177DAD41F56C2B200DE1518 /* M13Checkbox+IB.swift in Sources */,
 				E145959D1F4EC41400EA72E6 /* AddScheduleViewController.swift in Sources */,
 				0A59DBBF1E7CCE550077A5F6 /* FirebaseStorageUtils.swift in Sources */,
+				0A3C3EB81FBC36C100A90C51 /* ConfrimJobViewController.swift in Sources */,
 				E177DADC1F56C2B200DE1518 /* M13CheckboxFadeController.swift in Sources */,
 				E14595A31F4ED66D00EA72E6 /* DateUtils.swift in Sources */,
 				E1FF62671F5A593800C84EDB /* FSCalendarDelegationProxy.m in Sources */,

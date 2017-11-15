@@ -57,7 +57,7 @@ class SelectTimeViewController: BaseViewController {
         
         self.view.endEditing(true)
         if startDay != 0 && endDay != 0 {
-            if notesTextView.text.characters.count > 0 {
+            if notesTextView.text.count > 0 {
                 deal.deal_startday = startDay
                 deal.deal_endday = endDay
                 deal.deal_starttime = startTime

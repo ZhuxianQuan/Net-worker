@@ -119,13 +119,13 @@ class LoginViewController: BaseViewController {
     func checkValid() -> String {
     
         var result = Constants.PROCESS_SUCCESS
-        if txtEmail.text!.characters.count == 0{
+        if txtEmail.text!.count == 0{
             result = Constants.CHECK_EMAIL_EMPTY
         }
         else if !CommonUtils.isValidEmail(txtEmail.text!) {
             result = Constants.CHECK_EMAIL_INVALID
         }
-        else if txtPassword.text?.characters.count == 0{
+        else if txtPassword.text?.count == 0{
             result = Constants.CHECK_PASSWORD_EMPTY
         }
         return result

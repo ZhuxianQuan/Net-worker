@@ -84,10 +84,7 @@ class HomeViewController: BaseViewController {
     }
     
     func arrangeFriends() {
-        
-        var index = 0
         for worker in nearMeWorkers{
-            index += 1
             let info = StarbuckAnnotation(coordinate: CLLocationCoordinate2D(latitude: worker.user_latitude, longitude: worker.user_longitude))
             info.user = worker
             

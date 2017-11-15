@@ -43,6 +43,9 @@ class BaseMessageHandler {
 
     func userDidTapOnAvatar(viewModel: MessageViewModelProtocol) {
         print("userDidTapOnAvatar")
+        if viewModel.isIncoming {
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AvartarTapped"), object: nil)
+        }
     }
 
     func userDidTapOnBubble(viewModel: DemoMessageViewModelProtocol) {

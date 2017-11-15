@@ -29,13 +29,13 @@ class UserModel {
     var user_skill_array : [SkillModel] {
         get {
             var skills = [SkillModel]()
-            if user_skills.characters.count == 0 {
+            if user_skills.count == 0 {
                 return []
             }
             else {
                 let skillStrings = user_skills.components(separatedBy: ",")
                 for skillString in skillStrings {
-                    if skillString.characters.count > 0 {
+                    if skillString.count > 0 {
                         let skill = getSkillFrom(skillString)
                         if skill != nil {
                             skills.append(skill!)

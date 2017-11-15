@@ -24,7 +24,7 @@ class SkillModel{
         get {
             var result = ""
             for tag in skill_tags{
-                if result.characters.count == 0 {
+                if result.count == 0 {
                     result = "#" + tag.tag_string
                 }
                 else {

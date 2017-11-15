@@ -125,7 +125,7 @@ class FMDBManagerGetData{
     
     func getSkills(_ keywords: String? = nil) -> [SkillModel]{
         var result = [SkillModel]()
-        if keywords == nil || keywords?.characters.count == 0{
+        if keywords == nil || keywords?.count == 0{
             let query = "select * from tbl_skill"
             let localModels = LocalDataModels()
             let results = fmdbManager.getDataFromFMDB(with: query, tableObject: localModels.getKeys(localModels.TBL_SKILL))
@@ -146,8 +146,8 @@ class FMDBManagerGetData{
             var tagString = ""
             
             for keyword in keywordArray! {
-                if keyword.characters.count > 0 {
-                    if skilltitleString.characters.count == 0 {
+                if keyword.count > 0 {
+                    if skilltitleString.count == 0 {
                         skilltitleString.append(" skill_title like '%\(keywords!)%' ")
                         categoryString.append(" category_name like '%\(keywords!)%' ")
                         tagString.append(" tag_string like '%\(keywords!)%' ")

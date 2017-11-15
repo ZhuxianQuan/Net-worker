@@ -61,40 +61,124 @@ class ChatViewController: BaseChatViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-         self.title = "Messages"
-            messageSender.roomName = currentRoom
-            self.chatDataSource = dataSource
-            dataSource.roomName = currentRoom
-            super.chatItemsDecorator = ChatItemsDemoDecorator()
-            let addIncomingMessageButton = UIBarButtonItem(title: "Confirm", style: .done, target: self, action: #selector(gotoJobDetailPage))
-            
-            self.navigationItem.rightBarButtonItem = addIncomingMessageButton
+        self.title = "Messages"
+        messageSender.roomName = currentRoom
+        self.chatDataSource = dataSource
+        dataSource.roomName = currentRoom
+        super.chatItemsDecorator = ChatItemsDemoDecorator()
+        
+        setNavRightButton()
             //let cancelButton =
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_back"), style: .done, target: self, action: #selector(backButtonTapped))
                 //UIBarButtonItem(title: "back", style: .done, target: self, action: #selector(backButtonTapped))
            
-            loadFirstMesssages()
-            setMessageListener()
-            NotificationCenter.default.addObserver(self, selector: #selector(gotMessage(_:)), name: NSNotification.Name(rawValue: "Message Received"), object: nil)
-            NotificationCenter.default.addObserver(self, selector: #selector(processPendingMessages), name: NSNotification.Name(rawValue: "Loading Completed"), object: nil)
+        loadFirstMesssages()
+        setMessageListener()
+        NotificationCenter.default.addObserver(self, selector: #selector(gotMessage(_:)), name: NSNotification.Name(rawValue: "Message Received"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(processPendingMessages), name: NSNotification.Name(rawValue: "Loading Completed"), object: nil)
+        
+        let otherImageView = UIImageView()
+        self.view.addSubview(otherImageView)
+        let myImageView = UIImageView()
+        self.view.addSubview(myImageView)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(gotoOthersProfile), name: NSNotification.Name(rawValue: "AvartarTapped"), object: nil)
+        if let user = currentUser {
+            otherImageView.sd_setImage(with: URL(string: other.user_profileimageurl), completed: { (image, error, _, _) in
+                ChatViewController.otherImage = image
+            })
+            myImageView.sd_setImage(with: URL(string: user.user_profileimageurl), completed: { (image, error, _, _) in
+                ChatViewController.myImage = image
+            })
             
-            let otherImageView = UIImageView()
-            self.view.addSubview(otherImageView)
-            let myImageView = UIImageView()
-            self.view.addSubview(myImageView)
-            if let user = currentUser {
-                otherImageView.sd_setImage(with: URL(string: other.user_profileimageurl), completed: { (image, error, _, _) in
-                    ChatViewController.otherImage = image
+        }
+        
+    }
+    
+    func gotoOthersProfile() {
+        if deal.deal_client.user_id == other.user_id {
+            if other.user_ratings.count == 0 {
+                
+                self.showLoadingView()
+                
+                ApiFunctions.getClientReviews(other.user_id, completion: { (message, avg_marks, ratings) in
+                    self.hideLoadingView()
+                    self.deal.deal_client.user_avgmarks = avg_marks
+                    self.deal.deal_client.user_ratings = ratings
+                    let userDetailVC = BaseViewController().getStoryboard(id: 6).instantiateViewController(withIdentifier: "ClientProfileViewController") as! ClientProfileViewController
+                    userDetailVC.deal = self.deal
+                    self.navigationController?.pushViewController(userDetailVC, animated: true)
                 })
-                myImageView.sd_setImage(with: URL(string: user.user_profileimageurl), completed: { (image, error, _, _) in
-                    ChatViewController.myImage = image
-                })
+            }
+            else {
+                
+                let userDetailVC = BaseViewController().getStoryboard(id: 6).instantiateViewController(withIdentifier: "ClientProfileViewController") as! ClientProfileViewController
+                userDetailVC.deal = deal
+                self.navigationController?.pushViewController(userDetailVC, animated: true)
                 
             }
+            
+        }
+        else {
+            if other.user_ratings.count == 0 {
+                self.showLoadingView()
+                ApiFunctions.getWorkerReviews(other.user_id , completion: { (message, avg_marks, reviews, skill_marks) in
+                    self.hideLoadingView()
+                    for skill in self.deal.deal_worker.user_skill_array {
+                        if let skill_mark = skill_marks[skill.skill_id] {
+                            skill.skill_ratings = skill_mark
+                        }
+                    }
+                    self.deal.deal_worker.user_ratings = reviews
+                    self.deal.deal_worker.user_avgmarks = avg_marks
+                    
+                    let userDetailVC = BaseViewController().getStoryboard(id: 6).instantiateViewController(withIdentifier: "WorkerViewController") as! WorkerViewController
+                    userDetailVC.deal = self.deal
+                    self.navigationController?.pushViewController(userDetailVC, animated: true)
+                })
+            }
+            else {
+                let userDetailVC = BaseViewController().getStoryboard(id: 6).instantiateViewController(withIdentifier: "WorkerViewController") as! WorkerViewController
+                userDetailVC.deal = self.deal
+                self.navigationController?.pushViewController(userDetailVC, animated: true)
+            }
+        }
+    }
+    
+    func setNavRightButton() {
+        
+        var addIncomingMessageButton = UIBarButtonItem()
+        switch deal.deal_status {
+        case 1:
+            if deal.deal_client.user_id == currentUser?.user_id {
+                addIncomingMessageButton = UIBarButtonItem(title: "Confirm", style: .done, target: self, action: #selector(gotoJobDetailPage))
+                self.navigationItem.rightBarButtonItem = addIncomingMessageButton
+            }
+            else {
+                addIncomingMessageButton = UIBarButtonItem(title: "Confirm", style: .done, target: self, action: #selector(gotoJobDetailPage))
+            }
+        case 2:
+            addIncomingMessageButton = UIBarButtonItem(title: "Confirm", style: .done, target: self, action: #selector(gotoJobDetailPage))
+        case 3:
+            addIncomingMessageButton = UIBarButtonItem(title: "Confirm", style: .done, target: self, action: #selector(gotoJobDetailPage))
+            break
+        default:
+            addIncomingMessageButton = UIBarButtonItem(title: "Confirm", style: .done, target: self, action: #selector(gotoJobDetailPage))
+            break
+        }
+        
         
     }
     
     func backButtonTapped() {
+        if self.tabBarController?.selectedIndex == 0 {
+            self.navigationController?.popToRootViewController(animated: true)
+            self.navigationController?.isNavigationBarHidden = true
+        }
+        else {
+            self.navigationController?.popViewController(animated: true)
+            self.navigationController?.isNavigationBarHidden = true
+        }
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -165,6 +249,9 @@ class ChatViewController: BaseChatViewController {
         self.navigationController?.isNavigationBarHidden = false
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
+    }
     
     override func createPresenterBuilders() -> [ChatItemType: [ChatItemPresenterBuilderProtocol]] {
         

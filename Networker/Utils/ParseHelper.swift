@@ -28,7 +28,7 @@ class ParseHelper {
         user.user_available = rawData[Constants.KEY_USER_AVAILABLE].nonNullIntValue
         user.user_latitude = rawData[Constants.KEY_USER_LATITUDE].nonNullDoubleValue
         user.user_longitude = rawData[Constants.KEY_USER_LONGITUDE].nonNullDoubleValue
-        user.user_rangedistance = rawData[Constants.KEY_USER_RANGEDISTANCE].nonNullDoubleValue
+        //user.user_rangedistance = rawData[Constants.KEY_USER_RANGEDISTANCE].nonNullDoubleValue
         user.user_avgmarks = rawData[Constants.KEY_USER_AVGRATING].nonNullFloatValue
         return user
     }

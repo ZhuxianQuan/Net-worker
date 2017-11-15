@@ -12,9 +12,9 @@ import SwiftyJSON
 
 class ApiFunctions{    
     
-    //static let SERVER_BASE_URL          = "http://35.167.68.193"
+    static let SERVER_BASE_URL          = "http://35.167.68.193"
     
-    static let SERVER_BASE_URL          = "http://192.168.1.120/NetWorker"
+    //static let SERVER_BASE_URL          = "http://192.168.1.120/NetWorker"
     static let SERVER_URL                = SERVER_BASE_URL + "/index.php/Api/"
     
     static let REQ_GET_ALLSKILLS        = SERVER_URL + "getSkills"
@@ -60,6 +60,8 @@ class ApiFunctions{
                     for scheduleObject in json[Constants.KEY_USER_SCHEDULES].arrayValue {
                         currentUser?.user_schedules.append(ParseHelper.parseSchedule(scheduleObject))
                     }
+                    
+                    UIApplication.shared.applicationIconBadgeNumber = 0
                     for dealObject in json["jobs"].arrayValue {
                         if dealObject["isclient"].intValue == 1 {
                             pendingMyDeals.append(ParseHelper.parseDeal(dealObject))
@@ -207,7 +209,7 @@ class ApiFunctions{
     static func getNameMatchedUsers(keyword: String, from preDefinedUsers: [UserModel], completion : @escaping (String, [UserModel]) -> ()){
         
         var users : [UserModel] = []
-        if keyword.characters.count > 0{
+        if keyword.count > 0{
             for user in preDefinedUsers {
                 if(user.user_firstname + " " + user.user_lastname).lowercased().contains(keyword.lowercased()){
                     users.append(user)
@@ -240,7 +242,7 @@ class ApiFunctions{
                             let message = json[Constants.RES_MESSAGE].stringValue
                             if message == Constants.PROCESS_SUCCESS {
                                 let imageurl = json[Constants.KEY_IMAGEURL].stringValue
-                                CommonUtils.saveImageToLocal(name, data: imageData)
+                                //CommonUtils.saveImageToLocal(name, data: imageData)
                                 completion(message, imageurl)
                             }
                             else {
@@ -318,22 +320,6 @@ class ApiFunctions{
             }
         }
     }
-    /*
-    static func saveUserSchedule(_ schedule: DayScheduleModel, completion: @escaping (String, DayScheduleModel?) -> ()) {
-        Alamofire.request(REQ_SAVESCHEDULE, method: .post, parameters: schedule.getObject()).responseJSON { response in
-            if response.result.isFailure{
-                completion(Constants.CHECK_NETWORK_ERROR, nil)
-            }
-            else
-            {
-                let json = JSON(response.result.value!)
-                let message = json[Constants.RES_MESSAGE].stringValue
-                schedule.schedule_id = json[Constants.KEY_SCHEDULE_ID].nonNullIntValue
-                completion(message, schedule)
-            }
-        }
-        
-    }*/
     
     static func saveChangedUserSchedule(_ schedules: [DayScheduleModel], completion: @escaping (String) -> ()) {
         var scheduleArray = [String: AnyObject]()
@@ -453,11 +439,11 @@ class ApiFunctions{
         }
     }
     
-    static func getWorkerReviews(_ userId: Int64, completion: @escaping (String, [RatingModel], [Int: Float]) -> ())
+    static func getWorkerReviews(_ userId: Int64, completion: @escaping (String, Float,  [RatingModel], [Int: Float]) -> ())
     {
         Alamofire.request(REQ_GETWORKERREVIEWS, method: .post, parameters: [Constants.KEY_USER_ID : userId]).responseJSON { response in
             if response.result.isFailure{
-                completion(Constants.CHECK_NETWORK_ERROR, [], [:])
+                completion(Constants.CHECK_NETWORK_ERROR, 0, [], [:])
             }
             else
             {
@@ -478,15 +464,15 @@ class ApiFunctions{
                         skill_marks[Int(key)!] = Float(objects[key]!)!
                     }
                 }
-                completion(message, ratings, skill_marks)
+                completion(message, json["avg_marks"].floatValue, ratings, skill_marks)
             }
         }
     }
-    static func getClientReviews(_ userId: Int64, completion: @escaping (String, [RatingModel]) -> ())
+    static func getClientReviews(_ userId: Int64, completion: @escaping (String, Float, [RatingModel]) -> ())
     {
         Alamofire.request(REQ_GETCLIENTREVIEWS, method: .post, parameters: [Constants.KEY_USER_ID : userId]).responseJSON { response in
             if response.result.isFailure{
-                completion(Constants.CHECK_NETWORK_ERROR, [])
+                completion(Constants.CHECK_NETWORK_ERROR,0, [])
             }
             else
             {
@@ -497,7 +483,8 @@ class ApiFunctions{
                 for object in userObjects {
                     ratings.append(ParseHelper.parseRating(object))
                 }
-                completion(message, ratings)
+                
+                completion(message, json[Constants.KEY_USER_AVGRATING].floatValue, ratings)
             }
         }
     }

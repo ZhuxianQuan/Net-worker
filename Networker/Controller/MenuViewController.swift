@@ -37,8 +37,7 @@ class MenuViewController: BaseViewController {
     
     func setUserInfo() {
         nameLabel.text = currentUser?.user_firstname
-        profileImageView.setImageWith((currentUser?.user_profileimageurl)!, placeholderImage: UIImage(named: "icon_profile")!)
-        floatRatingView.rating = currentUser!.user_avgmarks
+        profileImageView.sd_setImage(with: URL(string: currentUser!.user_profileimageurl), placeholderImage: #imageLiteral(resourceName: "icon_profile"))
         
     }
     

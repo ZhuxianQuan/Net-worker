@@ -14,7 +14,7 @@ class UnderlinedLabel: UILabel {
     override var text: String? {
         didSet {
             guard let text = text else { return }
-            let textRange = NSMakeRange(0, text.characters.count)
+            let textRange = NSMakeRange(0, text.count)
             let attributedText = NSMutableAttributedString(string: text)
             attributedText.addAttribute(NSUnderlineStyleAttributeName , value: NSUnderlineStyle.styleSingle.rawValue, range: textRange)
             // Add other attributes if needed
@@ -26,7 +26,7 @@ class UnderlinedLabel: UILabel {
 extension UILabel {
     func underlineText(){
         guard let text = text else { return }
-        let textRange = NSMakeRange(0, text.characters.count)
+        let textRange = NSMakeRange(0, text.count)
         let attributedText = NSMutableAttributedString(string: text)
         attributedText.addAttribute(NSUnderlineStyleAttributeName , value: NSUnderlineStyle.styleSingle.rawValue, range: textRange)
         // Add other attributes if needed
@@ -40,39 +40,6 @@ extension UIImageView{
     {        
         image = image?.withRenderingMode(.alwaysTemplate)
         tintColor = color
-    }
-    
-    func setImageWith(_ urlString : String, placeholderImage: UIImage) {
-        self.image = placeholderImage
-        if urlString.characters.count > 0 {
-            let localUrl = CommonUtils.getSavedFileUrl(urlString)
-            if localUrl == nil {
-                image = placeholderImage
-                ApiFunctions.downloadFile(urlString: urlString) { (message, url) in
-                    if message == Constants.PROCESS_SUCCESS {
-                        do
-                        {
-                            let imageData = try Data(contentsOf: CommonUtils.getSavedFileUrl(urlString)!)
-                            self.image = UIImage(data: imageData)
-                        }
-                        catch {
-                            self.image = placeholderImage
-                        }
-                    }
-                }
-            }
-            else {
-                do
-                {
-                    let imageData = try Data(contentsOf: localUrl!)
-                    self.image = UIImage(data: imageData)
-                }
-                catch {
-                    self.image = placeholderImage
-                }
-            }
-
-        }
     }
 }
 

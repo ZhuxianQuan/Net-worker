@@ -16,6 +16,7 @@ import FirebaseAuth
 import CoreLocation
 import FBSDKCoreKit
 import LinkedinSwift
+import KYDrawerController
 
 
 @UIApplicationMain
@@ -65,7 +66,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
-        //locationManager.requestWhenInUseAuthorization()
         updateTimer()
         locationManager.startUpdatingLocation()
         
@@ -96,7 +96,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
     {
         locationManager.startUpdatingLocation()        
         locationManager.requestAlwaysAuthorization()
-        
     }
     /*
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -189,9 +188,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         
         
         let alertObject = userInfo["aps"] as! [String: AnyObject]
-        let alertString = alertObject["alert"]!["body"] as! String
-        let title = alertObject["alert"]!["title"] as! String
-        processMessage(title: title, message: alertString)
+        if let alertObject = alertObject["alert"] {
+            if let alertString = alertObject["body"], let title = alertObject["title"]{
+                processMessage(title: title as? String, message: alertString as! String)
+            }
+        }
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
@@ -206,9 +207,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
         NSLog("\(userInfo)")
         
         let alertObject = userInfo["aps"] as! [String: AnyObject]
-        let alertString = alertObject["alert"] as! String
-        let title = alertObject["title"] as! String
-        processMessage(title: title, message: alertString)
+        if let alertObject = alertObject["alert"] {
+            if let alertString = alertObject["body"], let title = alertObject["title"]{
+                processMessage(title: title as? String, message: alertString as! String)
+            }
+        }
         
         // Print full message.
     }
@@ -256,10 +259,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,CLLocationManagerDelegate 
                             if deal.deal_status == Constants.REQUEST_STATUS_PENDING {
                                 let chatVC = BaseViewController().getStoryboard(id: Constants.STORYBOARD_CHATTING).instantiateViewController(withIdentifier: "ChatViewController") as! ChatViewController
                                 chatVC.deal = deal
-                                if rvc.isKind(of: UITabBarController.self) {
-                                    let tabbarVC =  rvc as! UITabBarController
+                                if rvc.isKind(of: KYDrawerController.self) {
+                                    let tabbarVC =  (rvc as! KYDrawerController).mainViewController as! UITabBarController
                                     
-                                    let navVC = (tabbarVC.viewControllers![tabbarVC.selectedIndex] as! UINavigationController).pushViewController(chatVC, animated: true)
+                                    (tabbarVC.viewControllers![tabbarVC.selectedIndex] as! UINavigationController).pushViewController(chatVC, animated: true)
                                     
                                 }
                             }
@@ -319,9 +322,11 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         print("%@", userInfo)
         let alertObject = userInfo["aps"] as! [String: AnyObject]
         
-        let alertString = alertObject["alert"]!["body"] as! String
-        let title = alertObject["alert"]!["title"] as! String
-        processMessage(title: title, message: alertString)
+        if let alertObject = alertObject["alert"] {
+            if let alertString = alertObject["body"], let title = alertObject["title"]{
+                processMessage(title: title as? String, message: alertString as! String)
+            }
+        }
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {

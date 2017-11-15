@@ -179,19 +179,19 @@ class RegisterViewController: BaseViewController {
         user.user_postcode = postcode.text!
         user.user_birthday = birthday.text!
         user.user_aboutme = aboutMe.text!
-        if user.user_firstname.characters.count == 0 {
+        if user.user_firstname.count == 0 {
             return Constants.CHECK_FIRSTNAME_EMPTY
         }
-        if user.user_lastname.characters.count == 0 {
+        if user.user_lastname.count == 0 {
             return Constants.CHECK_LASTNAME_EMPTY
         }
-        if user.user_email.characters.count == 0 {
+        if user.user_email.count == 0 {
             return Constants.CHECK_EMAIL_EMPTY
         }
         if !CommonUtils.isValidEmail(user.user_email) {
             return Constants.CHECK_EMAIL_INVALID
         }
-        if user.user_birthday.characters.count == 0 {
+        if user.user_birthday.count == 0 {
             return Constants.CHECK_BIRTHDAY_EMPTY
         }
         

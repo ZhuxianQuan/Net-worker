@@ -78,7 +78,10 @@ class FirebaseUtils
                 
             }
             else {
-                
+                let object = snapshot.value as! NSDictionary
+                if (object.value(forKey: "senderId") as! String) != "\(currentUser!.user_id)" {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "Got Message") , object: object, userInfo: nil)
+                }
             }
         }
     }
@@ -147,6 +150,10 @@ class FirebaseUtils
             return message
         }
         
+    }
+    
+    static func removeAllRef() {
+        ref.removeAllObservers()
     }
 
     

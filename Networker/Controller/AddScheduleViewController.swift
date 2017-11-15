@@ -50,7 +50,7 @@ class AddScheduleViewController: BaseViewController {
         
         self.view.endEditing(true)
         if startDay != 0 && endDay != 0 {
-            if notesTextView.text.characters.count > 0 {
+            if notesTextView.text.count > 0 {
                 let events = EventSchedule.createEventsFrom(startDay: startDay, endDay: endDay, startTime: startTime, endTime: endTime, notes: notesTextView.text)
                 
                 self.showLoadingView()

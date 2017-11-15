@@ -59,7 +59,7 @@ class ProfileViewController: BaseViewController {
     
     
     func setUserDetail() {
-        imvProfile.setImageWith((currentUser?.user_profileimageurl)!, placeholderImage: #imageLiteral(resourceName: "icon_profile"))
+        imvProfile.sd_setImage(with: URL(string: currentUser!.user_profileimageurl), placeholderImage: #imageLiteral(resourceName: "icon_profile"))
         firstName.text = user.user_firstname
         lastName.text = user.user_lastname
         email.text = user.user_email
@@ -169,7 +169,7 @@ class ProfileViewController: BaseViewController {
                 }
                 var addressString = ""
                 for item in (address as! [String]) {
-                    if addressString.characters.count == 0 {
+                    if addressString.count == 0 {
                         addressString = item
                     }
                     else {
@@ -246,19 +246,19 @@ class ProfileViewController: BaseViewController {
         user.user_postcode = postcode.text!
         user.user_birthday = birthday.text!
         user.user_aboutme = aboutMe.text!
-        if user.user_firstname.characters.count == 0 {
+        if user.user_firstname.count == 0 {
             return Constants.CHECK_FIRSTNAME_EMPTY
         }
-        if user.user_lastname.characters.count == 0 {
+        if user.user_lastname.count == 0 {
             return Constants.CHECK_LASTNAME_EMPTY
         }
-        if user.user_email.characters.count == 0 {
+        if user.user_email.count == 0 {
             return Constants.CHECK_EMAIL_EMPTY
         }
         if !CommonUtils.isValidEmail(user.user_email) {
             return Constants.CHECK_EMAIL_INVALID
         }
-        if user.user_birthday.characters.count == 0 {
+        if user.user_birthday.count == 0 {
             return Constants.CHECK_BIRTHDAY_EMPTY
         }
         
@@ -362,7 +362,8 @@ extension ProfileViewController {
             options: options,
             animations: {
                 if isShowing && self.headerViewHeightConstraint.constant == 0{
-                    if (self.screenSize.height - heightOffset - 500) < 0 {                    self.view.frame.origin.y = (self.screenSize.height - heightOffset - 500)
+                    if (self.screenSize.height - heightOffset - 500) < 0 {
+                        self.view.frame.origin.y = (self.screenSize.height - heightOffset - 500)
                     }
                 }
                 else
@@ -373,7 +374,7 @@ extension ProfileViewController {
         },
             completion: { bool in
                 if isShowing {
-                    self.view.frame.origin.y = 0
+                    //self.view.frame.origin.y = 0
                     if (self.screenSize.height - heightOffset - 500) < 0 {
                         self.headerViewHeightConstraint.constant = self.screenSize.height - heightOffset - 500
                     }
