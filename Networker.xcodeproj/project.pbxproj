@@ -120,7 +120,6 @@
 		E177DAE31F56C2B200DE1518 /* M13CheckboxDisclosurePathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E177DAD11F56C2B200DE1518 /* M13CheckboxDisclosurePathGenerator.swift */; };
 		E177DAE41F56C2B200DE1518 /* M13CheckboxPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E177DAD21F56C2B200DE1518 /* M13CheckboxPathGenerator.swift */; };
 		E177DAE51F56C2B200DE1518 /* M13CheckboxRadioPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E177DAD31F56C2B200DE1518 /* M13CheckboxRadioPathGenerator.swift */; };
-		E181A2A11EED137700148484 /* SwiftyJSON+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181A2A01EED137700148484 /* SwiftyJSON+Extension.swift */; };
 		E1886DAA1F4B2CEE003E1D56 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1886DA91F4B2CEE003E1D56 /* GoogleService-Info.plist */; };
 		E1FF625E1F5A593800C84EDB /* FSCalendar+Deprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FF623D1F5A593700C84EDB /* FSCalendar+Deprecated.m */; };
 		E1FF625F1F5A593800C84EDB /* FSCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = E1FF623F1F5A593700C84EDB /* FSCalendar.m */; };
@@ -258,7 +257,6 @@
 		E177DAD11F56C2B200DE1518 /* M13CheckboxDisclosurePathGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxDisclosurePathGenerator.swift; sourceTree = "<group>"; };
 		E177DAD21F56C2B200DE1518 /* M13CheckboxPathGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxPathGenerator.swift; sourceTree = "<group>"; };
 		E177DAD31F56C2B200DE1518 /* M13CheckboxRadioPathGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxRadioPathGenerator.swift; sourceTree = "<group>"; };
-		E181A2A01EED137700148484 /* SwiftyJSON+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SwiftyJSON+Extension.swift"; sourceTree = "<group>"; };
 		E1886DA91F4B2CEE003E1D56 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E1FF623D1F5A593700C84EDB /* FSCalendar+Deprecated.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FSCalendar+Deprecated.m"; sourceTree = "<group>"; };
 		E1FF623E1F5A593700C84EDB /* FSCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSCalendar.h; sourceTree = "<group>"; };
@@ -562,7 +560,6 @@
 				0A53047F1E7609A400244C3D /* Constants.swift */,
 				0A6897AA1E7E1EFF000226B9 /* Singleton.swift */,
 				0A3B878D1E7F9DA400140D6C /* UIView+Extension.swift */,
-				E181A2A01EED137700148484 /* SwiftyJSON+Extension.swift */,
 				E14595A21F4ED66D00EA72E6 /* DateUtils.swift */,
 			);
 			name = Common;
@@ -941,7 +938,6 @@
 				0A3B878C1E7F9B8D00140D6C /* SearchMenuTableViewCell.swift in Sources */,
 				0ADEBEBF1F97F90A00DC8E23 /* TimeSeparatorModel.swift in Sources */,
 				E17749C91F4D2F12005531D1 /* UINavigationController+Extension.swift in Sources */,
-				E181A2A11EED137700148484 /* SwiftyJSON+Extension.swift in Sources */,
 				E177DAD71F56C2B200DE1518 /* M13CheckboxController.swift in Sources */,
 				0AD219041E7B4427001E7865 /* SkillsTableViewCell.swift in Sources */,
 				E1FF626B1F5A593800C84EDB /* FSCalendarStickyHeader.m in Sources */,

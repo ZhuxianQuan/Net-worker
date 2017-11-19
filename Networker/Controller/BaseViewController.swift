@@ -27,6 +27,22 @@ class BaseViewController: UIViewController{
             //drawerOpened = false
         }
         // Do any additional setup after loading the view.
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(gotMesssage), name: NSNotification.Name("Badge Count Changed"), object: nil)
+    }
+    
+    func gotMesssage() {
+        if let tabVC = self.tabBarController {
+            if let tabbarItems = tabVC.tabBar.items {
+                let badgetcount = UIApplication.shared.applicationIconBadgeNumber
+                if badgetcount > 0 {
+                    tabbarItems[4].badgeValue = "\(badgetcount)"
+                }
+                else {
+                    tabbarItems[4].badgeValue = nil
+                }
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {

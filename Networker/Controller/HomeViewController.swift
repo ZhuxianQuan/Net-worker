@@ -87,8 +87,6 @@ class HomeViewController: BaseViewController {
         for worker in nearMeWorkers{
             let info = StarbuckAnnotation(coordinate: CLLocationCoordinate2D(latitude: worker.user_latitude, longitude: worker.user_longitude))
             info.user = worker
-            
-            //NSLog(" user location  == \(worker.user_latitude)), \(worker.user_longitude)")
             info.title = worker.user_firstname + " " + worker.user_lastname
             //info.subtitle = friend.friend_user.user_currentLocationName
             mapView.addAnnotation(info)

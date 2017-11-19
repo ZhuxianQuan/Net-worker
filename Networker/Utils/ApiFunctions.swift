@@ -90,7 +90,7 @@ class ApiFunctions{
                 let json = JSON(response.result.value!)
                 let message = json[Constants.RES_MESSAGE].stringValue
                 if message == Constants.PROCESS_SUCCESS {
-                    user.user_id = json[Constants.KEY_USER_ID].nonNullInt64Value
+                    user.user_id = json[Constants.KEY_USER_ID].int64Value
                     currentUser = user
                     completion(Constants.PROCESS_SUCCESS)
                 }
@@ -159,7 +159,7 @@ class ApiFunctions{
             else
             {
                 var json = JSON(response.result.value!)
-                let message = json["message"].nonNullStringValue
+                let message = json["message"].stringValue
                 if message == Constants.PROCESS_SUCCESS {
                     json = json["result"]
                     fmdbManager.emptyTables()
@@ -193,9 +193,9 @@ class ApiFunctions{
             else
             {
                 var json = JSON(response.result.value!)
-                let message = json["message"].nonNullStringValue
+                let message = json["message"].stringValue
                 if message == Constants.PROCESS_SUCCESS {
-                    let skill_version = json["result"].nonNullIntValue
+                    let skill_version = json["result"].intValue
                     completion(Constants.PROCESS_SUCCESS, skill_version)
                 }
                 else {
@@ -343,7 +343,7 @@ class ApiFunctions{
                 else
                 {
                     let json = JSON(response.result.value!)
-                    let message = json[Constants.RES_MESSAGE].nonNullStringValue
+                    let message = json[Constants.RES_MESSAGE].stringValue
                     if message == Constants.PROCESS_SUCCESS {
                         var schedules = [DayScheduleModel]()
                         for scheduleObject in json[Constants.KEY_USER_SCHEDULES].arrayValue {

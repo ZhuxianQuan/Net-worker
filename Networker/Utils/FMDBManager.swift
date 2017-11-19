@@ -220,21 +220,21 @@ class FMDBManager{
     func getValue(value: JSON, type: String, key: String) -> Any {
         
         if (type.hasPrefix("VARCHAR") || type.hasPrefix("TEXT")){
-            return value[key].nonNullStringValue
+            return value[key].stringValue
         }
         else if(type.hasPrefix("TINYINT")){
-            return value[key].nonNullIntValue
+            return value[key].intValue
         }
         else if(type.hasPrefix("BIGINT")){
-            return value[key].nonNullInt64Value
+            return value[key].int64Value
         }
         else if(type.hasPrefix("INT"))
         {
-            return value[key].nonNullIntValue
+            return value[key].intValue
         }
         else if(type.hasPrefix("DOUBLE"))
         {
-            return value[key].nonNullDoubleValue
+            return value[key].doubleValue
         }
         return ""
     }

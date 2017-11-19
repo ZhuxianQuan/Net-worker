@@ -910,7 +910,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNs-IK-g1L">
-                                                    <rect key="frame" x="127" y="9" width="57.5" height="30.5"/>
+                                                    <rect key="frame" x="127" y="8" width="57.5" height="32.5"/>
                                                     <string key="text">Price
 ￡/hr</string>
                                                     <fontDescription key="fontDescription" name="NeueHelveticaBQ-Light" family="Neue Helvetica BQ" pointSize="13"/>

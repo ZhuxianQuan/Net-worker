@@ -374,7 +374,7 @@ extension ProfileViewController {
         },
             completion: { bool in
                 if isShowing {
-                    //self.view.frame.origin.y = 0
+                    self.view.frame.origin.y = 0
                     if (self.screenSize.height - heightOffset - 500) < 0 {
                         self.headerViewHeightConstraint.constant = self.screenSize.height - heightOffset - 500
                     }
