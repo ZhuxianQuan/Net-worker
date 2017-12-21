@@ -200,9 +200,7 @@ class DateUtils {
                 days.append(day)
             }
         }
-        
-        return days
-        
+        return days        
     }
     
     static func getNextMonth(date: Date) -> Date {
