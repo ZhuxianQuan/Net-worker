@@ -23,8 +23,6 @@ class DateUtils {
         return numDays
     }
     
-    
-    
     static func getMonthName(_ month: Int) -> String {
         var monthString = ""
         switch month {
