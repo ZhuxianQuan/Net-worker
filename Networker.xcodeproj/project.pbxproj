@@ -101,7 +101,6 @@
 		E14595A31F4ED66D00EA72E6 /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14595A21F4ED66D00EA72E6 /* DateUtils.swift */; };
 		E17749C51F4C1D14005531D1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17749C41F4C1D14005531D1 /* ProfileViewController.swift */; };
 		E17749C71F4D236A005531D1 /* MySkillsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17749C61F4D236A005531D1 /* MySkillsViewController.swift */; };
-		E17749C91F4D2F12005531D1 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17749C81F4D2F12005531D1 /* UINavigationController+Extension.swift */; };
 		E177DAD41F56C2B200DE1518 /* M13Checkbox+IB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E177DAC01F56C2B200DE1518 /* M13Checkbox+IB.swift */; };
 		E177DAD51F56C2B200DE1518 /* M13Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = E177DAC11F56C2B200DE1518 /* M13Checkbox.swift */; };
 		E177DAD61F56C2B200DE1518 /* M13CheckboxAnimationGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E177DAC21F56C2B200DE1518 /* M13CheckboxAnimationGenerator.swift */; };
@@ -238,7 +237,6 @@
 		E14595A21F4ED66D00EA72E6 /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		E17749C41F4C1D14005531D1 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E17749C61F4D236A005531D1 /* MySkillsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySkillsViewController.swift; sourceTree = "<group>"; };
-		E17749C81F4D2F12005531D1 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		E177DAC01F56C2B200DE1518 /* M13Checkbox+IB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "M13Checkbox+IB.swift"; sourceTree = "<group>"; };
 		E177DAC11F56C2B200DE1518 /* M13Checkbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13Checkbox.swift; sourceTree = "<group>"; };
 		E177DAC21F56C2B200DE1518 /* M13CheckboxAnimationGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxAnimationGenerator.swift; sourceTree = "<group>"; };
@@ -539,7 +537,6 @@
 			isa = PBXGroup;
 			children = (
 				0A8D425D1E8839C100B9B547 /* MenuViewController.swift */,
-				E17749C81F4D2F12005531D1 /* UINavigationController+Extension.swift */,
 			);
 			name = KYDrawer;
 			sourceTree = "<group>";
@@ -937,7 +934,6 @@
 				0A3C3EBC1FBC69FF00A90C51 /* WorkerViewController.swift in Sources */,
 				0A3B878C1E7F9B8D00140D6C /* SearchMenuTableViewCell.swift in Sources */,
 				0ADEBEBF1F97F90A00DC8E23 /* TimeSeparatorModel.swift in Sources */,
-				E17749C91F4D2F12005531D1 /* UINavigationController+Extension.swift in Sources */,
 				E177DAD71F56C2B200DE1518 /* M13CheckboxController.swift in Sources */,
 				0AD219041E7B4427001E7865 /* SkillsTableViewCell.swift in Sources */,
 				E1FF626B1F5A593800C84EDB /* FSCalendarStickyHeader.m in Sources */,
